@@ -1,36 +1,46 @@
 'use strict';
 
-(function() {
+(function () {
 
-class MainController {
+  class MainController {
 
-  constructor($http, $scope, socket, CompanyService) {
-    this.$http = $http;
-    this.awesomeThings = [];
+    constructor($scope, socket, Companies) {
+      this.Companies = Companies;
+      this.companies = [];
+      $scope.companies = [];
 
-    $http.get('/api/things').then(response => {
-      this.awesomeThings = response.data;
-      socket.syncUpdates('thing', this.awesomeThings);
-    });
+      Companies.Companiess.query(function (response) {
+        angular.forEach(response, function (item) {
+          if (item.name) {
+            $scope.companies.push({name: item.name});
+          }
+        });
+        socket.syncUpdates('companies', $scope.companies);
+        /*socket.syncUpdates('companies', $scope.companies, function(event, item, object) {
+          $scope.chats = item;  // item contains the updated array
+        });*/
+      });
 
-    $scope.$on('$destroy', function() {
-      socket.unsyncUpdates('thing');
-    });
-  }
+      $scope.$on('$destroy', function () {
+        socket.unsyncUpdates('companies');
+      });
+    }
 
-  addThing() {
-    if (this.newThing) {
-      this.$http.post('/api/things', { name: this.newThing });
-      this.newThing = '';
+    addThing() {
+      if (this.company) {
+        var newCompany = new this.Companies.Companiess({name: this.company});
+        newCompany.$save();
+        this.company = '';
+      }
+    }
+
+    deleteThing(company) {
+      /*Companies.Companiess.remove()*/
+      this.$http.delete('/api/things/' + thing._id);
     }
   }
 
-  deleteThing(thing) {
-    this.$http.delete('/api/things/' + thing._id);
-  }
-}
-
-angular.module('fairManagerApp')
-  .controller('MainController', MainController);
+  angular.module('fairManagerApp')
+    .controller('MainController', MainController);
 
 })();

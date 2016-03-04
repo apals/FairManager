@@ -7,6 +7,7 @@ angular.module('fairManagerApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
+  'ngResource',
   'ngRoute',
   'btford.socket-io',
   'validation.match'
