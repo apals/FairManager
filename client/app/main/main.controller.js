@@ -4,7 +4,7 @@
 
 class MainController {
 
-  constructor($http, $scope, socket) {
+  constructor($http, $scope, socket, CompanyService) {
     this.$http = $http;
     this.awesomeThings = [];
 
