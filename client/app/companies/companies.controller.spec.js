@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: MainController', function() {
+describe('Controller: CompaniesController', function() {
 
   // load the controller's module
   beforeEach(module('fairManagerApp'));

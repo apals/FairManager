@@ -2,7 +2,7 @@
 
 (function () {
 
-  class MainController {
+  class CompaniesController {
 
     constructor($scope, socket, Companies) {
       this.Companies = Companies;
@@ -41,6 +41,6 @@
   }
 
   angular.module('fairManagerApp')
-    .controller('MainController', MainController);
+    .controller('CompaniesController', CompaniesController);
 
 })();

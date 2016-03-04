@@ -5,7 +5,6 @@ angular.module('fairManagerApp')
     // Service logic
     // ...
 
-
     this.Companiess = $resource('/api/companies/');
     this.Company = $resource('/api/companies/:id');
 
