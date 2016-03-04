@@ -7368,6 +7368,9 @@ footer.footer {
 .container-fluid {
   padding: 0; }
 
+.row {
+  margin: 0 !important; }
+
 /* Sidebar Styles */
 .sidebar-nav {
   position: absolute;
