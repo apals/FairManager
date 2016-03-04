@@ -9,6 +9,7 @@ import path from 'path';
 
 export default function(app) {
   // Insert routes below
+  app.use('/api/personnel', require('./api/personnel'));
   app.use('/api/contacts', require('./api/contacts'));
   app.use('/api/partners', require('./api/partners'));
   app.use('/api/events', require('./api/events'));
