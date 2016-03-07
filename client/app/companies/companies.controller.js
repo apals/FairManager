@@ -16,9 +16,6 @@
           }
         });
         socket.syncUpdates('companies', $scope.companies);
-        /*socket.syncUpdates('companies', $scope.companies, function(event, item, object) {
-          $scope.chats = item;  // item contains the updated array
-        });*/
       });
 
       $scope.$on('$destroy', function () {
