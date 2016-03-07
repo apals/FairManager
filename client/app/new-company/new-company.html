@@ -1,1 +1,10 @@
-<div>This is the new-company view.</div>
+<form class="thing-form">
+  <p class="input-group">
+    <label>Company Name</label>
+    <input type="text" class="form-control" ng-model="companyName">
+  </p>
+
+  <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="addCompany()">Add New</button>
+      </span>
+</form>

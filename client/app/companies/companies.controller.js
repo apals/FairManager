@@ -22,13 +22,7 @@
       });
     }
 
-    addCompany() {
-      if (this.company) {
-        var newCompany = new this.CompanyService.Companies({name: this.company});
-        newCompany.$save();
-        this.company = '';
-      }
-    }
+
 
     deleteThing(company) {
       /*Companies.Companiess.remove()*/
