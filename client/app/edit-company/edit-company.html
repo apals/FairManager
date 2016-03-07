@@ -1,1 +1,10 @@
-<div>This is the edit-company view.</div>
+<form class="update-company-form">
+  <p class="input-group">
+    <label>Company Name</label>
+    <input type="text" class="form-control" ng-model="companyName">
+  </p>
+
+  <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="updateCompany()">Update</button>
+  </span>
+</form>
