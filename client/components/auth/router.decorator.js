@@ -28,7 +28,7 @@ angular.module('fairManagerApp.auth')
           }
 
           event.preventDefault();
-          $location.path('/');
+          $location.path('/login');
         });
       }
     });

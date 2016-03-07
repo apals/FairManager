@@ -1,11 +1,12 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .config(function($routeProvider) {
+  .config(function ($routeProvider) {
     $routeProvider
       .when('/companies', {
         templateUrl: 'app/companies/companies.html',
         controller: 'CompaniesController',
-        controllerAs: 'comp'
+        controllerAs: 'comp',
+        authenticate: 'admin'
       });
   });

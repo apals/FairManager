@@ -5,6 +5,7 @@ angular.module('fairManagerApp')
     $routeProvider
       .when('/companies/:id', {
         templateUrl: 'app/company-detail/company-detail.html',
-        controller: 'CompanyDetailCtrl'
+        controller: 'CompanyDetailCtrl',
+        authenticate: 'admin'
       });
   });

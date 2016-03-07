@@ -21,7 +21,7 @@ angular.module('fairManagerApp')
 
     $scope.deleteCompany = function(company) {
       CompanyService.Company.delete({id: company._id}, function(response) {
-        
+
       });
     }
   });
