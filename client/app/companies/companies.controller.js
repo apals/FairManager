@@ -11,7 +11,7 @@
       CompanyService.Companies.query(function (response) {
         angular.forEach(response, function (item) {
           if (item.name) {
-            $scope.companies.push({name: item.name});
+            $scope.companies.push({item});
           }
         });
         socket.syncUpdates('companies', $scope.companies);
