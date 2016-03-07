@@ -27,7 +27,7 @@ var socketio = require('socket.io')(server, {
   serveClient: config.env !== 'production',
   path: '/socket.io-client'
 });
-socketio.sockets.setMaxListeners(0);
+socketio.sockets.setMaxListeners(500);
 
 require('./config/socketio')(socketio);
 require('./config/express')(app);

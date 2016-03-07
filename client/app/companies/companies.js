@@ -6,6 +6,6 @@ angular.module('fairManagerApp')
       .when('/companies', {
         templateUrl: 'app/companies/companies.html',
         controller: 'CompaniesController',
-        controllerAs: 'compani'
+        controllerAs: 'comp'
       });
   });

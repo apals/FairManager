@@ -4,12 +4,11 @@
 
   class CompaniesController {
 
-    constructor($scope, socket, Companies) {
-      this.Companies = Companies;
-      this.companies = [];
+    constructor($scope, socket, CompanyService) {
+      this.CompanyService = CompanyService;
       $scope.companies = [];
 
-      Companies.Companiess.query(function (response) {
+      CompanyService.Companies.query(function (response) {
         angular.forEach(response, function (item) {
           if (item.name) {
             $scope.companies.push({name: item.name});
@@ -23,10 +22,9 @@
       });
     }
 
-    addThing() {
-      console.log("i am tryign to add a Thingie");
+    addCompany() {
       if (this.company) {
-        var newCompany = new this.Companies.Companiess({name: this.company});
+        var newCompany = new this.CompanyService.Companies({name: this.company});
         newCompany.$save();
         this.company = '';
       }
