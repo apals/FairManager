@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Companies:</h1>
+      <h1 class="page-header">Companies:</h1> <h2><a href="companies/new">NEW COMPANY</a></h2>
+      <hr>
       <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="company in companies">
         <li><a href="#" tooltip="{{company.name}}">{{company.name}}<button type="button" class="close" ng-click="comp.deleteThing(company)">&times;</button></a></li>
       </ul>
