@@ -22,7 +22,6 @@ function onConnect(socket) {
   require('../api/partners/partners.socket').register(socket);
   require('../api/events/events.socket').register(socket);
   require('../api/companies/companies.socket').register(socket);
-  require('../api/thing/thing.socket').register(socket);
 
 }
 

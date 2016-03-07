@@ -5,6 +5,7 @@ angular.module('fairManagerApp')
     $routeProvider
       .when('/companies', {
         templateUrl: 'app/companies/companies.html',
-        controller: 'CompaniesController'
+        controller: 'CompaniesController',
+        controllerAs: 'compani'
       });
   });

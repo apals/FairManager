@@ -4,9 +4,9 @@
  */
 
 'use strict';
-import Thing from '../api/thing/thing.model';
+//import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
-
+/*
 Thing.find({}).removeAsync()
   .then(() => {
     Thing.create({
@@ -37,7 +37,7 @@ Thing.find({}).removeAsync()
       info: 'Easily deploy your app to Heroku or Openshift with the heroku ' +
              'and openshift subgenerators'
     });
-  });
+  });*/7
 
 User.find({}).removeAsync()
   .then(() => {

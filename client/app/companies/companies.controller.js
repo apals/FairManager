@@ -27,6 +27,7 @@
     }
 
     addThing() {
+      console.log("i am tryign to add a Thingie");
       if (this.company) {
         var newCompany = new this.Companies.Companiess({name: this.company});
         newCompany.$save();

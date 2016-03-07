@@ -14,7 +14,6 @@ export default function(app) {
   app.use('/api/partners', require('./api/partners'));
   app.use('/api/events', require('./api/events'));
   app.use('/api/companies', require('./api/companies'));
-  app.use('/api/things', require('./api/thing'));
   app.use('/api/users', require('./api/user'));
 
   app.use('/auth', require('./auth'));
