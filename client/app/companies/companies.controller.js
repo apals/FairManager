@@ -1,36 +1,28 @@
 'use strict';
 
-(function () {
 
-  class CompaniesController {
+angular.module('fairManagerApp')
+  .controller('CompaniesController', function ($scope, socket, CompanyService, $routeParams) {
+    $scope.companies = [];
 
-    constructor($scope, socket, CompanyService) {
-      this.CompanyService = CompanyService;
-      $scope.companies = [];
-
-      CompanyService.Companies.query(function (response) {
-        angular.forEach(response, function (item) {
-          if (item.name) {
-            $scope.companies.push({item});
-          }
-        });
-        socket.syncUpdates('companies', $scope.companies);
+    CompanyService.Companies.query(function (response) {
+      angular.forEach(response, function (item) {
+        if (item.name) {
+          $scope.companies.push(item);
+        }
       });
+      socket.syncUpdates('companies', $scope.companies);
+    });
 
-      $scope.$on('$destroy', function () {
-        socket.unsyncUpdates('companies');
+    $scope.$on('$destroy', function () {
+      socket.unsyncUpdates('companies');
+    });
+
+
+    $scope.deleteCompany = function(company) {
+      CompanyService.Company.delete({id: company._id}, function(response) {
+        
       });
     }
+  });
 
-
-
-    deleteThing(company) {
-      /*Companies.Companiess.remove()*/
-      this.$http.delete('/api/things/' + thing._id);
-    }
-  }
-
-  angular.module('fairManagerApp')
-    .controller('CompaniesController', CompaniesController);
-
-})();

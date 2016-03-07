@@ -8,9 +8,9 @@
 
       <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="company in companies">
         <li>
-          <a href="/companies/{{company.item._id}}" tooltip="{{company.item.name}}">{{company.item.name}}</a>
-          <a href="/companies/{{company.item._id}}/edit" class="btn btn-default">Edit</a>
-          <button type="button" class="close" ng-click="comp.deleteThing(company)">&times;</button>
+          <a href="/companies/{{company._id}}" tooltip="{{company.name}}">{{company.name}}</a>
+          <a href="/companies/{{company._id}}/edit" class="btn btn-default">Edit</a>
+          <button type="button" class="close" ng-click="deleteCompany(company)">&times;</button>
 
         </li>
       </ul>
