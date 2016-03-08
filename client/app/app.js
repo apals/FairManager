@@ -15,7 +15,7 @@ angular.module('fairManagerApp', [
   .config(function($routeProvider, $locationProvider) {
     $routeProvider
       .otherwise({
-        //redirectTo: '/companies'
+        redirectTo: '/companies'
       });
 
     $locationProvider.html5Mode(true);
