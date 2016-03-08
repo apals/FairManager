@@ -10,7 +10,6 @@ angular.module('fairManagerApp')
           $scope.companyName = '';
           $location.path('/companies');
         }, function(error) {
-
         });
       }
     }

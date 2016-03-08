@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<div id="sidebar-wrapper">
+<div id="sidebar-wrapper" ng-controller="NavbarController">
   <ul class="sidebar-nav">
     <li class="sidebar-brand">
       <a href="#">
@@ -21,8 +21,7 @@
     <li>
       <a href="/personnel">Personnel</a>
     </li>
-
-    <li><a href="/logout">Logout</a></li>
+    <li><a ng-show="nav.isLoggedIn()" href="/logout">Logout</a></li>
   </ul>
 </div>
 <!-- /#sidebar-wrapper -->

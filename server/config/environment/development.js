@@ -6,7 +6,7 @@ module.exports = {
 
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/fairmanager-dev'
+    uri: 'mongodb://admin:password@ds019468.mlab.com:19468/fairmanager-dev'
   },
 
   // Seed database on startup

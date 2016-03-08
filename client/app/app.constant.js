@@ -3,7 +3,7 @@
 
 angular.module('fairManagerApp.constants', [])
 
-.constant('appConfig', {userRoles:['admin']})
+.constant('appConfig', {userRoles:['guest','user','admin']})
 
 ;
 })(angular);
