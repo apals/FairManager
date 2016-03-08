@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="app/app.css">
     <link rel="stylesheet" href="app/login/login.css">
     <link rel="stylesheet" href="app/new-company/new-company.css">
+    <link rel="stylesheet" href="app/top-navbar/top-navbar.css">
     <!-- endinjector -->
     <!-- endbuild -->
   </head>
@@ -35,22 +36,26 @@
       href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <navbar></navbar>
+    <div class="page-container">
 
-    <div id="wrapper">
-      <div id="page-content-wrapper">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-lg-12">
-              <div ng-view=""></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <!--<top-navbar></top-navbar>-->
 
-    <footer></footer>
+      <!-- top navbar -->
+      <top-navbar></top-navbar>
+
+
+      <div class="container">
+        <div class="row row-offcanvas row-offcanvas-left {{getClassName()}}" ng-controller="ToggleNavbarController">
+          <navbar></navbar>
+
+          <!-- main area -->
+          <div class="col-xs-12 col-sm-9" ng-view>
+
+          </div><!-- /.col-xs-12 main -->
+        </div><!--/.row-->
+      </div><!--/.container-->
+    </div><!--/.page-container-->
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
@@ -69,6 +74,7 @@
       ga('create', 'UA-XXXXX-X');
       ga('send', 'pageview');
     </script>
+
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -91,15 +97,22 @@
     <!-- endbuild -->
     <!-- build:js(.tmp) app/app.js -->
     <script src="app/app.js"></script>
+
+    <script src="app/companies/companies.controller.js"></script>
+    <script src="app/companies/companies.js"></script>
     <!-- injector:js -->
     <script src="app/admin/admin.module.js"></script>
     <script src="components/auth/auth.module.js"></script>
     <script src="components/util/util.module.js"></script>
-    <script src="app/new-company/new-company.controller.js"></script>
+    <script src="app/partners/partners.controller.js"></script>
     <script src="app/admin/admin.controller.js"></script>
     <script src="app/account/account.js"></script>
     <script src="app/admin/admin.router.js"></script>
     <script src="app/app.constant.js"></script>
+    <script src="app/companies/companies.controller.js"></script>
+    <script src="app/companies/companies.js"></script>
+    <script src="app/company-detail/company-detail.controller.js"></script>
+    <script src="app/company-detail/company-detail.js"></script>
     <script src="app/contact/contact.controller.js"></script>
     <script src="app/contact/contact.js"></script>
     <script src="app/edit-company/edit-company.controller.js"></script>
@@ -108,18 +121,18 @@
     <script src="app/events/events.js"></script>
     <script src="app/login/login.controller.js"></script>
     <script src="app/login/login.js"></script>
-    <script src="app/account/login/login.controller.js"></script>
+    <script src="app/new-company/new-company.controller.js"></script>
     <script src="app/new-company/new-company.js"></script>
-    <script src="app/partners/partners.controller.js"></script>
+    <script src="app/account/login/login.controller.js"></script>
     <script src="app/partners/partners.js"></script>
-    <script src="app/companies/companies.controller.js"></script>
-    <script src="app/companies/companies.js"></script>
-    <script src="app/company-detail/company-detail.controller.js"></script>
-    <script src="app/company-detail/company-detail.js"></script>
     <script src="app/personnel/personnel.controller.js"></script>
     <script src="app/personnel/personnel.js"></script>
     <script src="app/services/Companies/CompanyService.service.js"></script>
     <script src="app/services/EventsFactory/EventsFactory.service.js"></script>
+    <script src="app/services/NavbarService/NavbarService.service.js"></script>
+    <script src="app/toggle-nav-bar.controller.js"></script>
+    <script src="app/top-navbar/top-navbar.directive.js"></script>
+    <script src="app/top-navbar/topnavbar.controller.js"></script>
     <script src="app/account/settings/settings.controller.js"></script>
     <script src="components/auth/auth.service.js"></script>
     <script src="components/auth/interceptor.service.js"></script>
