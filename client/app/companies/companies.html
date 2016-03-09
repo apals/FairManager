@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Companies:</h1>
 
-      <h2><a href="companies/new">NEW COMPANY</a></h2>
-      <hr>
+    <div class="col-sm-12">
+      <h1>Companies</h1>
 
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="company in companies">
-        <li>
+      <p><a href="companies/new">New Company</a></p>
+    </div>
+
+    <div class="col-sm-12">
+      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6">
+        <li ng-repeat="company in companies">
           <a href="/companies/{{company._id}}" tooltip="{{company.name}}">{{company.name}}</a>
           <a href="/companies/{{company._id}}/edit" class="btn btn-default">Edit</a>
           <button type="button" class="close" ng-click="deleteCompany(company)">&times;</button>
@@ -15,6 +17,6 @@
         </li>
       </ul>
     </div>
+    <hr>
   </div>
-
 </div>
