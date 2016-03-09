@@ -2,7 +2,7 @@
 
 
 angular.module('fairManagerApp')
-  .controller('CompaniesController', function ($scope, socket, CompanyService, $routeParams) {
+  .controller('CompaniesController', function ($scope, socket, CompanyService) {
     $scope.companies = [];
 
     CompanyService.Companies.query(function (response) {
