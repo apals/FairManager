@@ -7387,3 +7387,13 @@ body {
 
   #sidebar {
     padding-top: 0; } }
+.containerA {
+  display: -webkit-flex;
+  display: flex; }
+
+nav {
+  width: 200px; }
+
+.flex-column {
+  -webkit-flex: 1;
+  flex: 1; }

@@ -2,7 +2,6 @@
 
 angular.module('fairManagerApp')
   .controller('TopNavbarController', function ($scope, NavbarService) {
-    console.log("topnavbarcontr1");
 
     $scope.toggleMenu = function () {
       if (NavbarService.getCurrentClass() === "inactive") {
@@ -10,7 +9,6 @@ angular.module('fairManagerApp')
       } else {
         NavbarService.setCurrentClass("inactive");
       }
-      console.log("toggle menu");
     }
 
   });
