@@ -7331,26 +7331,6 @@ footer.footer {
   margin-top: 70px;
   border-top: 1px solid #E5E5E5; }
 
-/*!
- * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
-/* Toggle Styles */
-body {
-  padding-top: 51px; }
-
-.text-center {
-  padding-top: 20px; }
-
-.col-xs-12 {
-  background-color: #fff; }
-
-#sidebar {
-  height: 100%;
-  padding-right: 0;
-  padding-top: 20px; }
-
 #sidebar .nav {
   width: 95%; }
 
@@ -7387,12 +7367,24 @@ body {
 
   #sidebar {
     padding-top: 0; } }
+nav {
+  width: 200px; }
+
+/*!
+ * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+/* Toggle Styles */
+body {
+  padding-top: 51px; }
+
+.container {
+  max-width: 100%; }
+
 .containerA {
   display: -webkit-flex;
   display: flex; }
-
-nav {
-  width: 200px; }
 
 .flex-column {
   -webkit-flex: 1;
