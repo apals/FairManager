@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="8PF-Ja-oNt">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="8PF-Ja-oNt" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="BPr-rq-h7x"/>
+                            <constraint firstItem="8PF-Ja-oNt" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Cvd-sK-XCi"/>
+                            <constraint firstItem="8PF-Ja-oNt" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="OSz-P3-VHc"/>
+                            <constraint firstItem="8PF-Ja-oNt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vNI-gy-azw"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="8PF-Ja-oNt"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="BPr-rq-h7x"/>
+                                <exclude reference="Cvd-sK-XCi"/>
+                                <exclude reference="OSz-P3-VHc"/>
+                                <exclude reference="vNI-gy-azw"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="8PF-Ja-oNt"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="BPr-rq-h7x"/>
+                                <include reference="Cvd-sK-XCi"/>
+                                <include reference="OSz-P3-VHc"/>
+                                <include reference="vNI-gy-azw"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="53" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="splash" width="750" height="1334"/>
+    </resources>
+</document>
