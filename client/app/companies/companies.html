@@ -1,11 +1,12 @@
-
-
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
       <h1>Companies</h1>
-      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@example.com</code> / <code>test</code></p>
-      <p>Admin account is <code>admin@example.com</code> / <code>admin</code></p>
+
+      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@example.com</code>
+        / <code>test</code></p>
+
+      <p><a href="companies/new">New Company</a></p>
     </div>
     <div class="col-sm-12">
 
@@ -13,7 +14,7 @@
         <div ng-repeat="company in companies">
           <div class="clearfix" ng-if="$index % 3 == 0"></div>
           <div class="col-sm-4">
-            <a href="/companies/{{company._id}}" tooltip="{{company.name}}">{{company.name}}</a>
+            <h2><a href="/companies/{{company._id}}">{{company.name}}</a></h2>
             <a href="/companies/{{company._id}}/edit" class="btn btn-default">Edit</a>
             <button type="button" class="close" ng-click="deleteCompany(company)">&times;</button>
           </div>
