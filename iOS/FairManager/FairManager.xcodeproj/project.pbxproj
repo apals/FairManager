@@ -11,8 +11,8 @@
 		307CAA621C91BA0300F3D59F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307CAA601C91BA0300F3D59F /* Main.storyboard */; };
 		307CAA641C91BA0300F3D59F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 307CAA631C91BA0300F3D59F /* Assets.xcassets */; };
 		307CAA671C91BA0300F3D59F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307CAA651C91BA0300F3D59F /* LaunchScreen.storyboard */; };
-		308B5D731C91BBFE005C1F48 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308B5D721C91BBFE005C1F48 /* DataFactory.swift */; };
 		308B5D751C91CEAA005C1F48 /* FMTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308B5D741C91CEAA005C1F48 /* FMTableViewController.swift */; };
+		308B5D791C91D5AA005C1F48 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308B5D781C91D5AA005C1F48 /* DataFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,8 +22,8 @@
 		307CAA631C91BA0300F3D59F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		307CAA661C91BA0300F3D59F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		307CAA681C91BA0300F3D59F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		308B5D721C91BBFE005C1F48 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataFactory.swift; path = ../DataFactory.swift; sourceTree = "<group>"; };
 		308B5D741C91CEAA005C1F48 /* FMTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMTableViewController.swift; sourceTree = "<group>"; };
+		308B5D781C91D5AA005C1F48 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +56,8 @@
 		307CAA591C91BA0300F3D59F /* FairManager */ = {
 			isa = PBXGroup;
 			children = (
+				308B5D781C91D5AA005C1F48 /* DataFactory.swift */,
 				307CAA5A1C91BA0300F3D59F /* AppDelegate.swift */,
-				308B5D721C91BBFE005C1F48 /* DataFactory.swift */,
 				307CAA601C91BA0300F3D59F /* Main.storyboard */,
 				308B5D741C91CEAA005C1F48 /* FMTableViewController.swift */,
 				307CAA631C91BA0300F3D59F /* Assets.xcassets */,
@@ -138,9 +138,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				308B5D731C91BBFE005C1F48 /* DataFactory.swift in Sources */,
 				307CAA5B1C91BA0300F3D59F /* AppDelegate.swift in Sources */,
 				308B5D751C91CEAA005C1F48 /* FMTableViewController.swift in Sources */,
+				308B5D791C91D5AA005C1F48 /* DataFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
