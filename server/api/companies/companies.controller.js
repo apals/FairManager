@@ -11,6 +11,8 @@
 
 import _ from 'lodash';
 import Companies from './companies.model';
+//ivar path = require("path");
+import path from 'path';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -74,8 +76,18 @@ export function show(req, res) {
     .catch(handleError(res));
 }
 
+
 // Creates a new Companies in the DB
-export function create(req, res) {
+export function create(req, res, next) {
+  var data = _.pick(req.body, 'type')
+    , uploadPath = path.normalize('client/assets/images')
+    , file = req.files.file;
+
+  console.log(file.name); //original name (ie: sunset.png)
+  console.log(file.path); //tmp path (ie: /tmp/12345-xyaz.png)
+  console.log(uploadPath); //uploads directory: (ie: /home/user/data/uploads)
+
+  req.body.filename = file.path.split('/')[3];
   Companies.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));

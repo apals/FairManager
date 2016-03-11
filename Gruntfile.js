@@ -163,7 +163,9 @@ module.exports = function (grunt) {
         files: [{
           dot: true,
           src: [
+            '<%= yeoman.client %>/!uploads**',
             '.tmp',
+            '<%= yeoman.dist %>/!uploads**',
             '<%= yeoman.dist %>/!(.git*|.openshift|Procfile)**'
           ]
         }]

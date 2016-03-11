@@ -3,8 +3,7 @@
     <div class="col-sm-12">
       <h1>Companies</h1>
 
-      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@example.com</code>
-        / <code>test</code></p>
+      <p>Here you can add companies</p>
 
       <p><a href="companies/new">New Company</a></p>
     </div>
@@ -14,6 +13,7 @@
         <div ng-repeat="company in companies">
           <div class="clearfix" ng-if="$index % 3 == 0"></div>
           <div class="col-sm-4">
+            <img ng-src="../../assets/images/{{company.filename}}">
             <h2><a href="/companies/{{company._id}}">{{company.name}}</a></h2>
             <a href="/companies/{{company._id}}/edit" class="btn btn-default">Edit</a>
             <button type="button" class="close" ng-click="deleteCompany(company)">&times;</button>
