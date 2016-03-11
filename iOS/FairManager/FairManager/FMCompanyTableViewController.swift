@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FMTableViewController: UITableViewController {
+class FMCompanyTableViewController: UITableViewController {
     @IBOutlet weak var refreshCtrl: UIRefreshControl!
     
     var companies:[Company]?

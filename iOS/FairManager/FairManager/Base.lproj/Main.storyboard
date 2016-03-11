@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="906" y="-721"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Company Table View Controller-->
         <scene sceneID="nkn-Cn-8Su">
             <objects>
-                <tableViewController id="VKD-73-8L1" customClass="FMTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="VKD-73-8L1" customClass="FMCompanyTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="73c-c8-Jtw">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,6 +53,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MuF-qt-drA" id="bcu-UI-chR">
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="div-yy-orq" kind="show" identifier="companySegue" id="egE-3q-ibz"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -71,6 +74,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOo-XE-K2K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1692" y="-716"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="GBl-Ya-cdC">
+            <objects>
+                <viewController id="div-yy-orq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Vza-QH-Cif"/>
+                        <viewControllerLayoutGuide type="bottom" id="0vh-fZ-dDh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lJE-Pg-UX6">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qFM-5o-Q4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2649" y="-716"/>
         </scene>
     </scenes>
 </document>
