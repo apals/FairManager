@@ -14,6 +14,7 @@
         <div ng-repeat="company in companies">
           <div class="clearfix" ng-if="$index % 3 == 0"></div>
           <div class="col-sm-4">
+            <img ng-src="uploads/H64g2Jt9aYA2s7LxyzDLaYpY.jpeg">
             <h2><a href="/companies/{{company._id}}">{{company.name}}</a></h2>
             <a href="/companies/{{company._id}}/edit" class="btn btn-default">Edit</a>
             <button type="button" class="close" ng-click="deleteCompany(company)">&times;</button>

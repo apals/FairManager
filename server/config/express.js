@@ -34,6 +34,13 @@ export default function(app) {
   app.use(cookieParser());
   app.use(passport.initialize());
 
+
+  var multipart = require('connect-multiparty');
+
+  app.use(multipart({
+    uploadDir: 'client/uploads'
+  }));
+
   // Persist sessions with mongoStore / sequelizeStore
   // We need to enable sessions for passport-twitter because it's an
   // oauth 1.0 strategy, and Lusca depends on sessions
@@ -67,6 +74,8 @@ export default function(app) {
   }
 
   app.set('appPath', path.join(config.root, 'client'));
+  app.use(express.static('../uploads'));
+
 
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'client', 'favicon.ico')));

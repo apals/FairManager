@@ -3,6 +3,11 @@
 angular.module('fairManagerApp')
   .config(function($routeProvider) {
     $routeProvider
+      .when('/login', {
+        templateUrl: 'app/account/login/login.html',
+        controller: 'LoginController',
+        controllerAs: 'vm'
+      })
       .when('/logout', {
         name: 'logout',
         referrer: '/',
