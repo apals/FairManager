@@ -80,7 +80,7 @@ export function show(req, res) {
 // Creates a new Companies in the DB
 export function create(req, res, next) {
   var data = _.pick(req.body, 'type')
-    , uploadPath = path.normalize('client/uploads')
+    , uploadPath = path.normalize('client/assets/images')
     , file = req.files.file;
 
   console.log(file.name); //original name (ie: sunset.png)

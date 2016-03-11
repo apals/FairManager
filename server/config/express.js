@@ -38,7 +38,7 @@ export default function(app) {
   var multipart = require('connect-multiparty');
 
   app.use(multipart({
-    uploadDir: 'client/uploads'
+    uploadDir: 'client/assets/images'
   }));
 
   // Persist sessions with mongoStore / sequelizeStore
@@ -74,7 +74,6 @@ export default function(app) {
   }
 
   app.set('appPath', path.join(config.root, 'client'));
-  app.use(express.static('../uploads'));
 
 
   if ('production' === env) {
