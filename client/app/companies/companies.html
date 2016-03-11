@@ -1,27 +1,29 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-      <h1>Companies</h1>
+      <h1>Exhibitors</h1>
 
-      <p>Here you can add companies</p>
 
-      <p><a href="companies/new">New Company</a></p>
-    </div>
-    <div class="col-sm-12">
-
-      <div class="row">
-        <div ng-repeat="company in companies">
-          <div class="clearfix" ng-if="$index % 3 == 0"></div>
-          <div class="col-sm-4">
-            <img ng-src="../../assets/images/{{company.filename}}">
-            <h2><a href="/companies/{{company._id}}">{{company.name}}</a></h2>
-            <a href="/companies/{{company._id}}/edit" class="btn btn-default">Edit</a>
-            <button type="button" class="close" ng-click="deleteCompany(company)">&times;</button>
-          </div>
-        </div>
+      <div class="col-sm-8" style="padding-left: 0;">
+      <input ng-model="exhibitorSearchText" type="search" class="form-control" placeholder="Search exhibitors..">
       </div>
-
+      <div class="col-sm-4" style="padding-right: 0;">
+        <a class="btn btn-block btn-primary" href="companies/new">Add new exhibitor</a>
+      </div>
     </div>
   </div>
-  <hr>
+  <br>
+
+      <div class="row">
+        <div ng-repeat="company in companies | orderBy:'name' | filter:exhibitorSearchText" class="col-sm-12">
+       <!--   <img ng-src="../../assets/images/{{company.logoUrl}}" style="width: 100px;"> -->
+            <h3 style="display: inline;"><a href="/companies/{{company._id}}">{{company.name}}</a></h3>
+
+            <div id="buttons">
+              <a href="/companies/{{company._id}}/edit" class="btn btn-default">Edit</a>
+              <a class="btn btn-danger" ng-click="deleteCompany(company)">Delete</a>
+            </div>
+            <hr>
+        </div>
+    </div>
 </div>
