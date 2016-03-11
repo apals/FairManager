@@ -4,16 +4,6 @@ angular.module('fairManagerApp')
   .controller('NewCompanyCtrl', function ($scope, CompanyService, $location, Upload, $timeout) {
 
     $scope.addCompany = function () {
-     /* if ($scope.companyName) {
-        var newCompany = new CompanyService.Companies({name: $scope.companyName});
-        newCompany.$save(function (response) {
-          $scope.companyName = '';
-          $location.path('/companies');
-        }, function (error) {
-        });
-      }
-      console.log($scope.picFile);*/
-
 
       $scope.picFile.upload = Upload.upload({
         url: '/api/companies',
@@ -23,8 +13,12 @@ angular.module('fairManagerApp')
       $scope.picFile.upload.then(function (response) {
         $timeout(function () {
           $scope.picFile.result = response.data;
+          if (response.status === 201) {
+            $location.path('/companies');
+          }
         });
       }, function (response) {
+        console.log("other one" + response);
         if (response.status > 0)
           $scope.errorMsg = response.status + ': ' + response.data;
       }, function (evt) {
