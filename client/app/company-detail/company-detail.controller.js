@@ -2,9 +2,10 @@
 
 angular.module('fairManagerApp')
   .controller('CompanyDetailCtrl', function ($scope, CompanyService, $routeParams) {
+  	$scope.company = {};
     CompanyService.Company.get({id: $routeParams.id}, function(response) {
-      $scope.companyName = response.name;
+      $scope.company = response;
     }, function(error) {
-      $scope.companyName = "Error fetching data";
+      $scope.company = {};
     });
   });
