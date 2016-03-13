@@ -10,13 +10,13 @@ angular.module('fairManagerApp')
       this.submitted = true;
 
       if (form.$valid) {
-        console.log("authing..");
         Auth.login({
             email: $scope.login.user.email,
             password: $scope.login.user.password
           })
           .then(() => {
             // Logged in, redirect to home
+            //TODO: redirect to where user came from
             $location.path('/companies');
           })
           .catch(err => {

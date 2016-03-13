@@ -11,8 +11,8 @@
 
 import _ from 'lodash';
 import Companies from './companies.model';
-//ivar path = require("path");
 import path from 'path';
+import fs from 'fs';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -34,12 +34,26 @@ function saveUpdates(updates) {
 }
 
 function removeEntity(res) {
+
   return function (entity) {
     if (entity) {
       return entity.removeAsync()
         .then(() => {
           res.status(204).end();
         });
+    }
+  };
+}
+
+function removeCompanyLogo(res) {
+  return function (entity) {
+    if (entity) {
+      var image = "client/assets/images/" + entity.logoUrl.split('/')[5];
+      fs.unlink(image, function (err) {
+        console.log("Error deleting company logo for entity:");
+        console.log(entity);
+      });
+      return entity;
     }
   };
 }
@@ -83,11 +97,7 @@ export function create(req, res, next) {
     , uploadPath = path.normalize('client/assets/images')
     , file = req.files.file;
 
-  console.log(file.name); //original name (ie: sunset.png)
-  console.log(file.path); //tmp path (ie: /tmp/12345-xyaz.png)
-  console.log(uploadPath); //uploads directory: (ie: /home/user/data/uploads)
-
-  req.body.logoUrl = file.path.split('/')[3];
+  req.body.logoUrl = "http://localhost:9000/assets/images/" + file.path.split('/')[3];
   Companies.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
@@ -109,6 +119,7 @@ export function update(req, res) {
 export function destroy(req, res) {
   Companies.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
+    .then(removeCompanyLogo(res))
     .then(removeEntity(res))
     .catch(handleError(res));
 }
