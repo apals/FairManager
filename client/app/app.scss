@@ -28,7 +28,6 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 @import 'personnel/personnel.scss';
 @import 'top-navbar/top-navbar.scss';
 @import '../components/footer/footer.scss';
-@import '../components/navbar/navbar.scss';
 // endinjector
 /*!
  * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
@@ -37,9 +36,9 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
  */
 
 /* Toggle Styles */
-
+html,
 body {
-  padding-top: 51px;
+    height: 100%;
 }
 
 .container {

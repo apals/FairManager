@@ -1,23 +1,17 @@
+<div class="login">
+</div>
 <div class="container">
-  <div class="row">
-
-    <div class="col-sm-12">
-      <h1>Login</h1>
-      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@example.com</code> / <code>test</code></p>
-      <p>Admin account is <code>admin@example.com</code> / <code>admin</code></p>
-    </div>
-    <div class="col-sm-12">
+<div class="loginWrapper">
+  <div class="row vcenter"> 
+    <div class="col-sm-4 col-sm-offset-4">
       <form class="form" name="form" ng-submit="login(form)" novalidate>
 
-        <div class="form-group">
-          <label>Email</label>
-
-          <input type="email" name="email" class="form-control" ng-model="login.user.email" required>
+        <div class="form-group nobottommargin">
+          <input type="email" name="email" class="form-control" ng-model="login.user.email" placeholder="Email..." required>
         </div>
 
         <div class="form-group">
-          <label>Password</label>
-          <input type="password" name="password" class="form-control" ng-model="login.user.password" required>
+          <input type="password" name="password" class="form-control" ng-model="login.user.password" placeholder="Password..." required>
         </div>
 
         <div class="form-group has-error">
@@ -31,17 +25,22 @@
           <p class="help-block">{{ login.errors.other }}</p>
         </div>
 
-        <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
+        <div class="row">
+        <div class="col-sm-6">
+          <button class="btn btn-block btn-lg btn-login" type="submit">
             Login
           </button>
-          <a class="btn btn-default btn-lg btn-register" href="/signup">
+          </div>
+          <div class="col-sm-6">
+          <a class="btn btn-block btn-lg btn-register" href="/signup">
             Register
           </a>
+          </div>
         </div>
 
       </form>
     </div>
   </div>
   <hr>
+  </div>
 </div>
