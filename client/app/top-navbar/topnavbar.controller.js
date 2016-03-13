@@ -13,7 +13,7 @@ angular.module('fairManagerApp')
 
     $scope.menu = [
 	    {
-	    	'title': 'Companies',
+	    	'title': 'Exhibitors',
 	    	'link': '/companies'
 	    },
 	    {
