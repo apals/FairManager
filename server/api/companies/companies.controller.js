@@ -83,11 +83,7 @@ export function create(req, res, next) {
     , uploadPath = path.normalize('client/assets/images')
     , file = req.files.file;
 
-  console.log(file.name); //original name (ie: sunset.png)
-  console.log(file.path); //tmp path (ie: /tmp/12345-xyaz.png)
-  console.log(uploadPath); //uploads directory: (ie: /home/user/data/uploads)
-
-  req.body.logoUrl = file.path.split('/')[3];
+  req.body.logoUrl = "http://localhost:9000/assets/images/" + file.path.split('/')[3];
   Companies.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
