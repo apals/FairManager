@@ -11,7 +11,9 @@ angular.module('fairManagerApp', [
     'ngRoute',
     'btford.socket-io',
     'validation.match',
-    'ngFileUpload'
+    'ngFileUpload',
+    'ui.bootstrap',
+    'ngAnimate'
   ])
   .config(function ($routeProvider, $locationProvider) {
     $routeProvider

@@ -2,15 +2,6 @@
 
 angular.module('fairManagerApp')
   .controller('TopNavbarController', function ($scope, $location, NavbarService, Auth) {
-  	/*
-    $scope.toggleMenu = function () {
-      if (NavbarService.getCurrentClass() === "inactive") {
-        NavbarService.setCurrentClass("active");
-      } else {
-        NavbarService.setCurrentClass("inactive");
-      }
-    }*/
-
     $scope.menu = [
 	    {
 	    	'title': 'Exhibitors',
@@ -33,8 +24,7 @@ angular.module('fairManagerApp')
 	    	'link': '/personnel'
 	    }
     ];
-
-    $scope.isCollapsed = true;
+    $scope.isCollapsed = false;
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
