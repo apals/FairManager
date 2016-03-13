@@ -23,7 +23,8 @@ angular.module('fairManagerApp')
       CompanyService.Company.delete({id: company._id}, function(response) {
 
       });
-    }
+    };
+
   })
   .directive('confirm', [function () {
         return {

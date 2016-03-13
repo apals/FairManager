@@ -8,4 +8,5 @@ angular.module('fairManagerApp')
     }, function(error) {
       $scope.company = {};
     });
+
   });
