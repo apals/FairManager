@@ -39,6 +39,17 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 html,
 body {
     height: 100%;
+    background-color: #9E9E9E;
+}
+
+a {
+	/*font-family: 'Raleway', sans-serif;*/
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 300;
+}
+
+h1, h2, h3 {
+	font-family: 'Raleway', sans-serif;
 }
 
 .container {
@@ -54,3 +65,32 @@ body {
   flex: 1;
 }
 
+/* BUTTONS */
+
+.btn {
+	background: transparent;
+	border: 2px solid #ffffff;
+	border-radius: 0px;
+	color: white;
+	-webkit-transition: background 0.2s ease-in-out;
+	-moz-transition: background 0.2s ease-in-out;
+	-ms-transition: background 0.2s ease-in-out;
+	-o-transition: background 0.2s ease-in-out;
+	transition: background 0.2s ease-in-out;
+}
+
+.btn-danger {
+	
+}
+
+.btn .btn-danger:hover {
+	background: rgba(255, 45, 85, 50);
+}
+
+.btn:hover {
+	background: white;
+}
+
+a .btn {
+	color: white;
+}

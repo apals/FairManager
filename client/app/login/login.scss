@@ -38,23 +38,3 @@
 .form-control {
 	border-radius: 0px;
 }
-
-.btn {
-	background: transparent;
-	border: 2px solid #ffffff;
-	border-radius: 0px;
-	color: white;
-	-webkit-transition: background 0.2s ease-in-out;
-	-moz-transition: background 0.2s ease-in-out;
-	-ms-transition: background 0.2s ease-in-out;
-	-o-transition: background 0.2s ease-in-out;
-	transition: background 0.2s ease-in-out;
-}
-
-.btn:hover {
-	background: white;
-}
-
-a .btn {
-	color: white;
-}
