@@ -1,28 +1,52 @@
-<div class="container">
-	<div class="row text-center">
-		<div class="col-sm-6 col-sm-offset-2">
-			<img class="companyimage" ng-src="../../assets/images/{{company.logoUrl}}">
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-2">
-			<input type="text" class="form-control" placeholder="{{company.name}}">
-		</div>
-	</div>
-	<br>
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-2">
-			<textarea class="form-control" rows="3">{{company.info}}</textarea>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-sm-6 col-sm-offset-2">
-			<div class="checkbox">
-			 	<label>
-			    	<input type="checkbox" value=""> Active exhibitor
-			  	</label>
-			</div>
-		</div>
-	</div>
-</div>
+<!-- <div class="container">
+  <div class="row text-center">
+    <div class="col-sm-6 col-sm-offset-2">
+      <img class="companyimage" ng-src="{{company.logoUrl}}">
+    </div>
+  </div>
+  <br>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-2">
+      <input type="text" class="form-control" value="{{company.name}}">
+    </div>
+  </div>
+  <br>
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-2">
+      <textarea class="form-control" rows="3">{{company.info}}</textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-2">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="">Active exhibitor
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="updateCompany()">Add New
+        </button>
+      </span>
+</div>-->
+
+<form class="update-company-form">
+
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-2">
+      <p class="input-group">
+        <label>Company Name</label>
+        <input type="text" class="form-control" ng-model="companyName">
+      </p>
+    </div>
+  </div>
+
+
+  <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="updateCompany()">Update</button>
+  </span>
+</form>

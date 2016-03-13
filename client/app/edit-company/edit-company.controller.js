@@ -1,22 +1,26 @@
+
 'use strict';
 
 angular.module('fairManagerApp')
   .controller('EditCompanyCtrl', function ($scope, CompanyService, $routeParams) {
 
-    $scope.company = {};
-    CompanyService.Company.get({id: $routeParams.id}, function(response) {
-      $scope.company = response;
-    }, function(error) {
-      $scope.company = {};
+    var company;
+
+    CompanyService.Company.get({id: $routeParams.id}, function (response) {
+      $scope.companyName = response.name;
+      company = response;
+    }, function (error) {
+      $scope.companyName = "Error fetching data";
     });
 
 
     $scope.updateCompany = function () {
-      if (!$scope.company) {
+      if (!company) {
         return;
       }
 
-      CompanyService.Company.update({id: $scope.company._id}, $scope.company, function (response) {
+      company.name = $scope.companyName;
+      CompanyService.Company.update({id: company._id}, company, function (response) {
 
       });
 
