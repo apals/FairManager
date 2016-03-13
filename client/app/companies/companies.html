@@ -17,7 +17,7 @@
   <br>
 
       <div class="row">
-        <div ng-repeat="company in companies | orderBy:'name' | filter:exhibitorSearchText" class="col-sm-12">
+        <div ng-repeat="company in companies | orderBy:'name' | filter:{ name: exhibitorSearchText}" class="col-sm-12">
             <h3><a href="/companies/{{company._id}}">{{company.name}}</a></h3>
 
             <div id="buttons">
