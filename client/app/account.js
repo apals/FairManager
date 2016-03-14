@@ -13,7 +13,6 @@ angular.module('fairManagerApp')
         referrer: '/',
         template: '',
         controller: function($location, $route, Auth) {
-          console.log("when lgout!");
           var referrer = $route.current.params.referrer ||
                           $route.current.referrer ||
                           '/';
