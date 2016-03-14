@@ -102,7 +102,7 @@ export function create(req, res, next) {
   if (file) {
     req.body.logoUrl = "http://localhost:9000/assets/images/" + file.path.split('/')[3];
   }
-  
+
   Companies.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));

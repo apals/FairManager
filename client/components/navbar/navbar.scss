@@ -1,0 +1,30 @@
+.navbar-transparent {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.navbar-header .navbar-brand {
+	color: white;
+}
+
+.navbar-transparent .navbar-nav > li > a {
+	color: white;
+}
+
+.navbar .nav > .active > a {
+    background:none;
+    color: white;
+    border-bottom: 3px solid #51039a;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+.navbar .nav > .active > a:focus {
+	background: none;
+	color: white;
+}
+
+.navbar .nav > .active > a:hover {
+	color: white;
+}
