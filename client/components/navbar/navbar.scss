@@ -10,11 +10,13 @@
 .navbar-transparent .navbar-nav > li > a {
 	color: white;
 }
-
 .navbar .nav > a:hover{
 	color: #51039a;
 }
-
+.nav {
+  margin-top: 0;
+  margin-bottom: 0;
+}
 .navbar .nav > .active > a {
     background:none;
     color: white;

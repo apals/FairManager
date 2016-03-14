@@ -47,14 +47,16 @@ function removeEntity(res) {
 
 function removeCompanyLogo(res) {
   return function (entity) {
-    if (entity) {
+    if (entity && entity.logoUrl) {
       var image = "client/assets/images/" + entity.logoUrl.split('/')[5];
       fs.unlink(image, function (err) {
-        console.log("Error deleting company logo for entity:");
-        console.log(entity);
+        if (err) {
+          console.log("Error deleting company logo for entity:");
+          console.log(entity);
+        }
       });
-      return entity;
     }
+    return entity;
   };
 }
 
@@ -95,9 +97,16 @@ export function show(req, res) {
 export function create(req, res, next) {
   var data = _.pick(req.body, 'type')
     , uploadPath = path.normalize('client/assets/images')
-    , file = req.files.file;
 
-  req.body.logoUrl = "http://localhost:9000/assets/images/" + file.path.split('/')[3];
+  var file;
+  if (req.files) file = req.files.file;
+
+  if (file) {
+    var fullUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + file.path.split('/')[3];
+    console.log(fullUrl);
+    req.body.logoUrl = fullUrl;
+  }
+
   Companies.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));

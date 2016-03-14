@@ -5,7 +5,6 @@ angular.module('fairManagerApp')
     $routeProvider
       .when('/partners', {
         templateUrl: 'app/partners/partners.html',
-        controller: 'PartnersCtrl',
-        authenticate: 'admin'
+        controller: 'PartnersCtrl'
       });
   });

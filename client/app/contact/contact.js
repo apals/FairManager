@@ -5,7 +5,6 @@ angular.module('fairManagerApp')
     $routeProvider
       .when('/contact', {
         templateUrl: 'app/contact/contact.html',
-        controller: 'ContactCtrl',
-        authenticate: 'admin'
+        controller: 'ContactCtrl'
       });
   });

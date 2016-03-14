@@ -8,8 +8,6 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js"> <!--<![endif]-->
   <head>
-    <link rel="stylesheet" type="text/css" href="client/app/app.scss"/>
-    <link rel="stylesheet" type="text/css" href="client/app/app.scss"/>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <base href="/">
@@ -40,6 +38,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -79,6 +78,7 @@
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
     <script src="bower_components/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+    <script src="bower_components/angular-loading-bar/build/loading-bar.js"></script>
     <!-- endbower -->
     <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -124,6 +124,7 @@
     <script src="components/auth/interceptor.service.js"></script>
     <script src="components/auth/router.decorator.js"></script>
     <script src="components/auth/user.service.js"></script>
+    <script src="components/file-upload-field/file-upload-field.directive.js"></script>
     <script src="components/footer/footer.directive.js"></script>
     <script src="components/modal/modal.service.js"></script>
     <script src="components/mongoose-error/mongoose-error.directive.js"></script>
