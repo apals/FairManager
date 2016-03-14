@@ -11,6 +11,10 @@
 	color: white;
 }
 
+.navbar .nav > a:hover{
+	color: #51039a;
+}
+
 .navbar .nav > .active > a {
     background:none;
     color: white;
@@ -26,5 +30,5 @@
 }
 
 .navbar .nav > .active > a:hover {
-	color: white;
+	color: #51039a;
 }
