@@ -15,10 +15,10 @@
     "lodash": "~2.4.1",
     "angular-socket-io": "~0.7.0",
     "angular-validation-match": "~1.5.2",
-    "angular-bootstrap": "~1.2.4",
+    "angular-bootstrap": "~0.13.0",
     "ng-file-upload": "^12.0.1",
     "ng-file-upload-shim": "^12.0.1",
-    "angular-bootstrap": "~0.13.0"
+    "angular-loading-bar": "^0.8.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0"

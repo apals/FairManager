@@ -12,7 +12,8 @@ angular.module('fairManagerApp', [
     'btford.socket-io',
     'validation.match',
     'ngFileUpload',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angular-loading-bar'
   ])
   .run(function ($rootScope, $location, Auth, $route) {
 

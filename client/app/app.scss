@@ -40,7 +40,7 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 html,
 body {
     height: 100%;
-    background-color: #4D4D4D;
+    background-color: #4D4D4D !important;
 }
 
 a {
@@ -100,7 +100,7 @@ h1, h2, h3 {
 }
 
 .form-control {
-	border-radius: 0px;
+	border-radius: 0;
 }
 
 .btn .btn-danger:hover {
