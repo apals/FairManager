@@ -33,7 +33,6 @@ angular.module('fairManagerApp')
             link: {
                 pre: function (scope, element, attrs) {
                     var msg = attrs.confirm || "Are you sure?";
-                    console.log("asd");
                     element.bind('click', function (event) {
                         if (!confirm(msg)) {
                             event.stopImmediatePropagation();
