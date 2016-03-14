@@ -26,7 +26,6 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 @import 'new-company/new-company.scss';
 @import 'partners/partners.scss';
 @import 'personnel/personnel.scss';
-@import 'top-navbar/top-navbar.scss';
 @import '../components/footer/footer.scss';
 // endinjector
 /*!
@@ -80,11 +79,11 @@ h1, h2, h3 {
 }
 
 .btn-danger {
-	
+
 }
 
 .btn .btn-danger:hover {
-	background: rgba(255, 45, 85, 50);
+	background: rgba(255, 45, 85, 0.50);
 }
 
 .btn:hover {
