@@ -1,26 +1,41 @@
 'use strict';
 
-class NavbarController {
-  //start-non-standard
-  menu = [{
-    'title': 'Home',
-    'link': '/'
-  }];
-
-  isCollapsed = true;
-  //end-non-standard
-
-  constructor($location, Auth) {
-    this.$location = $location;
-    this.isLoggedIn = Auth.isLoggedIn;
-    this.isAdmin = Auth.isAdmin;
-    this.getCurrentUser = Auth.getCurrentUser;
-  }
-
-  isActive(route) {
-    return route === this.$location.path();
-  }
-}
-
 angular.module('fairManagerApp')
-  .controller('NavbarController', NavbarController);
+  .controller('NavbarController', function ($scope, $location, NavbarService, Auth) {
+    $scope.menu = [
+      {
+        'title': 'Exhibitors',
+        'link': '/companies'
+      },
+      {
+        'title': 'Events',
+        'link': '/events'
+      },
+      {
+        'title': 'Partners',
+        'link': '/partners'
+      },
+      {
+        'title': 'Contact',
+        'link': '/contact'
+      },
+      {
+        'title': 'Personnel',
+        'link': '/personnel'
+      }
+    ];
+    $scope.isCollapsed = true;
+    $scope.isLoggedIn = Auth.isLoggedIn;
+    $scope.isAdmin = Auth.isAdmin;
+    $scope.getCurrentUser = Auth.getCurrentUser;
+
+    $scope.logout = function() {
+      Auth.logout();
+      $location.path('/login');
+    };
+
+    $scope.isActive = function(route) {
+      return route === $location.path();
+    };
+
+  });
