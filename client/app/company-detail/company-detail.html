@@ -1,4 +1,4 @@
-
+<!--
 <div class="container">
 	<div class="row text-center">
 		<div class="col-sm-4 col-sm-offset-4">
@@ -11,6 +11,22 @@
 			<p>{{company.name}}</p>
 		</div>
 		<div class="col-sm-4">
+		</div>
+	</div>
+</div> -->
+<div class="container">
+	<div ng-repeat="(key, value) in company" class="row">
+		<div class="col-sm-8 col-sm-offset-2">
+			<div class="panel panel-default">
+			  	<div class="panel-body">
+			  		<div ng-if="key == 'logoUrl'" class="text-center">
+			  			<img class="companyimage" ng-src="{{value}}">
+			  		</div>
+			  		<div ng-if="key != 'logoUrl'">
+			  			<strong>{{key}}:</strong> {{value}}
+			  		</div>
+			  	</div>
+			</div>
 		</div>
 	</div>
 </div>
