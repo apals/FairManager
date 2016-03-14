@@ -14,7 +14,7 @@ angular.module('fairManagerApp', [
     'ngFileUpload',
     'ui.bootstrap'
   ])
-  .run(function ($rootScope, $location, Auth) {
+  .run(function ($rootScope, $location, Auth, $route) {
 
     // register listener to watch route changes
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
@@ -22,12 +22,14 @@ angular.module('fairManagerApp', [
       Auth.isLoggedIn(function (res) {
         if (!res) {
           // no logged user, we should be going to #login
-          if (next.templateUrl == "login/login.html") {
+          if (next.templateUrl == "app/login/login.html") {
           } else {
             $location.path("/login");
           }
         } else {
-
+          if (next.templateUrl == "app/login/login.html") {
+            $location.path("/companies");
+          }
         }
       })
     });
