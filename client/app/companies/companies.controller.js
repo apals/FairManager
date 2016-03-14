@@ -2,7 +2,7 @@
 
 
 angular.module('fairManagerApp')
-  .controller('CompaniesController', function ($scope, socket, CompanyService) {
+  .controller('CompaniesController', function ($scope, socket, CompanyService, Modal) {
     $scope.companies = [];
 
     CompanyService.Companies.query(function (response) {
@@ -18,29 +18,15 @@ angular.module('fairManagerApp')
       socket.unsyncUpdates('companies');
     });
 
-
-    $scope.deleteCompany = function(company) {
-      CompanyService.Company.delete({id: company._id}, function(response) {
-
+    $scope.deleteCompany = Modal.confirm.delete(function(company) {
+      CompanyService.Company.delete({id: company._id},function(response) {
+        angular.forEach($scope.companies, function(u, i) {
+          if (u === company) {
+            $scope.companies.splice(i, 1);
+          }
+        });
       });
-    };
+    });
 
-  })
-  .directive('confirm', [function () {
-        return {
-            priority: 100,
-            restrict: 'A',
-            link: {
-                pre: function (scope, element, attrs) {
-                    var msg = attrs.confirm || "Are you sure?";
-                    element.bind('click', function (event) {
-                        if (!confirm(msg)) {
-                            event.stopImmediatePropagation();
-                            event.preventDefault;
-                        }
-                    });
-                }
-            }
-        };
-    }]);
+  });
 

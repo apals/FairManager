@@ -22,7 +22,8 @@
 
             <div id="buttons">
               <a href="/companies/{{company._id}}/edit" class="btn">Edit</a>
-              <a class="btn btn-danger" ng-click="deleteCompany(company)" confirm="Delete exhibitor?">Delete</a>
+              <!-- deleteCompany args are 1: what to display in modal view, 2: what to delete --->
+              <a class="btn btn-danger" ng-click="deleteCompany(company.name, company)">Delete</a>
             </div>
             <hr>
         </div>
