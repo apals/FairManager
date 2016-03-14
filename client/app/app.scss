@@ -38,23 +38,25 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 
 
 $brand-primary-color: #51039a;
+$brand-primary-text-color: #404040;
+$primary-warning-color: #FF3B30;
 /* Toggle Styles */
 html,
 body {
     height: 100%;
-    background-color: #4D4D4D !important;
+    background-color: white !important;
 }
 
 a {
 	/*font-family: 'Raleway', sans-serif;*/
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
-	color: white;
+	color: $brand-primary-text-color;
 }
 
 label {
 	/*font-family: 'Raleway', sans-serif;*/
-	color: white;
+	color: $brand-primary-text-color;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
 }
@@ -62,7 +64,7 @@ label {
 
 h1, h2, h3 {
 	font-family: 'Raleway', sans-serif;
-	color: white;
+	color: $brand-primary-color;
 }
 
 .container {
@@ -80,20 +82,20 @@ h1, h2, h3 {
 
 /* BUTTONS */
 
+hr {
+	border-top: 1px solid $brand-primary-text-color;
+}
+
 .btn {
 	background: transparent;
-	border: 2px solid #ffffff;
+	border: 2px solid $brand-primary-text-color;
 	border-radius: 0px;
-	color: white;
+	color: $brand-primary-text-color;
 	-webkit-transition: background 0.2s ease-in-out;
 	-moz-transition: background 0.2s ease-in-out;
 	-ms-transition: background 0.2s ease-in-out;
 	-o-transition: background 0.2s ease-in-out;
 	transition: background 0.2s ease-in-out;
-}
-
-.btn-danger {
-
 }
 
 .form-control:focus {
@@ -103,10 +105,6 @@ h1, h2, h3 {
 
 .form-control {
 	border-radius: 0;
-}
-
-.btn .btn-danger:hover {
-	background: rgba(255, 45, 85, 0.50);
 }
 
 .btn:focus {
@@ -125,12 +123,27 @@ a .btn {
 	color: white;
 }
 
-.navbar-header .navbar-brand {
+.btn-danger:hover {
+	border-color: $primary-warning-color;
+	color: $primary-warning-color;
+  	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 59, 48, 0.6);
+}
+
+.btn-white {
+	border: 2px solid white;
 	color: white;
 }
 
+.navbar-header .navbar-brand {
+	color: $brand-primary-text-color;
+}
+
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-	color: white;
+	color: $brand-primary-text-color;
+}
+
+.navbar .nav > a {
+	color: $brand-primary-text-color;
 }
 
 .navbar .nav > a:hover{
@@ -142,7 +155,7 @@ a .btn {
 }
 .navbar .nav > .active > a {
     background:none;
-    color: white;
+    color: $brand-primary-text-color;
     border-bottom: 3px solid $brand-primary-color;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -156,6 +169,7 @@ a .btn {
 	-moz-transition:border-color 0.3s ease; 
 	-o-transition:border-color 0.3s ease; 
 	transition:border-color 0.3s ease;
+	color: $brand-primary-text-color;
 }
 
 .navbar .nav > li > a:hover {
@@ -167,7 +181,7 @@ a .btn {
 
 .navbar .nav > .active > a:focus {
 	background: none;
-	color: white;
+	color: $brand-primary-text-color;
 }
 
 .navbar .nav > .active > a:hover {
