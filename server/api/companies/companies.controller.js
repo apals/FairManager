@@ -47,14 +47,16 @@ function removeEntity(res) {
 
 function removeCompanyLogo(res) {
   return function (entity) {
-    if (entity) {
+    if (entity && entity.logoUrl) {
       var image = "client/assets/images/" + entity.logoUrl.split('/')[5];
       fs.unlink(image, function (err) {
-        console.log("Error deleting company logo for entity:");
-        console.log(entity);
+        if (err) {
+          console.log("Error deleting company logo for entity:");
+          console.log(entity);
+        }
       });
-      return entity;
     }
+    return entity;
   };
 }
 
