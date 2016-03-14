@@ -95,9 +95,14 @@ export function show(req, res) {
 export function create(req, res, next) {
   var data = _.pick(req.body, 'type')
     , uploadPath = path.normalize('client/assets/images')
-    , file = req.files.file;
 
-  req.body.logoUrl = "http://localhost:9000/assets/images/" + file.path.split('/')[3];
+  var file;
+  if (req.files) file = req.files.file;
+
+  if (file) {
+    req.body.logoUrl = "http://localhost:9000/assets/images/" + file.path.split('/')[3];
+  }
+  
   Companies.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));

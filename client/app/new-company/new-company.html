@@ -1,4 +1,10 @@
 <form class="thing-form">
+
+
+
+
+
+
   <p class="input-group">
     <label>Company Name</label>
     <input type="text" class="form-control" ng-model="companyName">
@@ -8,9 +14,19 @@
     <legend>Upload on form submit</legend>
     Username:
     <br>Photo:
-    <input type="file" ngf-select ngf-drop ng-model="picFile" name="file"
+
+
+    <div style="width: 100px; height: 100px; background: red;" file-button ngf-select ngf-drop ng-model="picFile" name="file"
+         accept="image/*" ngf-max-size="2MB" required
+         ngf-model-invalid="errorFile" class="drop-box">
+
+      <p>I am the coolest cat</p>
+    </div>
+
+
+    <!--<input type="file" ngf-select ngf-drop ng-model="picFile" name="file"
            accept="image/*" ngf-max-size="2MB" required
-           ngf-model-invalid="errorFile" class="drop-box">
+           ngf-model-invalid="errorFile" class="drop-box">-->
 
     <i ng-show="thing-form.file.$error.required">
       *required
@@ -42,4 +58,5 @@
   <br>
 
 </form>
+
 
