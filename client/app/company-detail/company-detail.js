@@ -6,12 +6,10 @@ angular.module('fairManagerApp')
       .when('/companies/new', {
         templateUrl: 'app/new-company/new-company.html',
         controller: 'NewCompanyCtrl',
-        controllerAs: 'newCompany',
-        authenticate: 'admin'
+        controllerAs: 'newCompany'
       })
       .when('/companies/:id', {
         templateUrl: 'app/company-detail/company-detail.html',
-        controller: 'CompanyDetailCtrl',
-        authenticate: 'admin'
+        controller: 'CompanyDetailCtrl'
       });
   });
