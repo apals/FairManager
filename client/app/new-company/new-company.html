@@ -1,62 +1,88 @@
-<form class="thing-form">
+<div class="container">
+  <form class="new-company-form">
 
 
+    <fieldset>
+      <legend>New Exhibitor</legend>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Name:
+                <input ng-model="companyName">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Info:
+                <textarea ng-model="companyInfo" rows="10">
+                  </textarea>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
 
-  <fieldset>
-    <legend>New Exhibitor</legend>
+              <label>Logo:</label>
 
-    <p class="input-group">
-      <label>Company Name</label>
-      <input type="text" class="form-control" ng-model="companyName">
-    </p>
+              <div style="width: 100px; height: 100px; background: red;" file-button ngf-select ngf-drop
+                   ng-model="picFile" name="file"
+                   accept="image/*" ngf-max-size="2MB" required
+                   ngf-model-invalid="errorFile" class="drop-box">
 
+                <p>Click here or drop files here to upload</p>
+              </div>
 
-    <br>Photo:
-    <div style="width: 100px; height: 100px; background: red;" file-button ngf-select ngf-drop ng-model="picFile" name="file"
-         accept="image/*" ngf-max-size="2MB" required
-         ngf-model-invalid="errorFile" class="drop-box">
-
-      <p>Click here or drop files here to upload</p>
-    </div>
-
-
-    <!--<input type="file" ngf-select ngf-drop ng-model="picFile" name="file"
-           accept="image/*" ngf-max-size="2MB" required
-           ngf-model-invalid="errorFile" class="drop-box">-->
-
-    <i ng-show="thing-form.file.$error.required">
-      *required
-    </i>
-    <br>
-    <i ng-show="thing-form.file.$error.maxSize">File too large
-      {{errorFile.size / 1000000|number:1}}MB: max 2M
-    </i>
+              <img ng-show="thing-form.file.$valid" ngf-thumbnail="picFile" class="thumb">
+              <button ng-click="picFile = null" ng-show="picFile">Remove</button>
 
 
-    <img ng-show="thing-form.file.$valid" ngf-thumbnail="picFile" class="thumb">
-    <button ng-click="picFile = null" ng-show="picFile">Remove</button>
-    <br>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
+      <!--<input type="file" ngf-select ngf-drop ng-model="picFile" name="file"
+             accept="image/*" ngf-max-size="2MB" required
+             ngf-model-invalid="errorFile" class="drop-box">-->
 
-  <span class="input-group-btn">
+      <i ng-show="thing-form.file.$error.required">
+        *required
+      </i>
+      <br>
+      <i ng-show="thing-form.file.$error.maxSize">File too large
+        {{errorFile.size / 1000000|number:1}}MB: max 2M
+      </i>
+
+
+      <div class="col-sm-8 col-sm-offset-2 input-group-btn">
         <button type="submit" class="btn btn-primary" ng-click="addCompany()">Add New
         </button>
-      </span>
+      </div>
 
       <span class="progress" ng-show="picFile.progress >= 0">
-        <div style="width:{{picFile.progress}}%"
-             ng-bind="picFile.progress + '%'"></div>
+        <div style="width:{{picFile.progress}}%" ng-bind="picFile.progress + '%'"></div>
       </span>
-    <span ng-show="picFile.result">Upload Successful</span>
-    <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
-  </fieldset>
-  <br>
 
-</form>
+      <span ng-show="picFile.result">Upload Successful</span>
+      <span class="err" ng-show="errorMsg">{{errorMsg}}</span>
 
+    </fieldset>
 
+  </form>
+</div>

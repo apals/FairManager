@@ -1,52 +1,52 @@
-<!-- <div class="container">
-  <div class="row text-center">
-    <div class="col-sm-6 col-sm-offset-2">
-      <img class="companyimage" ng-src="{{company.logoUrl}}">
-    </div>
-  </div>
-  <br>
+<div class="container">
 
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-2">
-      <input type="text" class="form-control" value="{{company.name}}">
-    </div>
-  </div>
-  <br>
+  <form name="companyForm" ng-submit="updateCompany(company)">
 
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-2">
-      <textarea class="form-control" rows="3">{{company.info}}</textarea>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-2">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" value="">Active exhibitor
-        </label>
+    <fieldset>
+      <legend>Edit Exhibitor</legend>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Name:
+                <input ng-model="company.name" value="{{company.name}}">
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="updateCompany()">Add New
-        </button>
-      </span>
-</div>-->
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Info:
+                <textarea ng-model="company.info" value="{{company.info}}" rows="10">
+                  </textarea>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
 
-<form class="update-company-form">
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Logo:
+                <img ng-src="{{company.logoUrl}}">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-2">
-      <p class="input-group">
-        <label>Company Name</label>
-        <input type="text" class="form-control" ng-model="companyName">
-      </p>
-    </div>
-  </div>
+      <div class="col-sm-8 col-sm-offset-2">
+        <button type=submit class="btn btn-default">Update</button>
+      </div>
+
+    </fieldset>
+  </form>
 
 
-  <span class="input-group-btn">
-        <button type="submit" class="btn btn-primary" ng-click="updateCompany()">Update</button>
-  </span>
-</form>
+</div>

@@ -8,7 +8,10 @@ angular.module('fairManagerApp')
       if ($scope.picFile) {
         $scope.picFile.upload = Upload.upload({
           url: '/api/companies',
-          data: {name: $scope.companyName, file: $scope.picFile}
+          data: {
+            name: $scope.companyName,
+            info: $scope.companyInfo,
+            file: $scope.picFile}
         });
 
         $scope.picFile.upload.then(function (response) {
@@ -27,7 +30,7 @@ angular.module('fairManagerApp')
           $scope.picFile.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
         });
       } else {
-        var newCompany = new CompanyService.Companies({name: $scope.companyName});
+        var newCompany = new CompanyService.Companies({name: $scope.companyName, info: $scope.companyInfo});
         newCompany.$save(function (response) {
           $location.path('/companies');
         }, function (error) {
