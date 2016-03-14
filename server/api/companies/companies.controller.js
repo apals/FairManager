@@ -102,7 +102,9 @@ export function create(req, res, next) {
   if (req.files) file = req.files.file;
 
   if (file) {
-    req.body.logoUrl = "http://localhost:9000/assets/images/" + file.path.split('/')[3];
+    var fullUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + file.path.split('/')[3];
+    console.log(fullUrl);
+    req.body.logoUrl = fullUrl;
   }
 
   Companies.createAsync(req.body)
