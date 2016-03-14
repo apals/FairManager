@@ -8,9 +8,9 @@
     <legend>Upload on form submit</legend>
     Username:
     <br>Photo:
-    <input type="file" ngf-select ng-model="picFile" name="file"
+    <input type="file" ngf-select ngf-drop ng-model="picFile" name="file"
            accept="image/*" ngf-max-size="2MB" required
-           ngf-model-invalid="errorFile">
+           ngf-model-invalid="errorFile" class="drop-box">
 
     <i ng-show="thing-form.file.$error.required">
       *required
