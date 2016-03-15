@@ -96,16 +96,20 @@ export function show(req, res) {
 // Creates a new Companies in the DB
 export function create(req, res, next) {
   var data = _.pick(req.body, 'type')
-    , uploadPath = path.normalize('client/assets/images')
+    , uploadPath = path.normalize('client/assets/images');
 
-  var file;
-  if (req.files) file = req.files.file;
+  var logo, banner;
+  if (req.files && req.files.logo) logo = req.files.logo;
+  if (req.files && req.files.banner) banner = req.files.banner;
 
-  if (file) {
-    var fullUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + file.path.split('/')[3];
-    console.log(fullUrl);
-    req.body.logoUrl = fullUrl;
+  if (logo) {
+    req.body.logoUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + logo.path.split('/')[3];
   }
+
+  if (banner) {
+    req.body.bannerUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + banner.path.split('/')[3];
+  }
+
 
   Companies.createAsync(req.body)
     .then(respondWithResult(res, 201))
@@ -125,10 +129,27 @@ export function update(req, res) {
 }
 
 // Deletes a Companies from the DB
+
+function removeCompanyBanner(res) {
+  return function (entity) {
+    if (entity && entity.bannerUrl) {
+      var image = "client/assets/images/" + entity.bannerUrl.split('/')[5];
+      fs.unlink(image, function (err) {
+        if (err) {
+          console.log("Error deleting company banner for entity:");
+          console.log(entity);
+        }
+      });
+    }
+    return entity;
+  };
+}
+
 export function destroy(req, res) {
   Companies.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
     .then(removeCompanyLogo(res))
+    .then(removeCompanyBanner(res))
     .then(removeEntity(res))
     .catch(handleError(res));
 }

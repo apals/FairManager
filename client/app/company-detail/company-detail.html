@@ -3,10 +3,10 @@
 		<div class="col-sm-8 col-sm-offset-2">
 			<div class="panel panel-default">
 			  	<div class="panel-body">
-			  		<div ng-if="key == 'logoUrl'" class="text-center">
+			  		<div ng-if="key == 'logoUrl' || key == 'bannerUrl'" class="text-center">
 			  			<img class="companyimage" ng-src="{{value}}">
 			  		</div>
-			  		<div ng-if="key != 'logoUrl'">
+			  		<div ng-if="key != 'logoUrl' && key != 'bannerUrl'">
 			  			<strong>{{key}}:</strong> {{value}}
 			  		</div>
 			  	</div>

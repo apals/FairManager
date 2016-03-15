@@ -5,18 +5,20 @@ angular.module('fairManagerApp')
 
     $scope.addCompany = function () {
 
-      if ($scope.picFile) {
-        $scope.picFile.upload = Upload.upload({
+      if ($scope.companyLogo) {
+        $scope.companyLogo.upload = Upload.upload({
           url: '/api/companies',
           data: {
             name: $scope.companyName,
             info: $scope.companyInfo,
-            file: $scope.picFile}
+            logo: $scope.companyLogo,
+            banner: $scope.companyBanner
+          }
         });
 
-        $scope.picFile.upload.then(function (response) {
+        $scope.companyLogo.upload.then(function (response) {
           $timeout(function () {
-            $scope.picFile.result = response.data;
+            $scope.companyLogo.result = response.data;
             if (response.status === 201) {
               $location.path('/companies');
             }
@@ -27,7 +29,7 @@ angular.module('fairManagerApp')
             $scope.errorMsg = response.status + ': ' + response.data;
         }, function (evt) {
           // Math.min is to fix IE which reports 200% sometimes
-          $scope.picFile.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
+          $scope.companyLogo.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
         });
       } else {
         var newCompany = new CompanyService.Companies({name: $scope.companyName, info: $scope.companyInfo});
