@@ -4,13 +4,11 @@
 angular.module('fairManagerApp')
   .controller('EventsCtrl', function ($scope, socket, EventService, Modal) {
     $scope.events = [];
+    $scope.isBusy = true;
 
     EventService.Events.query(function (response) {
-      angular.forEach(response, function (item) {
-        if (item.name) {
-          $scope.events.push(item);
-        }
-      });
+      $scope.events = response;
+      $scope.isBusy = false;
       socket.syncUpdates('events', $scope.events);
     });
 
