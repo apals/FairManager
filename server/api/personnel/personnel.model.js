@@ -3,7 +3,7 @@
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var PersonnelSchema = new mongoose.Schema({
-  name: String,
+  name: {type: String, required: true},
   title: String,
   group: String
 });
