@@ -81,22 +81,23 @@ function removeEntity(res) {
  * restriction: 'admin'
  */
 export function destroy(req, res) {
-  User.findOneAsync({_id: req.params.id, role: {'$ne': 'admin'}})
-    .then(handleEntityNotFound(res))
+  User.findOneAsync({_id: req.params.id})
+    .then(handleIsAdmin(res))
     .then(removeEntity(res))
     .catch(handleError(res));
 }
 
-
-function handleEntityNotFound(res) {
-  return function (entity) {
-    if (!entity) {
+function handleIsAdmin(res) {
+  return function(entity) {
+    if(entity && entity.role === 'admin') {
       res.status(403).end("You cannot delete the admin");
       return null;
     }
     return entity;
-  };
+  }
 }
+
+
 
 /**
  * Change a users password
