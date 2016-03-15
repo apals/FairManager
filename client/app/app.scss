@@ -21,9 +21,12 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 @import 'company-detail/company-detail.scss';
 @import 'contact/contact.scss';
 @import 'edit-company/edit-company.scss';
+@import 'edit-event/edit-event.scss';
+@import 'event-detail/event-detail.scss';
 @import 'events/events.scss';
 @import 'login/login.scss';
 @import 'new-company/new-company.scss';
+@import 'new-event/new-event.scss';
 @import 'partners/partners.scss';
 @import 'personnel/personnel.scss';
 @import '../components/footer/footer.scss';
@@ -170,10 +173,10 @@ a .btn {
 
 .navbar .nav > li > a {
 	border-bottom: 3px solid transparent;
-	transition: border-color 0.3s ease;  
-	-webkit-transition:border-color 0.3s ease; 
-	-moz-transition:border-color 0.3s ease; 
-	-o-transition:border-color 0.3s ease; 
+	transition: border-color 0.3s ease;
+	-webkit-transition:border-color 0.3s ease;
+	-moz-transition:border-color 0.3s ease;
+	-o-transition:border-color 0.3s ease;
 	transition:border-color 0.3s ease;
 	color: $brand-primary-text-color;
 }
@@ -182,7 +185,7 @@ a .btn {
 	border-color: $brand-primary-color;
 	color: $brand-primary-color;
 	background-color: #e7e7e7;
-	
+
 }
 
 .navbar .nav > .active > a:focus {
@@ -213,3 +216,4 @@ a .btn {
   border-top-color:  $brand-primary-color;
   border-left-color: $brand-primary-color;
 }
+
