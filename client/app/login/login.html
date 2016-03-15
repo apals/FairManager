@@ -1,51 +1,50 @@
 <div class="login">
 </div>
 <div class="container">
-<div class="loginWrapper">
-  <div class="row">
-    <div class="col-sm-12 text-center">
-      <h1 id="title">FAIR MANAGER</h1>
+  <div class="loginWrapper">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <h1 id="title">FAIR MANAGER</h1>
+      </div>
     </div>
-  </div>
-  <div class="row vcenter">
-    <div class="col-sm-4 col-sm-offset-4">
-      <form class="form" name="form" ng-submit="login(form)">
+    <div class="row vcenter">
+      <div class="col-sm-4 col-sm-offset-4">
+        <form class="form" name="form" ng-submit="login(form)">
 
-        <div class="form-group nobottommargin">
-          <input type="email" name="email" class="form-control" ng-model="login.user.email" placeholder="Email..." required>
-        </div>
-
-        <div class="form-group">
-          <input type="password" name="password" class="form-control" ng-model="login.user.password" placeholder="Password..." required>
-        </div>
-
-        <div class="form-group has-error">
-          <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && login.submitted">
-            Please enter your email and password.
-          </p>
-          <p class="help-block" ng-show="form.email.$error.email && login.submitted">
-            Please enter a valid email.
-          </p>
-
-          <p class="help-block">{{ errors.other }}</p>
-        </div>
-
-        <div class="row">
-        <div class="col-sm-6">
-          <button class="btn btn-block btn-white" type="submit">
-            Login
-          </button>
+          <div class="form-group nobottommargin">
+            <input type="email" name="email" class="form-control" ng-model="login.user.email" placeholder="Email..." required>
           </div>
-          <div class="col-sm-6">
-          <a class="btn btn-block btn-white" href="/signup">
-            Register
-          </a>
-          </div>
-        </div>
 
-      </form>
+          <div class="form-group">
+            <input type="password" name="password" class="form-control" ng-model="login.user.password" placeholder="Password..." required>
+          </div>
+
+          <div class="form-group has-error">
+            <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && login.submitted">
+              Please enter your email and password.
+            </p>
+            <p class="help-block" ng-show="form.email.$error.email && login.submitted">
+              Please enter a valid email.
+            </p>
+
+            <p class="help-block">{{ errors.other }}</p>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <button class="btn btn-block btn-white" type="submit">
+                Login
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <a class="btn btn-block btn-white" href="/signup">
+                Register
+              </a>
+            </div>
+          </div>
+
+        </form>
+      </div>
     </div>
-  </div>
-  <hr>
   </div>
 </div>
