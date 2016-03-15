@@ -11,6 +11,7 @@
 
 import _ from 'lodash';
 import Events from './events.model';
+import fs from 'fs';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -74,12 +75,22 @@ export function show(req, res) {
     .catch(handleError(res));
 }
 
-// Creates a new Events in the DB
-export function create(req, res) {
+
+// Creates a new Event in the DB
+export function create(req, res, next) {
+
+  var logo;
+  if (req.files && req.files.logo) logo = req.files.logo;
+
+  if (logo) {
+    req.body.imageUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + logo.path.split('/')[3];
+  }
+
   Events.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
 }
+
 
 // Updates an existing Events in the DB
 export function update(req, res) {
@@ -94,9 +105,24 @@ export function update(req, res) {
 }
 
 // Deletes a Events from the DB
+function removeEventImage(res) {
+  return function (entity) {
+    if (entity && entity.imageUrl) {
+      var image = "client/assets/images/" + entity.imageUrl.split('/')[5];
+      fs.unlink(image, function (err) {
+        if (err) {
+          console.log("Error deleting image logo for entity:");
+          console.log(entity);
+        }
+      });
+    }
+    return entity;
+  };
+}
 export function destroy(req, res) {
   Events.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
+    .then(removeEventImage(res))
     .then(removeEntity(res))
     .catch(handleError(res));
 }

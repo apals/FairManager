@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .service('EventService', function () {
+  .service('EventService', function ($resource) {
     // AngularJS will instantiate a singleton by calling "new" on this function
     this.Events = $resource('/api/events/');
     this.Event = $resource('/api/events/:id', null, {
