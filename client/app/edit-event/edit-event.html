@@ -32,6 +32,31 @@
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
+
+            <div class="panel-body">
+
+              <label for="startDate">Start date:</label>
+              <input type="datetime-local" id="startDate" name="input" ng-model="event.startDate" required>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label for="endDate">End date:</label>
+              <input type="datetime-local" id="endDate" name="input" ng-model="event.endDate" required/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
             <div class="panel-body">
               <label>Logo:
                 <img ng-src="{{event.imageUrl}}">

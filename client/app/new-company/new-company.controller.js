@@ -4,8 +4,6 @@ angular.module('fairManagerApp')
   .controller('NewCompanyCtrl', function ($scope, CompanyService, $location, Upload, $timeout) {
 
     $scope.addCompany = function (company) {
-      console.log("add company");
-      console.log(company);
 
       if(company) {
         var upload = Upload.upload({
