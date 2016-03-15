@@ -16,7 +16,7 @@ angular.module('fairManagerApp')
       socket.unsyncUpdates('companies');
     });
 
-    $scope.deleteCompany = Modal.confirm.delete(function(company) {
+    $scope.delete = Modal.confirm.delete(function(company) {
       CompanyService.Company.delete({id: company._id},function(response) {
         angular.forEach($scope.companies, function(u, i) {
           if (u === company) {

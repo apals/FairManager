@@ -16,7 +16,7 @@ angular.module('fairManagerApp')
       socket.unsyncUpdates('events');
     });
 
-    $scope.deleteEvent = Modal.confirm.delete(function (event) {
+    $scope.delete = Modal.confirm.delete(function (event) {
       EventService.Event.delete({id: event._id}, function (response) {
         angular.forEach($scope.events, function (u, i) {
           if (u === event) {
