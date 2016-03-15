@@ -1,27 +1,27 @@
 <div class="container">
-<div class="row">
-  <div class="col-sm-12 text-center">
-    <h1>Exhibitors</h1>
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1>Exhibitors</h1>
+    </div>
   </div>
-</div>
-<hr>
-<div class="row">
-  <div class="col-sm-8 col-sm-offset-2">
-    <div class="row">
-      <div class="col-sm-12 text-center">
-        <div class="row">
-          <div class="col-sm-8">
-          <input ng-model="exhibitorSearchText" type="search" class="form-control" placeholder="Search exhibitors..">
-          </div>
-          <div class="col-sm-4">
-            <a class="btn btn-block btn-primary" href="companies/new">Add new exhibitor</a>
+  <hr>
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="row">
+        <div class="col-sm-12 text-center">
+          <div class="row">
+            <div class="col-sm-8">
+              <input ng-model="exhibitorSearchText" type="search" class="form-control" placeholder="Search exhibitors..">
+            </div>
+            <div class="col-sm-4">
+              <a class="btn btn-block btn-primary" href="companies/new">Add new exhibitor</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <br>
-    <div class="row">
-      <div ng-repeat="company in companies | orderBy:'name' | filter:{ name: exhibitorSearchText}" class="col-sm-12">
+      <br>
+      <div class="row">
+        <div ng-repeat="company in companies | orderBy:'name' | filter:{ name: exhibitorSearchText}" class="col-sm-12">
           <h3><a href="/companies/{{company._id}}">{{company.name}}</a></h3>
 
           <div id="buttons">
@@ -30,8 +30,15 @@
             <a class="btn btn-danger" ng-click="deleteCompany(company.name, company)">Delete</a>
           </div>
           <hr>
+        </div>
       </div>
     </div>
   </div>
-</div>
+  <div class="row">
+    <div ng-show="isBusy" class="col-sm-12 text-center">
+      <h3>Loading exhibitors...</h3>
+    </div>
+    <br>
+    <br>
+  </div>
 </div>
