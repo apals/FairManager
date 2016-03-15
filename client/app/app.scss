@@ -27,6 +27,7 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 @import 'login/login.scss';
 @import 'new-company/new-company.scss';
 @import 'new-event/new-event.scss';
+@import 'overview/overview.scss';
 @import 'partners/partners.scss';
 @import 'personnel/personnel.scss';
 @import '../components/footer/footer.scss';
@@ -234,7 +235,7 @@ a .btn {
 .pagination > li > a:hover {
   color: $primary-color !important;
   border: none;
-  border-bottom: 0.5px solid $primary-color; 
+  border-bottom: 0.5px solid $primary-color;
   border-color: $primary-color;
   background-color: $primary-hover-background-color;
 }
@@ -257,3 +258,6 @@ a .btn {
   border: none;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
