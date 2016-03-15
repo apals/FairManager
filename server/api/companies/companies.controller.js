@@ -79,7 +79,7 @@ function handleError(res, statusCode) {
 
 // Gets a list of Companiess
 export function index(req, res) {
-  Companies.findAsync({}, {name: 1})
+  Companies.findAsync({}, {name: 1, logoUrl: 1})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
