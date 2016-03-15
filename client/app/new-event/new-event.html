@@ -38,10 +38,22 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
+              <label>Location:
+                <input ng-model="event.location">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
 
               <label for="startDate">Start date:</label>
               <input type="datetime-local" id="startDate" name="input" ng-model="event.startDate"
-                     placeholder="yyyy-MM-dd" required />
+                     placeholder="yyyy-MM-dd" required/>
 
             </div>
           </div>
@@ -54,7 +66,7 @@
             <div class="panel-body">
               <label for="endDate">End date:</label>
               <input type="datetime-local" id="endDate" name="input" ng-model="event.endDate"
-                     placeholder="yyyy-MM-dd" required />
+                     placeholder="yyyy-MM-dd" required/>
             </div>
           </div>
         </div>
@@ -75,12 +87,12 @@
 
                 <p style="width: 100%; height: 100%">
 
-                  <img style="width: 100%; height: 100%" ng-show="new-event-form.event.logo.$valid" ngf-thumbnail="event.logo" class="thumb">
+                  <img style="width: 100%; height: 100%" ng-show="new-event-form.event.logo.$valid"
+                       ngf-thumbnail="event.logo" class="thumb">
 
                 </p>
               </div>
               <button ng-click="event.logo = null" ng-show="event.logo">Remove</button>
-
 
 
             </div>
