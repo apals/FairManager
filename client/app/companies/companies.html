@@ -5,45 +5,47 @@
     </div>
   </div>
   <hr>
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <div class="row">
-        <div class="col-sm-12 text-center">
-          <div class="row">
-            <div class="col-sm-8">
-              <input ng-model="exhibitorSearchText" type="search" class="form-control" placeholder="Search exhibitors..">
-            </div>
-            <div class="col-sm-4">
-              <a class="btn btn-block btn-primary" href="companies/new">Add new exhibitor</a>
-            </div>
+  <div class="col-sm-8 col-sm-offset-2">
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <div class="row">
+          <div class="col-sm-8">
+            <input ng-model="exhibitorSearchText" type="search" class="form-control"
+                   placeholder="Search exhibitors..">
+          </div>
+          <div class="col-sm-4">
+            <a class="btn btn-block btn-primary" href="companies/new">Add new exhibitor</a>
           </div>
         </div>
       </div>
-      <br>
-      <div class="row">
-        <div dir-paginate="company in companies | orderBy:'name' | filter:{ name: exhibitorSearchText} | itemsPerPage: 8 " class="col-sm-12">
-          <h3><a href="/companies/{{company._id}}">{{company.name}}</a></h3>
+    </div>
+    <br>
 
-          <div id="buttons">
-            <a href="/companies/{{company._id}}/edit" class="btn">Edit</a>
-            <!-- deleteCompany args are 1: what to display in modal view, 2: what to delete -->
-            <a class="btn btn-danger" ng-click="deleteCompany(company.name, company)">Delete</a>
-          </div>
-          <hr>
+    <div class="row">
+      <div
+        dir-paginate="company in companies | orderBy:'name' | filter:{ name: exhibitorSearchText} | itemsPerPage: 8 "
+        class="col-sm-12">
+        <h3><a href="/companies/{{company._id}}">{{company.name}}</a></h3>
+
+        <div id="buttons">
+          <a href="/companies/{{company._id}}/edit" class="btn">Edit</a>
+          <!-- deleteCompany args are 1: what to display in modal view, 2: what to delete -->
+          <a class="btn btn-danger" ng-click="deleteCompany(company.name, company)">Delete</a>
         </div>
+        <hr>
       </div>
     </div>
   </div>
   <div class="row">
     <div ng-show="isBusy" class="col-sm-12 text-center">
       <h3>Loading exhibitors...</h3>
-          <br>
-          <br>
+      <br>
+      <br>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-12 text-center">
-      <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" >
+      <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
       </dir-pagination-controls>
     </div>
   </div>
