@@ -4,13 +4,11 @@
 angular.module('fairManagerApp')
   .controller('CompaniesController', function ($scope, socket, CompanyService, Modal) {
     $scope.companies = [];
+    $scope.isBusy = true;
 
     CompanyService.Companies.query(function (response) {
-      angular.forEach(response, function (item) {
-        if (item.name) {
-          $scope.companies.push(item);
-        }
-      });
+      $scope.companies = response;
+      $scope.isBusy = false;
       socket.syncUpdates('companies', $scope.companies);
     });
 

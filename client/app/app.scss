@@ -118,7 +118,10 @@ hr {
 }
 
 .btn:active {
+  border-color: $brand-primary-color;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
   background: white;
+  color: $brand-primary-color;
 }
 
 .btn:hover {
@@ -126,6 +129,7 @@ hr {
 	border-color: $brand-primary-color;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
 	background: white;
+  color: $brand-primary-color;
 }
 
 a .btn {
