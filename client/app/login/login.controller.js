@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('LoginCtrl', function (Auth, $location, $scope) {
+  .controller('LoginCtrl', function (Auth, $location, $scope, LoginRedirectService) {
     $scope.user = {};
     $scope.errors = {};
     $scope.submitted = false;
@@ -15,9 +15,8 @@ angular.module('fairManagerApp')
             password: $scope.login.user.password
           })
           .then(() => {
-            // Logged in, redirect to home
-            //TODO: redirect to where user came from
-            $location.path('/companies');
+            // Logged in, redirect to where user came from
+            LoginRedirectService.redirect();
           })
           .catch(err => {
             $scope.errors.other = err.message;
