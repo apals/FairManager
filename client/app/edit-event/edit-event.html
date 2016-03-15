@@ -1,0 +1,52 @@
+<div class="container">
+
+  <form name="eventForm" ng-submit="updateEvent(event)">
+
+    <fieldset>
+      <legend>Edit Exhibitor</legend>
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Name:
+                <input ng-model="event.name" value="{{event.name}}">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Info:
+                <textarea ng-model="event.info" value="{{event.info}}" rows="10">
+                  </textarea>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Logo:
+                <img ng-src="{{event.imageUrl}}">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-8 col-sm-offset-2">
+        <button type=submit class="btn btn-default">Update</button>
+      </div>
+
+    </fieldset>
+  </form>
+
+
+</div>

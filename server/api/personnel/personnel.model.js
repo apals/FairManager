@@ -4,8 +4,8 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var PersonnelSchema = new mongoose.Schema({
   name: String,
-  info: String,
-  active: Boolean
+  title: String,
+  group: String
 });
 
 export default mongoose.model('Personnel', PersonnelSchema);

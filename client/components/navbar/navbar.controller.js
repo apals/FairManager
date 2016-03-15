@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('NavbarController', function ($scope, $location, NavbarService, Auth) {
+  .controller('NavbarController', function ($scope, $location, Auth) {
     $scope.menu = [
       {
         'title': 'Exhibitors',

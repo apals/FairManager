@@ -4,8 +4,9 @@ var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var ContactsSchema = new mongoose.Schema({
   name: String,
-  info: String,
-  active: Boolean
+  title: String,
+  email: String,
+  phone: String
 });
 
 export default mongoose.model('Contacts', ContactsSchema);

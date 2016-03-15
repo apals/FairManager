@@ -1,23 +1,21 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('NewCompanyCtrl', function ($scope, CompanyService, $location, Upload, $timeout) {
+  .controller('NewEventCtrl', function ($scope, EventService, $location, Upload, $timeout) {
 
-    $scope.addCompany = function (company) {
-      console.log("add company");
-      console.log(company);
+    $scope.addEvent = function (event) {
 
-      if(company) {
+      if (event) {
         var upload = Upload.upload({
-          url: '/api/companies',
-          data: company
+          url: '/api/events',
+          data: event
         });
 
         upload.then(function (response) {
           $timeout(function () {
             //$scope.eventLogo.result = response.data;
             if (response.status === 201) {
-              $location.path('/companies');
+              $location.path('/events');
             }
           });
         }, function (response) {

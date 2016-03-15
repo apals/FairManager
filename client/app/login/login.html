@@ -2,9 +2,9 @@
 </div>
 <div class="container">
 <div class="loginWrapper">
-  <div class="row vcenter"> 
+  <div class="row vcenter">
     <div class="col-sm-4 col-sm-offset-4">
-      <form class="form" name="form" ng-submit="login(form)" novalidate>
+      <form class="form" name="form" ng-submit="login(form)">
 
         <div class="form-group nobottommargin">
           <input type="email" name="email" class="form-control" ng-model="login.user.email" placeholder="Email..." required>
@@ -22,7 +22,7 @@
             Please enter a valid email.
           </p>
 
-          <p class="help-block">{{ login.errors.other }}</p>
+          <p class="help-block">{{ errors.other }}</p>
         </div>
 
         <div class="row">

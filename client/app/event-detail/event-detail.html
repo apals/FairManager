@@ -1,0 +1,16 @@
+<div class="container">
+  <div ng-repeat="(key, value) in event" class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div ng-if="key == 'imageUrl'" class="text-center">
+            <img class="companyimage" ng-src="{{value}}">
+          </div>
+          <div ng-if="key != 'imageUrl'">
+            <strong>{{key}}:</strong> {{value}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
