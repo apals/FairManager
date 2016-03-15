@@ -13,7 +13,8 @@ angular.module('fairManagerApp', [
     'validation.match',
     'ngFileUpload',
     'ui.bootstrap',
-    'angular-loading-bar'
+    'angular-loading-bar',
+    'angularUtils.directives.dirPagination'
   ])
   .run(function ($rootScope, $location, Auth, $route) {
 

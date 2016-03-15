@@ -21,7 +21,7 @@
       </div>
       <br>
       <div class="row">
-        <div ng-repeat="company in companies | orderBy:'name' | filter:{ name: exhibitorSearchText}" class="col-sm-12">
+        <div dir-paginate="company in companies | orderBy:'name' | filter:{ name: exhibitorSearchText} | itemsPerPage: 8 " class="col-sm-12">
           <h3><a href="/companies/{{company._id}}">{{company.name}}</a></h3>
 
           <div id="buttons">
@@ -37,19 +37,14 @@
   <div class="row">
     <div ng-show="isBusy" class="col-sm-12 text-center">
       <h3>Loading exhibitors...</h3>
+          <br>
+          <br>
     </div>
-    <br>
-    <br>
   </div>
   <div class="row">
     <div class="col-sm-12 text-center">
-      <ul class="pagination">
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-      </ul>
+      <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true" >
+      </dir-pagination-controls>
     </div>
   </div>
 </div>
