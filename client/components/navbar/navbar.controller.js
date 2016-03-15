@@ -36,7 +36,7 @@ angular.module('fairManagerApp')
 
     $scope.isActive = function (route) {
       var re = new RegExp(route);
-      return $location.url().match(re);
+      return $location.url().match(re) != null;
     };
 
   });
