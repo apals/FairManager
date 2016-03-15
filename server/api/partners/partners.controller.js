@@ -11,6 +11,7 @@
 
 import _ from 'lodash';
 import Partners from './partners.model';
+import fs from 'fs';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -76,6 +77,13 @@ export function show(req, res) {
 
 // Creates a new Partners in the DB
 export function create(req, res) {
+  var logo;
+  if (req.files && req.files.logo) logo = req.files.logo;
+
+  if (logo) {
+    req.body.logoUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + logo.path.split('/')[3];
+  }
+
   Partners.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
@@ -94,9 +102,24 @@ export function update(req, res) {
 }
 
 // Deletes a Partners from the DB
+function removePartnerLogo(res) {
+  return function (entity) {
+    if (entity && entity.logoUrl) {
+      var image = "client/assets/images/" + entity.logoUrl.split('/')[5];
+      fs.unlink(image, function (err) {
+        if (err) {
+          console.log("Error deleting partner logo for entity:");
+          console.log(entity);
+        }
+      });
+    }
+    return entity;
+  };
+}
 export function destroy(req, res) {
   Partners.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
+    .then(removePartnerLogo(res))
     .then(removeEntity(res))
     .catch(handleError(res));
 }

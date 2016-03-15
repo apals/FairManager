@@ -78,7 +78,6 @@ export function show(req, res) {
 
 // Creates a new Event in the DB
 export function create(req, res, next) {
-
   var logo;
   if (req.files && req.files.logo) logo = req.files.logo;
 
@@ -119,6 +118,7 @@ function removeEventImage(res) {
     return entity;
   };
 }
+
 export function destroy(req, res) {
   Events.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))

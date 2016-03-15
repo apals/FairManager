@@ -1,0 +1,44 @@
+<div class="container">
+  <form ng-submit="updatePersonnel(personnel)" class="new-personnel-form">
+
+
+    <fieldset>
+      <div class="col-sm-12 text-center">
+        <h1>Edit Personnel</h1>
+        <hr>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Name:
+                <input ng-model="personnel.name" required>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Title:
+                <input ng-model="personnel.title">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-8 col-sm-offset-2 input-group-btn">
+        <button type="submit" class="btn btn-primary">Update
+        </button>
+      </div>
+
+    </fieldset>
+
+  </form>
+</div>

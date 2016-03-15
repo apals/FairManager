@@ -95,9 +95,6 @@ export function show(req, res) {
 
 // Creates a new Companies in the DB
 export function create(req, res, next) {
-  var data = _.pick(req.body, 'type')
-    , uploadPath = path.normalize('client/assets/images');
-
   var logo, banner;
   if (req.files && req.files.logo) logo = req.files.logo;
   if (req.files && req.files.banner) banner = req.files.banner;

@@ -16,15 +16,10 @@ angular.module('fairManagerApp')
     });
 
     $scope.updateEvent = function (event) {
-      if (!event) {
-        return;
-      }
-
       EventService.Event.update({id: event._id}, event, function (response) {
         $location.path('/events');
       }, function(err) {
       });
-
     };
 
 

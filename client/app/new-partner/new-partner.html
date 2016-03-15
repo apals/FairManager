@@ -1,0 +1,73 @@
+<div class="container">
+  <form ng-submit="addPartner(partner)" class="new-partner-form">
+
+
+    <fieldset>
+      <div class="col-sm-12 text-center">
+        <h1>New Partner</h1>
+        <hr>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Name:
+                <input ng-model="partner.name" required>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Website:
+                <input ng-model="partner.websiteUrl" required>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+
+              <label>Logo:</label>
+
+              <div style="width: 100%; height: 100%; background: red;" file-button ngf-select ngf-drop
+                   ng-model="partner.logo" name="partner.logo"
+                   accept="image/*" ngf-max-size="2MB"
+                   ngf-model-invalid="errorFile" class="drop-box">
+
+                <p style="width: 100%; height: 100%">
+
+                  <img style="width: 100%; height: 100%" ng-show="new-partner-form.partner.logo.$valid" ngf-thumbnail="partner.logo" class="thumb">
+
+                </p>
+              </div>
+              <button ng-click="partner.logo = null" ng-show="partner.logo">Remove</button>
+
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-8 col-sm-offset-2 input-group-btn">
+        <button type="submit" class="btn btn-primary">Add New
+        </button>
+      </div>
+
+    </fieldset>
+
+  </form>
+</div>
