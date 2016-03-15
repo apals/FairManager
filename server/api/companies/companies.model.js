@@ -3,7 +3,7 @@
 var mongoose = require('bluebird').promisifyAll(require('mongoose'));
 
 var CompaniesSchema = new mongoose.Schema({
-  name: String,
+  name: {type: String, required: true},
   info: String,
   logoUrl: String,
   bannerUrl: String,
