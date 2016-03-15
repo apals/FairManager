@@ -187,3 +187,23 @@ a .btn {
 .navbar .nav > .active > a:hover {
 	color: $brand-primary-color;
 }
+
+
+/* LOADING BAR */
+/* ========================================================*/
+#loading-bar .bar {
+  background: $brand-primary-color;
+}
+
+/* Fancy blur effect */
+#loading-bar .peg {
+  -moz-box-shadow: $brand-primary-color 1px 0 6px 1px;
+  -ms-box-shadow: $brand-primary-color 1px 0 6px 1px;
+  -webkit-box-shadow: $brand-primary-color 1px 0 6px 1px;
+  box-shadow: $brand-primary-color 1px 0 6px 1px;
+}
+
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  $brand-primary-color;
+  border-left-color: $brand-primary-color;
+}
