@@ -5,7 +5,6 @@ angular.module('fairManagerApp')
 
     $scope.addEvent = function (event) {
 
-      console.log(event);
       if (event) {
         var upload = Upload.upload({
           url: '/api/events',
