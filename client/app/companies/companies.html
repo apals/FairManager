@@ -9,9 +9,13 @@
     <div class="row">
       <div class="col-sm-12 text-center">
         <div class="row">
-          <div class="col-sm-8">
+          <div class="col-sm-6">
             <input ng-model="exhibitorSearchText" type="search" class="form-control"
                    placeholder="Search exhibitors..">
+          </div>
+          <div class="col-sm-2">
+            <input ng-model="itemsPerPage" ng-init="itemsPerPage=10" type="search" class="form-control"
+                   placeholder="#Items">
           </div>
           <div class="col-sm-4">
             <a class="btn btn-block btn-primary" href="companies/new">Add new exhibitor</a>
@@ -23,7 +27,7 @@
 
     <div class="row">
       <div
-        dir-paginate="company in companies | orderBy:'name' | filter:{ name: exhibitorSearchText} | itemsPerPage: 8 "
+        dir-paginate="company in companies | orderBy:'name' | filter:{ name: exhibitorSearchText} | itemsPerPage: itemsPerPage "
         class="col-sm-12">
         <h3><a href="/companies/{{company._id}}">{{company.name}}</a></h3>
 

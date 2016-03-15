@@ -8,8 +8,6 @@ angular.module('fairManagerApp')
 
     CompanyService.Companies.query(function (response) {
       $scope.companies = response;
-      $scope.filteredCompanies = $scope.companies.slice(0, 5);
-      $scope.totalItems = $scope.companies.length;
       $scope.isBusy = false;
       socket.syncUpdates('companies', $scope.companies);
     });
