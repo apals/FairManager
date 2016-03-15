@@ -9,4 +9,11 @@
         <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
     </li>
   </ul>
+  <form ng-submit="admin.create(user)">
+  <input ng-model="user.provider" placeholder="provider">
+  <input ng-model="user.name" placeholder="name">
+  <input ng-model="user.email" placeholder="email">
+  <input ng-model="user.password" placeholer="password">
+  <button class="btn" type="submit">Submit</button>
+  </form>
 </div>
