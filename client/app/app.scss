@@ -40,9 +40,10 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
  */
 
 
-$brand-primary-color: #51039a;
-$brand-primary-text-color: #404040;
+$primary-color: #51039a;
+$primary-text-color: #404040;
 $primary-warning-color: #FF3B30;
+$primary-hover-background-color: #e7e7e7;
 /* Toggle Styles */
 html,
 body {
@@ -54,12 +55,12 @@ a {
 	/*font-family: 'Raleway', sans-serif;*/
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
-	color: $brand-primary-text-color;
+	color: $primary-text-color;
 }
 
 label {
 	/*font-family: 'Raleway', sans-serif;*/
-	color: $brand-primary-text-color;
+	color: $primary-text-color;
 	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 300;
 }
@@ -67,7 +68,7 @@ label {
 
 h1, h2, h3 {
 	font-family: 'Raleway', sans-serif;
-	color: $brand-primary-color;
+	color: $primary-color;
 }
 
 .container {
@@ -86,14 +87,14 @@ h1, h2, h3 {
 /* BUTTONS */
 
 hr {
-	border-top: 1px solid $brand-primary-text-color;
+	border-top: 1px solid $primary-text-color;
 }
 
 .btn {
 	background: transparent;
-	border: 2px solid $brand-primary-text-color;
+	border: 2px solid $primary-text-color;
 	border-radius: 0px;
-	color: $brand-primary-text-color;
+	color: $primary-text-color;
 	-webkit-transition: background 0.2s ease-in-out;
 	-moz-transition: background 0.2s ease-in-out;
 	-ms-transition: background 0.2s ease-in-out;
@@ -102,34 +103,34 @@ hr {
 }
 
 .form-control:focus {
-  border-color: $brand-primary-color;
+  border-color: $primary-color;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
 }
 
 .form-control {
 	border-radius: 0;
-  color: $brand-primary-color;
+  color: $primary-color;
 }
 
 .btn:focus {
-	border-color: $brand-primary-color;
+	border-color: $primary-color;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
   background: white;
 }
 
 .btn:active {
-  border-color: $brand-primary-color;
+  border-color: $primary-color;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
   background: white;
-  color: $brand-primary-color;
+  color: $primary-color;
 }
 
 .btn:hover {
-	color: $brand-primary-color;
-	border-color: $brand-primary-color;
+	color: $primary-color;
+	border-color: $primary-color;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
 	background: white;
-  color: $brand-primary-color;
+  color: $primary-color;
 }
 
 a .btn {
@@ -148,19 +149,19 @@ a .btn {
 }
 
 .navbar-header .navbar-brand {
-	color: $brand-primary-text-color;
+	color: $primary-text-color;
 }
 
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-	color: $brand-primary-text-color;
+	color: $primary-text-color;
 }
 
 .navbar .nav > a {
-	color: $brand-primary-text-color;
+	color: $primary-text-color;
 }
 
 .navbar .nav > a:hover{
-	color: $brand-primary-color;
+	color: $primary-color;
 }
 .nav {
   margin-top: 0;
@@ -168,8 +169,8 @@ a .btn {
 }
 .navbar .nav > .active > a {
     background:none;
-    color: $brand-primary-text-color;
-    border-bottom: 3px solid $brand-primary-color;
+    color: $primary-text-color;
+    border-bottom: 3px solid $primary-color;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -182,42 +183,77 @@ a .btn {
 	-moz-transition:border-color 0.3s ease;
 	-o-transition:border-color 0.3s ease;
 	transition:border-color 0.3s ease;
-	color: $brand-primary-text-color;
+	color: $primary-text-color;
 }
 
 .navbar .nav > li > a:hover {
-	border-color: $brand-primary-color;
-	color: $brand-primary-color;
-	background-color: #e7e7e7;
-
+	border-color: $primary-color;
+	color: $primary-color;
+	background-color: $primary-hover-background-color;
 }
 
 .navbar .nav > .active > a:focus {
 	background: none;
-	color: $brand-primary-text-color;
+	color: $primary-text-color;
 }
 
 .navbar .nav > .active > a:hover {
-	color: $brand-primary-color;
+	color: $primary-color;
 }
 
 
 /* LOADING BAR */
 /* ========================================================*/
 #loading-bar .bar {
-  background: $brand-primary-color;
+  background: $primary-color;
 }
 
 /* Fancy blur effect */
 #loading-bar .peg {
-  -moz-box-shadow: $brand-primary-color 1px 0 6px 1px;
-  -ms-box-shadow: $brand-primary-color 1px 0 6px 1px;
-  -webkit-box-shadow: $brand-primary-color 1px 0 6px 1px;
-  box-shadow: $brand-primary-color 1px 0 6px 1px;
+  -moz-box-shadow: $primary-color 1px 0 6px 1px;
+  -ms-box-shadow: $primary-color 1px 0 6px 1px;
+  -webkit-box-shadow: $primary-color 1px 0 6px 1px;
+  box-shadow: $primary-color 1px 0 6px 1px;
 }
 
 #loading-bar-spinner .spinner-icon {
-  border-top-color:  $brand-primary-color;
-  border-left-color: $brand-primary-color;
+  border-top-color:  $primary-color;
+  border-left-color: $primary-color;
+}
+
+/* PAGINATION */
+.pagination {
+  border-radius: 0px;
+  border: 1px solid transparent;
+}
+
+.pagination > li > a{
+  color: $primary-text-color !important;
+}
+
+.pagination > li > a:hover {
+  color: $primary-color !important;
+  border: none;
+  border-bottom: 0.5px solid $primary-color; 
+  border-color: $primary-color;
+  background-color: $primary-hover-background-color;
+}
+
+.pagination > li:first-child > a {
+  border-radius: 0px;
+}
+
+.pagination > li:last-child > a {
+  border-radius: 0px;
+}
+
+.pagination > .active > a {
+  background-color: $primary-color !important;
+  color: white !important;
+  border: none;
+}
+
+.pagination > .active > a:hover {
+  border: none;
 }
 
