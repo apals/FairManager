@@ -4,6 +4,7 @@
 angular.module('fairManagerApp')
   .controller('CompaniesController', function ($scope, socket, CompanyService, Modal) {
     $scope.companies = [];
+    $scope.filteredCompanies = [];
     $scope.isBusy = true;
 
     CompanyService.Companies.query(function (response) {
