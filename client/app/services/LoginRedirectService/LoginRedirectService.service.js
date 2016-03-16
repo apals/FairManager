@@ -9,9 +9,9 @@ angular.module('fairManagerApp')
       this.redirectPath = path;
     };
 
-    this.redirect = function () {
+    this.redirectMe = function () {
       $location.path(this.redirectPath);
-    }
+    };
 
     return this;
 

@@ -16,7 +16,7 @@ angular.module('fairManagerApp')
           })
           .then(() => {
             // Logged in, redirect to where user came from
-            LoginRedirectService.redirect();
+            LoginRedirectService.redirectMe();
           })
           .catch(err => {
             $scope.errors.other = err.message;

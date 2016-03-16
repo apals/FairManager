@@ -25,7 +25,10 @@ angular.module('fairManagerApp', [
           // no logged user, we should be going to #login
           if (next.templateUrl == "app/login/login.html") {
           } else {
-            LoginRedirectService.setRedirectPath($location.path());
+            if ($location.path() !== '/login') {
+              //Never set redirect back to login
+              LoginRedirectService.setRedirectPath($location.path());
+            }
             $location.path("/login");
           }
         } else {
