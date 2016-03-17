@@ -14,7 +14,8 @@ angular.module('fairManagerApp', [
     'ngFileUpload',
     'ui.bootstrap',
     'angular-loading-bar',
-    'angularUtils.directives.dirPagination'
+    'angularUtils.directives.dirPagination',
+    'ngAnimate'
   ])
   .run(function ($rootScope, $location, Auth, LoginRedirectService) {
 

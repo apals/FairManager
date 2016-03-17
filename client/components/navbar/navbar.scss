@@ -6,3 +6,65 @@
 .navbar-transparent .navbar-nav > li > a {
 	color: white;
 }
+
+#navbar-main {
+  border-top-color: $primary-color;
+}
+
+.navbar-header .navbar-brand {
+  color: $primary-text-color;
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: $primary-text-color;
+}
+
+.navbar .nav > a {
+  color: $primary-text-color;
+}
+
+.navbar .nav > a:hover{
+  color: $primary-color;
+}
+.nav {
+  background: white;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.navbar .nav > .active > a {
+  background:none;
+  color: $primary-text-color;
+  border-bottom: 2px solid $primary-color;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+.navbar .nav > li > a {
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease;
+  -webkit-transition:border-color 0.3s ease;
+  -moz-transition:border-color 0.3s ease;
+  -o-transition:border-color 0.3s ease;
+  transition:border-color 0.3s ease;
+  color: $primary-text-color;
+}
+
+.navbar .nav > li > a:hover {
+  border-color: $primary-color;
+  color: $primary-color;
+  background-color: $primary-hover-background-color;
+}
+
+.navbar .nav > .active > a:focus {
+  background: none;
+  color: $primary-text-color;
+}
+
+.navbar .nav > .active > a:hover {
+  color: $primary-color;
+}
+
+.navbar-default div.navbar-collapse.in ul.navbar-right li:last-child{
+  border-bottom: 1px solid $primary-hover-background-color;
+}
