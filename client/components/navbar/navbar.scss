@@ -34,14 +34,15 @@
 .navbar .nav > .active > a {
   background:none;
   color: $primary-text-color;
-  border-bottom: 2px solid $primary-color;
+  background-color: $primary-hover-background-color;
+  /*border-bottom: 2px solid $primary-color;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  -webkit-box-sizing: border-box;*/
 }
 
 .navbar .nav > li > a {
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease;
   -webkit-transition:border-color 0.3s ease;
   -moz-transition:border-color 0.3s ease;

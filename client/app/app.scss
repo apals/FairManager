@@ -54,7 +54,7 @@ $primary-hover-background-color: #e7e7e7;
 /* Toggle Styles */
 html,
 body {
-    padding-top: 20px;
+    padding-top: 30px;
     height: 100%;
     background-color: white !important;
 }
@@ -100,7 +100,7 @@ hr {
 
 .btn {
 	background: transparent;
-	border: 2px solid $primary-text-color;
+	border: 1px solid $primary-text-color;
 	border-radius: 0px;
 	color: $primary-text-color;
 	-webkit-transition: background 0.2s ease-in-out;
