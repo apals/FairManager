@@ -395,6 +395,11 @@ module.exports = function (grunt) {
             '<%= yeoman.server %>/**/*',
             '!<%= yeoman.server %>/config/local.env.sample.js'
           ]
+        }, { 
+          expand: true,
+          cwd: '<%= yeoman.app %>/bower_components/font-awesome', 
+          src: 'fonts/*', 
+          dest: '<%= yeoman.dist %>' 
         }]
       },
       styles: {
