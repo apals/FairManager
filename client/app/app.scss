@@ -53,6 +53,7 @@ $primary-hover-background-color: #e7e7e7;
 /* Toggle Styles */
 html,
 body {
+    padding-top: 20px;
     height: 100%;
     background-color: white !important;
 }
@@ -170,20 +171,21 @@ a .btn {
 	color: $primary-color;
 }
 .nav {
+  background: white;
   margin-top: 0;
   margin-bottom: 0;
 }
 .navbar .nav > .active > a {
     background:none;
     color: $primary-text-color;
-    border-bottom: 3px solid $primary-color;
+    border-bottom: 2px solid $primary-color;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
 
 .navbar .nav > li > a {
-	border-bottom: 3px solid transparent;
+	border-bottom: 2px solid transparent;
 	transition: border-color 0.3s ease;
 	-webkit-transition:border-color 0.3s ease;
 	-moz-transition:border-color 0.3s ease;
@@ -207,6 +209,9 @@ a .btn {
 	color: $primary-color;
 }
 
+.navbar-default div.navbar-collapse.in ul.navbar-right li:last-child{
+  border-bottom: 1px solid $primary-hover-background-color;
+}
 
 /* LOADING BAR */
 /* ========================================================*/
