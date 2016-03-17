@@ -57,3 +57,5 @@ fabric.properties
 *swp
 *~
 *.DS_Store
+.DS_Store
+*DS_Store
