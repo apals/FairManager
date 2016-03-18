@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 4.2.3
+  - 5.9.0
 matrix:
   fast_finish: true
   allow_failures:
@@ -8,5 +8,5 @@ matrix:
 before_script:
   - npm install -g bower grunt-cli
   - gem install sass
-  - bower install
+  - bower install --force
 services: mongodb
