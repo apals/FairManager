@@ -36,7 +36,6 @@ export function index(req, res) {
  */
 export function create(req, res, next) {
   var newUser = new User(req.body);
-  newUser.provider = 'local';
   newUser.role = 'user';
   newUser.saveAsync()
     .spread(function (user) {
