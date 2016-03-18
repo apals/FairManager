@@ -1,5 +1,8 @@
 # fair-manager
 
+
+<img src=https://travis-ci.com/apals/FairManager.svg?token=wnF5zpGmFJf9tfauhzAP&branch=master>
+
 [![Build Status](https://travis-ci.com/apals/FairManager.svg?token=wnF5zpGmFJf9tfauhzAP&branch=master)](https://travis-ci.com/apals/FairManager)
 
 This project was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack) version 3.3.0.
