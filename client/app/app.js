@@ -21,7 +21,6 @@ angular.module('fairManagerApp', [
 
     // register listener to watch route changes
     $rootScope.$on("$routeChangeStart", function (event, next, current) {
-      console.log("I really just want to try travis");
       Auth.isLoggedIn(function (res) {
         if (!res) {
           // no logged user, we should be going to #login
