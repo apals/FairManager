@@ -7,8 +7,10 @@ matrix:
     - node_js: 5.1.1
 before_script:
   - npm install -g bower grunt-cli
+  - npm install codecov
   - gem install sass
   - bower install --force
 script:
   - grunt --force
+  - istanbul cover ./node_modules/mocha/bin/_mocha -- -R spec \ && ./node_modules/.bin/codecov
 services: mongodb
