@@ -120,16 +120,27 @@ hr {
   color: $primary-color;
 }
 
+
 .btn:focus {
 	border-color: $primary-color;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
+  //box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
   background: white;
+  outline: none;
 }
 
 .btn:active {
   border-color: $primary-color;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
   background: white;
+  color: $primary-color;
+  outline: none;
+}
+
+.btn:focus:active {
+  background-image: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
   color: $primary-color;
 }
 
