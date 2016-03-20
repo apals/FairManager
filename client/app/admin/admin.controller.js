@@ -7,15 +7,25 @@ angular.module('fairManagerApp.admin')
     $scope.users = [];
     $scope.isBusy = true;
 
+    var mapping =  {
+    'owner': 0,
+    'admin': 1,
+    'user' : 2
+    };
+
+    $scope.priorityOrder = function(userEntry) {
+      return mapping[userEntry.role]; 
+    };
+
     User.query(function (response) {
       $scope.users = response;
+      console.log(response);
       $scope.isBusy = false;
     }, function (err) {
       console.log(err);
     });
 
     $scope.create = function (user) {
-      console.log(user);
       var newUser = new User(user);
       newUser.$save(function (response) {
         user._id = response.id;
