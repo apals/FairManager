@@ -15,6 +15,7 @@ angular.module('fairManagerApp.admin')
     });
 
     $scope.create = function (user) {
+      console.log(user);
       var newUser = new User(user);
       newUser.$save(function (response) {
         user._id = response.id;

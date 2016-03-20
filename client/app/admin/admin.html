@@ -1,36 +1,50 @@
 <div class="container">
   <p>The delete user and user index api routes are restricted to users with the 'admin' role.</p>
 
-  <ul class="list-group user-list">
-
-
-    <li class="list-group-item" ng-repeat="user in users">
-	    <div class="user-info">
-	        <strong>{{user.name}}</strong><br>
-	        <span class="text-muted">{{user.email}}</span>
-	    </div>
-
-
-        <!-- deleteCompany args are 1: what to display in modal view, 2: what to delete -->
-        <a ng-click="deleteUser(user.name, user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
-
-     <!--   <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>-->
-    </li>
-
-    <p>{{error}}</p>
-  </ul>
   <div class="row">
-    <div ng-show="isBusy" class="col-sm-12 text-center">
-      <h3>Loading...</h3>
-      <br>
-      <br>
+    <div class="col-sm-12">
+      <ul class="list-group user-list">
+
+
+        <li class="list-group-item" ng-repeat="user in users">
+         <div class="user-info">
+           <strong>{{user.name}}</strong><br>
+           <span class="text-muted">{{user.email}}</span>
+         </div>
+
+
+         <!-- deleteCompany args are 1: what to display in modal view, 2: what to delete -->
+         <a ng-click="deleteUser(user.name, user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>
+
+         <!--   <a ng-click="admin.delete(user)" class="trash"><span class="fa fa-trash fa-2x"></span></a>-->
+       </li>
+
+       <p>{{error}}</p>
+     </ul>
+     <div class="row">
+      <div ng-show="isBusy" class="col-sm-12 text-center">
+        <h3>Loading...</h3>
+        <br>
+        <br>
+      </div>
     </div>
   </div>
-  <form ng-submit="create(user)">
-  <input ng-model="user.provider" placeholder="provider">
-  <input ng-model="user.name" placeholder="name">
-  <input ng-model="user.email" placeholder="email">
-  <input ng-model="user.password" placeholer="password">
-  <button class="btn" type="submit">Submit</button>
+</div>
+
+<div class="row text-center">
+  <form ng-submit="create(user)" ng-model="user.provider" ng-init="user.provider='local'">
+    <div class="col-sm-8 col-sm-offset-2">
+    <input class="form-control" ng-model="user.name" placeholder="name">
+    </div>
+    <div class="col-sm-8 col-sm-offset-2">
+      <input class="form-control" ng-model="user.email" placeholder="email">
+    </div>
+    <div class="col-sm-8 col-sm-offset-2">
+      <input class="form-control" type="password" ng-model="user.password" placeholder="password">
+    </div>
+    <div class="col-sm-8 col-sm-offset-2">
+      <button class="btn btn-block" type="submit">Submit</button>
+    </div>
   </form>
+</div>
 </div>
