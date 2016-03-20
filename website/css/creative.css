@@ -495,3 +495,7 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #222;
 }
+
+@media screen and (max-width: 480px) {
+    video { display: none; }
+}
