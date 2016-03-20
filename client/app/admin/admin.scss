@@ -22,3 +22,13 @@
 .col-sm-3 {
   margin-top: 5px;
 }
+
+.new-user {
+  transition: height .9s;
+  overflow: hidden;
+  max-height: 200px;
+}
+
+.new-user.hidden {
+  max-height: 0px;
+}
