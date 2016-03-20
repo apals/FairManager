@@ -5,7 +5,7 @@ angular.module('fairManagerApp')
 
     $scope.addCompany = function (company) {
 
-      if(company) {
+      if (company) {
         var upload = Upload.upload({
           url: '/api/companies',
           data: company
@@ -19,9 +19,10 @@ angular.module('fairManagerApp')
             }
           });
         }, function (response) {
-          if (response.status > 0)
+          if (response.status > 0) {
             $scope.errorMsg = response.status + ': ' + response.data;
-        }, function (evt) {
+          }
+        }, function () {
           // Math.min is to fix IE which reports 200% sometimes
           //$scope.eventLogo.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
         });

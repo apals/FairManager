@@ -5,11 +5,10 @@ angular.module('fairManagerApp')
     $scope.addPersonnel = function(personnel) {
 
       var newPersonnel = new PersonnelService.Personnel(personnel);
-      newPersonnel.$save(function(response) {
+      newPersonnel.$save(function() {
         $location.path('/personnel');
       }, function(error) {
-
+        console.log(error);
       });
-
-    }
+    };
   });

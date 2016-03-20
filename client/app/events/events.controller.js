@@ -17,12 +17,10 @@ angular.module('fairManagerApp')
     });
 
     $scope.delete = Modal.confirm.delete(function (event) {
-      EventService.Event.delete({id: event._id}, function (response) {
-        angular.forEach($scope.events, function (u, i) {
-          if (u === event) {
-            $scope.events.splice(i, 1);
-          }
-        });
+      EventService.Event.delete({id: event._id}, function () {
+        $scope.events.splice($scope.events.indexOf(event), 1);
+      }, function (error) {
+        $scope.error = error.data;
       });
     });
 

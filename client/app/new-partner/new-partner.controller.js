@@ -18,9 +18,10 @@ angular.module('fairManagerApp')
           }
         });
       }, function (response) {
-        if (response.status > 0)
+        if (response.status > 0) {
           $scope.errorMsg = response.status + ': ' + response.data;
-      }, function (evt) {
+        }
+      }, function () {
         // Math.min is to fix IE which reports 200% sometimes
         //$scope.eventLogo.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
       });

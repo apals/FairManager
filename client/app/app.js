@@ -20,24 +20,24 @@ angular.module('fairManagerApp', [
   .run(function ($rootScope, $location, Auth, LoginRedirectService) {
 
     // register listener to watch route changes
-    $rootScope.$on("$routeChangeStart", function (event, next, current) {
+    $rootScope.$on('$routeChangeStart', function (event, next) {
       Auth.isLoggedIn(function (res) {
         if (!res) {
           // no logged user, we should be going to #login
-          if (next.templateUrl == "app/login/login.html") {
+          if (next.templateUrl === 'app/login/login.html') {
           } else {
             if ($location.path() !== '/login') {
               //Never set redirect back to login
               LoginRedirectService.setRedirectPath($location.path());
             }
-            $location.path("/login");
+            $location.path('/login');
           }
         } else {
-          if (next.templateUrl == "app/login/login.html") {
-            $location.path("/companies");
+          if (next.templateUrl === 'app/login/login.html') {
+            $location.path('/companies');
           }
         }
-      })
+      });
     });
   })
   .config(function ($routeProvider, $locationProvider) {

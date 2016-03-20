@@ -10,7 +10,7 @@ angular.module('fairManagerApp')
         type: '='
 
       },
-      controller : "@", // @ symbol
-      name:"controllerName"
+      controller : '@', // @ symbol
+      name:'controllerName'
     };
   });

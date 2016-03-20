@@ -5,8 +5,8 @@ angular.module('fairManagerApp')
   	$scope.company = {};
     CompanyService.Company.get({id: $routeParams.id}, function(response) {
       $scope.company = response;
-    }, function(error) {
-      $scope.company.error = "There was an error fetching data";
+    }, function() {
+      $scope.company.error = 'There was an error fetching data';
     });
 
   });

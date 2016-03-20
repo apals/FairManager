@@ -16,13 +16,11 @@ angular.module('fairManagerApp')
       socket.unsyncUpdates('partners');
     });
 
-    $scope.delete = Modal.confirm.delete(function(partner) {
-      PartnerService.Partner.delete({id: partner._id},function(response) {
-        angular.forEach($scope.partners, function(u, i) {
-          if (u === partner) {
-            $scope.partners.splice(i, 1);
-          }
-        });
+    $scope.delete = Modal.confirm.delete(function (partner) {
+      PartnerService.Partner.delete({id: partner._id}, function () {
+        $scope.partners.splice($scope.partners.indexOf(partner), 1);
+      }, function (error) {
+        $scope.error = error.data;
       });
     });
 

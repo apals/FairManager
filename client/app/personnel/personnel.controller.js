@@ -16,13 +16,11 @@ angular.module('fairManagerApp')
       socket.unsyncUpdates('personnel');
     });
 
-    $scope.delete = Modal.confirm.delete(function(person) {
-      PersonnelService.Person.delete({id: person._id},function(response) {
-        angular.forEach($scope.personnel, function(u, i) {
-          if (u === person) {
-            $scope.personnel.splice(i, 1);
-          }
-        });
+    $scope.delete = Modal.confirm.delete(function (person) {
+      PersonnelService.Person.delete({id: person._id}, function () {
+        $scope.personnel.splice($scope.personnel.indexOf(person), 1);
+      }, function (error) {
+        $scope.error = error.data;
       });
     });
 

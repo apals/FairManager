@@ -6,7 +6,8 @@ angular.module('fairManagerApp')
     PartnerService.Partner.get({id: $routeParams.id}, function(response) {
       $scope.partner = response;
     }, function(error) {
-      $scope.partner.error = "There was an error fetching data";
+      $scope.partner.error = 'There was an error fetching data';
+      console.log(error);
     });
 
   });

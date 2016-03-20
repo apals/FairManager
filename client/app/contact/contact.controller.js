@@ -17,7 +17,7 @@ angular.module('fairManagerApp')
     });
 
     $scope.delete = Modal.confirm.delete(function(contact) {
-      ContactService.Contact.delete({id: contact._id},function(response) {
+      ContactService.Contact.delete({id: contact._id},function() {
         angular.forEach($scope.contacts, function(u, i) {
           if (u === contact) {
             $scope.contacts.splice(i, 1);

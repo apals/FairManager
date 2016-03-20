@@ -3,10 +3,10 @@
 angular.module('fairManagerApp')
   .directive('fileButton', function () {
     return {
-      link: function (scope, element, attributes) {
+      link: function (scope, element) {
 
-        var el = angular.element(element)
-        var button = el.children()[0]
+        var el = angular.element(element);
+        var button = el.children()[0];
 
         el.css({
           position: 'relative',
@@ -15,7 +15,7 @@ angular.module('fairManagerApp')
           height: button.offsetHeight
         });
 
-        var fileInput = angular.element('<input type="file" multiple />')
+        var fileInput = angular.element('<input type="file" multiple />');
         fileInput.css({
           position: 'absolute',
           top: 0,
@@ -27,11 +27,11 @@ angular.module('fairManagerApp')
           cursor: 'pointer'
         });
 
-        el.append(fileInput)
+        el.append(fileInput);
 
 
       }
-    }
+    };
   });
 
 

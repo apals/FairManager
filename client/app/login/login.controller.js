@@ -22,6 +22,6 @@ angular.module('fairManagerApp')
             $scope.errors.other = err.message;
           });
       }
-    }
+    };
 
   });

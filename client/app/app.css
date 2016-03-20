@@ -7432,13 +7432,14 @@ footer.footer {
 .navbar .nav > .active > a {
   background: none;
   color: #404040;
-  border-bottom: 2px solid #51039a;
+  background-color: #e7e7e7;
+  /*border-bottom: 2px solid $primary-color;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box; }
+  -webkit-box-sizing: border-box;*/ }
 
 .navbar .nav > li > a {
-  border-bottom: 2px solid transparent;
+  border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease;
   -webkit-transition: border-color 0.3s ease;
   -moz-transition: border-color 0.3s ease;
@@ -7469,7 +7470,7 @@ footer.footer {
 /* Toggle Styles */
 html,
 body {
-  padding-top: 20px;
+  padding-top: 30px;
   height: 100%;
   background-color: white !important; }
 
@@ -7506,7 +7507,7 @@ hr {
 
 .btn {
   background: transparent;
-  border: 2px solid #404040;
+  border: 1px solid #404040;
   border-radius: 0px;
   color: #404040;
   -webkit-transition: background 0.2s ease-in-out;
@@ -7526,12 +7527,12 @@ hr {
 .btn:focus {
   border-color: #51039a;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
-  background: white; }
+  background: transparent; }
 
 .btn:active {
   border-color: #51039a;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
-  background: white;
+  background: transparent;
   color: #51039a; }
 
 .btn:hover {

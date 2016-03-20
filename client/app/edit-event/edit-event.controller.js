@@ -12,13 +12,16 @@ angular.module('fairManagerApp')
       response.endDate = new Date(response.endDate);
       $scope.event = response;
     }, function(error) {
-      $scope.event.error = "There was an error fetching data";
+      $scope.event.error = 'There was an error fetching data';
+      console.log(error);
     });
 
     $scope.updateEvent = function (event) {
-      EventService.Event.update({id: event._id}, event, function (response) {
+      EventService.Event.update({id: event._id}, event, function () {
         $location.path('/events');
       }, function(err) {
+        $scope.event.error = 'There was an error updating the event';
+        console.log(err);
       });
     };
 
