@@ -23,6 +23,9 @@
     "angular-animate": "^1.5.1"
   },
   "devDependencies": {
-    "angular-mocks": "~1.4.0"
+    "angular-mocks": "1.4.9"
+  },
+  "resolutions": {
+    "angular": "1.4.9"
   }
 }
