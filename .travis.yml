@@ -1,6 +1,7 @@
 language: node_js
 node_js:
 - 5.9.0
+sudo: required
 matrix:
   fast_finish: true
   allow_failures:
@@ -14,9 +15,3 @@ script:
 services: mongodb
 after_success:
     - bash ./travis/after_success.sh
-
-before_install:
-- wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
-
-deploy:
-  skip_cleanup: true
