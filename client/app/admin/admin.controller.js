@@ -5,14 +5,17 @@ angular.module('fairManagerApp.admin')
   .controller('AdminController', function (User, Modal, $scope) {
 
     $scope.users = [];
+    $scope.isBusy = true;
 
     User.query(function (response) {
       $scope.users = response;
+      $scope.isBusy = false;
     }, function (err) {
       console.log(err);
     });
 
     $scope.create = function (user) {
+      console.log(user);
       var newUser = new User(user);
       newUser.$save(function (response) {
         user._id = response.id;
