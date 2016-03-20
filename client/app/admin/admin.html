@@ -3,6 +3,10 @@
 
   <div class="row">
     <div class="col-sm-12">
+      <table class="table table-striped table-hover">
+        <thead>
+        </thead>
+      </table>
       <ul class="list-group user-list">
 
 
@@ -34,14 +38,30 @@
 <div class="row text-center">
   <form ng-submit="create(user)" ng-model="user.provider" ng-init="user.provider='local'">
     <div class="col-sm-8 col-sm-offset-2">
-    <input class="form-control" ng-model="user.name" placeholder="name">
+    <input name="name" class="form-control" ng-model="user.name" placeholder="name" required>
     </div>
     <div class="col-sm-8 col-sm-offset-2">
-      <input class="form-control" ng-model="user.email" placeholder="email">
+      <input type="email" name="email" class="form-control" ng-model="user.email" placeholder="email" required="">
     </div>
     <div class="col-sm-8 col-sm-offset-2">
-      <input class="form-control" type="password" ng-model="user.password" placeholder="password">
+      <input name="password" class="form-control" type="password" ng-model="user.password" placeholder="password" required>
     </div>
+
+    <div class="form-group has-error">
+            <p class="help-block" ng-show="form.name.$error.required && login.submitted">
+              Please enter a valid name.
+            </p>
+            <p class="help-block" ng-show="(form.email.$error.email || form.email.$error.required) && login.submitted">
+              Please enter a valid email.
+            </p>
+
+            <p class="help-block" ng-show="form.password.$error.password && login.submitted">
+              Please enter a valid passord.
+            </p>
+
+            <p class="help-block">{{ errors.other }}</p>
+          </div>
+
     <div class="col-sm-8 col-sm-offset-2">
       <button class="btn btn-block" type="submit">Submit</button>
     </div>
