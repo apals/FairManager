@@ -30,7 +30,7 @@ after_success:
   - cd dist
   - git config --global user.name "Andreas Pålsson"
   - git config --global user.email "apals@kth.se"
-  - git add *
+  - git add * --force
   - git commit -am "Travis CI"
   - git push origin master
 env:
