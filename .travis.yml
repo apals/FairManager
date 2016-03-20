@@ -22,8 +22,9 @@ after_success:
   - heroku keys:clear
   # Add a new SSH key to Heroku
   - yes | heroku keys:add
+  - rm -r dist
   # Clone Heroku deployment repo to dist folder
-  - git clone git@heroku.com:qurrus-web-prod.git dist
+  - git clone git@heroku.com:fairmanager.git dist
   # Build
   - grunt build
   # Commit and Push dist folder to Heroku
