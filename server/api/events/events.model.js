@@ -6,8 +6,8 @@ var EventsSchema = new mongoose.Schema({
   name: {type: String, required: true},
   info: String,
   location: String,
-  startDate: {type: String, required: true},
-  endDate: {type: String, required: true},
+  startDate: {type: Date, required: true},
+  endDate: {type: Date, required: true},
   imageUrl: String
 });
 

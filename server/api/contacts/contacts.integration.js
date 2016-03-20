@@ -36,7 +36,7 @@ describe('Contacts API:', function() {
         .post('/api/contacts')
         .send({
           name: 'New Contacts',
-          info: 'This is the brand new contacts!!!'
+          title: 'This is the brand new contacts!!!'
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -51,7 +51,7 @@ describe('Contacts API:', function() {
 
     it('should respond with the newly created contacts', function() {
       newContacts.name.should.equal('New Contacts');
-      newContacts.info.should.equal('This is the brand new contacts!!!');
+      newContacts.title.should.equal('This is the brand new contacts!!!');
     });
 
   });
@@ -79,7 +79,7 @@ describe('Contacts API:', function() {
 
     it('should respond with the requested contacts', function() {
       contacts.name.should.equal('New Contacts');
-      contacts.info.should.equal('This is the brand new contacts!!!');
+      contacts.title.should.equal('This is the brand new contacts!!!');
     });
 
   });
@@ -92,7 +92,7 @@ describe('Contacts API:', function() {
         .put('/api/contacts/' + newContacts._id)
         .send({
           name: 'Updated Contacts',
-          info: 'This is the updated contacts!!!'
+          title: 'This is the updated contacts!!!'
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -111,7 +111,7 @@ describe('Contacts API:', function() {
 
     it('should respond with the updated contacts', function() {
       updatedContacts.name.should.equal('Updated Contacts');
-      updatedContacts.info.should.equal('This is the updated contacts!!!');
+      updatedContacts.title.should.equal('This is the updated contacts!!!');
     });
 
   });

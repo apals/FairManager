@@ -36,7 +36,7 @@ describe('Partners API:', function() {
         .post('/api/partners')
         .send({
           name: 'New Partners',
-          info: 'This is the brand new partners!!!'
+          websiteUrl: 'This is the brand new partners!!!'
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -51,7 +51,7 @@ describe('Partners API:', function() {
 
     it('should respond with the newly created partners', function() {
       newPartners.name.should.equal('New Partners');
-      newPartners.info.should.equal('This is the brand new partners!!!');
+      newPartners.websiteUrl.should.equal('This is the brand new partners!!!');
     });
 
   });
@@ -79,7 +79,7 @@ describe('Partners API:', function() {
 
     it('should respond with the requested partners', function() {
       partners.name.should.equal('New Partners');
-      partners.info.should.equal('This is the brand new partners!!!');
+      partners.websiteUrl.should.equal('This is the brand new partners!!!');
     });
 
   });
@@ -92,7 +92,7 @@ describe('Partners API:', function() {
         .put('/api/partners/' + newPartners._id)
         .send({
           name: 'Updated Partners',
-          info: 'This is the updated partners!!!'
+          websiteUrl: 'This is the updated partners!!!'
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -111,7 +111,7 @@ describe('Partners API:', function() {
 
     it('should respond with the updated partners', function() {
       updatedPartners.name.should.equal('Updated Partners');
-      updatedPartners.info.should.equal('This is the updated partners!!!');
+      updatedPartners.websiteUrl.should.equal('This is the updated partners!!!');
     });
 
   });

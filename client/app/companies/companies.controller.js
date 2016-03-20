@@ -18,11 +18,8 @@ angular.module('fairManagerApp')
 
     $scope.delete = Modal.confirm.delete(function(company) {
       CompanyService.Company.delete({id: company._id},function() {
-        angular.forEach($scope.companies, function(u, i) {
-          if (u === company) {
-            $scope.companies.splice(i, 1);
-          }
-        });
+        $scope.companies.splice($scope.companies.indexOf(company), 1);
+
       });
     });
 

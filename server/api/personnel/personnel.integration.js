@@ -36,7 +36,7 @@ describe('Personnel API:', function() {
         .post('/api/personnel')
         .send({
           name: 'New Personnel',
-          info: 'This is the brand new personnel!!!'
+          title: 'This is the brand new personnel!!!'
         })
         .expect(201)
         .expect('Content-Type', /json/)
@@ -51,7 +51,7 @@ describe('Personnel API:', function() {
 
     it('should respond with the newly created personnel', function() {
       newPersonnel.name.should.equal('New Personnel');
-      newPersonnel.info.should.equal('This is the brand new personnel!!!');
+      newPersonnel.title.should.equal('This is the brand new personnel!!!');
     });
 
   });
@@ -79,7 +79,7 @@ describe('Personnel API:', function() {
 
     it('should respond with the requested personnel', function() {
       personnel.name.should.equal('New Personnel');
-      personnel.info.should.equal('This is the brand new personnel!!!');
+      personnel.title.should.equal('This is the brand new personnel!!!');
     });
 
   });
@@ -92,7 +92,7 @@ describe('Personnel API:', function() {
         .put('/api/personnel/' + newPersonnel._id)
         .send({
           name: 'Updated Personnel',
-          info: 'This is the updated personnel!!!'
+          title: 'This is the updated personnel!!!'
         })
         .expect(200)
         .expect('Content-Type', /json/)
@@ -111,7 +111,7 @@ describe('Personnel API:', function() {
 
     it('should respond with the updated personnel', function() {
       updatedPersonnel.name.should.equal('Updated Personnel');
-      updatedPersonnel.info.should.equal('This is the updated personnel!!!');
+      updatedPersonnel.title.should.equal('This is the updated personnel!!!');
     });
 
   });

@@ -36,7 +36,9 @@ describe('Events API:', function() {
         .post('/api/events')
         .send({
           name: 'New Events',
-          info: 'This is the brand new events!!!'
+          info: 'This is the brand new events!!!',
+          startDate: '2016-03-19T20:30:00.000Z',
+          endDate: '2016-03-19T20:30:00.000Z'
         })
         .expect(201)
         .expect('Content-Type', /json/)

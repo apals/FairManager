@@ -1,14 +1,14 @@
 'use strict';
 
-describe('Service: Companies', function () {
+describe('Service: CompanyService', function () {
 
   // load the service's module
   beforeEach(module('fairManagerApp'));
 
   // instantiate service
   var Companies;
-  beforeEach(inject(function (_Companies_) {
-    Companies = _Companies_;
+  beforeEach(inject(function (CompanyService) {
+    Companies = CompanyService;
   }));
 
   it('should do something', function () {
