@@ -19,7 +19,6 @@ angular.module('fairManagerApp.admin')
 
     User.query(function (response) {
       $scope.users = response;
-      console.log(response);
       $scope.isBusy = false;
     }, function (err) {
       console.log(err);
