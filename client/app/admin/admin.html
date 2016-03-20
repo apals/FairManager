@@ -33,16 +33,16 @@
 
 <div class="row text-center">
   <form ng-submit="create(user)" ng-model="user.provider" ng-init="user.provider='local'">
-    <div class="col-sm-8 col-sm-offset-2">
-    <input class="form-control" ng-model="user.name" placeholder="name">
+    <div class="col-sm-3">
+    <input class="form-control" ng-model="user.name" placeholder="Name">
     </div>
-    <div class="col-sm-8 col-sm-offset-2">
-      <input class="form-control" ng-model="user.email" placeholder="email">
+    <div class="col-sm-3">
+      <input class="form-control" ng-model="user.email" placeholder="Email">
     </div>
-    <div class="col-sm-8 col-sm-offset-2">
-      <input class="form-control" type="password" ng-model="user.password" placeholder="password">
+    <div class="col-sm-3">
+      <input class="form-control" type="password" ng-model="user.password" placeholder="Password">
     </div>
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-3">
       <button class="btn btn-block" type="submit">Submit</button>
     </div>
   </form>
