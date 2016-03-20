@@ -1,14 +1,21 @@
 language: node_js
 node_js:
-  - 5.9.0
+- 5.9.0
 matrix:
   fast_finish: true
   allow_failures:
-    - node_js: 5.1.1
+  - node_js: 5.1.1
 before_script:
-  - npm install -g bower grunt-cli
-  - gem install sass
-  - bower install
+- npm install -g bower grunt-cli
+- gem install sass
+- bower install
 script:
-  - grunt
+- grunt
 services: mongodb
+deploy:
+  provider: heroku
+  api_key:
+    secure: kPBm3/Ep7R3x6jfSUzKxMxtYBSPvIRvWEd95ukxvaMC7giGP4wUgobC2W6or+adzQMqqtIlfERkcF32RrN0OTuOyJDjqmmtBmoPrj2tZmdjsImOQfWOjwprApCIHqVQg0QWC10NkQwQfmEJEWHedPIrJy+okHmbGzxaL9dZOYsniBhjlAYBd0Kmi5DCOh5pgleaXJrL1TMY4wsepFhK9mCijC0r1wzLsQZ4z1aKdGN8W8M17KBWKwFvZuBICNXrholfPi9GOqLZ235XssDb0XRlJ4ruSv/8xG4PM9P1gvuTW3NXVvEAX0KPwwaDFXQ0za77lv+71CKGHdtjmAKy5OyckmrcFRxx/HG4OgRCn/fKwSWly1q2GeB/93FJHBedDmndlqb9hnqXvLLe6Y5sGW/uqv7xttn0BaI2gtalzM8oju6dD0i9zcENRltQvC6NZwhFkbuvmI5/GuzCvjP2Jylq1UzrjtnSNpqkUnJHzkf1yYLLqXyeWfygaI5n9b6L0DG61OR1gR7Pa/QUXEX7bWowqLeMISmtmZM4Qn/h5JouNAnXiYpKpZ5WW1sijcTgzCHh6YlgLEiSpt19VQ6T+OuLvVLiu+NpqGZCnmes6Fw9ifEEsDpuvVboqFDhxdUZDOz5h0CieRjCf9cd8ZGetpV3yzV1ozeaFZ3wzxCgiOVc=
+  app: FairManager
+  on:
+    repo: apals/FairManager
