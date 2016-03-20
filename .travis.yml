@@ -19,3 +19,5 @@ deploy:
   app: FairManager
   on:
     repo: apals/FairManager
+  skip_cleanup: true
+
