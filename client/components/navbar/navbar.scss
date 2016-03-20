@@ -32,8 +32,7 @@
   margin-bottom: 0;
 }
 .navbar .nav > .active > a {
-  background:none;
-  color: $primary-text-color;
+  color: $primary-color;
   background-color: $primary-hover-background-color;
   /*border-bottom: 2px solid $primary-color;
   box-sizing: border-box;
@@ -58,7 +57,6 @@
 }
 
 .navbar .nav > .active > a:focus {
-  background: none;
   color: $primary-text-color;
 }
 
