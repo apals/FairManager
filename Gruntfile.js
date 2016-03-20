@@ -395,11 +395,11 @@ module.exports = function (grunt) {
             '<%= yeoman.server %>/**/*',
             '!<%= yeoman.server %>/config/local.env.sample.js'
           ]
-        }, { 
+        }, {
           expand: true,
-          cwd: '<%= yeoman.app %>/bower_components/font-awesome', 
-          src: 'fonts/*', 
-          dest: '<%= yeoman.dist %>' 
+          cwd: '<%= yeoman.app %>/bower_components/font-awesome',
+          src: 'fonts/*',
+          dest: '<%= yeoman.dist %>'
         }]
       },
       styles: {
@@ -420,7 +420,7 @@ module.exports = function (grunt) {
       },
       heroku: {
         options: {
-          remote: 'heroku',
+          remote: 'git@heroku.com:fairmanager.git',
           branch: 'master'
         }
       },
