@@ -99,8 +99,8 @@
     "supertest": "^1.1.0"
   },
   "engines": {
-    "node": "^4.2.3",
-    "npm": "^2.14.7"
+    "node": "5.9.0",
+    "npm": "3.6.0"
   },
   "scripts": {
     "start": "node server",
