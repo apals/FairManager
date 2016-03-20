@@ -28,6 +28,7 @@ angular.module('fairManagerApp')
     $scope.isLoggedIn = Auth.isLoggedIn;
     $scope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
+    $scope.hasRole = Auth.hasRole;
 
     $scope.logout = function() {
       Auth.logout();

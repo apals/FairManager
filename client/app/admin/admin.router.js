@@ -7,6 +7,6 @@ angular.module('fairManagerApp.admin')
         templateUrl: 'app/admin/admin.html',
         controller: 'AdminController',
         controllerAs: 'admin',
-        authenticate: 'admin'
+        authenticate: 'owner || admin'
       });
   });
