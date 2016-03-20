@@ -7294,6 +7294,9 @@ button.close {
     align-items: center;
     text-decoration: none; }
 
+.col-sm-3 {
+  margin-top: 5px; }
+
 #buttons {
   float: right; }
 
@@ -7430,8 +7433,7 @@ footer.footer {
   margin-bottom: 0; }
 
 .navbar .nav > .active > a {
-  background: none;
-  color: #404040;
+  color: #51039a;
   background-color: #e7e7e7;
   /*border-bottom: 2px solid $primary-color;
   box-sizing: border-box;
@@ -7453,7 +7455,6 @@ footer.footer {
   background-color: #e7e7e7; }
 
 .navbar .nav > .active > a:focus {
-  background: none;
   color: #404040; }
 
 .navbar .nav > .active > a:hover {
@@ -7527,12 +7528,12 @@ hr {
 .btn:focus {
   border-color: #51039a;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
-  background: transparent; }
+  background: white; }
 
 .btn:active {
   border-color: #51039a;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
-  background: transparent;
+  background: white;
   color: #51039a; }
 
 .btn:hover {
