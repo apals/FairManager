@@ -22,6 +22,7 @@ after_success:
   - heroku keys:clear
   # Add a new SSH key to Heroku
   - yes | heroku keys:add
+  - rm -r dist
   # Clone Heroku deployment repo to dist folder
   - git clone git@heroku.com:qurrus-web-prod.git dist
   # Build
