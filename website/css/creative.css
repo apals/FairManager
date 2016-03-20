@@ -33,9 +33,9 @@ video {
     width: auto;
     height: auto;
     transform: translateX(-50%) translateY(-50%);
- background: url('http://demosthenes.info/assets/images/polina.jpg') no-repeat;
-  background-size: cover;
-  transition: 1s opacity;
+    background: url('http://demosthenes.info/assets/images/polina.jpg') no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
 }
 
 a {
@@ -192,7 +192,8 @@ header {
     min-height: auto;
     text-align: center;
     color: #fff;
-    background-image: url(../img/header.jpg);
+    /*background-image: url(../img/header.jpg);*/
+    background: url('http://demosthenes.info/assets/images/polina.jpg') no-repeat;
     background-position: center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
