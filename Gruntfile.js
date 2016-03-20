@@ -420,7 +420,7 @@ module.exports = function (grunt) {
       },
       heroku: {
         options: {
-          remote: 'git@heroku.com:fairmanager.git',
+          remote: 'heroku',
           branch: 'master'
         }
       },
