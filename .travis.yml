@@ -10,5 +10,5 @@ before_script:
   - gem install sass
   - bower install --force
 script:
-  - grunt --force
+  - grunt
 services: mongodb
