@@ -20,4 +20,6 @@ deploy:
   on:
     repo: apals/FairManager
   skip_cleanup: true
+  local-dir: dist
+
 
