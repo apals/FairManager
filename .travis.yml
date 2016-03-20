@@ -15,4 +15,5 @@ services: mongodb
 after_success:
     - bash ./travis/after_success.sh
 
-
+deploy:
+  skip_cleanup: true
