@@ -5,9 +5,11 @@ angular.module('fairManagerApp.admin')
   .controller('AdminController', function (User, Modal, $scope) {
 
     $scope.users = [];
+    $scope.isBusy = true;
 
     User.query(function (response) {
       $scope.users = response;
+      $scope.isBusy = false;
     }, function (err) {
       console.log(err);
     });

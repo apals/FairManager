@@ -19,6 +19,13 @@
 
     <p>{{error}}</p>
   </ul>
+  <div class="row">
+    <div ng-show="isBusy" class="col-sm-12 text-center">
+      <h3>Loading...</h3>
+      <br>
+      <br>
+    </div>
+  </div>
   <form ng-submit="create(user)">
   <input ng-model="user.provider" placeholder="provider">
   <input ng-model="user.name" placeholder="name">
