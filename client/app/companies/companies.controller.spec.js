@@ -65,7 +65,6 @@ describe('Controller: CompaniesController', function () {
 
   it('should attach a list of things to the controller', function () {
     $httpBackend.flush();
-    console.log(CompaniesController.$scope);
     expect(scope.companies.length).toBe(11);
   });
 });
