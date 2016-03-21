@@ -122,8 +122,6 @@ function AuthService($location, $http, $cookies, $q, appConfig, Util, User) {
       * @return {Bool|Promise}
       */
     hasRole(role, callback) {
-      console.log(role);
-      console.log(currentUser.role);
       var hasRole = function(r, h) {
         return userRoles.indexOf(r) >= userRoles.indexOf(h);
       };
