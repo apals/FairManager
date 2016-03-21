@@ -1,6 +1,12 @@
 language: node_js
 env:
   - CXX=g++-4.8
+cache:
+  directories:
+    - node_modules
+    - bower_components
+git:
+  depth: 1
 addons:
   apt:
     sources:
@@ -22,6 +28,9 @@ script:
 services: mongodb
 deploy:
   provider: heroku
+  app: FairManager
+  on:
+    repo: apals/FairManager
   api_key: 
     secure: c6nMWP0oRkrO2WVRBJZDRYBxBl51K04NkfS4orFt261jfNNYnVqJU689W6Mx70+MARVDWWOV9zic8J8Dz/kgQcTn0NWhvj07lmiNYFoW5ZIvhgXCgRHKDRJGIvZdyaITUVHeseY7axdwmgi3Z1zNgcD/seQWPNc06SYr7yVF32gYA6xr0gybmjh0+d/tGm3jkJfQ2BzNQoICJC4WmPTP4aw+bHc0VHTZhAqFOwLdQiiNfXac8T/PZQ0AERy1c8Bil80vkp26ohEl36RJejVanaq5CigafKgfNaQu7anho3QXNJIcBIf4XSN1ZSbXQjcRhP9pyDZoXhck8yS8hmV9rdVhp+kBgpgo8c60dWb24YzZsO28RjFPE92MSbZUkXX3Pdj4ZIaMhA1fdPZ0ioUKL426KiPDIcnzu3LY5SyNx/so2Bsz6l3mpTvGAWLycG4o6X0piYlZvS2S3ZGVe2rLn1Aw1svtNC9peGAE2QL3XeetJDQ1cyIfXIKv2iVYpE1Ka0ruqbsl5+1G3M96lEN/iHOUdUG7CHLIbsnwygy/LMaakjvZQcdyrf4uEKzSmQlZXrLBBAbcxVlWMeDh5C4lIABHBvgXzaYAX0h8koikB1RwkUJw+uQv6cXB5aZv3nc8BXudwF9PcRcL42LcipBYUI8+THzjbm2zoqEPkiHuXoI=
   skip_cleanup: true
