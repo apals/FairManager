@@ -18,6 +18,7 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
 $primary-color: #51039a;
 $primary-text-color: #404040;
 $primary-warning-color: #FF3B30;
+$primary-error-color: #E80000;
 $primary-hover-background-color: #e7e7e7;
 
 // Component styles are injected through grunt
@@ -77,6 +78,10 @@ label {
 h1, h2, h3 {
 	font-family: 'Raleway', sans-serif;
 	color: $primary-color;
+}
+
+h3.error {
+  color: $primary-error-color;
 }
 
 .container {
