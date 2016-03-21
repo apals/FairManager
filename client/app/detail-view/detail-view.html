@@ -5,18 +5,31 @@
     </div>
   </div>
   <hr>
+
   <div ng-repeat="(key, value) in element" ng-hide="key == '__v' || key == '_id'" class="row">
+
+
+
     <div class="col-sm-8 col-sm-offset-2">
       <div class="panel panel-default">
         <div class="panel-body">
           <div ng-if="key == 'logoUrl' || key == 'bannerUrl' ||key == 'imageUrl'" class="text-center">
             <img class="companyimage" ng-src="{{value}}">
           </div>
-          <div ng-if="key != 'logoUrl' && key != 'bannerUrl' && key != 'imageUrl'">
+
+          <div ng-if="key == 'error'">
+            <br>
+            <h3 class="error">{{value}}</h3>
+            <br>
+          </div>
+
+          <div ng-if="key != 'logoUrl' && key != 'bannerUrl' && key != 'error' && key != 'imageUrl'">
             <strong>{{key}}:</strong> {{value}}
           </div>
+
         </div>
       </div>
     </div>
   </div>
+
 </div>

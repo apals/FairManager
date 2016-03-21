@@ -6,7 +6,7 @@ angular.module('fairManagerApp')
     EventService.Event.get({id: $routeParams.id}, function(response) {
       $scope.event = response;
     }, function(error) {
-      $scope.event.error = 'There was an error fetching data';
+      $scope.event.error = 'Unable to fetch event details. Please check your internet connection and/or your login credentials.';
       console.log(error);
     });
 

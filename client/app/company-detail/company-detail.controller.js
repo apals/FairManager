@@ -6,7 +6,7 @@ angular.module('fairManagerApp')
     CompanyService.Company.get({id: $routeParams.id}, function(response) {
       $scope.company = response;
     }, function() {
-      $scope.company.error = 'There was an error fetching data';
+      $scope.company.error = 'Unable to fetch company details. Please check your internet connection and/or your login credentials.';
     });
 
   });

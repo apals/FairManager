@@ -9,6 +9,9 @@ angular.module('fairManagerApp')
     EventService.Events.query(function (response) {
       $scope.events = response;
       $scope.isBusy = false;
+      $scope.hasErrored = false;
+      $scope.errorMsg = "";
+
       socket.syncUpdates('events', $scope.events);
     });
 
@@ -21,6 +24,8 @@ angular.module('fairManagerApp')
         $scope.events.splice($scope.events.indexOf(event), 1);
       }, function (error) {
         $scope.error = error.data;
+        $scope.hasErrored = true;
+        $scope.errorMsg = "Unable to perform deletion. Please check your internet connection and/or your login credentials.";
       });
     });
 
