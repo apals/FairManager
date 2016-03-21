@@ -3,6 +3,9 @@
 angular.module('fairManagerApp')
   .controller('NewCompanyCtrl', function ($scope, CompanyService, $location, Upload, $timeout) {
 
+    $scope.hasErrored = false;
+    $scope.errorMsg = "";
+
     $scope.addCompany = function (company) {
 
       if (company) {
@@ -20,7 +23,8 @@ angular.module('fairManagerApp')
           });
         }, function (response) {
           if (response.status > 0) {
-            $scope.errorMsg = response.status + ': ' + response.data;
+            $scope.hasErrored = true;
+            $scope.errorMsg = "Unable to create new company. Technical data: " + response.status + ': ' + response.data;
           }
         }, function () {
           // Math.min is to fix IE which reports 200% sometimes
