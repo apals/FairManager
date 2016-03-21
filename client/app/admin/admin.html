@@ -43,7 +43,7 @@
 <div class="row text-center new-user" ng-class="{ 'hidden': ! showDetails }">
 
 
-  <form ng-submit="create(user)" ng-model="user.provider" ng-init="user.provider='local'">
+  <form ng-submit="create(user)">
     <div class="col-sm-3">
     <input name="username" class="form-control" ng-model="user.name" placeholder="Name" required>
     </div>
