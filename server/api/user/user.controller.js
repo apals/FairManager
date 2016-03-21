@@ -88,8 +88,8 @@ export function destroy(req, res) {
 
 function handleIsAdmin(res) {
   return function(entity) {
-    if(entity && entity.role === 'admin') {
-      res.status(403).end("You cannot delete the admin");
+    if(entity && entity.role === 'owner') {
+      res.status(403).end("You cannot delete the owner");
       return null;
     }
     return entity;
