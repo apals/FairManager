@@ -3,8 +3,6 @@
 angular.module('fairManagerApp')
   .controller('NewPartnerCtrl', function ($scope, PartnerService, $location, Upload, $timeout) {
 
-    $scope.hasErrored = false;
-    $scope.errorMsg = "";
 
     $scope.addPartner = function (partner) {
 
@@ -22,7 +20,6 @@ angular.module('fairManagerApp')
         });
       }, function (response) {
         if (response.status > 0) {
-          $scope.hasErrored = true;
           $scope.errorMsg = "Unable to create new partner. Technical data: " + response.status + ': ' + response.data;
         }
       }, function () {

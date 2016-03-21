@@ -47,7 +47,7 @@
 <div class="row text-center new-user" ng-class="{ 'hidden': ! showDetails }">
 
 
-  <form name="createUserForm" ng-submit="create(user);reset()">
+  <form name="createUserForm" ng-submit="create(user)">
     <div class="col-sm-3">
     <input name="username" class="form-control" ng-model="user.name" value="" placeholder="Name" required>
     </div>
@@ -80,7 +80,7 @@
 </div>
 
   <div class="row">
-    <div ng-show="hasErrored" class="col-sm-12 text-center">
+    <div ng-show="errorMsg" class="col-sm-12 text-center">
       <br>
       <h3 class="error">{{errorMsg}}</h3>
       <br>
