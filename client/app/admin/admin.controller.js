@@ -7,6 +7,9 @@ angular.module('fairManagerApp.admin')
     $scope.users = [];
     $scope.isBusy = true;
 
+    $scope.hasErrored = false;
+    $scope.errorMsg = "";
+
     var mapping =  {
     'owner': 0,
     'admin': 1,
@@ -14,7 +17,7 @@ angular.module('fairManagerApp.admin')
     };
 
     $scope.priorityOrder = function(userEntry) {
-      return mapping[userEntry.role]; 
+      return mapping[userEntry.role];
     };
 
     User.query(function (response) {
@@ -31,8 +34,8 @@ angular.module('fairManagerApp.admin')
         user.role = response.role;
         $scope.users.push(user);
       }, function (error) {
-        console.log('There was an error creating the user');
-        console.log(error);
+        $scope.hasErrored = true;
+        $scope.errorMsg = "Unable to create user. Please check your internet connection and/or your login credentials.";
       });
     };
 

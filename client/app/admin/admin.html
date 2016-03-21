@@ -25,6 +25,7 @@
             <td class="text-right"><a ng-click="deleteUser(user.name, user)" class="trash"><span class="fa fa-trash fa-2x">&nbsp;</span></a></td>
         </tbody>
       </table>
+
      <div class="row">
       <div ng-show="isBusy" class="col-sm-12 text-center">
         <h3>Loading...</h3>
@@ -32,7 +33,10 @@
         <br>
       </div>
     </div>
+
   </div>
+
+
 </div>
 
 
@@ -74,4 +78,13 @@
     </div>
   </form>
 </div>
+
+  <div class="row">
+    <div ng-show="hasErrored" class="col-sm-12 text-center">
+      <br>
+      <h3 class="error">{{errorMsg}}</h3>
+      <br>
+    </div>
+  </div>
+
 </div>
