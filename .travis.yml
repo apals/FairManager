@@ -28,7 +28,7 @@ script:
 services: mongodb
 deploy:
   provider: heroku
-  app: FairManager
+  app: fairmanager
   on:
     repo: apals/FairManager
   api_key: 
