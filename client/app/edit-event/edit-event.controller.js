@@ -14,7 +14,7 @@ angular.module('fairManagerApp')
       $scope.event = response;
     }, function(error) {
       $scope.event.error = 'There was an error fetching data';
-      $scope.errorMsg = "Unable fetch data. Please check your internet connection.";
+      $scope.errorMsg = 'Unable fetch data. Please check your internet connection.' + error.status;
     });
 
     $scope.updateEvent = function (event) {
@@ -22,7 +22,7 @@ angular.module('fairManagerApp')
         $location.path('/events');
       }, function(err) {
         $scope.event.error = 'There was an error updating the event';
-        $scope.errorMsg = "Unable to update event. Please check your internet connection and/or your login credentials.";
+        $scope.errorMsg = 'Unable to update event. Please check your internet connection and/or your login credentials. Error status code: ' + err.status;
       });
     };
 

@@ -18,7 +18,7 @@ angular.module('fairManagerApp')
         $location.path('/companies');
       }, function (err) {
         $scope.company.error = 'There was an error updating the exhibitor';
-        $scope.errorMsg = "Unable to update the exhibitor. Please check your internet connection and/or your login credentials.";
+        $scope.errorMsg = 'Unable to update the exhibitor. Please check your internet connection and/or your login credentials. Error status code:' + err.status;
       });
     };
 

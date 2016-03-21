@@ -8,7 +8,7 @@ angular.module('fairManagerApp')
       $scope.personnel = response;
     }, function(error) {
       $scope.personnel.error = 'There was an error fetching data';
-      $scope.errorMsg = "Unable to fetch data. Please check your internet connection.";
+      $scope.errorMsg = 'Unable to fetch data. Please check your internet connection.' + error.status;
     });
 
 
@@ -16,7 +16,7 @@ angular.module('fairManagerApp')
       PersonnelService.Person.update({id: personnel._id}, personnel, function () {
         $location.path('/personnel');
       }, function(err) {
-        $scope.errorMsg = "Unable to update personnel. Please check your internet connection.";
+        $scope.errorMsg = 'Unable to update personnel. Please check your internet connection. Error status code: ' + err.status;
       });
     };
 

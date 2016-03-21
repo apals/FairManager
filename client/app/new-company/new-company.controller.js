@@ -20,7 +20,7 @@ angular.module('fairManagerApp')
           });
         }, function (response) {
           if (response.status > 0) {
-            $scope.errorMsg = "Unable to create new company. Technical data: " + response.status + ': ' + response.data;
+            $scope.errorMsg = 'Unable to create new company. Technical data: ' + response.status + ': ' + response.data;
           }
         }, function () {
           // Math.min is to fix IE which reports 200% sometimes

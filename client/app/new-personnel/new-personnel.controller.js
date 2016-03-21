@@ -9,7 +9,7 @@ angular.module('fairManagerApp')
       newPersonnel.$save(function() {
         $location.path('/personnel');
       }, function(error) {
-        $scope.errorMsg = "Unable to create new company. Technical data: " + response.status + ': ' + response.data;
+        $scope.errorMsg = 'Unable to create new company. Technical data: ' + error.status + ': ' + error.data;
       });
     };
   });
