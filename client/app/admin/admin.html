@@ -47,9 +47,9 @@
 <div class="row text-center new-user" ng-class="{ 'hidden': ! showDetails }">
 
 
-  <form ng-submit="create(user)">
+  <form name="createUserForm" ng-submit="create(user);reset()">
     <div class="col-sm-3">
-    <input name="username" class="form-control" ng-model="user.name" placeholder="Name" required>
+    <input name="username" class="form-control" ng-model="user.name" value="" placeholder="Name" required>
     </div>
     <div class="col-sm-3">
       <input type="email" name="useremail" class="form-control" ng-model="user.email" placeholder="Email" required="">
@@ -74,7 +74,7 @@
           </div>
 
     <div class="col-sm-3">
-      <button class="btn btn-block" type="submit">Submit</button>
+      <button class="btn btn-block" type="submit" >Submit</button>
     </div>
   </form>
 </div>

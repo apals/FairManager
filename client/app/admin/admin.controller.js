@@ -16,6 +16,15 @@ angular.module('fairManagerApp.admin')
     'user' : 2
     };
 
+    var defaultValues = {
+      name : "",
+      email : "",
+      password : ""
+    };
+
+    $scope.user = angular.copy(defaultValues);
+
+
     $scope.priorityOrder = function(userEntry) {
       return mapping[userEntry.role];
     };
@@ -23,6 +32,7 @@ angular.module('fairManagerApp.admin')
     User.query(function (response) {
       $scope.users = response;
       $scope.isBusy = false;
+      $scope.reset();
     }, function (err) {
       console.log(err);
     });
@@ -46,4 +56,10 @@ angular.module('fairManagerApp.admin')
         $scope.error = error.data;
       });
     });
+
+    $scope.reset = function(){
+      $scope.user = angular.copy(defaultValues);
+      $scope.createUserForm.$setPristine();
+
+    };
   });
