@@ -28,6 +28,7 @@ angular.module('fairManagerApp.admin')
       var newUser = new User(user);
       newUser.$save(function (response) {
         user._id = response.id;
+        user.role = response.role;
         $scope.users.push(user);
       }, function (error) {
         console.log('There was an error creating the user');
