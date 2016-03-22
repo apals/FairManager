@@ -1,0 +1,65 @@
+<div class="container">
+  <form ng-submit="updatePartner(partner)" class="new-partner-form">
+
+    <fieldset>
+      <div class="col-sm-12 text-center">
+        <h1>Edit Partner</h1>
+        <hr>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Name:
+                <input ng-model="partner.name" required>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Website URL:
+                <input ng-model="partner.websiteUrl">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Logo URL:
+                <input ng-model="partner.logoUrl">
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <button type="submit" class="btn btn-block">Update
+          </button>
+        </div>
+      </div>
+
+    </fieldset>
+
+  </form>
+
+  <div class="row">
+    <div ng-show="errorMsg" class="col-sm-12 text-center">
+      <br>
+      <h3 class="error">{{errorMsg}}</h3>
+      <br>
+    </div>
+  </div>
+</div>
