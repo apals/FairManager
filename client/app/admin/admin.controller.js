@@ -41,7 +41,6 @@ angular.module('fairManagerApp.admin')
         user._id = response.id;
         user.role = response.role;
         $scope.users.push(user);
-        $scope.clearFormFields();
       }, function (error) {
 
         if(error.status === 422) {
