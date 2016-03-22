@@ -1,16 +1,16 @@
 'use strict';
 
-describe('Component: EditPartnerComponent', function () {
+describe('Controller: EditPartnerCtrl', function () {
 
   // load the controller's module
   beforeEach(module('fairManagerApp'));
 
-  var EditPartnerComponent, scope;
+  var EditPartnerCtrl, scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($componentController, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    EditPartnerComponent = $componentController('EditPartnerComponent', {
+    EditPartnerCtrl = $controller('EditPartnerCtrl', {
       $scope: scope
     });
   }));
