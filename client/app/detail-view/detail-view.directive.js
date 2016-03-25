@@ -11,7 +11,7 @@ angular.module('fairManagerApp')
       link: function($scope) {
       	$scope.splitCamelCase = function(string) {
       		return string.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); });
-      	}
+      	};
       }
     };
   });
