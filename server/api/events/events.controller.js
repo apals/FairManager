@@ -62,7 +62,7 @@ function handleError(res, statusCode) {
 
 // Gets a list of Eventss
 export function index(req, res) {
-  Events.findAsync()
+  Events.findAsync({}, {name: 1, startDate: 1, endDate: 1, imageUrl: 1})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
