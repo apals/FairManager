@@ -8,7 +8,7 @@ angular.module('fairManagerApp')
       $scope.partner = response;
     }, function(error) {
       $scope.partner.error = 'There was an error fetching data';
-      $scope.errorMsg = 'Unable to fetch data. Please check your internet connection.' + error.status;
+      $scope.errorMsg = 'Unable to fetch partner data. Error status code: ' + error.status;
     });
 
 
@@ -16,7 +16,7 @@ angular.module('fairManagerApp')
       PartnerService.Partner.update({id: partner._id}, partner, function () {
         $location.path('/partners');
       }, function(err) {
-        $scope.errorMsg = 'Unable to update partner. Please check your internet connection. Error status code: ' + err.status;
+        $scope.errorMsg = 'Unable to update partner. Error status code: ' + err.status;
       });
     };
 
