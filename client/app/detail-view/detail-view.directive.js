@@ -7,6 +7,8 @@ angular.module('fairManagerApp')
       scope: {
         element: '='
       },
-      templateUrl: 'app/detail-view/detail-view.html'
+      templateUrl: 'app/detail-view/detail-view.html',
+      controller: '@', // @ symbol
+      name: 'controllerName'
     };
   });
