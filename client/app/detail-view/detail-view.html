@@ -24,7 +24,7 @@
           </div>
 
           <div ng-if="key != 'logoUrl' && key != 'bannerUrl' && key != 'error' && key != 'imageUrl'">
-            <strong>{{key}}:</strong> {{value}}
+            <strong>{{splitCamelCase(key)}}:</strong> {{value}}
           </div>
 
         </div>
