@@ -61,7 +61,7 @@ function handleError(res, statusCode) {
 
 // Gets a list of Contactss
 export function index(req, res) {
-  Contacts.findAsync()
+  Contacts.findAsync({}, {name: 1, title: 1, email: 1, phone: 1})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }

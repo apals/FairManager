@@ -62,7 +62,7 @@ function handleError(res, statusCode) {
 
 // Gets a list of Partnerss
 export function index(req, res) {
-  Partners.findAsync()
+  Partners.findAsync({}, {name: 1, websiteUrl: 1, logoUrl: 1})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
