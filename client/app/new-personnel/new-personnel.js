@@ -5,6 +5,7 @@ angular.module('fairManagerApp')
     $routeProvider
       .when('/personnel/new', {
         templateUrl: 'app/new-personnel/new-personnel.html',
-        controller: 'NewPersonnelCtrl'
+        controller: 'NewPersonnelCtrl',
+        authenticate: 'admin'
       });
   });
