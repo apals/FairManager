@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .directive('overview', function () {
+  .directive('overview', function (Auth) {
     return {
       templateUrl: 'app/overview/overview.html',
       restrict: 'EA',
@@ -11,6 +11,12 @@ angular.module('fairManagerApp')
 
       },
       controller : '@', // @ symbol
-      name:'controllerName'
+      name:'controllerName',
+      link: function($scope) {
+        console.log("asd");
+        $scope.hasRole = Auth.hasRole;
+        console.log(Auth.hasRole);
+        console.log($scope.hasRole('admin'));
+      }
     };
   });
