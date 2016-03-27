@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('LoginCtrl', function (Auth, $location, $scope, LoginRedirectService) {
+  .controller('LoginCtrl', function (Auth, $location, $scope, $rootScope, LoginRedirectService) {
     $scope.user = {};
     $scope.errors = {};
     $scope.submitted = false;
+    $rootScope.title = 'Fair Manager';
 
     $scope.login = function (form) {
       this.submitted = true;
