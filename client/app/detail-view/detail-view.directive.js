@@ -8,10 +8,14 @@ angular.module('fairManagerApp')
         element: '='
       },
       templateUrl: 'app/detail-view/detail-view.html',
-      link: function($scope) {
-      	$scope.splitCamelCase = function(string) {
-      		return string.replace(/([A-Z])/g, ' $1').replace(/^./, function(str){ return str.toUpperCase(); });
-      	};
-      }
+      link: function ($scope) {
+        $scope.splitCamelCase = function (string) {
+          return string.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) {
+            return str.toUpperCase();
+          });
+        };
+      },
+      controller: '@', // @ symbol
+      name: 'controllerName'
     };
   });

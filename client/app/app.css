@@ -7297,6 +7297,14 @@ button.close {
 .col-sm-3 {
   margin-top: 5px; }
 
+.new-user {
+  transition: height .9s;
+  overflow: hidden;
+  max-height: 200px; }
+
+.new-user.hidden {
+  max-height: 0px; }
+
 #buttons {
   float: right; }
 
@@ -7491,6 +7499,9 @@ h1, h2, h3 {
   font-family: 'Raleway', sans-serif;
   color: #51039a; }
 
+h3.error {
+  color: #E80000; }
+
 .container {
   max-width: 100%; }
 
@@ -7527,13 +7538,21 @@ hr {
 
 .btn:focus {
   border-color: #51039a;
-  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
-  background: white; }
+  background: white;
+  outline: none; }
 
 .btn:active {
   border-color: #51039a;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
   background: white;
+  color: #51039a;
+  outline: none; }
+
+.btn:focus:active {
+  background-image: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
   color: #51039a; }
 
 .btn:hover {
