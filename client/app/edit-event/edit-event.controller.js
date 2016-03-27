@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('EditEventCtrl', function ($scope, EventService, $routeParams, $location) {
+  .controller('EditEventCtrl', function ($scope, EventService, $routeParams, $location, $rootScope) {
 
     $scope.event = {};
 
@@ -12,6 +12,8 @@ angular.module('fairManagerApp')
       response.startDate = new Date(response.startDate);
       response.endDate = new Date(response.endDate);
       $scope.event = response;
+      var title = $scope.event.name.charAt(0).toUpperCase() + $scope.event.name.slice(1);
+      $rootScope.title = title;
     }, function(error) {
       $scope.event.error = 'There was an error fetching data';
       $scope.errorMsg = 'Unable fetch data. Please check your internet connection.' + error.status;
