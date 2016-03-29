@@ -17,5 +17,5 @@ angular.module('fairManagerApp')
         var title = string.charAt(0).toUpperCase() + string.slice(1);
         $rootScope.title = title;
       }
-    }
+    };
   });

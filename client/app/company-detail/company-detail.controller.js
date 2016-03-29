@@ -8,8 +8,8 @@ angular.module('fairManagerApp')
     CompanyService.Company.get({id: $routeParams.id}, function(response) {
       $scope.company = response;
       $scope.isBusy = false;
-      var title = $scope.company.name.charAt(0).toUpperCase() + $scope.company.name.slice(1);
-      $rootScope.title = title;
+      //Change to exhibitors?
+      $rootScope.title = 'Companies - ' + $scope.company.name.charAt(0).toUpperCase() + $scope.company.name.slice(1);
     }, function() {
       $scope.company.error = 'Unable to fetch company details. Please check your internet connection and/or your login credentials.';
     });
