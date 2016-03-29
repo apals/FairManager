@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('EditEventCtrl', function ($scope, EventService, $routeParams, $location) {
+  .controller('EditEventCtrl', function ($scope, EventService, ErrorHandlingService, $routeParams, $location) {
 
     $scope.event = {};
 
@@ -14,15 +14,15 @@ angular.module('fairManagerApp')
       $scope.event = response;
     }, function(error) {
       $scope.event.error = 'There was an error fetching data';
-      $scope.errorMsg = 'Unable fetch data. Please check your internet connection.' + error.status;
+      $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'fetch event data');
     });
 
     $scope.updateEvent = function (event) {
       EventService.Event.update({id: event._id}, event, function () {
         $location.path('/events');
-      }, function(err) {
+      }, function(error) {
         $scope.event.error = 'There was an error updating the event';
-        $scope.errorMsg = 'Unable to update event. Please check your internet connection and/or your login credentials. Error status code: ' + err.status;
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'update event');
       });
     };
 

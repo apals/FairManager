@@ -2,7 +2,7 @@
 
 
 angular.module('fairManagerApp')
-  .controller('PersonnelCtrl', function ($scope, socket, PersonnelService, Modal) {
+  .controller('PersonnelCtrl', function ($scope, socket, PersonnelService, ErrorHandlingService, Modal) {
     $scope.personnel = [];
     $scope.isBusy = true;
 
@@ -21,6 +21,7 @@ angular.module('fairManagerApp')
         $scope.personnel.splice($scope.personnel.indexOf(person), 1);
       }, function (error) {
         $scope.error = error.data;
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'show personnel');
       });
     });
 

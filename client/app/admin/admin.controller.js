@@ -2,7 +2,7 @@
 
 
 angular.module('fairManagerApp.admin')
-  .controller('AdminController', function (User, Modal, $scope) {
+  .controller('AdminController', function (User, Modal, $scope, ErrorHandlingService) {
 
     $scope.users = [];
     $scope.isBusy = true;
@@ -31,8 +31,8 @@ angular.module('fairManagerApp.admin')
       $scope.users = response;
       $scope.isBusy = false;
       $scope.clearFormFields();
-    }, function (err) {
-      console.log(err);
+    }, function (error) {
+      $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'show users');
     });
 
     $scope.create = function (user) {
@@ -43,13 +43,9 @@ angular.module('fairManagerApp.admin')
         $scope.users.push(user);
       }, function (error) {
 
-        if(error.status === 422) {
-          $scope.errorMsg = 'Unable to create user. ' + error.data.errors.email.message;
-        }
-        else {
-          $scope.errorMsg = 'Unable to create user. Please check your internet connection';
-        }
+        console.log(error);
 
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create user');
 
       });
     };
@@ -59,6 +55,7 @@ angular.module('fairManagerApp.admin')
         $scope.users.splice($scope.users.indexOf(user), 1);
       }, function(error) {
         $scope.error = error.data;
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'delete user');
       });
     });
 

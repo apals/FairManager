@@ -1,22 +1,22 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('EditPersonnelCtrl', function ($scope, PersonnelService, $routeParams, $location) {
+  .controller('EditPersonnelCtrl', function ($scope, PersonnelService, ErrorHandlingService, $routeParams, $location) {
     $scope.personnel = {};
 
     PersonnelService.Person.get({id: $routeParams.id}, function(response) {
       $scope.personnel = response;
     }, function(error) {
       $scope.personnel.error = 'There was an error fetching data';
-      $scope.errorMsg = 'Unable to fetch data. Please check your internet connection.' + error.status;
+      $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'fetch personnel data');
     });
 
 
     $scope.updatePersonnel = function (personnel) {
       PersonnelService.Person.update({id: personnel._id}, personnel, function () {
         $location.path('/personnel');
-      }, function(err) {
-        $scope.errorMsg = 'Unable to update personnel. Please check your internet connection. Error status code: ' + err.status;
+      }, function(error) {
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'update personnel');
       });
     };
 

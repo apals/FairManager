@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('NewPersonnelCtrl', function ($scope, PersonnelService, $location) {
+  .controller('NewPersonnelCtrl', function ($scope, PersonnelService, ErrorHandlingService, $location) {
 
     $scope.addPersonnel = function(personnel) {
 
@@ -9,7 +9,7 @@ angular.module('fairManagerApp')
       newPersonnel.$save(function() {
         $location.path('/personnel');
       }, function(error) {
-        $scope.errorMsg = 'Unable to create new company. Technical data: ' + error.status + ': ' + error.data;
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create personnel');
       });
     };
   });

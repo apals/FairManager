@@ -1,16 +1,17 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('PartnerDetailCtrl', function ($scope, PartnerService, $routeParams) {
+  .controller('PartnerDetailCtrl', function ($scope, PartnerService, ErrorHandlingService, $routeParams) {
     $scope.partner = {};
     $scope.isBusy = true;
 
     PartnerService.Partner.get({id: $routeParams.id}, function(response) {
       $scope.partner = response;
       $scope.isBusy = false;
-      
+
     }, function(error) {
-      $scope.partner.error = 'Unable to fetch partner details. Please check your internet connection and/or your login credentials.';
+      $scope.partner.error = ErrorHandlingService.getErrorMessage(error, 'fetch partner details');
+      $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create event');
       console.log(error);
     });
 

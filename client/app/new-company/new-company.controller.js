@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('NewCompanyCtrl', function ($scope, CompanyService, $location, Upload, $timeout) {
+  .controller('NewCompanyCtrl', function ($scope, CompanyService, ErrorHandlingService, $location, Upload, $timeout) {
 
     $scope.addCompany = function (company) {
 
@@ -18,10 +18,9 @@ angular.module('fairManagerApp')
               $location.path('/companies');
             }
           });
-        }, function (response) {
-          if (response.status > 0) {
-            $scope.errorMsg = 'Unable to create new company. Technical data: ' + response.status + ': ' + response.data;
-          }
+        }, function (error) {
+            $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create exhibitor');
+
         }, function () {
           // Math.min is to fix IE which reports 200% sometimes
           //$scope.eventLogo.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
