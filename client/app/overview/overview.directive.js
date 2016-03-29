@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .directive('overview', function () {
+  .directive('overview', function ($rootScope) {
     return {
       templateUrl: 'app/overview/overview.html',
       restrict: 'EA',
@@ -11,6 +11,11 @@ angular.module('fairManagerApp')
 
       },
       controller : '@', // @ symbol
-      name:'controllerName'
+      name:'controllerName',
+      link: function(scope, element, attributes) {
+        var string = attributes.list;
+        var title = string.charAt(0).toUpperCase() + string.slice(1);
+        $rootScope.title = title;
+      }
     };
   });
