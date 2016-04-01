@@ -10,6 +10,15 @@ var eventsCtrlStub = {
   destroy: 'eventsCtrl.destroy'
 };
 
+var authServiceStub = {
+  isAuthenticated() {
+    return 'authService.isAuthenticated';
+  },
+  hasRole(role) {
+    return 'authService.hasRole.' + role;
+  }
+};
+
 var routerStub = {
   get: sinon.spy(),
   put: sinon.spy(),
@@ -25,7 +34,8 @@ var eventsIndex = proxyquire('./index.js', {
       return routerStub;
     }
   },
-  './events.controller': eventsCtrlStub
+  './events.controller': eventsCtrlStub,
+  '../../auth/auth.service': authServiceStub
 });
 
 describe('Events API Router:', function() {

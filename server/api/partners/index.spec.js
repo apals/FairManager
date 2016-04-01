@@ -10,6 +10,15 @@ var partnersCtrlStub = {
   destroy: 'partnersCtrl.destroy'
 };
 
+var authServiceStub = {
+  isAuthenticated() {
+    return 'authService.isAuthenticated';
+  },
+  hasRole(role) {
+    return 'authService.hasRole.' + role;
+  }
+};
+
 var routerStub = {
   get: sinon.spy(),
   put: sinon.spy(),
@@ -25,7 +34,8 @@ var partnersIndex = proxyquire('./index.js', {
       return routerStub;
     }
   },
-  './partners.controller': partnersCtrlStub
+  './partners.controller': partnersCtrlStub,
+  '../../auth/auth.service': authServiceStub
 });
 
 describe('Partners API Router:', function() {
@@ -38,7 +48,7 @@ describe('Partners API Router:', function() {
 
     it('should route to partners.controller.index', function() {
       routerStub.get
-        .withArgs('/', 'authService.hasRole.admin', 'partnersCtrl.index')
+        .withArgs('/', 'partnersCtrl.index')
         .should.have.been.calledOnce;
     });
 

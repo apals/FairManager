@@ -10,6 +10,15 @@ var contactsCtrlStub = {
   destroy: 'contactsCtrl.destroy'
 };
 
+var authServiceStub = {
+  isAuthenticated() {
+    return 'authService.isAuthenticated';
+  },
+  hasRole(role) {
+    return 'authService.hasRole.' + role;
+  }
+};
+
 var routerStub = {
   get: sinon.spy(),
   put: sinon.spy(),
@@ -25,7 +34,8 @@ var contactsIndex = proxyquire('./index.js', {
       return routerStub;
     }
   },
-  './contacts.controller': contactsCtrlStub
+  './contacts.controller': contactsCtrlStub,
+  '../../auth/auth.service': authServiceStub
 });
 
 describe('Contacts API Router:', function() {

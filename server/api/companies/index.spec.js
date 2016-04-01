@@ -10,6 +10,15 @@ var companiesCtrlStub = {
   destroy: 'companiesCtrl.destroy'
 };
 
+var authServiceStub = {
+  isAuthenticated() {
+    return 'authService.isAuthenticated';
+  },
+  hasRole(role) {
+    return 'authService.hasRole.' + role;
+  }
+};
+
 var routerStub = {
   get: sinon.spy(),
   put: sinon.spy(),
@@ -25,7 +34,8 @@ var companiesIndex = proxyquire('./index.js', {
       return routerStub;
     }
   },
-  './companies.controller': companiesCtrlStub
+  './companies.controller': companiesCtrlStub,
+  '../../auth/auth.service': authServiceStub
 });
 
 describe('Companies API Router:', function() {

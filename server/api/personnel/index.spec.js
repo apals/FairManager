@@ -10,6 +10,15 @@ var personnelCtrlStub = {
   destroy: 'personnelCtrl.destroy'
 };
 
+var authServiceStub = {
+  isAuthenticated() {
+    return 'authService.isAuthenticated';
+  },
+  hasRole(role) {
+    return 'authService.hasRole.' + role;
+  }
+};
+
 var routerStub = {
   get: sinon.spy(),
   put: sinon.spy(),
@@ -25,7 +34,8 @@ var personnelIndex = proxyquire('./index.js', {
       return routerStub;
     }
   },
-  './personnel.controller': personnelCtrlStub
+  './personnel.controller': personnelCtrlStub,
+  '../../auth/auth.service': authServiceStub
 });
 
 describe('Personnel API Router:', function() {

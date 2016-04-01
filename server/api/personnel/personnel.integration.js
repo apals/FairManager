@@ -2,10 +2,43 @@
 
 var app = require('../../../server');
 import request from 'supertest';
+import User from '../user/user.model';
 
 var newPersonnel;
 
 describe('Personnel API:', function() {
+
+  var token, user;
+
+  // Clear users before testing
+  before(function() {
+    return User.removeAsync().then(function() {
+      user = new User({
+        name: 'Fake User',
+        email: 'admin@example.com',
+        password: 'admin',
+        role: 'owner'
+      });
+
+      return user.saveAsync();
+    });
+  });
+
+  before(function (done) {
+    console.log('authing');
+    request(app)
+      .post('/auth/local')
+      .send({
+        email: 'admin@example.com',
+        password: 'admin'
+      })
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        token = res.body.token;
+        done();
+      });
+  });
 
   describe('GET /api/personnel', function() {
     var personnels;
@@ -13,6 +46,7 @@ describe('Personnel API:', function() {
     beforeEach(function(done) {
       request(app)
         .get('/api/personnel')
+        .set('authorization', 'Bearer ' + token)
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -34,6 +68,7 @@ describe('Personnel API:', function() {
     beforeEach(function(done) {
       request(app)
         .post('/api/personnel')
+        .set('authorization', 'Bearer ' + token)
         .send({
           name: 'New Personnel',
           title: 'This is the brand new personnel!!!'
@@ -62,6 +97,7 @@ describe('Personnel API:', function() {
     beforeEach(function(done) {
       request(app)
         .get('/api/personnel/' + newPersonnel._id)
+        .set('authorization', 'Bearer ' + token)
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -90,6 +126,7 @@ describe('Personnel API:', function() {
     beforeEach(function(done) {
       request(app)
         .put('/api/personnel/' + newPersonnel._id)
+        .set('authorization', 'Bearer ' + token)
         .send({
           name: 'Updated Personnel',
           title: 'This is the updated personnel!!!'
@@ -121,6 +158,7 @@ describe('Personnel API:', function() {
     it('should respond with 204 on successful removal', function(done) {
       request(app)
         .delete('/api/personnel/' + newPersonnel._id)
+        .set('authorization', 'Bearer ' + token)
         .expect(204)
         .end((err, res) => {
           if (err) {
@@ -133,6 +171,7 @@ describe('Personnel API:', function() {
     it('should respond with 404 when personnel does not exist', function(done) {
       request(app)
         .delete('/api/personnel/' + newPersonnel._id)
+        .set('authorization', 'Bearer ' + token)
         .expect(404)
         .end((err, res) => {
           if (err) {
