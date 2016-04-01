@@ -14,8 +14,6 @@ angular.module('fairManagerApp')
       name:'controllerName',
       link: function($scope) {
         $scope.hasRole = Auth.hasRole;
-        console.log(Auth.hasRole);
-        console.log($scope.hasRole('admin'));
       }
     };
   });
