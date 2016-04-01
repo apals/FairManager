@@ -2,7 +2,8 @@
 
 
 angular.module('fairManagerApp.admin')
-  .controller('AdminController', function (User, Modal, $scope) {
+  .controller('AdminController', function (User, Modal, $scope, $rootScope) {
+    $rootScope.title = 'Admin';
 
     $scope.users = [];
     $scope.isBusy = true;
