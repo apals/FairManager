@@ -58,7 +58,7 @@ describe('Companies API Router:', function() {
 
     it('should route to companies.controller.create', function() {
       routerStub.post
-        .withArgs('/', 'companiesCtrl.create')
+        .withArgs('/', 'authService.hasRole.admin', 'companiesCtrl.create')
         .should.have.been.calledOnce;
     });
 
@@ -68,7 +68,7 @@ describe('Companies API Router:', function() {
 
     it('should route to companies.controller.update', function() {
       routerStub.put
-        .withArgs('/:id', 'companiesCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'companiesCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -78,7 +78,7 @@ describe('Companies API Router:', function() {
 
     it('should route to companies.controller.update', function() {
       routerStub.patch
-        .withArgs('/:id', 'companiesCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'companiesCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -88,7 +88,7 @@ describe('Companies API Router:', function() {
 
     it('should route to companies.controller.destroy', function() {
       routerStub.delete
-        .withArgs('/:id', 'companiesCtrl.destroy')
+        .withArgs('/:id', 'authService.hasRole.admin', 'companiesCtrl.destroy')
         .should.have.been.calledOnce;
     });
 

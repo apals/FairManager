@@ -58,7 +58,7 @@ describe('Events API Router:', function() {
 
     it('should route to events.controller.create', function() {
       routerStub.post
-        .withArgs('/', 'eventsCtrl.create')
+        .withArgs('/', 'authService.hasRole.admin', 'eventsCtrl.create')
         .should.have.been.calledOnce;
     });
 
@@ -68,7 +68,7 @@ describe('Events API Router:', function() {
 
     it('should route to events.controller.update', function() {
       routerStub.put
-        .withArgs('/:id', 'eventsCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'eventsCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -78,7 +78,7 @@ describe('Events API Router:', function() {
 
     it('should route to events.controller.update', function() {
       routerStub.patch
-        .withArgs('/:id', 'eventsCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'eventsCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -88,7 +88,7 @@ describe('Events API Router:', function() {
 
     it('should route to events.controller.destroy', function() {
       routerStub.delete
-        .withArgs('/:id', 'eventsCtrl.destroy')
+        .withArgs('/:id', 'authService.hasRole.admin', 'eventsCtrl.destroy')
         .should.have.been.calledOnce;
     });
 

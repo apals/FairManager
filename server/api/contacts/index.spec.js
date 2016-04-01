@@ -58,7 +58,7 @@ describe('Contacts API Router:', function() {
 
     it('should route to contacts.controller.create', function() {
       routerStub.post
-        .withArgs('/', 'contactsCtrl.create')
+        .withArgs('/', 'authService.hasRole.admin', 'contactsCtrl.create')
         .should.have.been.calledOnce;
     });
 
@@ -68,7 +68,7 @@ describe('Contacts API Router:', function() {
 
     it('should route to contacts.controller.update', function() {
       routerStub.put
-        .withArgs('/:id', 'contactsCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'contactsCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -78,7 +78,7 @@ describe('Contacts API Router:', function() {
 
     it('should route to contacts.controller.update', function() {
       routerStub.patch
-        .withArgs('/:id', 'contactsCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'contactsCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -88,7 +88,7 @@ describe('Contacts API Router:', function() {
 
     it('should route to contacts.controller.destroy', function() {
       routerStub.delete
-        .withArgs('/:id', 'contactsCtrl.destroy')
+        .withArgs('/:id', 'authService.hasRole.admin', 'contactsCtrl.destroy')
         .should.have.been.calledOnce;
     });
 
