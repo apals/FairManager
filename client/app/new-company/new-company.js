@@ -6,6 +6,7 @@ angular.module('fairManagerApp')
       .when('/companies/new', {
         templateUrl: 'app/new-company/new-company.html',
         controller: 'NewCompanyCtrl',
-        controllerAs: 'newCompany'
+        controllerAs: 'newCompany',
+        authenticate: 'admin'
       });
   });

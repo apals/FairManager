@@ -5,6 +5,7 @@ angular.module('fairManagerApp')
     $routeProvider
       .when('/events/new', {
         templateUrl: 'app/new-event/new-event.html',
-        controller: 'NewEventCtrl'
+        controller: 'NewEventCtrl',
+        authenticate: 'admin'
       });
   });

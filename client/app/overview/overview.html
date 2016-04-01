@@ -9,13 +9,13 @@
     <div class="row">
       <div class="col-sm-12 text-center">
         <div class="row">
-          <div class="col-sm-8">
-            <input ng-model="filterText" type="search" class="form-control"
-                   placeholder="Search..">
-          </div>
-          <div class="col-sm-4">
-            <a class="btn btn-block btn-primary" href="/{{type.endpoint}}/new">Add new {{type.name}}</a>
-          </div>
+            <div ng-class="{'col-sm-8': hasRole('admin'), 'col-sm-12': !hasRole('admin')}">
+              <input ng-model="filterText" type="search" class="form-control"
+              placeholder="Search..">
+            </div>
+            <div ng-if="hasRole('admin')" class="col-sm-4">
+              <a class="btn btn-block btn-primary" href="/{{type.endpoint}}/new">Add new {{type.name}}</a>
+            </div>
         </div>
       </div>
     </div>
@@ -23,39 +23,39 @@
 
     <div class="row">
       <div
-        dir-paginate="element in list | orderBy:'name' | filter:{ name: filterText} | itemsPerPage: 10 "
-        class="col-sm-12">
-        <h3><a href="/{{type.endpoint}}/{{element._id}}">{{element.name}}</a></h3>
+      dir-paginate="element in list | orderBy:'name' | filter:{ name: filterText} | itemsPerPage: 10 "
+      class="col-sm-12">
+      <h3><a href="/{{type.endpoint}}/{{element._id}}">{{element.name}}</a></h3>
 
-        <div id="buttons">
-          <a href="/{{type.endpoint}}/{{element._id}}/edit" class="btn">Edit</a>
-          <!-- deleteCompany args are 1: what to display in modal view, 2: what to delete -->
-          <a class="btn btn-danger" ng-click="delete(element.name, element)">Delete</a>
-        </div>
-        <hr>
+      <div ng-show="hasRole('admin')" id="buttons">
+        <a href="/{{type.endpoint}}/{{element._id}}/edit" class="btn">Edit</a>
+        <!-- deleteCompany args are 1: what to display in modal view, 2: what to delete -->
+        <a class="btn btn-danger" ng-click="delete(element.name, element)">Delete</a>
       </div>
+      <hr>
     </div>
   </div>
-  <div class="row">
-    <div ng-show="isBusy" class="col-sm-12 text-center">
-      <h3>Loading...</h3>
-      <br>
-      <br>
-    </div>
+</div>
+<div class="row">
+  <div ng-show="isBusy" class="col-sm-12 text-center">
+    <h3>Loading...</h3>
+    <br>
+    <br>
   </div>
+</div>
 
-  <div class="row">
-    <div ng-show="errorMsg" class="col-sm-12 text-center">
-      <br>
-      <h3 class="error">{{errorMsg}} pls error here</h3>
-      <br>
-    </div>
+<div class="row">
+  <div ng-show="errorMsg" class="col-sm-12 text-center">
+    <br>
+    <h3 class="error">{{errorMsg}} pls error here</h3>
+    <br>
   </div>
+</div>
 
-  <div class="row">
-    <div class="col-sm-12 text-center">
-      <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
-      </dir-pagination-controls>
-    </div>
-  </div>
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+  </dir-pagination-controls>
+</div>
+</div>
 </div>
