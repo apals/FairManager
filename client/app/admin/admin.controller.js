@@ -39,11 +39,8 @@ angular.module('fairManagerApp.admin')
     $scope.create = function (user) {
       var newUser = new User(user);
       newUser.$save(function (response) {
-        user._id = response.id;
-        user.role = response.role;
-        $scope.users.push(user);
+        $scope.users.push(response.user);
       }, function (error) {
-
         if(error.status === 422) {
           $scope.errorMsg = 'Unable to create user. ' + error.data.errors.email.message;
         }
@@ -66,6 +63,5 @@ angular.module('fairManagerApp.admin')
     $scope.clearFormFields = function(){
       $scope.user = angular.copy(defaultValues);
       $scope.createUserForm.$setPristine();
-
     };
   });
