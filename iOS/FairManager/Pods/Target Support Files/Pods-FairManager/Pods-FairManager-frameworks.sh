@@ -88,10 +88,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-FairManager/Haneke.framework"
   install_framework "Pods-FairManager/MBProgressHUD.framework"
   install_framework "Pods-FairManager/SwiftyJSON.framework"
+  install_framework "Pods-FairManager/UIColor_Hex_Swift.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-FairManager/Alamofire.framework"
   install_framework "Pods-FairManager/Haneke.framework"
   install_framework "Pods-FairManager/MBProgressHUD.framework"
   install_framework "Pods-FairManager/SwiftyJSON.framework"
+  install_framework "Pods-FairManager/UIColor_Hex_Swift.framework"
 fi

@@ -10,6 +10,8 @@ import UIKit
 
 class FMCompanyViewController: UIViewController {
 
+    var company:Company?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -7,18 +7,29 @@
 //
 
 import UIKit
+import Haneke
 
 class FMCompanyTableViewController: UITableViewController {
     @IBOutlet weak var refreshCtrl: UIRefreshControl!
     
+    var chosenIndex = 0
     var companies:[Company]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let settings = dataFactory.getSettings() {
+            if let title = settings.exhibitorViewTitle {
+                self.navigationItem.title = title
+            }
+            
+        }
+        
         refreshData(self)
 
-        self.refreshControl?.addTarget(self, action: "refreshData:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl?.addTarget(self, action: #selector(refreshData), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.registerNib(UINib(nibName: "FMCompanyTableViewCell", bundle: nil), forCellReuseIdentifier: "FMCompanyTableViewCell")
+
 
     }
 
@@ -29,16 +40,18 @@ class FMCompanyTableViewController: UITableViewController {
     
     func refreshData(sender:AnyObject)
     {
-        DataFactory.getCompanies() { (companies, error) -> Void in
-            if let error = error {
-                print("ERROR: \(error)")
+        dataFactory.getCompanies() { companies, error in
+            if(error != nil) {
+                print("error")
             }
-            if let companies = companies {
+            if(companies != nil) {
                 self.companies = companies
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.tableView.reloadData()
-                    self.refreshControl?.endRefreshing()
-                }
+                self.tableView.reloadData()
+            }
+            
+            if self.refreshCtrl.refreshing
+            {
+                self.refreshCtrl.endRefreshing()
             }
         }
     }
@@ -61,13 +74,40 @@ class FMCompanyTableViewController: UITableViewController {
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("asd", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("FMCompanyTableViewCell", forIndexPath: indexPath) as! FMCompanyTableViewCell
         if let name = companies?[indexPath.row].name {
-            cell.textLabel?.text = name
+            cell.companyNameLabel.text = name
         }
+        
+        if let image = companies?[indexPath.row].logoUrl {
+            let url = NSURL(string: image)
+            cell.logoImageView.hnk_setImageFromURL(url!, placeholder: UIImage(named: "FM"), format: nil, failure: nil, success: nil)
+        }
+        
         return cell
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        chosenIndex = indexPath.row
+        self.performSegueWithIdentifier("companySegue", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let companies = self.companies {
+            let company = companies[chosenIndex]
+            let segueViewController = segue.destinationViewController as! FMCompanyViewController
+            segueViewController.company = company
+        }
+    }
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if let settings = dataFactory.getSettings() {
+            if let height = settings.exhibitorCellHeight {
+                return height
+            }
+        }
+        return 65
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -101,16 +141,6 @@ class FMCompanyTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
     */
 

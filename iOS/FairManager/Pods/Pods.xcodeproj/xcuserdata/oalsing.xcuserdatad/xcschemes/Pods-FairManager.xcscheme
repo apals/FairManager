@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6B29F7393E39A9F19D41EEB4'
+               BlueprintIdentifier = 'F14A451D128FEB7E4EBC7BD5'
                BlueprintName = 'Pods-FairManager'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_FairManager.framework'>
