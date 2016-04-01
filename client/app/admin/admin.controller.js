@@ -15,15 +15,6 @@ angular.module('fairManagerApp.admin')
     'user' : 2
     };
 
-    var defaultValues = {
-      name : '',
-      email : '',
-      password : ''
-    };
-
-    $scope.user = angular.copy(defaultValues);
-
-
     $scope.priorityOrder = function(userEntry) {
       return mapping[userEntry.role];
     };
@@ -31,7 +22,6 @@ angular.module('fairManagerApp.admin')
     User.query(function (response) {
       $scope.users = response;
       $scope.isBusy = false;
-      $scope.clearFormFields();
     }, function (err) {
       console.log(err);
     });
@@ -39,11 +29,9 @@ angular.module('fairManagerApp.admin')
     $scope.create = function (user) {
       var newUser = new User(user);
       newUser.$save(function (response) {
-        user._id = response.id;
-        user.role = response.role;
-        $scope.users.push(user);
+        $scope.clearFormFields();
+        $scope.users.push(response.user);
       }, function (error) {
-
         if(error.status === 422) {
           $scope.errorMsg = 'Unable to create user. ' + error.data.errors.email.message;
         }
@@ -64,8 +52,7 @@ angular.module('fairManagerApp.admin')
     });
 
     $scope.clearFormFields = function(){
-      $scope.user = angular.copy(defaultValues);
+      $scope.user = {};
       $scope.createUserForm.$setPristine();
-
     };
   });
