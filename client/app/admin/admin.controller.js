@@ -6,6 +6,7 @@ angular.module('fairManagerApp.admin')
 
     $scope.users = [];
     $scope.isBusy = true;
+    $scope.errorMsg = '';
 
 
     var mapping =  {
@@ -41,6 +42,7 @@ angular.module('fairManagerApp.admin')
         user._id = response.id;
         user.role = response.role;
         $scope.users.push(user);
+        $scope.clearFormFields();
       }, function (error) {
 
         console.log(error);
@@ -62,6 +64,6 @@ angular.module('fairManagerApp.admin')
     $scope.clearFormFields = function(){
       $scope.user = angular.copy(defaultValues);
       $scope.createUserForm.$setPristine();
-
+      $scope.errorMsg = ' ';
     };
   });
