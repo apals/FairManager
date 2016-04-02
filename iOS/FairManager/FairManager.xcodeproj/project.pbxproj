@@ -11,12 +11,12 @@
 		307CAA621C91BA0300F3D59F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307CAA601C91BA0300F3D59F /* Main.storyboard */; };
 		307CAA641C91BA0300F3D59F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 307CAA631C91BA0300F3D59F /* Assets.xcassets */; };
 		307CAA671C91BA0300F3D59F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307CAA651C91BA0300F3D59F /* LaunchScreen.storyboard */; };
-		308B5D751C91CEAA005C1F48 /* FMCompanyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308B5D741C91CEAA005C1F48 /* FMCompanyTableViewController.swift */; };
 		308B5D791C91D5AA005C1F48 /* DataFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308B5D781C91D5AA005C1F48 /* DataFactory.swift */; };
-		308B5D7B1C91E4B6005C1F48 /* FMCompanyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308B5D7A1C91E4B6005C1F48 /* FMCompanyViewController.swift */; };
 		3094F44C1CAEEE650067062E /* FMCompanyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3094F44B1CAEEE650067062E /* FMCompanyTableViewCell.xib */; };
 		3094F44E1CAEF3330067062E /* FMCompanyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3094F44D1CAEF3330067062E /* FMCompanyTableViewCell.swift */; };
 		3094F4501CAF01FD0067062E /* FMUINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3094F44F1CAF01FD0067062E /* FMUINavigationController.swift */; };
+		30E71D9A1CAFC2C2003A5E95 /* FMCompanyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E71D991CAFC2C2003A5E95 /* FMCompanyTableViewController.swift */; };
+		30E71D9C1CAFC389003A5E95 /* FMCompanyDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E71D9B1CAFC389003A5E95 /* FMCompanyDetailTableViewController.swift */; };
 		AC316DCD18F7A6416F5F7CE8 /* Pods_FairManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFD35E4D6B51EA11038654F9 /* Pods_FairManager.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,12 +28,12 @@
 		307CAA631C91BA0300F3D59F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		307CAA661C91BA0300F3D59F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		307CAA681C91BA0300F3D59F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		308B5D741C91CEAA005C1F48 /* FMCompanyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMCompanyTableViewController.swift; sourceTree = "<group>"; };
 		308B5D781C91D5AA005C1F48 /* DataFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataFactory.swift; sourceTree = "<group>"; };
-		308B5D7A1C91E4B6005C1F48 /* FMCompanyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMCompanyViewController.swift; sourceTree = "<group>"; };
 		3094F44B1CAEEE650067062E /* FMCompanyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMCompanyTableViewCell.xib; sourceTree = "<group>"; };
 		3094F44D1CAEF3330067062E /* FMCompanyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMCompanyTableViewCell.swift; sourceTree = "<group>"; };
 		3094F44F1CAF01FD0067062E /* FMUINavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMUINavigationController.swift; sourceTree = "<group>"; };
+		30E71D991CAFC2C2003A5E95 /* FMCompanyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMCompanyTableViewController.swift; sourceTree = "<group>"; };
+		30E71D9B1CAFC389003A5E95 /* FMCompanyDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMCompanyDetailTableViewController.swift; sourceTree = "<group>"; };
 		EFD35E4D6B51EA11038654F9 /* Pods_FairManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FairManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A22E6FA3463AE453DC3485 /* Pods-FairManager.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FairManager.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FairManager/Pods-FairManager.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -74,9 +74,9 @@
 				308B5D781C91D5AA005C1F48 /* DataFactory.swift */,
 				307CAA5A1C91BA0300F3D59F /* AppDelegate.swift */,
 				307CAA601C91BA0300F3D59F /* Main.storyboard */,
+				30E71D9B1CAFC389003A5E95 /* FMCompanyDetailTableViewController.swift */,
+				30E71D991CAFC2C2003A5E95 /* FMCompanyTableViewController.swift */,
 				3094F44F1CAF01FD0067062E /* FMUINavigationController.swift */,
-				308B5D7A1C91E4B6005C1F48 /* FMCompanyViewController.swift */,
-				308B5D741C91CEAA005C1F48 /* FMCompanyTableViewController.swift */,
 				3094F44B1CAEEE650067062E /* FMCompanyTableViewCell.xib */,
 				3094F44D1CAEF3330067062E /* FMCompanyTableViewCell.swift */,
 				307CAA631C91BA0300F3D59F /* Assets.xcassets */,
@@ -226,11 +226,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E71D9C1CAFC389003A5E95 /* FMCompanyDetailTableViewController.swift in Sources */,
 				3094F44E1CAEF3330067062E /* FMCompanyTableViewCell.swift in Sources */,
 				307CAA5B1C91BA0300F3D59F /* AppDelegate.swift in Sources */,
 				3094F4501CAF01FD0067062E /* FMUINavigationController.swift in Sources */,
-				308B5D7B1C91E4B6005C1F48 /* FMCompanyViewController.swift in Sources */,
-				308B5D751C91CEAA005C1F48 /* FMCompanyTableViewController.swift in Sources */,
+				30E71D9A1CAFC2C2003A5E95 /* FMCompanyTableViewController.swift in Sources */,
 				308B5D791C91D5AA005C1F48 /* DataFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

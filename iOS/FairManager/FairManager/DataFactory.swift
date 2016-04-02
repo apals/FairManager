@@ -15,6 +15,8 @@ import UIColor_Hex_Swift
 
 struct Company {
     var name:String?
+    var info:String?
+    var employees:Int?
     var logoUrl:String?
     var bannerUrl:String?
     var id:String?
@@ -53,41 +55,83 @@ public class DataFactory {
     func getCompanies(completionHandler: ([Company]?, NSError?) -> ()) {
         Alamofire.request(.GET, NSURL(string: "http://fairmanager.herokuapp.com/api/companies")!).validate().responseJSON { response in
             switch response.result {
-                case .Success:
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        var companies:[Company] = []
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    var companies:[Company] = []
+                    
+                    
+                    for (_, companyJson):(String, JSON) in json {
+                        var company:Company = Company()
                         
-                        
-                        for (_, companyJson):(String, JSON) in json {
-                            var company:Company = Company()
-                            
-                            if(companyJson["name"] != nil){
-                                company.name = companyJson["name"].string
-                            }
-                            
-                            if(companyJson["logoUrl"] != nil){
-                                company.logoUrl = companyJson["logoUrl"].string
-                            }
-                            
-                            if(companyJson["bannerUrl"] != nil){
-                                company.bannerUrl = companyJson["bannerUrl"].string
-                            }
-                            
-                            if(companyJson["_id"] != nil){
-                                company.id = companyJson["_id"].string
-                            }
-                            
-                            companies.append(company)
+                        if(companyJson["name"] != nil){
+                            company.name = companyJson["name"].string
                         }
                         
-                        completionHandler(companies, nil)
+                        if(companyJson["logoUrl"] != nil){
+                            company.logoUrl = companyJson["logoUrl"].string
+                        }
+                        
+                        if(companyJson["bannerUrl"] != nil){
+                            company.bannerUrl = companyJson["bannerUrl"].string
+                        }
+                        
+                        if(companyJson["_id"] != nil){
+                            company.id = companyJson["_id"].string
+                        }
+                        
+                        companies.append(company)
                     }
-                case .Failure(let error):
-                    completionHandler(nil, error)
+                    
+                    completionHandler(companies, nil)
+                }
+            case .Failure(let error):
+                completionHandler(nil, error)
+            }
         }
-    }
         
+    }
+    
+    func getCompany(id:String, completionHandler: (Company?, NSError?) -> ()) {
+        Alamofire.request(.GET, NSURL(string: "http://fairmanager.herokuapp.com/api/companies/\(id)")!).validate().responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    var company:Company = Company()
+
+                    if(json["name"] != nil){
+                        company.name = json["name"].string
+                    }
+                    
+                    if(json["info"] != nil){
+                        company.info = json["info"].string
+                    }
+                    
+                    if(json["employees"] != nil){
+                        company.employees = json["employees"].int
+                    }
+                    
+                    if(json["logoUrl"] != nil){
+                        company.logoUrl = json["logoUrl"].string
+                    }
+                    
+                    if(json["bannerUrl"] != nil){
+                        company.bannerUrl = json["bannerUrl"].string
+                    }
+                    
+                    if(json["_id"] != nil){
+                        company.id = json["_id"].string
+                    }
+                    
+                    
+                    // This should also update our local list of companies
+                    completionHandler(company, nil)
+                }
+            case .Failure(let error):
+                completionHandler(nil, error)
+            }
+        }
     }
     
     var exhibitorViewIsActive:Bool?

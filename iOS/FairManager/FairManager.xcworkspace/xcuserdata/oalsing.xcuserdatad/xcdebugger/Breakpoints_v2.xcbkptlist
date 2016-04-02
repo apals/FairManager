@@ -23,14 +23,91 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FairManager/DataFactory.swift"
-            timestampString = "481236509.150202"
+            filePath = "FairManager/FMCompanyDetailTableViewController.swift"
+            timestampString = "481283232.469164"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "getCompanies(_:)"
-            landmarkType = "5">
+            startingLineNumber = "12"
+            endingLineNumber = "12"
+            landmarkName = "FMCompanyDetailTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FairManager.FMCompanyDetailTableViewController.banner.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIImageView&gt;"
+                  moduleName = "FairManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oalsing/Programming/FairManager/iOS/FairManager/FairManager/FMCompanyDetailTableViewController.swift"
+                  timestampString = "481283232.498904"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "34">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FairManager.FMCompanyDetailTableViewController.banner.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIImageView&gt;"
+                  moduleName = "FairManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oalsing/Programming/FairManager/iOS/FairManager/FairManager/FMCompanyDetailTableViewController.swift"
+                  timestampString = "481283232.502555"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "47">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FairManager.FMCompanyDetailTableViewController.init (style : __C.UITableViewStyle) -&gt; FairManager.FMCompanyDetailTableViewController"
+                  moduleName = "FairManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oalsing/Programming/FairManager/iOS/FairManager/FairManager/FMCompanyDetailTableViewController.swift"
+                  timestampString = "481283232.502797"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FairManager.FMCompanyDetailTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; FairManager.FMCompanyDetailTableViewController"
+                  moduleName = "FairManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oalsing/Programming/FairManager/iOS/FairManager/FairManager/FMCompanyDetailTableViewController.swift"
+                  timestampString = "481283232.503013"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "89">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FairManager.FMCompanyDetailTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;FairManager.FMCompanyDetailTableViewController&gt;"
+                  moduleName = "FairManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oalsing/Programming/FairManager/iOS/FairManager/FairManager/FMCompanyDetailTableViewController.swift"
+                  timestampString = "481283232.503175"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
