@@ -10,6 +10,15 @@ var partnersCtrlStub = {
   destroy: 'partnersCtrl.destroy'
 };
 
+var authServiceStub = {
+  isAuthenticated() {
+    return 'authService.isAuthenticated';
+  },
+  hasRole(role) {
+    return 'authService.hasRole.' + role;
+  }
+};
+
 var routerStub = {
   get: sinon.spy(),
   put: sinon.spy(),
@@ -25,7 +34,8 @@ var partnersIndex = proxyquire('./index.js', {
       return routerStub;
     }
   },
-  './partners.controller': partnersCtrlStub
+  './partners.controller': partnersCtrlStub,
+  '../../auth/auth.service': authServiceStub
 });
 
 describe('Partners API Router:', function() {
@@ -58,7 +68,7 @@ describe('Partners API Router:', function() {
 
     it('should route to partners.controller.create', function() {
       routerStub.post
-        .withArgs('/', 'partnersCtrl.create')
+        .withArgs('/', 'authService.hasRole.admin', 'partnersCtrl.create')
         .should.have.been.calledOnce;
     });
 
@@ -68,7 +78,7 @@ describe('Partners API Router:', function() {
 
     it('should route to partners.controller.update', function() {
       routerStub.put
-        .withArgs('/:id', 'partnersCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'partnersCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -78,7 +88,7 @@ describe('Partners API Router:', function() {
 
     it('should route to partners.controller.update', function() {
       routerStub.patch
-        .withArgs('/:id', 'partnersCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'partnersCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -88,7 +98,7 @@ describe('Partners API Router:', function() {
 
     it('should route to partners.controller.destroy', function() {
       routerStub.delete
-        .withArgs('/:id', 'partnersCtrl.destroy')
+        .withArgs('/:id', 'authService.hasRole.admin', 'partnersCtrl.destroy')
         .should.have.been.calledOnce;
     });
 

@@ -10,6 +10,15 @@ var personnelCtrlStub = {
   destroy: 'personnelCtrl.destroy'
 };
 
+var authServiceStub = {
+  isAuthenticated() {
+    return 'authService.isAuthenticated';
+  },
+  hasRole(role) {
+    return 'authService.hasRole.' + role;
+  }
+};
+
 var routerStub = {
   get: sinon.spy(),
   put: sinon.spy(),
@@ -25,7 +34,8 @@ var personnelIndex = proxyquire('./index.js', {
       return routerStub;
     }
   },
-  './personnel.controller': personnelCtrlStub
+  './personnel.controller': personnelCtrlStub,
+  '../../auth/auth.service': authServiceStub
 });
 
 describe('Personnel API Router:', function() {
@@ -58,7 +68,7 @@ describe('Personnel API Router:', function() {
 
     it('should route to personnel.controller.create', function() {
       routerStub.post
-        .withArgs('/', 'personnelCtrl.create')
+        .withArgs('/', 'authService.hasRole.admin', 'personnelCtrl.create')
         .should.have.been.calledOnce;
     });
 
@@ -68,7 +78,7 @@ describe('Personnel API Router:', function() {
 
     it('should route to personnel.controller.update', function() {
       routerStub.put
-        .withArgs('/:id', 'personnelCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'personnelCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -78,7 +88,7 @@ describe('Personnel API Router:', function() {
 
     it('should route to personnel.controller.update', function() {
       routerStub.patch
-        .withArgs('/:id', 'personnelCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'personnelCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -88,7 +98,7 @@ describe('Personnel API Router:', function() {
 
     it('should route to personnel.controller.destroy', function() {
       routerStub.delete
-        .withArgs('/:id', 'personnelCtrl.destroy')
+        .withArgs('/:id', 'authService.hasRole.admin', 'personnelCtrl.destroy')
         .should.have.been.calledOnce;
     });
 

@@ -2,10 +2,43 @@
 
 var app = require('../../../server');
 import request from 'supertest';
+import User from '../user/user.model';
 
 var newPartners;
 
 describe('Partners API:', function() {
+
+  var token, user;
+
+  // Clear users before testing
+  before(function() {
+    return User.removeAsync().then(function() {
+      user = new User({
+        name: 'Fake User',
+        email: 'admin@example.com',
+        password: 'admin',
+        role: 'owner'
+      });
+
+      return user.saveAsync();
+    });
+  });
+
+  before(function (done) {
+    console.log('authing');
+    request(app)
+      .post('/auth/local')
+      .send({
+        email: 'admin@example.com',
+        password: 'admin'
+      })
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        token = res.body.token;
+        done();
+      });
+  });
 
   describe('GET /api/partners', function() {
     var partnerss;
@@ -34,6 +67,7 @@ describe('Partners API:', function() {
     beforeEach(function(done) {
       request(app)
         .post('/api/partners')
+        .set('authorization', 'Bearer ' + token)
         .send({
           name: 'New Partners',
           websiteUrl: 'This is the brand new partners!!!'
@@ -62,6 +96,7 @@ describe('Partners API:', function() {
     beforeEach(function(done) {
       request(app)
         .get('/api/partners/' + newPartners._id)
+        .set('authorization', 'Bearer ' + token)
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -90,6 +125,7 @@ describe('Partners API:', function() {
     beforeEach(function(done) {
       request(app)
         .put('/api/partners/' + newPartners._id)
+        .set('authorization', 'Bearer ' + token)
         .send({
           name: 'Updated Partners',
           websiteUrl: 'This is the updated partners!!!'
@@ -121,6 +157,7 @@ describe('Partners API:', function() {
     it('should respond with 204 on successful removal', function(done) {
       request(app)
         .delete('/api/partners/' + newPartners._id)
+        .set('authorization', 'Bearer ' + token)
         .expect(204)
         .end((err, res) => {
           if (err) {
@@ -133,6 +170,7 @@ describe('Partners API:', function() {
     it('should respond with 404 when partners does not exist', function(done) {
       request(app)
         .delete('/api/partners/' + newPartners._id)
+        .set('authorization', 'Bearer ' + token)
         .expect(404)
         .end((err, res) => {
           if (err) {

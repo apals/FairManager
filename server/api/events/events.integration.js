@@ -2,10 +2,43 @@
 
 var app = require('../../../server');
 import request from 'supertest';
+import User from '../user/user.model';
 
 var newEvents;
 
 describe('Events API:', function() {
+
+  var token, user;
+
+  // Clear users before testing
+  before(function() {
+    return User.removeAsync().then(function() {
+      user = new User({
+        name: 'Fake User',
+        email: 'admin@example.com',
+        password: 'admin',
+        role: 'owner'
+      });
+
+      return user.saveAsync();
+    });
+  });
+
+  before(function (done) {
+    console.log('authing');
+    request(app)
+      .post('/auth/local')
+      .send({
+        email: 'admin@example.com',
+        password: 'admin'
+      })
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end((err, res) => {
+        token = res.body.token;
+        done();
+      });
+  });
 
   describe('GET /api/events', function() {
     var eventss;
@@ -13,6 +46,7 @@ describe('Events API:', function() {
     beforeEach(function(done) {
       request(app)
         .get('/api/events')
+        .set('authorization', 'Bearer ' + token)
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -34,6 +68,7 @@ describe('Events API:', function() {
     beforeEach(function(done) {
       request(app)
         .post('/api/events')
+        .set('authorization', 'Bearer ' + token)
         .send({
           name: 'New Events',
           info: 'This is the brand new events!!!',
@@ -64,6 +99,7 @@ describe('Events API:', function() {
     beforeEach(function(done) {
       request(app)
         .get('/api/events/' + newEvents._id)
+        .set('authorization', 'Bearer ' + token)
         .expect(200)
         .expect('Content-Type', /json/)
         .end((err, res) => {
@@ -92,6 +128,7 @@ describe('Events API:', function() {
     beforeEach(function(done) {
       request(app)
         .put('/api/events/' + newEvents._id)
+        .set('authorization', 'Bearer ' + token)
         .send({
           name: 'Updated Events',
           info: 'This is the updated events!!!'
@@ -123,6 +160,7 @@ describe('Events API:', function() {
     it('should respond with 204 on successful removal', function(done) {
       request(app)
         .delete('/api/events/' + newEvents._id)
+        .set('authorization', 'Bearer ' + token)
         .expect(204)
         .end((err, res) => {
           if (err) {
@@ -135,6 +173,7 @@ describe('Events API:', function() {
     it('should respond with 404 when events does not exist', function(done) {
       request(app)
         .delete('/api/events/' + newEvents._id)
+        .set('authorization', 'Bearer ' + token)
         .expect(404)
         .end((err, res) => {
           if (err) {

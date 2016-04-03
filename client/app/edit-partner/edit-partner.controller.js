@@ -6,6 +6,8 @@ angular.module('fairManagerApp')
 
     PartnerService.Partner.get({id: $routeParams.id}, function(response) {
       $scope.partner = response;
+      var title = $scope.partner.name.charAt(0).toUpperCase() + $scope.partner.name.slice(1);
+      $rootScope.title = title;
     }, function(error) {
       $scope.partner.error = 'There was an error fetching data';
       $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'fetch partner data');

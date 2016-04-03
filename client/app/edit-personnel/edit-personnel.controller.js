@@ -6,6 +6,8 @@ angular.module('fairManagerApp')
 
     PersonnelService.Person.get({id: $routeParams.id}, function(response) {
       $scope.personnel = response;
+      var title = $scope.personnel.name.charAt(0).toUpperCase() + $scope.personnel.name.slice(1);
+      $rootScope.title = title;
     }, function(error) {
       $scope.personnel.error = 'There was an error fetching data';
       $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'fetch personnel data');

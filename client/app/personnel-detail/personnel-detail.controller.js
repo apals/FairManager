@@ -8,6 +8,7 @@ angular.module('fairManagerApp')
     PersonnelService.Person.get({id: $routeParams.id}, function(response) {
       $scope.personnel = response;
       $scope.isBusy = false;
+      $rootScope.title = 'Personnel - ' + $scope.personnel.name.charAt(0).toUpperCase() + $scope.personnel.name.slice(1);
 
     }, function(error) {
       $scope.personnel.error = ErrorHandlingService.getErrorMessage(error, 'show personnel');

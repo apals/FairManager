@@ -8,6 +8,8 @@ angular.module('fairManagerApp')
 
     CompanyService.Company.get({id: $routeParams.id}, function (response) {
       $scope.company = response;
+      var title = $scope.company.name.charAt(0).toUpperCase() + $scope.company.name.slice(1);
+      $rootScope.title = title;
     }, function (error) {
       $scope.company.error = ErrorHandlingService.getErrorMessage(error, 'fetch company data');
       console.log(error);

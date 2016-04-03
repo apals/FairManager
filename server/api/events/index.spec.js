@@ -10,6 +10,15 @@ var eventsCtrlStub = {
   destroy: 'eventsCtrl.destroy'
 };
 
+var authServiceStub = {
+  isAuthenticated() {
+    return 'authService.isAuthenticated';
+  },
+  hasRole(role) {
+    return 'authService.hasRole.' + role;
+  }
+};
+
 var routerStub = {
   get: sinon.spy(),
   put: sinon.spy(),
@@ -25,7 +34,8 @@ var eventsIndex = proxyquire('./index.js', {
       return routerStub;
     }
   },
-  './events.controller': eventsCtrlStub
+  './events.controller': eventsCtrlStub,
+  '../../auth/auth.service': authServiceStub
 });
 
 describe('Events API Router:', function() {
@@ -58,7 +68,7 @@ describe('Events API Router:', function() {
 
     it('should route to events.controller.create', function() {
       routerStub.post
-        .withArgs('/', 'eventsCtrl.create')
+        .withArgs('/', 'authService.hasRole.admin', 'eventsCtrl.create')
         .should.have.been.calledOnce;
     });
 
@@ -68,7 +78,7 @@ describe('Events API Router:', function() {
 
     it('should route to events.controller.update', function() {
       routerStub.put
-        .withArgs('/:id', 'eventsCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'eventsCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -78,7 +88,7 @@ describe('Events API Router:', function() {
 
     it('should route to events.controller.update', function() {
       routerStub.patch
-        .withArgs('/:id', 'eventsCtrl.update')
+        .withArgs('/:id', 'authService.hasRole.admin', 'eventsCtrl.update')
         .should.have.been.calledOnce;
     });
 
@@ -88,7 +98,7 @@ describe('Events API Router:', function() {
 
     it('should route to events.controller.destroy', function() {
       routerStub.delete
-        .withArgs('/:id', 'eventsCtrl.destroy')
+        .withArgs('/:id', 'authService.hasRole.admin', 'eventsCtrl.destroy')
         .should.have.been.calledOnce;
     });
 

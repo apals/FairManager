@@ -1,11 +1,11 @@
 'use strict';
 
 class SettingsController {
-  constructor(Auth) {
+  constructor(Auth, $rootScope) {
     this.errors = {};
     this.submitted = false;
-
     this.Auth = Auth;
+    $rootScope.title = 'Settings';
   }
 
   changePassword(form) {

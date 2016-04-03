@@ -6,13 +6,13 @@
 <!--[if IE 8]>
 <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js"> <!--<![endif]-->
+<html class="no-js" ng-app="fairManagerApp"> <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <base href="/">
 
-    <title>Fair Manager</title>
+    <title ng-bind="title">Fair Manager</title>
 
     <!-- ****** faviconit.com favicons ****** -->
     <link rel="shortcut icon" href="/favicon.ico">
@@ -86,7 +86,7 @@
     <!-- endinjector -->
     <!-- endbuild -->
   </head>
-  <body ng-app="fairManagerApp">
+  <body>
     <!--[if lt IE 7]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a
       href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
