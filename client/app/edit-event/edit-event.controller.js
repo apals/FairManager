@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('EditEventCtrl', function ($scope, EventService, ErrorHandlingService, $routeParams, $location) {
+  .controller('EditEventCtrl', function ($scope, EventService, ErrorHandlingService, $routeParams, $location, $rootScope) {
 
     $scope.event = {};
 

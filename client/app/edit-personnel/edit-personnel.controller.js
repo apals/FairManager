@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('EditPersonnelCtrl', function ($scope, PersonnelService, ErrorHandlingService, $routeParams, $location) {
+  .controller('EditPersonnelCtrl', function ($scope, PersonnelService, ErrorHandlingService, $routeParams, $location, $rootScope) {
     $scope.personnel = {};
 
     PersonnelService.Person.get({id: $routeParams.id}, function(response) {

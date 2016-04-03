@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('EventDetailCtrl', function ($scope, EventService, ErrorHandlingService, $routeParams) {
+  .controller('EventDetailCtrl', function ($scope, EventService, ErrorHandlingService, $routeParams, $rootScope) {
     $scope.event = {};
     $scope.isBusy = true;
 

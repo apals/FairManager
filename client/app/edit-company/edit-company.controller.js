@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('EditCompanyCtrl', function ($scope, CompanyService, ErrorHandlingService, $routeParams, $location) {
+  .controller('EditCompanyCtrl', function ($scope, CompanyService, ErrorHandlingService, $routeParams, $location, $rootScope) {
 
     $scope.company = {};
 

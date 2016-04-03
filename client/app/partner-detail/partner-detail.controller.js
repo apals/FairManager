@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('PartnerDetailCtrl', function ($scope, PartnerService, ErrorHandlingService, $routeParams) {
+  .controller('PartnerDetailCtrl', function ($scope, PartnerService, ErrorHandlingService, $routeParams, $rootScope) {
     $scope.partner = {};
     $scope.isBusy = true;
 

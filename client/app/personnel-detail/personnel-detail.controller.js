@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('PersonnelDetailCtrl', function ($scope, PersonnelService, ErrorHandlingService, $routeParams) {
+  .controller('PersonnelDetailCtrl', function ($scope, PersonnelService, ErrorHandlingService, $routeParams, $rootScope) {
     $scope.personnel = {};
     $scope.isBusy = true;
 

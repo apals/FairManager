@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('EditPartnerCtrl', function ($scope, PartnerService, ErrorHandlingService, $routeParams, $location) {
+  .controller('EditPartnerCtrl', function ($scope, PartnerService, ErrorHandlingService, $routeParams, $location, $rootScope) {
     $scope.partner = {};
 
     PartnerService.Partner.get({id: $routeParams.id}, function(response) {
