@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('NewPartnerCtrl', function ($scope, PartnerService, $location, Upload, $timeout) {
+  .controller('NewPartnerCtrl', function ($scope, PartnerService, ErrorHandlingService, $location, Upload, $timeout) {
 
 
     $scope.addPartner = function (partner) {
@@ -18,10 +18,8 @@ angular.module('fairManagerApp')
             $location.path('/partners');
           }
         });
-      }, function (response) {
-        if (response.status > 0) {
-          $scope.errorMsg = 'Unable to create new partner. Technical data: ' + response.status + ': ' + response.data;
-        }
+      }, function (error) {
+            $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create partner');
       }, function () {
         // Math.min is to fix IE which reports 200% sometimes
         //$scope.eventLogo.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));

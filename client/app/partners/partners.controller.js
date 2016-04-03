@@ -2,7 +2,7 @@
 
 
 angular.module('fairManagerApp')
-  .controller('PartnersCtrl', function ($scope, socket, PartnerService, Modal) {
+  .controller('PartnersCtrl', function ($scope, socket, PartnerService, ErrorHandlingService, Modal) {
     $scope.partners = [];
     $scope.isBusy = true;
 
@@ -21,6 +21,8 @@ angular.module('fairManagerApp')
         $scope.partners.splice($scope.partners.indexOf(partner), 1);
       }, function (error) {
         $scope.error = error.data;
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create event');
+
       });
     });
 

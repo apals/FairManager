@@ -2,7 +2,7 @@
 
 
 angular.module('fairManagerApp')
-  .controller('EventsCtrl', function ($scope, socket, EventService, Modal) {
+  .controller('EventsCtrl', function ($scope, socket, EventService, ErrorHandlingService, Modal) {
     $scope.events = [];
     $scope.isBusy = true;
 
@@ -22,7 +22,7 @@ angular.module('fairManagerApp')
         $scope.events.splice($scope.events.indexOf(event), 1);
       }, function (error) {
         $scope.error = error.data;
-        $scope.errorMsg = 'Unable to perform deletion. Please check your internet connection and/or your login credentials.';
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'delete event');
       });
     });
 

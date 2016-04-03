@@ -2,11 +2,12 @@
 
 
 angular.module('fairManagerApp.admin')
-  .controller('AdminController', function (User, Modal, $scope, $rootScope) {
+  .controller('AdminController', function (User, Modal, $scope, ErrorHandlingService, $rootScope) {
     $rootScope.title = 'Admin';
 
     $scope.users = [];
     $scope.isBusy = true;
+    $scope.errorMsg = '';
 
 
     var mapping =  {
@@ -22,8 +23,9 @@ angular.module('fairManagerApp.admin')
     User.query(function (response) {
       $scope.users = response;
       $scope.isBusy = false;
-    }, function (err) {
-      console.log(err);
+      $scope.clearFormFields();
+    }, function (error) {
+      $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'show users');
     });
 
     $scope.create = function (user) {
@@ -32,13 +34,10 @@ angular.module('fairManagerApp.admin')
         $scope.clearFormFields();
         $scope.users.push(response.user);
       }, function (error) {
-        if(error.status === 422) {
-          $scope.errorMsg = 'Unable to create user. ' + error.data.errors.email.message;
-        }
-        else {
-          $scope.errorMsg = 'Unable to create user. Please check your internet connection';
-        }
 
+        console.log(error);
+
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create user');
 
       });
     };
@@ -48,11 +47,13 @@ angular.module('fairManagerApp.admin')
         $scope.users.splice($scope.users.indexOf(user), 1);
       }, function(error) {
         $scope.error = error.data;
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'delete user');
       });
     });
 
     $scope.clearFormFields = function(){
       $scope.user = {};
       $scope.createUserForm.$setPristine();
+      $scope.errorMsg = ' ';
     };
   });

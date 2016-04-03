@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('PersonnelDetailCtrl', function ($scope, PersonnelService, $routeParams, $rootScope) {
+  .controller('PersonnelDetailCtrl', function ($scope, PersonnelService, ErrorHandlingService, $routeParams) {
     $scope.personnel = {};
     $scope.isBusy = true;
 
@@ -11,7 +11,8 @@ angular.module('fairManagerApp')
       $rootScope.title = 'Personnel - ' + $scope.personnel.name.charAt(0).toUpperCase() + $scope.personnel.name.slice(1);
 
     }, function(error) {
-      $scope.personnel.error = 'Unable show personnel. Please check your internet connection and/or your login credentials.';
+      $scope.personnel.error = ErrorHandlingService.getErrorMessage(error, 'show personnel');
+      $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'show personnel');
       console.log(error);
     });
 

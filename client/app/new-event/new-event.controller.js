@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('NewEventCtrl', function ($scope, EventService, $location, Upload, $timeout) {
+  .controller('NewEventCtrl', function ($scope, EventService, ErrorHandlingService, $location, Upload, $timeout) {
 
     $scope.addEvent = function (event) {
 
@@ -18,10 +18,8 @@ angular.module('fairManagerApp')
               $location.path('/events');
             }
           });
-        }, function (response) {
-          if (response.status > 0) {
-            $scope.errorMsg = 'Unable to create new event. Technical data: ' + response.status + ': ' + response.data;
-          }
+        }, function (error) {
+            $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create event');
         }, function () {
           // Math.min is to fix IE which reports 200% sometimes
           //$scope.eventLogo.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
