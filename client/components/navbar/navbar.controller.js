@@ -25,7 +25,7 @@ angular.module('fairManagerApp')
       },
       {
         'title': 'Settings',
-        'link': '/settingss'
+        'link': '/appsettings'
       }
     ];
     $scope.isCollapsed = true;

@@ -3,7 +3,7 @@
 angular.module('fairManagerApp')
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/settingss', {
+      .when('/appsettings', {
         templateUrl: 'app/settings/settings.html',
         controller: 'SettingsCtrl'
       });
