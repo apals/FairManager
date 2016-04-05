@@ -83,16 +83,21 @@ export function create(req, res) {
 
 // Updates an existing Settings in the DB
 export function update(req, res) {
+  var bodyid = req.body._id;
   if (req.body._id) delete req.body._id;
   for (var i = 0; i < req.body.tabs.length; i++) {
     if (req.body.tabs[i]._id) delete req.body.tabs[i]._id;
   }
-  Settings.findOneAsync()
-    .then(handleEntityNotFound(res))
-    .then(removeEntity(res))
+  
+  Settings.createAsync(req.body)
+    .then(respondWithResult(res, 201))
+    .then(() => {
+      Settings.findByIdAsync(bodyid)
+        .then(handleEntityNotFound(res))
+        .then(removeEntity(res))
+        .catch(handleError(res));
+    })
     .catch(handleError(res));
-
-  create(req, res);
 
 }
 
