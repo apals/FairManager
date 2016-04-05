@@ -24,7 +24,7 @@ angular.module('fairManagerApp')
         'link': '/personnel'
       },
       {
-        'title': 'Settings',
+        'title': 'App Settings',
         'link': '/appsettings'
       }
     ];
