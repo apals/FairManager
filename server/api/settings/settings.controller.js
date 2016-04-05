@@ -85,10 +85,12 @@ export function create(req, res) {
 export function update(req, res) {
   var bodyid = req.body._id;
   if (req.body._id) delete req.body._id;
+  if (req.body.__v) delete req.body.__v;
+
   for (var i = 0; i < req.body.tabs.length; i++) {
     if (req.body.tabs[i]._id) delete req.body.tabs[i]._id;
   }
-  
+
   Settings.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .then(() => {

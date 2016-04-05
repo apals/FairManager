@@ -11,10 +11,6 @@ angular.module('fairManagerApp')
     });
 
     $scope.updateSettings = function (settings) {
-      if (settings.__v) {
-        delete settings.__v;
-      }
-
       SettingsService.Settings.update(settings, function () {
 
       }, function (error) {
