@@ -31,6 +31,7 @@ $primary-hover-background-color: #e7e7e7;
 @import 'edit-event/edit-event.scss';
 @import 'edit-partner/edit-partner.scss';
 @import 'edit-personnel/edit-personnel.scss';
+@import 'edit-settings/edit-settings.scss';
 @import 'event-detail/event-detail.scss';
 @import 'events/events.scss';
 @import 'login/login.scss';
@@ -230,4 +231,8 @@ a .btn {
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.purple {
+  color: $primary-color;
 }

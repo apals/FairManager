@@ -41,17 +41,19 @@ Settings.find({}).removeAsync()
           isActive: true
         },
         {
-          name: "Per",
+          name: "Events",
           isActive: true
         },
         {
-          name: "Sson",
+          name: "Partners",
           isActive: true
         },
         {
-          name: "Lol",
+          name: "Personnel",
           isActive: true
         }
       ]
-    })
-  })
+    }).then(() => {
+      console.log('finished populating settings');
+    });
+  });

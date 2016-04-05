@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .directive('detailView', function () {
+  .directive('detailView', function (UtilService) {
     return {
       restrict: 'EA',
       scope: {
@@ -9,11 +9,7 @@ angular.module('fairManagerApp')
       },
       templateUrl: 'app/detail-view/detail-view.html',
       link: function ($scope) {
-        $scope.splitCamelCase = function (string) {
-          return string.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) {
-            return str.toUpperCase();
-          });
-        };
+        $scope.splitCamelCase = UtilService.splitCamelCase;
       },
       controller: '@', // @ symbol
       name: 'controllerName'

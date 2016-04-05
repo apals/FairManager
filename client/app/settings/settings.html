@@ -1,2 +1,154 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1 class="capitalize">Settings</h1>
+    </div>
+  </div>
+  <hr>
 
-<detail-view element="settings" controller-name="SettingsCtrl"></detail-view>
+  <form>
+
+    <div class="row">
+
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <div>
+              <strong>Primary Color:</strong>
+              <label ng-show="primaryColorEditorEnabled">
+                <input ng-model="settings.primaryColor" ng-value="settings.primaryColor">
+              </label>
+              <span ng-hide="primaryColorEditorEnabled">{{settings.primaryColor}}</span>
+
+              <a href="#" ng-click="primaryColorEditorEnabled=!primaryColorEditorEnabled">
+                <span ng-hide="primaryColorEditorEnabled" class="pull-right glyphicon glyphicon-pencil purple"></span>
+                <button ng-show="primaryColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
+              </a>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <div>
+              <strong>Accent Color:</strong>
+              <label ng-show="accentColorEditorEnabled">
+                <input ng-model="settings.accentColor" ng-value="settings.accentColor">
+              </label>
+              <span ng-hide="accentColorEditorEnabled">{{settings.accentColor}}</span>
+              <a href="#" ng-click="accentColorEditorEnabled=!accentColorEditorEnabled">
+                <span ng-hide="accentColorEditorEnabled" class="pull-right glyphicon glyphicon-pencil purple"></span>
+                <button ng-show="accentColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <div>
+              <strong>Primary Text Color:</strong>
+              <label ng-show="primaryTextColorEditorEnabled">
+                <input ng-model="settings.primaryTextColor" ng-value="settings.primaryTextColor">
+              </label>
+              <span ng-hide="primaryTextColorEditorEnabled">{{settings.primaryTextColor}}</span>
+              <a href="#" ng-click="primaryTextColorEditorEnabled=!primaryTextColorEditorEnabled">
+                <span ng-hide="primaryTextColorEditorEnabled"
+                      class="pull-right glyphicon glyphicon-pencil purple"></span>
+                <button ng-show="primaryTextColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <div>
+              <strong>Primary Sub Text Color:</strong>
+              <label ng-show="primarySubTextColorEditorEnabled">
+                <input ng-model="settings.primarySubTextColor" ng-value="settings.primarySubTextColor">
+              </label>
+              <span ng-hide="primarySubTextColorEditorEnabled">{{settings.primarySubTextColor}}</span>
+              <a href="#" ng-click="primarySubTextColorEditorEnabled=!primarySubTextColorEditorEnabled">
+                <span ng-hide="primarySubTextColorEditorEnabled"
+                      class="pull-right glyphicon glyphicon-pencil purple"></span>
+                <button ng-show="primarySubTextColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <div>
+              <strong>Background Color:</strong>
+              <label ng-show="backgroundColorEditorEnabled">
+                <input ng-model="settings.backgroundColor" ng-value="settings.backgroundColor">
+              </label>
+              <span ng-hide="backgroundColorEditorEnabled">{{settings.backgroundColor}}</span>
+              <a href="#" ng-click="backgroundColorEditorEnabled=!backgroundColorEditorEnabled">
+                <span ng-hide="backgroundColorEditorEnabled"
+                      class="pull-right glyphicon glyphicon-pencil purple"></span>
+                <button ng-show="backgroundColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <div>
+              <strong>Tabs:</strong>
+
+              <label ng-repeat="tab in settings.tabs" class="checkbox-inline">
+                <input type="checkbox" ng-model="tab.isActive">{{tab.name}}
+              </label>
+              <button class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
