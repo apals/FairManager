@@ -22,6 +22,10 @@ angular.module('fairManagerApp')
       {
         'title': 'Personnel',
         'link': '/personnel'
+      },
+      {
+        'title': 'App Settings',
+        'link': '/appsettings'
       }
     ];
     $scope.isCollapsed = true;

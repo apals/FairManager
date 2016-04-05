@@ -43,6 +43,7 @@ $primary-hover-background-color: #e7e7e7;
 @import 'partners/partners.scss';
 @import 'personnel-detail/personnel-detail.scss';
 @import 'personnel/personnel.scss';
+@import 'settings/settings.scss';
 @import '../components/footer/footer.scss';
 @import '../components/modal/modal.scss';
 @import '../components/navbar/navbar.scss';
@@ -229,4 +230,8 @@ a .btn {
 
 .capitalize {
   text-transform: capitalize;
+}
+
+.purple {
+  color: $primary-color;
 }
