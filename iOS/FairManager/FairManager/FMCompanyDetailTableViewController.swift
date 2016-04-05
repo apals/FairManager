@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class FMCompanyDetailTableViewController: UITableViewController {
     @IBOutlet weak var banner: UIImageView!
@@ -16,12 +17,18 @@ class FMCompanyDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         showLoadingHUD()
-
+        tableView.estimatedRowHeight = 44.0
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
     }
     
     func setCompany(company:Company) {
@@ -31,19 +38,27 @@ class FMCompanyDetailTableViewController: UITableViewController {
     }
     
     private func setupCompanyView() {
+        banner.clipsToBounds = true
         if let company = self.company {
             if let name = company.name {
                 self.navigationItem.title = name
             }
             if let url = company.bannerUrl {
-                let url = NSURL(string: url)
-                banner.hnk_setImageFromURL(url!, placeholder: UIImage(named: "standardbanner"), format: nil, failure: nil, success: nil)
-                
-                /*
-                var imageView = banner.frame
-                imageView.size.height = banner.image!.size.height * (banner.frame.size.width / banner.image!.size.width)
-                banner.frame = imageView
-                */
+                if let url = NSURL(string: url) {
+                    let cache = Shared.imageCache
+                    let fetcher = NetworkFetcher<UIImage>(URL: url)
+                    cache.fetch(fetcher: fetcher).onSuccess { image in
+                        let ratio = image.size.height / image.size.width
+                        
+                        let newHeight = self.banner.frame.width * ratio
+                        
+                        let frame = CGRectMake(0, 0, 320, newHeight)
+                        self.banner.image = image
+                        self.banner.frame = frame
+                        
+                        self.tableView.reloadData()
+                    }
+                }
             }
             if let info = company.info {
                 aboutText.text = info
@@ -61,16 +76,17 @@ class FMCompanyDetailTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
-    /*
+/*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("companyDetailCell", forIndexPath: indexPath)
+        print(cell)
 
         // Configure the cell...
 
         return cell
-    }
-    */
+    } */
+    
 
     /*
     // Override to support conditional editing of the table view.

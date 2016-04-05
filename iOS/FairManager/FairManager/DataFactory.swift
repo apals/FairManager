@@ -165,10 +165,10 @@ public class DataFactory {
         settings.contentMode = "Light"
         
         settings.exhibitorViewIsActive = true
-        settings.eventViewIsActive = true
-        settings.partnerViewIsActive = true
-        settings.contactViewIsActive = true
-        settings.personnelViewIsActive = true
+        settings.eventViewIsActive = false
+        settings.partnerViewIsActive = false
+        settings.contactViewIsActive = false
+        settings.personnelViewIsActive = false
         
         settings.exhibitorViewTitle = "Exhibitors"
         settings.eventViewTitle = "Events"
