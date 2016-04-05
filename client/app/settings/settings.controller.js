@@ -11,12 +11,15 @@ angular.module('fairManagerApp')
     });
 
     $scope.updateSettings = function (settings) {
-      if (settings.__v) delete settings.__v;
+      if (settings.__v) {
+        delete settings.__v;
+      }
 
-      SettingsService.Settings.update(settings, function (response) {
-        console.log(response);
+      SettingsService.Settings.update(settings, function () {
+
       }, function (error) {
         console.log(error);
       });
-    }
+    };
   });
+
