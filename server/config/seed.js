@@ -30,11 +30,11 @@ User.find({}).removeAsync()
 Settings.find({}).removeAsync()
   .then(() => {
     Settings.createAsync({
-      primaryColor: '#FFFFFF',
-      accentColor: '#FFFFFF',
-      primaryTextColor: '#FFFFFF',
-      primarySubTextColor: '#FFFFFF',
-      backgroundColor: '#FFFFFF',
+      primaryColor: '#RRGGBBAA',
+      accentColor: '#RRGGBBAA',
+      primaryTextColor: '#RRGGBBAA',
+      primarySubTextColor: '#RRGGBBAA',
+      backgroundColor: '#RRGGBBAA',
       tabs: [
         {
           name: "Exhibitors",
