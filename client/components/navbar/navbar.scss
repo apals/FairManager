@@ -15,6 +15,12 @@
   color: $primary-text-color;
 }
 
+@media screen and (max-width: 765px) {
+  .navbar-brand {
+    padding-left: 1.75em;
+  }
+}
+
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
   color: $primary-text-color;
 }
