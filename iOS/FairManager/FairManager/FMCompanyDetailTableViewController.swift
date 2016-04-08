@@ -18,13 +18,7 @@ class FMCompanyDetailTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
-        blurEffectView.tag = 666
-        blurEffectView.layer.zPosition = 1
-        view.addSubview(blurEffectView)
+        addBlurView()
         
         showLoadingHUD()
         tableView.estimatedRowHeight = 44.0
@@ -83,17 +77,6 @@ class FMCompanyDetailTableViewController: UITableViewController {
         return UITableViewAutomaticDimension
     }
     
-    func removeSubview(tag:Int){
-        if let viewWithTag = self.view.viewWithTag(tag) {
-            UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-                viewWithTag.alpha = 0.0 // Instead of a specific instance of, say, birdTypeLabel, we simply set [thisInstance] (ie, self)'s alpha
-                }, completion: nil)
-            //viewWithTag.removeFromSuperview()
-        }else{
-            print("Did not find subview with tag \(tag)")
-        }
-    }
-
     // MARK: - Table view data source
 /*
     
