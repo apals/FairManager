@@ -7,11 +7,30 @@ var SettingsSchema = new mongoose.Schema({
     type: String,
     validate: [colorValidator, 'That\'s not a valid color. Input format should be \'#RRGGBBAA\'']
   },
-  accentColor: {
+    primaryTextColor: {
     type: String,
     validate: [colorValidator, 'That\'s not a valid color. Input format should be \'#RRGGBBAA\' a valid color']
   },
-  primaryTextColor: {
+    titleTextColor: {
+    type: String,
+    validate: [colorValidator, 'That\'s not a valid color. Input format should be \'#RRGGBBAA\' a valid color']
+  },
+    tintColor: {
+    type: String,
+    validate: [colorValidator, 'That\'s not a valid color. Input format should be \'#RRGGBBAA\' a valid color']
+  },
+    contentMode: {
+    type: String
+  },
+    tabs: [{
+    name: String,
+    isActive: Boolean
+  }],
+  exhibitorCellHeight: {
+    type: Number
+  },
+
+  accentColor: {
     type: String,
     validate: [colorValidator, 'That\'s not a valid color. Input format should be \'#RRGGBBAA\' a valid color']
   },
@@ -22,11 +41,7 @@ var SettingsSchema = new mongoose.Schema({
   backgroundColor: {
     type: String,
     validate: [colorValidator, 'That\'s not a valid color. Input format should be \'#RRGGBBAA\' a valid color']
-  },
-  tabs: [{
-    name: String,
-    isActive: Boolean
-  }]
+  }
 });
 
 function colorValidator(v) {
