@@ -45,7 +45,7 @@ var SettingsSchema = new mongoose.Schema({
 });
 
 function colorValidator(v) {
-  return v.indexOf('#') === 0 && v.length === 9;
+  return v.indexOf('#') === 0 && v.length === 7;
 }
 
 export default mongoose.model('Settings', SettingsSchema);
