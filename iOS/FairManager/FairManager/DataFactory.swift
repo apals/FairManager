@@ -92,7 +92,7 @@ public class DataFactory {
         
     }
     
-    func getCompany(id:String, completionHandler: (Company?, NSError?) -> ()) {
+    func getCompany_async(id:String, completionHandler: (Company?, NSError?) -> ()) {
         Alamofire.request(.GET, NSURL(string: "http://fairmanager.herokuapp.com/api/companies/\(id)")!).validate().responseJSON { response in
             switch response.result {
             case .Success:
@@ -132,6 +132,49 @@ public class DataFactory {
                 completionHandler(nil, error)
             }
         }
+    }
+    
+    func getCompany(id:String) -> Company? {
+        var company:Company?
+        
+        Alamofire.request(.GET, NSURL(string: "http://fairmanager.herokuapp.com/api/companies/\(id)")!).validate().responseJSON  { response in
+                switch response.result {
+                case .Success:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        company = Company()
+                        
+                        if(json["name"] != nil){
+                            company!.name = json["name"].string
+                        }
+                        
+                        if(json["info"] != nil){
+                            company!.info = json["info"].string
+                        }
+                        
+                        if(json["employees"] != nil){
+                            company!.employees = json["employees"].int
+                        }
+                        
+                        if(json["logoUrl"] != nil){
+                            company!.logoUrl = json["logoUrl"].string
+                        }
+                        
+                        if(json["bannerUrl"] != nil){
+                            company!.bannerUrl = json["bannerUrl"].string
+                        }
+                        
+                        if(json["_id"] != nil){
+                            company!.id = json["_id"].string
+                        }
+                    }
+                case .Failure(let error):
+                    print(error)
+                    company = nil
+                }
+        }
+        
+        return company
     }
     
     var exhibitorViewIsActive:Bool?

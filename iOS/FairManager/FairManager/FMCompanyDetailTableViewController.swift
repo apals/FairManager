@@ -14,26 +14,34 @@ class FMCompanyDetailTableViewController: UITableViewController {
     @IBOutlet weak var aboutText: UILabel!
     var company:Company?
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.bounds
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
+        blurEffectView.tag = 666
+        blurEffectView.layer.zPosition = 1
+        view.addSubview(blurEffectView)
+        
         showLoadingHUD()
         tableView.estimatedRowHeight = 44.0
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        tableView.tableFooterView = UIView()
     }
     
     override func viewDidAppear(animated: Bool) {
         self.tableView.reloadData()
+        
     }
     
     func setCompany(company:Company) {
+        
         self.company = company
         setupCompanyView()
+        removeSubview(666)
         hideLoadingHUD()
     }
     
@@ -73,6 +81,17 @@ class FMCompanyDetailTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
+    }
+    
+    func removeSubview(tag:Int){
+        if let viewWithTag = self.view.viewWithTag(tag) {
+            UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+                viewWithTag.alpha = 0.0 // Instead of a specific instance of, say, birdTypeLabel, we simply set [thisInstance] (ie, self)'s alpha
+                }, completion: nil)
+            //viewWithTag.removeFromSuperview()
+        }else{
+            print("Did not find subview with tag \(tag)")
+        }
     }
 
     // MARK: - Table view data source

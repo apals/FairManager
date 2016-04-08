@@ -105,7 +105,9 @@ class FMCompanyTableViewController: UITableViewController {
             let segueViewController = segue.destinationViewController as! FMCompanyDetailTableViewController
             
             if let id = company.id {
-                dataFactory.getCompany(id) { company, error in
+                
+                
+                dataFactory.getCompany_async(id) { company, error in
                     if(error != nil) {
                         print("error")
                     }
@@ -113,6 +115,14 @@ class FMCompanyTableViewController: UITableViewController {
                         segueViewController.setCompany(company!)
                     }
                 }
+                
+              /*  print("pre")
+                if let company = dataFactory.getCompany(id) {
+                    print("fisk")
+                    segueViewController.setCompany(company)
+                    print("asd")
+                }
+ */
             }
         }
     }
@@ -130,11 +140,12 @@ class FMCompanyTableViewController: UITableViewController {
 
 extension UIViewController {
     func showLoadingHUD() {
-        let hud = MBProgressHUD.showHUDAddedTo(self.navigationController!.view, animated: true)
+        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        hud.layer.zPosition = 2
         hud.labelText = "Loading..."
     }
     
     func hideLoadingHUD() {
-        MBProgressHUD.hideAllHUDsForView(self.navigationController!.view, animated: true)
+        MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
     }
 }
