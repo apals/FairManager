@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController id="49e-Tb-3d3" customClass="FMUITabBarController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
@@ -23,12 +25,12 @@
             </objects>
             <point key="canvasLocation" x="0.0" y="0.0"/>
         </scene>
-        <!--Item-->
+        <!--Exhibitors-->
         <scene sceneID="hSA-nS-iLs">
             <objects>
-                <navigationController id="9Lz-Lz-UUv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="j9z-Yk-VS7"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ndo-L6-ud1">
+                <navigationController id="9Lz-Lz-UUv" customClass="FMUINavigationController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Exhibitors" image="shop" id="j9z-Yk-VS7"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Ndo-L6-ud1">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -45,16 +47,24 @@
             <objects>
                 <tableViewController id="VKD-73-8L1" customClass="FMCompanyTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="73c-c8-Jtw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="AMu-rf-7xo" userLabel="footer">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="asd" id="MuF-qt-drA">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FMCompanyTableViewCell" id="MuF-qt-drA">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MuF-qt-drA" id="bcu-UI-chR">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="div-yy-orq" kind="show" identifier="companySegue" id="egE-3q-ibz"/>
+                                    <segue destination="WVI-og-zMl" kind="show" identifier="companySegue" id="ljw-ID-f5y"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -75,22 +85,113 @@
             </objects>
             <point key="canvasLocation" x="1692" y="-716"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="GBl-Ya-cdC">
+        <!--Company Detail Table View Controller-->
+        <scene sceneID="PPO-HS-pzk">
             <objects>
-                <viewController id="div-yy-orq" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Vza-QH-Cif"/>
-                        <viewControllerLayoutGuide type="bottom" id="0vh-fZ-dDh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="lJE-Pg-UX6">
+                <tableViewController id="WVI-og-zMl" customClass="FMCompanyDetailTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Hfi-aK-jui">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qFM-5o-Q4d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <imageView key="tableHeaderView" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="standardbanner" id="5KZ-Om-wX2">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="128"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="WZp-TM-ME3" userLabel="footer">
+                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </view>
+                        <sections>
+                            <tableViewSection id="DXp-n9-GM8">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="companyDetailCell" rowHeight="120" id="L5w-Vf-ChS">
+                                        <rect key="frame" x="0.0" y="128" width="600" height="120"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L5w-Vf-ChS" id="QIk-o2-Tvu">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="119"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMd-K7-L8P">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                        <rect key="frame" x="15" y="8" width="377" height="85"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="text" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yMS-fJ-fuV">
+                                                    <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact" ambiguous="YES" misplaced="YES">
+                                                        <rect key="frame" x="15" y="94" width="370" height="17"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="dMd-K7-L8P" firstAttribute="top" secondItem="QIk-o2-Tvu" secondAttribute="topMargin" id="SLk-iL-z83"/>
+                                                <constraint firstItem="yMS-fJ-fuV" firstAttribute="top" secondItem="dMd-K7-L8P" secondAttribute="bottom" constant="1" id="XJW-HA-Ot9"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yMS-fJ-fuV" secondAttribute="trailing" constant="7" id="Yyg-sr-kM6"/>
+                                                <constraint firstItem="yMS-fJ-fuV" firstAttribute="leading" secondItem="QIk-o2-Tvu" secondAttribute="leadingMargin" constant="7" id="amJ-Cf-B35"/>
+                                                <constraint firstItem="dMd-K7-L8P" firstAttribute="leading" secondItem="QIk-o2-Tvu" secondAttribute="leadingMargin" constant="7" id="ijr-Xd-t1r"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="yMS-fJ-fuV" secondAttribute="bottom" id="pZm-7U-YuI"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="dMd-K7-L8P" secondAttribute="trailing" id="vcG-Vi-UdL"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="dMd-K7-L8P"/>
+                                                    <exclude reference="yMS-fJ-fuV"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="SLk-iL-z83"/>
+                                                    <exclude reference="ijr-Xd-t1r"/>
+                                                    <exclude reference="vcG-Vi-UdL"/>
+                                                    <exclude reference="XJW-HA-Ot9"/>
+                                                    <exclude reference="Yyg-sr-kM6"/>
+                                                    <exclude reference="amJ-Cf-B35"/>
+                                                    <exclude reference="pZm-7U-YuI"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="dMd-K7-L8P"/>
+                                                    <include reference="yMS-fJ-fuV"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="SLk-iL-z83"/>
+                                                    <include reference="ijr-Xd-t1r"/>
+                                                    <include reference="vcG-Vi-UdL"/>
+                                                    <include reference="XJW-HA-Ot9"/>
+                                                    <include reference="Yyg-sr-kM6"/>
+                                                    <include reference="amJ-Cf-B35"/>
+                                                    <include reference="pZm-7U-YuI"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="WVI-og-zMl" id="Da3-AR-6UD"/>
+                            <outlet property="delegate" destination="WVI-og-zMl" id="KSQ-kt-1i8"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="aboutText" destination="yMS-fJ-fuV" id="9EF-36-cMj"/>
+                        <outlet property="banner" destination="5KZ-Om-wX2" id="IVM-Vw-Gh6"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c0J-cU-USs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2649" y="-716"/>
+            <point key="canvasLocation" x="2430" y="-716"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="shop" width="32" height="32"/>
+        <image name="standardbanner" width="800" height="400"/>
+    </resources>
 </document>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,37 +17,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="8PF-Ja-oNt">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="AKG-wU-S3c">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8PF-Ja-oNt" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="BPr-rq-h7x"/>
-                            <constraint firstItem="8PF-Ja-oNt" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Cvd-sK-XCi"/>
-                            <constraint firstItem="8PF-Ja-oNt" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="OSz-P3-VHc"/>
-                            <constraint firstItem="8PF-Ja-oNt" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vNI-gy-azw"/>
+                            <constraint firstItem="AKG-wU-S3c" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="VGV-qZ-Spp"/>
+                            <constraint firstItem="AKG-wU-S3c" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="ZGq-Mx-dE4"/>
+                            <constraint firstItem="AKG-wU-S3c" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="cA3-zz-Csv"/>
+                            <constraint firstItem="AKG-wU-S3c" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" id="sqi-vR-5c0"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
-                                <exclude reference="8PF-Ja-oNt"/>
+                                <exclude reference="AKG-wU-S3c"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="BPr-rq-h7x"/>
-                                <exclude reference="Cvd-sK-XCi"/>
-                                <exclude reference="OSz-P3-VHc"/>
-                                <exclude reference="vNI-gy-azw"/>
+                                <exclude reference="VGV-qZ-Spp"/>
+                                <exclude reference="ZGq-Mx-dE4"/>
+                                <exclude reference="cA3-zz-Csv"/>
+                                <exclude reference="sqi-vR-5c0"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="8PF-Ja-oNt"/>
+                                <include reference="AKG-wU-S3c"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="BPr-rq-h7x"/>
-                                <include reference="Cvd-sK-XCi"/>
-                                <include reference="OSz-P3-VHc"/>
-                                <include reference="vNI-gy-azw"/>
+                                <include reference="VGV-qZ-Spp"/>
+                                <include reference="ZGq-Mx-dE4"/>
+                                <include reference="cA3-zz-Csv"/>
+                                <include reference="sqi-vR-5c0"/>
                             </mask>
                         </variation>
                     </view>
@@ -58,6 +58,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash" width="750" height="1334"/>
+        <image name="launchscreen" width="750" height="1333"/>
     </resources>
 </document>

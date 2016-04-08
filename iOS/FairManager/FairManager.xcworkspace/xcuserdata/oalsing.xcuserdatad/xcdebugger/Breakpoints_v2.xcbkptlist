@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FairManager/DataFactory.swift"
+            timestampString = "481223829.091624"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FairManager/FMCompanyDetailTableViewController.swift"
+            timestampString = "481564465.923634"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "FMCompanyDetailTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FairManager.FMCompanyDetailTableViewController.banner.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIImageView&gt;"
+                  moduleName = "FairManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oalsing/Programming/FairManager/iOS/FairManager/FairManager/FMCompanyDetailTableViewController.swift"
+                  timestampString = "481559780.429834"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "34">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FairManager.FMCompanyDetailTableViewController.banner.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIImageView&gt;"
+                  moduleName = "FairManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oalsing/Programming/FairManager/iOS/FairManager/FairManager/FMCompanyDetailTableViewController.swift"
+                  timestampString = "481559780.432042"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "47">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FairManager.FMCompanyDetailTableViewController.init (style : __C.UITableViewStyle) -&gt; FairManager.FMCompanyDetailTableViewController"
+                  moduleName = "FairManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oalsing/Programming/FairManager/iOS/FairManager/FairManager/FMCompanyDetailTableViewController.swift"
+                  timestampString = "481559780.432205"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FairManager.FMCompanyDetailTableViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; FairManager.FMCompanyDetailTableViewController"
+                  moduleName = "FairManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oalsing/Programming/FairManager/iOS/FairManager/FairManager/FMCompanyDetailTableViewController.swift"
+                  timestampString = "481559780.432364"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "89">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "FairManager.FMCompanyDetailTableViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;FairManager.FMCompanyDetailTableViewController&gt;"
+                  moduleName = "FairManager"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/oalsing/Programming/FairManager/iOS/FairManager/FairManager/FMCompanyDetailTableViewController.swift"
+                  timestampString = "481559780.432509"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "12"
+                  endingLineNumber = "12"
+                  offsetFromSymbolStart = "40">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -1,18 +1,35 @@
 //
-//  FMCompanyViewController.swift
+//  FMUINavigationController.swift
 //  FairManager
 //
-//  Created by Oscar Alsing on 10/03/16.
+//  Created by Oscar Alsing on 01/04/16.
 //  Copyright © 2016 Oscar Alsing. All rights reserved.
 //
 
 import UIKit
 
-class FMCompanyViewController: UIViewController {
+
+class FMUINavigationController: UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let settings = dataFactory.getSettings() {
+            if let barTintColor = settings.primaryColor {
+                self.navigationBar.barTintColor = barTintColor
+            }
+            if let tintColor = settings.tintColor {
+                self.navigationBar.tintColor = tintColor
+            }
+            if let titleTextColor = settings.titleTextColor {
+                self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : titleTextColor]
+            }
+            
+        }
+        
+        
+        
+        self.navigationBar.translucent = false
         // Do any additional setup after loading the view.
     }
 
