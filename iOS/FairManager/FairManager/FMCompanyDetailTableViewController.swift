@@ -57,7 +57,7 @@ class FMCompanyDetailTableViewController: UITableViewController {
                         let frame = CGRectMake(0, 0, 320, newHeight)
                         self.banner.image = image
                         self.banner.frame = frame
-                        
+                    
                         self.tableView.reloadData()
                     }
                 }

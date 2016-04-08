@@ -177,19 +177,6 @@ public class DataFactory {
         return company
     }
     
-    var exhibitorViewIsActive:Bool?
-    var eventViewIsActive:Bool?
-    var partnerViewIsActive:Bool?
-    var contactViewIsActive:Bool?
-    var personnelViewIsActive:Bool?
-    
-    
-    var exhibitorViewTitle:String?
-    var eventViewTitle:String?
-    var partnerViewTitle:String?
-    var contactViewTitle:String?
-    var personnelViewTitle:String?
-    
     func getSettings() -> Settings? {
         if let settings = self.settings {
             return settings
