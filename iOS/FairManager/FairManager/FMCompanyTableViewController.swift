@@ -23,10 +23,7 @@ class FMCompanyTableViewController: UITableViewController {
         showLoadingHUD()
         
         if let settings = dataFactory.getSettings() {
-            if let title = settings.exhibitorViewTitle {
-                self.navigationItem.title = title
-            }
-            
+            self.navigationItem.title = settings.exhibitorViewTitle
         }
         
         refreshData(self)
@@ -109,7 +106,7 @@ class FMCompanyTableViewController: UITableViewController {
             if let id = company.id {
                 
                 
-                dataFactory.getCompany_async(id) { company, error in
+                dataFactory.getCompany(id) { company, error in
                     if(error != nil) {
                         print("error")
                     }
@@ -123,11 +120,9 @@ class FMCompanyTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if let settings = dataFactory.getSettings() {
-            if let height = settings.exhibitorCellHeight {
-                return height
-            }
+            return settings.exhibitorCellHeight
         }
-        return 65
+        return 55
     }
     
 }

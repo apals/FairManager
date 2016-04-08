@@ -15,19 +15,10 @@ class FMUINavigationController: UINavigationController {
         super.viewDidLoad()
         
         if let settings = dataFactory.getSettings() {
-            if let barTintColor = settings.primaryColor {
-                self.navigationBar.barTintColor = barTintColor
-            }
-            if let tintColor = settings.tintColor {
-                self.navigationBar.tintColor = tintColor
-            }
-            if let titleTextColor = settings.titleTextColor {
-                self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : titleTextColor]
-            }
-            
-        }
-        
-        
+            self.navigationBar.barTintColor = settings.primaryColor
+            self.navigationBar.tintColor = settings.tintColor
+            self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName : settings.titleTextColor]
+        }    
         
         self.navigationBar.translucent = false
         // Do any additional setup after loading the view.
