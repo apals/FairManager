@@ -131,6 +131,9 @@ extension UIViewController {
     func showLoadingHUD() {
         let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         hud.layer.zPosition = 2
+        if let navBarHeight = self.navigationController?.navigationBar.frame.height{
+            hud.yOffset = -Float(navBarHeight)
+        }
         hud.labelText = "Loading..."
     }
     
@@ -140,7 +143,7 @@ extension UIViewController {
     
     func removeSubview(tag:Int){
         if let viewWithTag = self.view.viewWithTag(tag) {
-            UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
+            UIView.animateWithDuration(0.75, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
                 viewWithTag.alpha = 0.0 // Instead of a specific instance of, say, birdTypeLabel, we simply set [thisInstance] (ie, self)'s alpha
                 }, completion: nil)
             //viewWithTag.removeFromSuperview()
