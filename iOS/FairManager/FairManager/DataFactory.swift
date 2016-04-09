@@ -23,26 +23,26 @@ struct Company {
 }
 
 struct Settings {
-    var primaryColor:UIColor?
-    var primaryTextColor:UIColor?
-    var titleTextColor:UIColor?
-    var tintColor:UIColor?
-    var contentMode:String?
+    var primaryColor:UIColor = UIColor(rgba: "#51039a")
+    var primaryTextColor:UIColor = UIColor(rgba: "#404040")
+    var titleTextColor:UIColor = UIColor.whiteColor()
+    var tintColor:UIColor = UIColor.whiteColor()
+    var contentMode:String = "Light"
     
-    var exhibitorViewIsActive:Bool?
-    var eventViewIsActive:Bool?
-    var partnerViewIsActive:Bool?
-    var contactViewIsActive:Bool?
-    var personnelViewIsActive:Bool?
+    var exhibitorViewIsActive:Bool = true
+    var eventViewIsActive:Bool = false
+    var partnerViewIsActive:Bool = false
+    var contactViewIsActive:Bool = false
+    var personnelViewIsActive:Bool = false
     
     
-    var exhibitorViewTitle:String?
-    var eventViewTitle:String?
-    var partnerViewTitle:String?
-    var contactViewTitle:String?
-    var personnelViewTitle:String?
+    var exhibitorViewTitle:String = "Exhibitors"
+    var eventViewTitle:String = "Events"
+    var partnerViewTitle:String = "Partners"
+    var contactViewTitle:String = "Contact"
+    var personnelViewTitle:String = "Personnel"
     
-    var exhibitorCellHeight:CGFloat?
+    var exhibitorCellHeight:CGFloat = 55
     
 }
 
@@ -51,9 +51,10 @@ struct Settings {
 public class DataFactory {
     
     var settings:Settings?
+    var baseURL:String = "http://localhost:9000"
     
     func getCompanies(completionHandler: ([Company]?, NSError?) -> ()) {
-        Alamofire.request(.GET, NSURL(string: "http://fairmanager.herokuapp.com/api/companies")!).validate().responseJSON { response in
+        Alamofire.request(.GET, NSURL(string: "\(baseURL)/api/companies")!).validate().responseJSON { response in
             switch response.result {
             case .Success:
                 if let value = response.result.value {
@@ -92,8 +93,8 @@ public class DataFactory {
         
     }
     
-    func getCompany_async(id:String, completionHandler: (Company?, NSError?) -> ()) {
-        Alamofire.request(.GET, NSURL(string: "http://fairmanager.herokuapp.com/api/companies/\(id)")!).validate().responseJSON { response in
+    func getCompany(id:String, completionHandler: (Company?, NSError?) -> ()) {
+        Alamofire.request(.GET, NSURL(string: "\(baseURL)/api/companies/\(id)")!).validate().responseJSON { response in
             switch response.result {
             case .Success:
                 if let value = response.result.value {
@@ -134,100 +135,138 @@ public class DataFactory {
         }
     }
     
-    func getCompany(id:String) -> Company? {
-        var company:Company?
+    func fetchSettings() -> Settings? {
+        var settings:Settings = Settings()
         
-        Alamofire.request(.GET, NSURL(string: "http://fairmanager.herokuapp.com/api/companies/\(id)")!).validate().responseJSON  { response in
-                switch response.result {
-                case .Success:
-                    if let value = response.result.value {
-                        let json = JSON(value)
-                        company = Company()
+        if let url = NSURL(string: "\(baseURL)/api/settings") {
+            do {
+                let data = NSData(contentsOfURL: url)
+                if data != nil {
+                    let json = JSON(data!)
+                    
+                    if json != nil {
                         
-                        if(json["name"] != nil){
-                            company!.name = json["name"].string
+                        if(json["primaryColor"] != nil){
+                            settings.primaryColor = UIColor(rgba: json["primaryColor"].string!)
                         }
                         
-                        if(json["info"] != nil){
-                            company!.info = json["info"].string
+                        if(json["primaryTextColor"] != nil){
+                            settings.primaryTextColor = UIColor(rgba: json["primaryTextColor"].string!)
                         }
                         
-                        if(json["employees"] != nil){
-                            company!.employees = json["employees"].int
+                        if(json["titleTextColor"] != nil){
+                            settings.primaryTextColor = UIColor(rgba: json["titleTextColor"].string!)
                         }
                         
-                        if(json["logoUrl"] != nil){
-                            company!.logoUrl = json["logoUrl"].string
+                        if(json["tintColor"] != nil){
+                            settings.tintColor = UIColor(rgba: json["tintColor"].string!)
                         }
                         
-                        if(json["bannerUrl"] != nil){
-                            company!.bannerUrl = json["bannerUrl"].string
+                        if(json["contentMode"] != nil){
+                            switch json["contentMode"] {
+                            case "Normal":
+                                settings.contentMode = "Dark"
+                            default:
+                                settings.contentMode = "Light"
+                            }
                         }
                         
-                        if(json["_id"] != nil){
-                            company!.id = json["_id"].string
+                        if(json["exhibitorCellHeight"] != nil){
+                            settings.exhibitorCellHeight = CGFloat(json["exhibitorCellHeight"].number!)
+                        }
+                        
+                        if(json["tabs"] != nil) {
+                            settings.exhibitorViewIsActive = true
+                            settings.eventViewIsActive = false
+                            settings.partnerViewIsActive = false
+                            settings.contactViewIsActive = false
+                            settings.personnelViewIsActive = false
+                            
+                            settings.exhibitorViewTitle = "Exhibitors"
+                            settings.eventViewTitle = "Events"
+                            settings.partnerViewTitle = "Partners"
+                            settings.contactViewTitle = "Contact"
+                            settings.personnelViewTitle = "Personnel"
                         }
                     }
-                case .Failure(let error):
-                    print(error)
-                    company = nil
                 }
+            }
+        } else {
+            print("bad url")
         }
         
-        return company
+        return settings
     }
     
-    var exhibitorViewIsActive:Bool?
-    var eventViewIsActive:Bool?
-    var partnerViewIsActive:Bool?
-    var contactViewIsActive:Bool?
-    var personnelViewIsActive:Bool?
-    
-    
-    var exhibitorViewTitle:String?
-    var eventViewTitle:String?
-    var partnerViewTitle:String?
-    var contactViewTitle:String?
-    var personnelViewTitle:String?
+    func fetchSettings_asd(completionHandler: (Settings?, NSError?) -> ()) {
+         Alamofire.request(.GET, "\(baseURL)/api/settings").validate().responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    var settings:Settings = Settings()
+                    
+                    if(json["primaryColor"] != nil){
+                        settings.primaryColor = UIColor(rgba: json["primaryColor"].string!)
+                    }
+                    
+                    if(json["primaryTextColor"] != nil){
+                        settings.primaryTextColor = UIColor(rgba: json["primaryTextColor"].string!)
+                    }
+                    
+                    if(json["titleTextColor"] != nil){
+                        settings.primaryTextColor = UIColor(rgba: json["titleTextColor"].string!)
+                    }
+                    
+                    if(json["tintColor"] != nil){
+                        settings.tintColor = UIColor(rgba: json["tintColor"].string!)
+                    }
+                    
+                    if(json["contentMode"] != nil){
+                        switch json["contentMode"] {
+                            case "Normal":
+                            settings.contentMode = "Dark"
+                            default:
+                            settings.contentMode = "Light"
+                        }
+                    }
+                    
+                    if(json["exhibitorCellHeight"] != nil){
+                        settings.exhibitorCellHeight = CGFloat(json["exhibitorCellHeight"].number!)
+                    }
+                    
+                    if(json["tabs"] != nil) {
+                        settings.exhibitorViewIsActive = true
+                        settings.eventViewIsActive = false
+                        settings.partnerViewIsActive = false
+                        settings.contactViewIsActive = false
+                        settings.personnelViewIsActive = false
+                        
+                        settings.exhibitorViewTitle = "Exhibitors"
+                        settings.eventViewTitle = "Events"
+                        settings.partnerViewTitle = "Partners"
+                        settings.contactViewTitle = "Contact"
+                        settings.personnelViewTitle = "Personnel"
+                    }
+                    
+                    // This should also update our local list of companies
+                    completionHandler(settings, nil)
+                }
+            case .Failure(let error):
+                completionHandler(nil, error)
+            }
+
+         }
+
+    }
     
     func getSettings() -> Settings? {
         if let settings = self.settings {
             return settings
         } else {
-            return fetchSettings()
+            self.settings = fetchSettings()
+            return self.settings
         }
-    }
-    
-    func fetchSettings() -> Settings? {
-        var settings = Settings()
-        
-        settings.primaryColor = UIColor(rgba: "#51039a")
-        settings.primaryTextColor = UIColor(rgba: "#404040")
-        settings.titleTextColor = UIColor.whiteColor()
-        settings.tintColor = UIColor.whiteColor()
-        settings.contentMode = "Light"
-        
-        settings.exhibitorViewIsActive = true
-        settings.eventViewIsActive = false
-        settings.partnerViewIsActive = false
-        settings.contactViewIsActive = false
-        settings.personnelViewIsActive = false
-        
-        settings.exhibitorViewTitle = "Exhibitors"
-        settings.eventViewTitle = "Events"
-        settings.partnerViewTitle = "Partners"
-        settings.contactViewTitle = "Contact"
-        settings.personnelViewTitle = "Personnel"
-        
-        settings.exhibitorCellHeight = 55
-        
-        
-        /*
-         Alamofire.request(.GET, "http://fairmanager.herokuapp.com/api/settings").validate().responseJSON { response in
-         debugPrint(response)
-         }*/
-        return settings
-
     }
 }
 

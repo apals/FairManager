@@ -13,21 +13,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         if let settings = dataFactory.getSettings() {
-            if let contentMode = settings.contentMode {
-                switch contentMode {
-                case "Light":
-                    UIApplication.sharedApplication().statusBarStyle = .LightContent
-                case "Dark":
-                    UIApplication.sharedApplication().statusBarStyle = .Default
-                default:
-                    UIApplication.sharedApplication().statusBarStyle = .Default
-
-
-                }
+            switch settings.contentMode {
+            case "Light":
+                UIApplication.sharedApplication().statusBarStyle = .LightContent
+            case "Dark":
+                UIApplication.sharedApplication().statusBarStyle = .Default
+            default:
+                UIApplication.sharedApplication().statusBarStyle = .Default
+                
+                
             }
         }
         return true
