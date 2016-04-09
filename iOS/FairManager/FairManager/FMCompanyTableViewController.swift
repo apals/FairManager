@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 import Haneke
 import MBProgressHUD
 
@@ -58,7 +59,7 @@ class FMCompanyTableViewController: UITableViewController {
                 companies.sortInPlace({$0.name < $1.name})
                 
                 for company in companies {
-                    let firstChar:String = String((company.name?.characters.first)!)
+                    let firstChar:String = String((company.name?.characters.first)!).uppercaseString
                     
                     if let _ = self.companiesDictionary![firstChar] {
                         self.companiesDictionary![firstChar]!.append(company)
@@ -69,8 +70,13 @@ class FMCompanyTableViewController: UITableViewController {
                 
                 self.companiesCharacterList = self.companiesDictionary!.keys.map { String($0) }.sort()
                 
-                
-                self.tableView.reloadData()
+                if(self.tableView.numberOfSections == self.companiesCharacterList!.count) {
+                    let range = NSMakeRange(0, self.tableView.numberOfSections)
+                    let sections = NSIndexSet(indexesInRange: range)
+                    self.tableView.reloadSections(sections, withRowAnimation: .Automatic)
+                } else {
+                    self.tableView.reloadData()
+                }
             }
             
             self.hideLoadingHUD()
