@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3058BD0D1CB987C200AFF9A8 /* FMEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3058BD0C1CB987C200AFF9A8 /* FMEventTableViewController.swift */; };
+		3058BD0F1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3058BD0E1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift */; };
 		307CAA5B1C91BA0300F3D59F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307CAA5A1C91BA0300F3D59F /* AppDelegate.swift */; };
 		307CAA621C91BA0300F3D59F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307CAA601C91BA0300F3D59F /* Main.storyboard */; };
 		307CAA641C91BA0300F3D59F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 307CAA631C91BA0300F3D59F /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		1FBCAF84EEDF87578315FBFA /* Pods-FairManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FairManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-FairManager/Pods-FairManager.release.xcconfig"; sourceTree = "<group>"; };
+		3058BD0C1CB987C200AFF9A8 /* FMEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMEventTableViewController.swift; sourceTree = "<group>"; };
+		3058BD0E1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMEventDetailTableViewController.swift; sourceTree = "<group>"; };
 		307CAA571C91BA0300F3D59F /* FairManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FairManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		307CAA5A1C91BA0300F3D59F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		307CAA611C91BA0300F3D59F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -76,9 +80,11 @@
 				308B5D781C91D5AA005C1F48 /* DataFactory.swift */,
 				307CAA5A1C91BA0300F3D59F /* AppDelegate.swift */,
 				307CAA601C91BA0300F3D59F /* Main.storyboard */,
+				3058BD0E1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift */,
 				3099A6BB1CB28A4500FCA1E5 /* FMUITabBarController.swift */,
 				30E71D9B1CAFC389003A5E95 /* FMCompanyDetailTableViewController.swift */,
 				30E71D991CAFC2C2003A5E95 /* FMCompanyTableViewController.swift */,
+				3058BD0C1CB987C200AFF9A8 /* FMEventTableViewController.swift */,
 				3094F44F1CAF01FD0067062E /* FMUINavigationController.swift */,
 				3094F44B1CAEEE650067062E /* FMCompanyTableViewCell.xib */,
 				3094F44D1CAEF3330067062E /* FMCompanyTableViewCell.swift */,
@@ -235,7 +241,9 @@
 				3099A6BC1CB28A4500FCA1E5 /* FMUITabBarController.swift in Sources */,
 				3094F4501CAF01FD0067062E /* FMUINavigationController.swift in Sources */,
 				30E71D9A1CAFC2C2003A5E95 /* FMCompanyTableViewController.swift in Sources */,
+				3058BD0D1CB987C200AFF9A8 /* FMEventTableViewController.swift in Sources */,
 				308B5D791C91D5AA005C1F48 /* DataFactory.swift in Sources */,
+				3058BD0F1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

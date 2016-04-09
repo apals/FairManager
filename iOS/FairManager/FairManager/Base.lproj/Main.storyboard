@@ -19,6 +19,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="9Lz-Lz-UUv" kind="relationship" relationship="viewControllers" id="yOa-jf-zqh"/>
+                        <segue destination="Sem-Kx-YZ9" kind="relationship" relationship="viewControllers" id="UDE-gs-FhJ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -84,6 +85,77 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cOo-XE-K2K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1692" y="-716"/>
+        </scene>
+        <!--Events-->
+        <scene sceneID="rp5-RE-nqI">
+            <objects>
+                <navigationController id="Sem-Kx-YZ9" customClass="FMUINavigationController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Events" image="calendar" id="UiE-kK-jLe"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PgB-4N-4E1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="b8L-iC-pfP" kind="relationship" relationship="rootViewController" id="3wh-M0-FLm"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fyv-ZH-9gm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="906" y="0.0"/>
+        </scene>
+        <!--Event Table View Controller-->
+        <scene sceneID="WMA-Xo-HBG">
+            <objects>
+                <tableViewController id="b8L-iC-pfP" customClass="FMEventTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="S9m-Lo-E3g">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="H0W-y8-osN">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H0W-y8-osN" id="J7P-lB-Rha">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="BLG-sf-fIS" kind="show" id="3TZ-Y6-UbQ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="b8L-iC-pfP" id="vHU-2M-J1o"/>
+                            <outlet property="delegate" destination="b8L-iC-pfP" id="sa5-ou-drD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="O2a-7S-mXd"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hwI-xm-nN7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1692" y="0.0"/>
+        </scene>
+        <!--Event Detail Table View Controller-->
+        <scene sceneID="EBg-hc-UAx">
+            <objects>
+                <tableViewController id="BLG-sf-fIS" customClass="FMEventDetailTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WX4-HP-sWC">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="120-R3-vIB">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="120-R3-vIB" id="07t-TL-n20">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="BLG-sf-fIS" id="dtq-jX-x8p"/>
+                            <outlet property="delegate" destination="BLG-sf-fIS" id="0A4-VY-Sxx"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="axw-fh-fV2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2430" y="0.0"/>
         </scene>
         <!--Company Detail Table View Controller-->
         <scene sceneID="PPO-HS-pzk">
@@ -191,6 +263,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="calendar" width="32" height="32"/>
         <image name="shop" width="32" height="32"/>
         <image name="standardbanner" width="800" height="400"/>
     </resources>
