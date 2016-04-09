@@ -141,54 +141,55 @@ public class DataFactory {
         if let url = NSURL(string: "\(baseURL)/api/settings") {
             do {
                 let data = NSData(contentsOfURL: url)
-                let json = JSON(data!)
-                
-                if json != nil {
+                if data != nil {
+                    let json = JSON(data!)
                     
-                    if(json["primaryColor"] != nil){
-                        settings.primaryColor = UIColor(rgba: json["primaryColor"].string!)
-                    }
-                    
-                    if(json["primaryTextColor"] != nil){
-                        settings.primaryTextColor = UIColor(rgba: json["primaryTextColor"].string!)
-                    }
-                    
-                    if(json["titleTextColor"] != nil){
-                        settings.primaryTextColor = UIColor(rgba: json["titleTextColor"].string!)
-                    }
-                    
-                    if(json["tintColor"] != nil){
-                        settings.tintColor = UIColor(rgba: json["tintColor"].string!)
-                    }
-                    
-                    if(json["contentMode"] != nil){
-                        switch json["contentMode"] {
-                        case "Normal":
-                            settings.contentMode = "Dark"
-                        default:
-                            settings.contentMode = "Light"
+                    if json != nil {
+                        
+                        if(json["primaryColor"] != nil){
+                            settings.primaryColor = UIColor(rgba: json["primaryColor"].string!)
+                        }
+                        
+                        if(json["primaryTextColor"] != nil){
+                            settings.primaryTextColor = UIColor(rgba: json["primaryTextColor"].string!)
+                        }
+                        
+                        if(json["titleTextColor"] != nil){
+                            settings.primaryTextColor = UIColor(rgba: json["titleTextColor"].string!)
+                        }
+                        
+                        if(json["tintColor"] != nil){
+                            settings.tintColor = UIColor(rgba: json["tintColor"].string!)
+                        }
+                        
+                        if(json["contentMode"] != nil){
+                            switch json["contentMode"] {
+                            case "Normal":
+                                settings.contentMode = "Dark"
+                            default:
+                                settings.contentMode = "Light"
+                            }
+                        }
+                        
+                        if(json["exhibitorCellHeight"] != nil){
+                            settings.exhibitorCellHeight = CGFloat(json["exhibitorCellHeight"].number!)
+                        }
+                        
+                        if(json["tabs"] != nil) {
+                            settings.exhibitorViewIsActive = true
+                            settings.eventViewIsActive = false
+                            settings.partnerViewIsActive = false
+                            settings.contactViewIsActive = false
+                            settings.personnelViewIsActive = false
+                            
+                            settings.exhibitorViewTitle = "Exhibitors"
+                            settings.eventViewTitle = "Events"
+                            settings.partnerViewTitle = "Partners"
+                            settings.contactViewTitle = "Contact"
+                            settings.personnelViewTitle = "Personnel"
                         }
                     }
-                    
-                    if(json["exhibitorCellHeight"] != nil){
-                        settings.exhibitorCellHeight = CGFloat(json["exhibitorCellHeight"].number!)
-                    }
-                    
-                    if(json["tabs"] != nil) {
-                        settings.exhibitorViewIsActive = true
-                        settings.eventViewIsActive = false
-                        settings.partnerViewIsActive = false
-                        settings.contactViewIsActive = false
-                        settings.personnelViewIsActive = false
-                        
-                        settings.exhibitorViewTitle = "Exhibitors"
-                        settings.eventViewTitle = "Events"
-                        settings.partnerViewTitle = "Partners"
-                        settings.contactViewTitle = "Contact"
-                        settings.personnelViewTitle = "Personnel"
-                    }
                 }
-                
             }
         } else {
             print("bad url")
