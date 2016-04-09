@@ -136,54 +136,62 @@ public class DataFactory {
     }
     
     func fetchSettings() -> Settings? {
-        let json = JSON(NSData(contentsOfURL: NSURL(string: "\(baseURL)/api/settings")!)!)
-        
         var settings:Settings = Settings()
         
-        if json != nil {
-            
-            if(json["primaryColor"] != nil){
-                settings.primaryColor = UIColor(rgba: json["primaryColor"].string!)
-            }
-            
-            if(json["primaryTextColor"] != nil){
-                settings.primaryTextColor = UIColor(rgba: json["primaryTextColor"].string!)
-            }
-            
-            if(json["titleTextColor"] != nil){
-                settings.primaryTextColor = UIColor(rgba: json["titleTextColor"].string!)
-            }
-            
-            if(json["tintColor"] != nil){
-                settings.tintColor = UIColor(rgba: json["tintColor"].string!)
-            }
-            
-            if(json["contentMode"] != nil){
-                switch json["contentMode"] {
-                case "Normal":
-                    settings.contentMode = "Dark"
-                default:
-                    settings.contentMode = "Light"
-                }
-            }
-            
-            if(json["exhibitorCellHeight"] != nil){
-                settings.exhibitorCellHeight = CGFloat(json["exhibitorCellHeight"].number!)
-            }
-            
-            if(json["tabs"] != nil) {
-                settings.exhibitorViewIsActive = true
-                settings.eventViewIsActive = false
-                settings.partnerViewIsActive = false
-                settings.contactViewIsActive = false
-                settings.personnelViewIsActive = false
+        if let url = NSURL(string: "\(baseURL)/api/settings") {
+            do {
+                let data = NSData(contentsOfURL: url)
+                let json = JSON(data!)
                 
-                settings.exhibitorViewTitle = "Exhibitors"
-                settings.eventViewTitle = "Events"
-                settings.partnerViewTitle = "Partners"
-                settings.contactViewTitle = "Contact"
-                settings.personnelViewTitle = "Personnel"
+                if json != nil {
+                    
+                    if(json["primaryColor"] != nil){
+                        settings.primaryColor = UIColor(rgba: json["primaryColor"].string!)
+                    }
+                    
+                    if(json["primaryTextColor"] != nil){
+                        settings.primaryTextColor = UIColor(rgba: json["primaryTextColor"].string!)
+                    }
+                    
+                    if(json["titleTextColor"] != nil){
+                        settings.primaryTextColor = UIColor(rgba: json["titleTextColor"].string!)
+                    }
+                    
+                    if(json["tintColor"] != nil){
+                        settings.tintColor = UIColor(rgba: json["tintColor"].string!)
+                    }
+                    
+                    if(json["contentMode"] != nil){
+                        switch json["contentMode"] {
+                        case "Normal":
+                            settings.contentMode = "Dark"
+                        default:
+                            settings.contentMode = "Light"
+                        }
+                    }
+                    
+                    if(json["exhibitorCellHeight"] != nil){
+                        settings.exhibitorCellHeight = CGFloat(json["exhibitorCellHeight"].number!)
+                    }
+                    
+                    if(json["tabs"] != nil) {
+                        settings.exhibitorViewIsActive = true
+                        settings.eventViewIsActive = false
+                        settings.partnerViewIsActive = false
+                        settings.contactViewIsActive = false
+                        settings.personnelViewIsActive = false
+                        
+                        settings.exhibitorViewTitle = "Exhibitors"
+                        settings.eventViewTitle = "Events"
+                        settings.partnerViewTitle = "Partners"
+                        settings.contactViewTitle = "Contact"
+                        settings.personnelViewTitle = "Personnel"
+                    }
+                }
+                
             }
+        } else {
+            print("bad url")
         }
         
         return settings
@@ -255,19 +263,8 @@ public class DataFactory {
         if let settings = self.settings {
             return settings
         } else {
-            /*
-            fetchSettings_asd() { settings, error in
-                if(error != nil) {
-                    print("error")
-                }
-                if(settings != nil) {
-                    self.settings = settings
-                }
-            }
-            
-            return settings
-        }*/
-            return fetchSettings()
+            self.settings = fetchSettings()
+            return self.settings
         }
     }
 }
