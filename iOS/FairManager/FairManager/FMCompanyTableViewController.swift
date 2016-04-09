@@ -66,7 +66,13 @@ class FMCompanyTableViewController: UITableViewController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        if let _ = self.companies {
+            self.tableView.separatorStyle = .SingleLine
+            return 1
+        } else {
+            displayErrorOnTableView(self.tableView)
+        }
+        return 0
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -150,6 +156,16 @@ extension UIViewController {
         }else{
             print("Did not find subview with tag \(tag)")
         }
+    }
+    
+    func displayErrorOnTableView(view:UITableView){
+        let label:UILabel = UILabel(frame: CGRectMake(0, 0, view.bounds.width, view.bounds.height))
+        label.text = "Unable to fetch exhibitors.."
+        label.numberOfLines = 0
+        label.textAlignment = .Center
+        label.sizeToFit()
+        view.backgroundView = label
+        view.separatorStyle = .None
     }
     
     func addBlurView() {
