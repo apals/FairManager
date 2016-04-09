@@ -14,11 +14,14 @@ class FMCompanyTableViewController: UITableViewController {
     @IBOutlet weak var refreshCtrl: UIRefreshControl!
     
     var chosenIndex = 0
-    var companies:[Company]?
+    var chosenSection = 0
+    var companiesDictionary:[String: [Company]]?
+    var companiesCharacterList:[String]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+
         
         showLoadingHUD()
         
@@ -47,9 +50,26 @@ class FMCompanyTableViewController: UITableViewController {
         dataFactory.getCompanies() { companies, error in
             if(error != nil) {
                 print("error")
+                self.displayErrorOnTableView(self.tableView)
             }
             if(companies != nil) {
-                self.companies = companies
+                self.companiesDictionary = [String: [Company]]()
+                var companies:[Company] = companies!
+                companies.sortInPlace({$0.name < $1.name})
+                
+                for company in companies {
+                    let firstChar:String = String((company.name?.characters.first)!)
+                    
+                    if let _ = self.companiesDictionary![firstChar] {
+                        self.companiesDictionary![firstChar]!.append(company)
+                    } else {
+                        self.companiesDictionary![firstChar] = [company]
+                    }
+                }
+                
+                self.companiesCharacterList = self.companiesDictionary!.keys.map { String($0) }.sort()
+                
+                
                 self.tableView.reloadData()
             }
             
@@ -64,36 +84,67 @@ class FMCompanyTableViewController: UITableViewController {
     
     // MARK: - Table view data source
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        if let _ = self.companies {
-            self.tableView.separatorStyle = .SingleLine
-            return 1
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String]? {
+        if let characterList = self.companiesCharacterList {
+            return characterList
         } else {
-            displayErrorOnTableView(self.tableView)
+            return nil
         }
-        return 0
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if let companies = self.companies {
-            return companies.count
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let characterList = self.companiesCharacterList {
+            return characterList[section]
+        } else {
+            return nil
+        }
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if let characterList = self.companiesCharacterList {
+            return characterList.count
         } else {
             return 0
         }
     }
     
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        if let characterList = self.companiesCharacterList {
+            let sectionCharacter = characterList[section]
+            if let companiesDictionary = self.companiesDictionary {
+                if let companies = companiesDictionary[sectionCharacter] {
+                    return companies.count
+                }
+            }
+        }
+        
+        return 0
+    }
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FMCompanyTableViewCell", forIndexPath: indexPath) as! FMCompanyTableViewCell
-        if let name = companies?[indexPath.row].name {
-            cell.companyNameLabel.text = name
-        }
         
-        if let image = companies?[indexPath.row].logoUrl {
-            let url = NSURL(string: image)
-            cell.logoImageView.hnk_setImageFromURL(url!, placeholder: UIImage(named: "FM"), format: nil, failure: nil, success: nil)
+        if let characterList = self.companiesCharacterList {
+            let character:String = characterList[indexPath.section]
+            if let companiesDict = self.companiesDictionary {
+                if let companies = companiesDict[character] {
+                    let company:Company = companies[indexPath.row]
+                    if let name = company.name {
+                        cell.companyNameLabel.text = name
+                    }
+                    
+                    if let image = company.logoUrl {
+                        let url = NSURL(string: image)
+                        cell.logoImageView.hnk_setImageFromURL(url!, placeholder: UIImage(named: "FM"), format: nil, failure: nil, success: nil)
+                    }
+                }
+            }
         }
         
         return cell
@@ -101,23 +152,29 @@ class FMCompanyTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         chosenIndex = indexPath.row
+        chosenSection = indexPath.section
         self.performSegueWithIdentifier("companySegue", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let companies = self.companies {
-            let company = companies[chosenIndex]
-            let segueViewController = segue.destinationViewController as! FMCompanyDetailTableViewController
-            
-            if let id = company.id {
-                
-                
-                dataFactory.getCompany(id) { company, error in
-                    if(error != nil) {
-                        print("error")
-                    }
-                    if(company != nil) {
-                        segueViewController.setCompany(company!)
+        if let characterList = self.companiesCharacterList {
+            let section:String = characterList[chosenSection]
+            if let companiesDict = self.companiesDictionary {
+                if let companies = companiesDict[section] {
+                    let company:Company = companies[chosenIndex]
+                    let segueViewController = segue.destinationViewController as! FMCompanyDetailTableViewController
+                    
+                    if let id = company.id {
+                        
+                        
+                        dataFactory.getCompany(id) { company, error in
+                            if(error != nil) {
+                                print("error")
+                            }
+                            if(company != nil) {
+                                segueViewController.setCompany(company!)
+                            }
+                        }
                     }
                 }
             }
