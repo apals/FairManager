@@ -13,6 +13,10 @@ class FMUITabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let settings = dataFactory.getSettings() {
+            self.tabBar.tintColor = settings.primaryColor
+        }
+        
         /*
         let tabBarControllerItems = self.tabBar.items
         var viewControllers = self.tabBarController!.viewControllers

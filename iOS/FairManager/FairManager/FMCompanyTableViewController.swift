@@ -28,6 +28,7 @@ class FMCompanyTableViewController: UITableViewController {
         
         if let settings = dataFactory.getSettings() {
             self.navigationItem.title = settings.exhibitorViewTitle
+            tableView.sectionIndexColor = settings.primaryColor
         }
         
         refreshData(self)
