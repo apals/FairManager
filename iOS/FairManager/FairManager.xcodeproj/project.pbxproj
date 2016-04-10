@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3058BD0D1CB987C200AFF9A8 /* FMEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3058BD0C1CB987C200AFF9A8 /* FMEventTableViewController.swift */; };
 		3058BD0F1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3058BD0E1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift */; };
+		3058BD111CBA2A8B00AFF9A8 /* FMEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3058BD101CBA2A8B00AFF9A8 /* FMEventTableViewCell.xib */; };
+		3058BD131CBA2C9300AFF9A8 /* FMEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3058BD121CBA2C9300AFF9A8 /* FMEventTableViewCell.swift */; };
 		307CAA5B1C91BA0300F3D59F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 307CAA5A1C91BA0300F3D59F /* AppDelegate.swift */; };
 		307CAA621C91BA0300F3D59F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 307CAA601C91BA0300F3D59F /* Main.storyboard */; };
 		307CAA641C91BA0300F3D59F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 307CAA631C91BA0300F3D59F /* Assets.xcassets */; };
@@ -27,6 +29,8 @@
 		1FBCAF84EEDF87578315FBFA /* Pods-FairManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FairManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-FairManager/Pods-FairManager.release.xcconfig"; sourceTree = "<group>"; };
 		3058BD0C1CB987C200AFF9A8 /* FMEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMEventTableViewController.swift; sourceTree = "<group>"; };
 		3058BD0E1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMEventDetailTableViewController.swift; sourceTree = "<group>"; };
+		3058BD101CBA2A8B00AFF9A8 /* FMEventTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMEventTableViewCell.xib; sourceTree = "<group>"; };
+		3058BD121CBA2C9300AFF9A8 /* FMEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMEventTableViewCell.swift; sourceTree = "<group>"; };
 		307CAA571C91BA0300F3D59F /* FairManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FairManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		307CAA5A1C91BA0300F3D59F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		307CAA611C91BA0300F3D59F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -80,6 +84,8 @@
 				308B5D781C91D5AA005C1F48 /* DataFactory.swift */,
 				307CAA5A1C91BA0300F3D59F /* AppDelegate.swift */,
 				307CAA601C91BA0300F3D59F /* Main.storyboard */,
+				3058BD101CBA2A8B00AFF9A8 /* FMEventTableViewCell.xib */,
+				3058BD121CBA2C9300AFF9A8 /* FMEventTableViewCell.swift */,
 				3058BD0E1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift */,
 				3099A6BB1CB28A4500FCA1E5 /* FMUITabBarController.swift */,
 				30E71D9B1CAFC389003A5E95 /* FMCompanyDetailTableViewController.swift */,
@@ -174,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3094F44C1CAEEE650067062E /* FMCompanyTableViewCell.xib in Resources */,
+				3058BD111CBA2A8B00AFF9A8 /* FMEventTableViewCell.xib in Resources */,
 				307CAA671C91BA0300F3D59F /* LaunchScreen.storyboard in Resources */,
 				307CAA641C91BA0300F3D59F /* Assets.xcassets in Resources */,
 				307CAA621C91BA0300F3D59F /* Main.storyboard in Resources */,
@@ -244,6 +251,7 @@
 				3058BD0D1CB987C200AFF9A8 /* FMEventTableViewController.swift in Sources */,
 				308B5D791C91D5AA005C1F48 /* DataFactory.swift in Sources */,
 				3058BD0F1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift in Sources */,
+				3058BD131CBA2C9300AFF9A8 /* FMEventTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
