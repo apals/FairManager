@@ -9,14 +9,23 @@
 import UIKit
 
 class FMEventTableViewController: UITableViewController {
+    @IBOutlet weak var refreshCtrl: UIRefreshControl!
+    var events:[Event]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showLoadingHUD()
         
         if let settings = dataFactory.getSettings() {
             self.navigationItem.title = settings.eventViewTitle
         }
         
+        refreshData(self)
+        
+        tableView.registerNib(UINib(nibName: "FMEventTableViewCell", bundle: nil), forCellReuseIdentifier: "FMEventTableViewCell")
+        
+        self.refreshControl?.addTarget(self, action: #selector(refreshData), forControlEvents: UIControlEvents.ValueChanged)
         tableView.registerNib(UINib(nibName: "FMEventTableViewCell", bundle: nil), forCellReuseIdentifier: "FMEventTableViewCell")
 
         // Uncomment the following line to preserve selection between presentations
@@ -24,6 +33,28 @@ class FMEventTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func refreshData(sender:AnyObject)
+    {
+        
+        dataFactory.getEvents() { events, error in
+            if(error != nil) {
+                print("error")
+               // self.displayErrorOnTableView(self.tableView)
+            }
+            if(events != nil) {
+                self.events = events
+                self.tableView.reloadData()
+            }
+            
+            self.hideLoadingHUD()
+            
+            if self.refreshCtrl.refreshing
+            {
+                self.refreshCtrl.endRefreshing()
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,7 +71,11 @@ class FMEventTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        if let events = self.events {
+            return events.count
+        } else {
+            return 0
+        }
     }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -51,63 +86,26 @@ class FMEventTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FMEventTableViewCell", forIndexPath: indexPath) as! FMEventTableViewCell
         
-        if indexPath.row == 0 {
-            cell.topLine.hidden = true
-        }
         
-        if indexPath.row == self.tableView.numberOfRowsInSection(0)-1 {
-            cell.bottomLine.hidden = true
+        if let events = self.events {
+            let event:Event = events[indexPath.row]
+            
+            if let name = event.name {
+                cell.eventNameLabel.text = name
+            }
+            
+            if indexPath.row == 0 {
+                cell.topLine.hidden = true
+            }
+            
+            if indexPath.row == self.tableView.numberOfRowsInSection(0)-1 {
+                cell.bottomLine.hidden = true
+            }
         }
 
         // Configure the cell...
 
         return cell
     }
-    
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
