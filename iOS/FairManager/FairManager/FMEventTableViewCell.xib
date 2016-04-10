@@ -96,11 +96,11 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="bottomLine" destination="Vyu-hd-p9G" id="mdq-rs-tTp"/>
-                <outlet property="dateText" destination="Qgf-dP-JvG" id="KHT-mS-QcZ"/>
+                <outlet property="dateTextLabel" destination="Qgf-dP-JvG" id="Cju-9b-Mt1"/>
                 <outlet property="eventImage" destination="Hlf-yd-W3L" id="flP-rV-YZn"/>
                 <outlet property="eventNameLabel" destination="ZW8-KJ-W9H" id="vCu-v3-Mz2"/>
                 <outlet property="middleLine" destination="lFO-ni-30G" id="fKx-7T-BPJ"/>
-                <outlet property="monthText" destination="1tl-6X-VjS" id="G6V-Fc-4VB"/>
+                <outlet property="monthTextLabel" destination="1tl-6X-VjS" id="B0d-Wm-Ckn"/>
                 <outlet property="topLine" destination="JpD-wU-EAr" id="Anf-Jt-2MY"/>
             </connections>
             <point key="canvasLocation" x="262" y="192.5"/>
