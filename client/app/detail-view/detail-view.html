@@ -12,8 +12,11 @@
     <div class="col-sm-8 col-sm-offset-2">
       <div class="panel panel-default">
         <div class="panel-body">
-          <div ng-if="key == 'logoUrl' || key == 'bannerUrl' ||key == 'imageUrl'" class="text-center">
-            <img class="companyimage" ng-src="{{value}}">
+          <div ng-if="key == 'logoUrl' || key == 'bannerUrl' ||key == 'imageUrl'">
+            <strong>{{splitCamelCaseAndRemoveUrl(key)}}:</strong> <br>
+              <div class="text-center">
+                <img class="companyimage" ng-src="{{value}}">
+              </div>
           </div>
 
           <div ng-if="key == 'error'">

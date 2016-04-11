@@ -10,5 +10,10 @@ angular.module('fairManagerApp')
       });
     };
 
+    this.splitCamelCaseAndRemoveUrl = function (string) {
+      //Remove last three letters ('url') and then split + capitalize
+      return this.splitCamelCase(string.slice(0, -3));
+    };
+
     return this;
   });
