@@ -3,6 +3,16 @@
 angular.module('fairManagerApp')
   .controller('NewCompanyCtrl', function ($scope, CompanyService, ErrorHandlingService, $location, Upload, $timeout) {
 
+    $scope.deleteBanner = function (event, company) {
+      event.preventDefault();
+      company.banner = null;
+    };
+
+    $scope.deleteLogo = function (event, company) {
+      event.preventDefault();
+      company.logo = null;
+    };
+
     $scope.addCompany = function (company) {
 
       if (company) {

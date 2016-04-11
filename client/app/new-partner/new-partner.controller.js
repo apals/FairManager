@@ -3,6 +3,10 @@
 angular.module('fairManagerApp')
   .controller('NewPartnerCtrl', function ($scope, PartnerService, ErrorHandlingService, $location, Upload, $timeout) {
 
+    $scope.deleteLogo = function (event, partner) {
+      event.preventDefault();
+      partner.logo = null;
+    };
 
     $scope.addPartner = function (partner) {
 
