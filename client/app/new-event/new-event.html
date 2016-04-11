@@ -12,7 +12,7 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Name:
+              <label>Name: <br>
                 <input ng-model="event.name" required>
               </label>
             </div>
@@ -25,7 +25,7 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Info:
+              <label>Info: <br>
                 <textarea ng-model="event.info" rows="10">
                   </textarea>
               </label>
@@ -38,7 +38,7 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Location:
+              <label>Location: <br>
                 <input ng-model="event.location">
               </label>
             </div>
@@ -51,7 +51,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
 
-              <label for="startDate">Start date:</label>
+              <label for="startDate">Start date:</label> <br>
               <input type="datetime-local" id="startDate" name="input" ng-model="event.startDate"
                      placeholder="yyyy-MM-dd" required/>
 
@@ -64,7 +64,7 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label for="endDate">End date:</label>
+              <label for="endDate">End date:</label> <br>
               <input type="datetime-local" id="endDate" name="input" ng-model="event.endDate"
                      placeholder="yyyy-MM-dd" required/>
             </div>
@@ -78,16 +78,21 @@
           <div class="panel panel-default">
             <div class="panel-body">
 
-              <label>Logo:</label>
+              <label>Event image:</label>
 
-              <div style="width: 100%; background: red;" file-button ngf-select ngf-drop
+              <span style="font-size: 11px; float: right;">
+                Will be re-sized to 300 x 300 pixels
+              </span>
+
+              <div class="logo-upload" file-button ngf-select ngf-drop
+                   ngf-resize="{width: 300, height: 300, quality: .9}"
                    ng-model="event.logo" name="event.logo"
                    accept="image/*" ngf-max-size="2MB" required
                    ngf-model-invalid="errorFile" class="drop-box">
 
                 <p style="height: 100%">
 
-                  <img ng-show="new-event-form.event.logo.$valid"
+                  <img style="height: 100%" ng-show="new-event-form.event.logo.$valid"
                        ngf-src="event.logo">
 
                 </p>

@@ -12,7 +12,7 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Name:
+              <label>Name: <br>
                 <input ng-model="partner.name" required>
               </label>
             </div>
@@ -24,7 +24,7 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Website:
+              <label>Website: <br>
                 <input ng-model="partner.websiteUrl" required>
               </label>
             </div>
@@ -42,7 +42,13 @@
 
               <label>Logo:</label>
 
-              <div style="width: 100%; height: 100%; background: red;" file-button ngf-select ngf-drop
+              <span style="font-size: 11px; float: right;">
+                Will be re-sized to 300 x 300 pixels
+              </span>
+
+
+              <div class="logo-upload" file-button ngf-select ngf-drop
+                   ngf-resize="{width: 300, height: 300, quality: .9}"
                    ng-model="partner.logo" name="partner.logo"
                    accept="image/*" ngf-max-size="2MB"
                    ngf-model-invalid="errorFile" class="drop-box">
