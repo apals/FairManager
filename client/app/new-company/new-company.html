@@ -49,8 +49,8 @@
                    accept="image/*" ngf-max-size="2MB"
                    ngf-model-invalid="errorFile">
 
-                <div style="height: 100%;">
-                  <img style="height: 100%" ng-show="new-company-form.company.logo.$valid" ngf-thumbnail="company.logo" class="thumb">
+                <div style="height: 100%; width: 100%">
+                  <img style="height: 100%; width: 100%" ng-show="new-company-form.company.logo.$valid" ngf-thumbnail="company.logo" class="thumb">
                 </div>
 
 
@@ -82,8 +82,8 @@
                    accept="image/*" ngf-max-size="2MB"
                    ngf-model-invalid="errorFile">
 
-                <div style="height: 100%;">
-                  <img style="height: 100%;" ng-show="new-company-form.company.banner.$valid" ngf-thumbnail="company.banner" class="thumb">
+                <div style="height: 100%; width: 100%">
+                  <img style="height: 100%; width: 100%" ng-show="new-company-form.company.banner.$valid" ngf-thumbnail="company.banner" class="thumb">
                 </div>
               </div>
               <button ng-click="company.banner = null" ng-show="company.banner">Remove</button>
