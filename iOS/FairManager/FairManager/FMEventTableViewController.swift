@@ -45,7 +45,10 @@ class FMEventTableViewController: UITableViewController {
             }
             if(events != nil) {
                 self.events = events
+                self.events!.sortInPlace({$0.startDate!.compare($1.startDate!) == NSComparisonResult.OrderedAscending})
                 self.tableView.reloadData()
+                print("sections: \(self.tableView.numberOfSections)")
+                print("rows: \(self.tableView.numberOfRowsInSection(0))")
             }
             
             self.hideLoadingHUD()
@@ -86,20 +89,24 @@ class FMEventTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FMEventTableViewCell", forIndexPath: indexPath) as! FMEventTableViewCell
         
-        
         if let events = self.events {
             let event:Event = events[indexPath.row]
+            print(event)
             
             if let name = event.name {
                 cell.eventNameLabel.text = name
             }
             
-            if indexPath.row == 0 {
-                cell.topLine.hidden = true
-            }
-            
-            if indexPath.row == self.tableView.numberOfRowsInSection(0)-1 {
-                cell.bottomLine.hidden = true
+            if let date = event.startDate {
+                let calendar = NSCalendar.currentCalendar()
+                let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+                
+                let dateFormatter: NSDateFormatter = NSDateFormatter()
+                let months = dateFormatter.shortMonthSymbols
+                let monthSymbol = months[components.month-1]
+                
+                cell.dateTextLabel.text = String(components.day)
+                cell.monthTextLabel.text = monthSymbol
             }
         }
 

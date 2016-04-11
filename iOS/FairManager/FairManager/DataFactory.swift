@@ -161,8 +161,6 @@ public class DataFactory {
                             event.name = json["name"].string
                         }
                         
-                        print("asd")
-                        
                         if(json["startDate"] != nil){
                             if let date = self.stringToDate(json["startDate"].string!) {
                                 event.startDate = date
@@ -174,8 +172,6 @@ public class DataFactory {
                                 event.endDate = date
                             }
                         }
-                        
-                        print("asd")
                         
                         if(json["imageUrl"] != nil) {
                             event.imageUrl = json["imageUrl"].string

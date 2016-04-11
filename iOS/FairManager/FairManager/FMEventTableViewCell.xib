@@ -57,7 +57,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LabelLabelLabelLabelLabelLabelLabelLabelLabelLabelLabel" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZW8-KJ-W9H" userLabel="eventNameLabel">
-                        <rect key="frame" x="60" y="10" width="170" height="36"/>
+                        <rect key="frame" x="60" y="18" width="170" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="170" id="wvr-V1-2K2"/>
                         </constraints>
@@ -65,9 +65,9 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ky4-OO-0Mg" userLabel="registrationLabel">
-                        <rect key="frame" x="60" y="46" width="33" height="16"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ky4-OO-0Mg" userLabel="registrationLabel">
+                        <rect key="frame" x="60" y="54" width="33" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -86,12 +86,12 @@
                     <constraint firstItem="Qgf-dP-JvG" firstAttribute="top" secondItem="Zha-cE-dhS" secondAttribute="topMargin" constant="12" id="RHw-4X-5qv"/>
                     <constraint firstItem="JpD-wU-EAr" firstAttribute="top" secondItem="Zha-cE-dhS" secondAttribute="top" id="SeG-VV-dhJ"/>
                     <constraint firstItem="lFO-ni-30G" firstAttribute="top" secondItem="JpD-wU-EAr" secondAttribute="bottom" id="gUN-wH-hAd"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="lFO-ni-30G" secondAttribute="trailing" constant="253" id="gZY-7z-jnV"/>
                     <constraint firstAttribute="bottom" secondItem="Vyu-hd-p9G" secondAttribute="bottom" id="get-ds-52k"/>
                     <constraint firstAttribute="leadingMargin" secondItem="1tl-6X-VjS" secondAttribute="leading" id="hpN-Mi-OfK"/>
                     <constraint firstItem="1tl-6X-VjS" firstAttribute="top" secondItem="Qgf-dP-JvG" secondAttribute="bottom" constant="-1" id="naL-Pf-nZ1"/>
-                    <constraint firstItem="ZW8-KJ-W9H" firstAttribute="top" secondItem="Zha-cE-dhS" secondAttribute="topMargin" constant="2" id="o8D-mA-VEO"/>
+                    <constraint firstItem="ZW8-KJ-W9H" firstAttribute="top" secondItem="Zha-cE-dhS" secondAttribute="topMargin" constant="10" id="o8D-mA-VEO"/>
                     <constraint firstAttribute="leadingMargin" secondItem="Qgf-dP-JvG" secondAttribute="leading" id="qLS-ne-4zt"/>
-                    <constraint firstItem="lFO-ni-30G" firstAttribute="leading" secondItem="Qgf-dP-JvG" secondAttribute="trailing" constant="19" id="yfU-mw-Nse"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
