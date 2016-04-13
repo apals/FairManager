@@ -9,15 +9,31 @@
 import UIKit
 
 class FMEventDetailTableViewController: UITableViewController {
+    
+    var event:Event?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        addBlurView()
+        
+        showLoadingHUD()
+        
+        tableView.tableFooterView = UIView()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
+        
+    }
+    
+    func setEvent(event:Event) {
+        
+        self.event = event
+        print(event)
+        //setupCompanyView()
+        removeSubview(666)
+        hideLoadingHUD()
     }
 
     override func didReceiveMemoryWarning() {
