@@ -117,7 +117,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="BLG-sf-fIS" kind="show" id="3TZ-Y6-UbQ"/>
+                                    <segue destination="BLG-sf-fIS" kind="show" identifier="eventSegue" id="3TZ-Y6-UbQ"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

@@ -12,6 +12,8 @@ class FMEventTableViewController: UITableViewController {
     @IBOutlet weak var refreshCtrl: UIRefreshControl!
     var events:[Event]?
     var pastFutureEventsDictionary:[String: [Event]]?
+    var chosenIndex:Int = 0
+    var chosenSection:Int = 0
 
 
     override func viewDidLoad() {
@@ -74,10 +76,6 @@ class FMEventTableViewController: UITableViewController {
                 } else {
                     self.tableView.reloadData()
                 }
-                
-                print("sections: \(self.tableView.numberOfSections)")
-                print("rows: \(self.tableView.numberOfRowsInSection(0))")
-                print("rows: \(self.tableView.numberOfRowsInSection(1))")
             }
             
             self.hideLoadingHUD()
@@ -180,64 +178,44 @@ class FMEventTableViewController: UITableViewController {
 
         return cell
     }
-
-}
-
-extension NSDate {
-    func isGreaterThanDate(dateToCompare: NSDate) -> Bool {
-        print(self)
-        print(dateToCompare)
-        //Declare Variables
-        var isGreater = false
-        
-        //Compare Values
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedDescending {
-            isGreater = true
+    
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        chosenIndex = indexPath.row
+        chosenSection = indexPath.section
+        self.performSegueWithIdentifier("eventSegue", sender: self)
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let dict = self.pastFutureEventsDictionary {
+            var type:String = ""
+            switch chosenSection {
+            case 0:
+                type = "future"
+                break
+            case 1:
+                type = "past"
+                break
+            default:
+                return
+            }
+            
+            if let array = dict[type] {
+                if let id = array[chosenIndex].id {
+                    let segueViewController = segue.destinationViewController as! FMEventDetailTableViewController
+                    
+                    dataFactory.getEvent(id) { event, error in
+                        if(error != nil) {
+                            print("error")
+                        }
+                        
+                        if(event != nil){
+                            segueViewController.setEvent(event!)
+                        }
+                    }
+                }
+            }
         }
         
-        //Return Result
-        return isGreater
-    }
-    
-    func isLessThanDate(dateToCompare: NSDate) -> Bool {
-        //Declare Variables
-        var isLess = false
-        
-        //Compare Values
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedAscending {
-            isLess = true
-        }
-        
-        //Return Result
-        return isLess
-    }
-    
-    func equalToDate(dateToCompare: NSDate) -> Bool {
-        //Declare Variables
-        var isEqualTo = false
-        
-        //Compare Values
-        if self.compare(dateToCompare) == NSComparisonResult.OrderedSame {
-            isEqualTo = true
-        }
-        
-        //Return Result
-        return isEqualTo
-    }
-    
-    func addDays(daysToAdd: Int) -> NSDate {
-        let secondsInDays: NSTimeInterval = Double(daysToAdd) * 60 * 60 * 24
-        let dateWithDaysAdded: NSDate = self.dateByAddingTimeInterval(secondsInDays)
-        
-        //Return Result
-        return dateWithDaysAdded
-    }
-    
-    func addHours(hoursToAdd: Int) -> NSDate {
-        let secondsInHours: NSTimeInterval = Double(hoursToAdd) * 60 * 60
-        let dateWithHoursAdded: NSDate = self.dateByAddingTimeInterval(secondsInHours)
-        
-        //Return Result
-        return dateWithHoursAdded
     }
 }
