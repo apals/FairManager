@@ -145,6 +145,56 @@ public class DataFactory {
         }
     }
     
+    func getEvent(id:String, completionHandler: (Event?, NSError?) -> ()) {
+        Alamofire.request(.GET, NSURL(string: "\(baseURL)/api/events/\(id)")!).validate().responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    var event:Event = Event()
+                    
+                    if(json["name"] != nil){
+                        event.name = json["name"].string
+                    }
+                    
+                    if(json["info"] != nil){
+                        event.info = json["info"].string
+                    }
+                    
+                    if(json["location"] != nil){
+                        event.location = json["location"].string
+                    }
+                    
+                    if(json["startDate"] != nil){
+                        if let date = self.stringToDate(json["startDate"].string!) {
+                            event.startDate = date
+                        }
+                    }
+                    
+                    if(json["endDate"] != nil){
+                        if let date = self.stringToDate(json["endDate"].string!) {
+                            event.endDate = date
+                        }
+                    }
+                    
+                    if(json["imageUrl"] != nil) {
+                        event.imageUrl = json["imageUrl"].string
+                    }
+                    
+                    if(json["_id"] != nil){
+                        event.id = json["_id"].string
+                    }
+                    
+                    
+                    // This should also update our local list of companies
+                    completionHandler(event, nil)
+                }
+            case .Failure(let error):
+                completionHandler(nil, error)
+            }
+        }
+    }
+    
     func getEvents(completionHandler: ([Event]?, NSError?) -> ()) {
         Alamofire.request(.GET, NSURL(string: "\(baseURL)/api/events")!).validate().responseJSON { response in
             switch response.result {
