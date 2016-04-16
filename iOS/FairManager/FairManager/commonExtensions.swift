@@ -32,6 +32,20 @@ extension UIViewController {
 }
 
 extension NSDate {
+    
+    struct Date {
+        static let formatterShortDate = NSDateFormatter(dateFormat: "dd-MM-yyyy")
+    }
+    var shortDate: String {
+        return Date.formatterShortDate.stringFromDate(self)
+    }
+    
+    var time:String {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter.stringFromDate(self)
+    }
+    
     func isGreaterThanDate(dateToCompare: NSDate) -> Bool {
         //Declare Variables
         var isGreater = false
@@ -85,5 +99,12 @@ extension NSDate {
         
         //Return Result
         return dateWithHoursAdded
+    }
+}
+
+extension NSDateFormatter {
+    convenience init(dateFormat: String) {
+        self.init()
+        self.dateFormat = dateFormat
     }
 }
