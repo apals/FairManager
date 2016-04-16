@@ -28,6 +28,10 @@ struct Event {
     var location:String?
     var startDate:NSDate?
     var endDate:NSDate?
+    var registrationReguired:Bool?
+    var registrationStartDate:NSDate?
+    var registrationEndDate:NSDate?
+    var registrationUrl:String?
     var imageUrl:String?
     var id:String?
 }
@@ -175,6 +179,26 @@ public class DataFactory {
                         if let date = self.stringToDate(json["endDate"].string!) {
                             event.endDate = date
                         }
+                    }
+                    
+                    if(json["registrationRequired"] != nil){
+                        event.registrationReguired = json["registrationRequired"].bool
+                    }
+                    
+                    if(json["registrationStartDate"] != nil){
+                        if let date = self.stringToDate(json["registrationStartDate"].string!) {
+                            event.registrationStartDate = date
+                        }
+                    }
+                    
+                    if(json["registrationEndDate"] != nil){
+                        if let date = self.stringToDate(json["registrationEndDate"].string!) {
+                            event.registrationEndDate = date
+                        }
+                    }
+                    
+                    if(json["registrationUrl"] != nil){
+                        event.registrationUrl = json["registrationUrl"].string
                     }
                     
                     if(json["imageUrl"] != nil) {
