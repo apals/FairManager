@@ -22,6 +22,20 @@ struct Company {
     var id:String?
 }
 
+struct Event {
+    var name:String?
+    var info:String?
+    var location:String?
+    var startDate:NSDate?
+    var endDate:NSDate?
+    var registrationReguired:Bool?
+    var registrationStartDate:NSDate?
+    var registrationEndDate:NSDate?
+    var registrationUrl:String?
+    var imageUrl:String?
+    var id:String?
+}
+
 struct Settings {
     var primaryColor:UIColor = UIColor(rgba: "#51039a")
     var primaryTextColor:UIColor = UIColor(rgba: "#404040")
@@ -133,6 +147,133 @@ public class DataFactory {
                 completionHandler(nil, error)
             }
         }
+    }
+    
+    func getEvent(id:String, completionHandler: (Event?, NSError?) -> ()) {
+        Alamofire.request(.GET, NSURL(string: "\(baseURL)/api/events/\(id)")!).validate().responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    var event:Event = Event()
+                    
+                    if(json["name"] != nil){
+                        event.name = json["name"].string
+                    }
+                    
+                    if(json["info"] != nil){
+                        event.info = json["info"].string
+                    }
+                    
+                    if(json["location"] != nil){
+                        event.location = json["location"].string
+                    }
+                    
+                    if(json["startDate"] != nil){
+                        if let date = self.stringToDate(json["startDate"].string!) {
+                            event.startDate = date
+                        }
+                    }
+                    
+                    if(json["endDate"] != nil){
+                        if let date = self.stringToDate(json["endDate"].string!) {
+                            event.endDate = date
+                        }
+                    }
+                    
+                    if(json["registrationRequired"] != nil){
+                        event.registrationReguired = json["registrationRequired"].bool
+                    }
+                    
+                    if(json["registrationStartDate"] != nil){
+                        if let date = self.stringToDate(json["registrationStartDate"].string!) {
+                            event.registrationStartDate = date
+                        }
+                    }
+                    
+                    if(json["registrationEndDate"] != nil){
+                        if let date = self.stringToDate(json["registrationEndDate"].string!) {
+                            event.registrationEndDate = date
+                        }
+                    }
+                    
+                    if(json["registrationUrl"] != nil){
+                        event.registrationUrl = json["registrationUrl"].string
+                    }
+                    
+                    if(json["imageUrl"] != nil) {
+                        event.imageUrl = json["imageUrl"].string
+                    }
+                    
+                    if(json["_id"] != nil){
+                        event.id = json["_id"].string
+                    }
+                    
+                    
+                    // This should also update our local list of companies
+                    completionHandler(event, nil)
+                }
+            case .Failure(let error):
+                completionHandler(nil, error)
+            }
+        }
+    }
+    
+    func getEvents(completionHandler: ([Event]?, NSError?) -> ()) {
+        Alamofire.request(.GET, NSURL(string: "\(baseURL)/api/events")!).validate().responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    var events:[Event] = []
+                    
+                    
+                    for (_, json):(String, JSON) in json {
+                        var event:Event = Event()
+                        
+                        if(json["name"] != nil){
+                            event.name = json["name"].string
+                        }
+                        
+                        if(json["startDate"] != nil){
+                            if let date = self.stringToDate(json["startDate"].string!) {
+                                event.startDate = date
+                            }
+                        }
+                        
+                        if(json["endDate"] != nil){
+                            if let date = self.stringToDate(json["endDate"].string!) {
+                                event.endDate = date
+                            }
+                        }
+                        
+                        if(json["imageUrl"] != nil) {
+                            event.imageUrl = json["imageUrl"].string
+                        }
+                        
+                        if(json["_id"] != nil){
+                            event.id = json["_id"].string
+                        }
+                        
+                        events.append(event)
+                    }
+                    
+                    completionHandler(events, nil)
+                }
+            case .Failure(let error):
+                completionHandler(nil, error)
+            }
+        }
+        
+    }
+    
+    func stringToDate(string:String) -> NSDate? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date:NSDate = dateFormatter.dateFromString(string){
+            return date
+        }
+        return nil
     }
     
     func fetchSettings() -> Settings? {
