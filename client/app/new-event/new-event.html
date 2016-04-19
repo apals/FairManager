@@ -77,34 +77,50 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <label for="registrationRequired">Registration required:</label>
-              <input type="checkbox" ng-model="tab.registrationRequired">
+              <input type="checkbox" ng-model="event.registrationRequired" ng-init="event.registrationRequired=true">
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row">
+      <div class"registration" ng-show="event.registrationRequired">
+
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <label for="registrationStartDate">Registration start date:</label>
+                <input type="datetime-local" id="registrationStartDate" name="input" ng-model="event.registrationStartDate"
+                       placeholder="yyyy-MM-dd">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <div class="panel panel-default">
+              <div class="panel-body">
+                <label for="registrationEndDate">Registration end date:</label>
+                <input type="datetime-local" id="registrationEndDate" name="input" ng-model="event.registrationEndDate"
+                       placeholder="yyyy-MM-dd">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label for="registrationStartDate">Registration start date:</label>
-              <input type="datetime-local" id="registrationStartDate" name="input" ng-model="event.registrationStartDate"
-                     placeholder="yyyy-MM-dd">
+              <label>Registration URL:
+                <input ng-model="event.registrationUrl">
+              </label>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <label for="registrationEndDate">Registration end date:</label>
-              <input type="datetime-local" id="registrationEndDate" name="input" ng-model="event.registrationEndDate"
-                     placeholder="yyyy-MM-dd">
-            </div>
-          </div>
-        </div>
       </div>
 
       <div class="row">
