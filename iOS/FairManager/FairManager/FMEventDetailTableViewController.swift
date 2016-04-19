@@ -86,7 +86,11 @@ class FMEventDetailTableViewController: UITableViewController {
                             } else {
                                 registrationLabel.text = "Registration opens at \(startDate.shortDate)"
                             }
+                        } else {
+                            registrationLabel.text = "No registration end date"
                         }
+                    } else {
+                        registrationLabel.text = "No registration start date"
                     }
                 } else {
                     registrationLabel.text = "No registration required"
