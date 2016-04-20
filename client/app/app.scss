@@ -236,15 +236,22 @@ a .btn {
   color: $primary-color;
 }
 
+.upload-image-text {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 11px;
+  color: $primary-color;
+}
+
 .logo-upload {
-  width: 100px;
-  height: 100px;
-  background: #9acfea;
+width: 100px;
+height: 100px;
+background: #9acfea;
 }
 
 
 .banner-upload {
-  height: 100px;
-  width: 100%;
-  background: #9acfea;
+height: 100px;
+width: 100%;
+background: #9acfea;
 }
