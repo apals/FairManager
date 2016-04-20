@@ -3,14 +3,19 @@
   <form name="companyForm" ng-submit="updateCompany(company)">
 
     <fieldset>
-      <legend>Edit Exhibitor</legend>
+      <div class="col-sm-12 text-center">
+        <h1>Editing {{company.name}}</h1>
+        <hr>
+      </div>
+
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Name:
+              <label>Name:</label><br>
+
                 <input ng-model="company.name" value="{{company.name}}">
-              </label>
+
             </div>
           </div>
         </div>
@@ -20,10 +25,8 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Info:
-                <textarea ng-model="company.info" value="{{company.info}}" rows="10">
-                  </textarea>
-              </label>
+              <label>Info: </label>
+                <textarea style="width: 100%;" ng-model="company.info" value="{{company.info}}" rows="5"></textarea>
             </div>
           </div>
         </div>
