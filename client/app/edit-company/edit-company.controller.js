@@ -15,7 +15,20 @@ angular.module('fairManagerApp')
       console.log(error);
     });
 
+    $scope.clearLogo = function (company) {
+      company.logo = null;
+      company.logoUrl = null;
+    };
+
+    $scope.clearBanner = function (company) {
+      company.banner = null;
+      company.bannerUrl = null;
+    };
+
     $scope.updateCompany = function (company) {
+
+      console.log(company);
+
       CompanyService.Company.update({id: company._id}, company, function () {
         $location.path('/companies');
       }, function (error) {
