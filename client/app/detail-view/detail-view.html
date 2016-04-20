@@ -7,7 +7,7 @@
   </div>
   <hr>
 
-  <div ng-repeat="(key, value) in element" ng-hide="key == '__v' || key == '_id'" class="row">
+  <div ng-repeat="(key, value) in element" ng-hide="key == '__v' || key == '_id' || value == null" class="row">
 
     <div class="col-sm-8 col-sm-offset-2">
       <div class="panel panel-default">
