@@ -167,10 +167,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="i9J-RV-ScS">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FMPersonTableViewCell" textLabel="l5m-1A-3Pz" style="IBUITableViewCellStyleDefault" id="i9J-RV-ScS">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i9J-RV-ScS" id="y9B-Oc-ZrE">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l5m-1A-3Pz">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -180,10 +191,66 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="eKM-tP-bFe"/>
+                    <connections>
+                        <segue destination="heH-F5-KMj" kind="show" identifier="personnelSegue" id="P3F-tO-Wlv"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yye-F1-n3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1692" y="722"/>
+        </scene>
+        <!--Personnel Detail View Controller-->
+        <scene sceneID="wwi-fW-Qsf">
+            <objects>
+                <viewController id="heH-F5-KMj" customClass="FMPersonnelDetailViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="rMi-VF-pnV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Eag-fG-LuO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PIr-6V-zly">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="zuj-nV-lP4">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zuj-nV-lP4" secondAttribute="trailing" id="5V1-1i-EGk"/>
+                            <constraint firstItem="zuj-nV-lP4" firstAttribute="top" secondItem="rMi-VF-pnV" secondAttribute="bottom" id="DIa-L8-7jv"/>
+                            <constraint firstItem="Eag-fG-LuO" firstAttribute="top" secondItem="zuj-nV-lP4" secondAttribute="bottom" id="fqn-Y3-8kv"/>
+                            <constraint firstItem="zuj-nV-lP4" firstAttribute="leading" secondItem="PIr-6V-zly" secondAttribute="leading" id="hW0-Gs-8ef"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="zuj-nV-lP4"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="5V1-1i-EGk"/>
+                                <exclude reference="DIa-L8-7jv"/>
+                                <exclude reference="hW0-Gs-8ef"/>
+                                <exclude reference="fqn-Y3-8kv"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="zuj-nV-lP4"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="5V1-1i-EGk"/>
+                                <include reference="DIa-L8-7jv"/>
+                                <include reference="hW0-Gs-8ef"/>
+                                <include reference="fqn-Y3-8kv"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="image" destination="zuj-nV-lP4" id="tAb-dp-2ep"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zbO-50-xfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2430" y="722"/>
         </scene>
         <!--Event Detail Table View Controller-->
         <scene sceneID="EBg-hc-UAx">
@@ -462,6 +529,7 @@
     </scenes>
     <resources>
         <image name="calendar" width="32" height="32"/>
+        <image name="launchscreen" width="750" height="1333"/>
         <image name="shop" width="32" height="32"/>
         <image name="standardbanner" width="800" height="400"/>
         <image name="user" width="32" height="32"/>
