@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		304070EF1CCA94DE00F9D092 /* FMPersonnelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 304070EE1CCA94DE00F9D092 /* FMPersonnelTableViewController.swift */; };
 		3058BD0D1CB987C200AFF9A8 /* FMEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3058BD0C1CB987C200AFF9A8 /* FMEventTableViewController.swift */; };
 		3058BD0F1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3058BD0E1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift */; };
 		3058BD111CBA2A8B00AFF9A8 /* FMEventTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3058BD101CBA2A8B00AFF9A8 /* FMEventTableViewCell.xib */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		1FBCAF84EEDF87578315FBFA /* Pods-FairManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FairManager.release.xcconfig"; path = "Pods/Target Support Files/Pods-FairManager/Pods-FairManager.release.xcconfig"; sourceTree = "<group>"; };
+		304070EE1CCA94DE00F9D092 /* FMPersonnelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMPersonnelTableViewController.swift; sourceTree = "<group>"; };
 		3058BD0C1CB987C200AFF9A8 /* FMEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMEventTableViewController.swift; sourceTree = "<group>"; };
 		3058BD0E1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMEventDetailTableViewController.swift; sourceTree = "<group>"; };
 		3058BD101CBA2A8B00AFF9A8 /* FMEventTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FMEventTableViewCell.xib; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 				308B5D781C91D5AA005C1F48 /* DataFactory.swift */,
 				307CAA5A1C91BA0300F3D59F /* AppDelegate.swift */,
 				307CAA601C91BA0300F3D59F /* Main.storyboard */,
+				304070EE1CCA94DE00F9D092 /* FMPersonnelTableViewController.swift */,
 				3058BD101CBA2A8B00AFF9A8 /* FMEventTableViewCell.xib */,
 				3058BD121CBA2C9300AFF9A8 /* FMEventTableViewCell.swift */,
 				3058BD0E1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift */,
@@ -252,6 +255,7 @@
 				3094F4501CAF01FD0067062E /* FMUINavigationController.swift in Sources */,
 				30E71D9A1CAFC2C2003A5E95 /* FMCompanyTableViewController.swift in Sources */,
 				3058BD0D1CB987C200AFF9A8 /* FMEventTableViewController.swift in Sources */,
+				304070EF1CCA94DE00F9D092 /* FMPersonnelTableViewController.swift in Sources */,
 				308B5D791C91D5AA005C1F48 /* DataFactory.swift in Sources */,
 				3058BD151CBE969600AFF9A8 /* commonExtensions.swift in Sources */,
 				3058BD0F1CB987F300AFF9A8 /* FMEventDetailTableViewController.swift in Sources */,
