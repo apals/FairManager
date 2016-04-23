@@ -11,55 +11,86 @@ import UIKit
 class FMPersonnelTableViewController: UITableViewController {
     
     var personnel:[Person]?
+    var personnelDictionary:[String: [Person]]?
+    var personnelGroupList:[String]?
     var chosenIndex:Int = 0
     var chosenSection:Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        refreshData(self)
+        
         if let settings = dataFactory.getSettings() {
             self.navigationItem.title = settings.personnelViewTitle
         }
-        
-        if let personnel = dataFactory.getPersonnel() {
-            self.personnel = personnel
-        }
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        if let personnel = self.personnel {
-            return personnel.count
+        if let groups = self.personnelGroupList {
+            return groups.count
         } else {
             return 0
         }
     }
 
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let groups = self.personnelGroupList {
+            let group = groups[section]
+            if let personnelDictionary = self.personnelDictionary {
+                if let personnel = personnelDictionary[group] {
+                    return personnel.count
+                }
+            }
+        }
+        return 0
+    }
+    
+    func refreshData(sender:AnyObject){
+        if let personnel = dataFactory.getPersonnel() {
+            self.personnel = personnel
+            self.personnelDictionary = [String: [Person]]()
+            self.personnel!.sortInPlace({$0.name < $1.name})
+            
+            for person in self.personnel! {
+                if let group = person.group {
+                    if let _ = self.personnelDictionary![group] {
+                        self.personnelDictionary![group]!.append(person)
+                    } else {
+                        self.personnelDictionary![group] = [person]
+                    }
+                }
+            }
+            
+            self.personnelGroupList = self.personnelDictionary!.keys.map { String($0) }.sort()
+            
+        }
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if let groups = self.personnelGroupList {
+            return groups[section]
+        } else {
+            return nil
+        }
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FMPersonTableViewCell", forIndexPath: indexPath)
         
-        if let personnel = self.personnel {
-            if let name = personnel[indexPath.row].name {
-                cell.textLabel?.text = name
+        if let groups = self.personnelGroupList {
+            let group:String = groups[indexPath.section]
+            if let personnelDictionary = self.personnelDictionary {
+                if let personnel = personnelDictionary[group] {
+                    let person:Person = personnel[indexPath.row]
+                    if let name = person.name {
+                        cell.textLabel?.text = name
+                    }
+                }
             }
         }
 
@@ -73,10 +104,16 @@ class FMPersonnelTableViewController: UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let personnel = self.personnel {
-            let person:Person = personnel[chosenIndex]
-            let segueViewController = segue.destinationViewController as! FMPersonnelDetailViewController
-            segueViewController.setPerson(person)
+        
+        if let groups = self.personnelGroupList {
+            let group:String = groups[chosenSection]
+            if let personnelDictionary = self.personnelDictionary {
+                if let personnel = personnelDictionary[group] {
+                    let person:Person = personnel[chosenIndex]
+                    let segueViewController = segue.destinationViewController as! FMPersonnelDetailViewController
+                    segueViewController.setPerson(person)
+                }
+            }
         }
     }
 
