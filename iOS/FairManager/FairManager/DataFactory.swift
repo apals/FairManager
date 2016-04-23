@@ -276,7 +276,7 @@ public class DataFactory {
     
     func getPersonnel() -> [Person]? {
         let personnel = [
-            Person(name: "Oscar Alsing", group: "Project Manager", imageUrl: nil, id: nil),
+            Person(name: "Oscar Alsing", group: "Project Manager", imageUrl: "http://armada.nu/system/organisation_members/313/pictures/original/original.jpg", id: nil),
             Person(name: "Andreas Pålsson", group: "Head of Web and Android", imageUrl: nil, id: nil)
         ]
         
