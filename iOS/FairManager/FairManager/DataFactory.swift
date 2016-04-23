@@ -36,6 +36,13 @@ struct Event {
     var id:String?
 }
 
+struct Person {
+    var name:String?
+    var group:String?
+    var imageUrl:String?
+    var id:String?
+}
+
 struct Settings {
     var primaryColor:UIColor = UIColor(rgba: "#51039a")
     var primaryTextColor:UIColor = UIColor(rgba: "#404040")
@@ -265,6 +272,16 @@ public class DataFactory {
             }
         }
         
+    }
+    
+    func getPersonnel() -> [Person]? {
+        let personnel = [
+            Person(name: "Oscar Alsing", group: "Project Manager", imageUrl: "http://armada.nu/system/organisation_members/313/pictures/original/original.jpg", id: nil),
+            Person(name: "Gustav Frid", group: "Project Manager", imageUrl: "http://armada.nu/system/organisation_members/296/pictures/thumb/thumb.jpg", id: nil),
+            Person(name: "Andreas Pålsson", group: "Head of Web and Android", imageUrl: nil, id: nil)
+        ]
+        
+        return personnel
     }
     
     func stringToDate(string:String) -> NSDate? {
