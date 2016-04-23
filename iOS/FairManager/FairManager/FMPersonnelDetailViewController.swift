@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 
 class FMPersonnelDetailViewController: UIViewController {
     var person:Person?
@@ -34,6 +35,18 @@ class FMPersonnelDetailViewController: UIViewController {
     
     private func setupPerson() {
         if let person = self.person {
+            
+            if let url = person.imageUrl {
+                if let url = NSURL(string: url) {
+                    let cache = Shared.imageCache
+                    let fetcher = NetworkFetcher<UIImage>(URL: url)
+                    cache.fetch(fetcher: fetcher).onSuccess { image in
+                        self.image.image = image
+                    }
+                }
+            }
+
+            
             if let name = person.name {
                 self.navigationItem.title = name
                 self.nameLabel.text = name
