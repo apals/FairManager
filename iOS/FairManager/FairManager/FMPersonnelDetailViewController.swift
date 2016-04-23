@@ -11,9 +11,14 @@ import UIKit
 class FMPersonnelDetailViewController: UIViewController {
     var person:Person?
     
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var groupLabel: UILabel!
     @IBOutlet weak var image: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupPerson()
+        
 
         // Do any additional setup after loading the view.
     }
@@ -25,13 +30,16 @@ class FMPersonnelDetailViewController: UIViewController {
     
     func setPerson(person:Person) {
         self.person = person
-        setupPerson()
     }
     
     private func setupPerson() {
         if let person = self.person {
             if let name = person.name {
                 self.navigationItem.title = name
+                self.nameLabel.text = name
+            }
+            if let group = person.group {
+                self.groupLabel.text = group
             }
         }
     }

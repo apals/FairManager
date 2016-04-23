@@ -210,42 +210,78 @@
                     <view key="view" contentMode="scaleToFill" id="PIr-6V-zly">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="zuj-nV-lP4">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="zuj-nV-lP4" customClass="ImageViewWithGradient" customModule="FairManager" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aRf-yX-1PO">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wo0-EA-9Oo">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="aRf-yX-1PO" firstAttribute="top" secondItem="Wo0-EA-9Oo" secondAttribute="bottom" constant="3" id="5GO-Ub-zn7"/>
                             <constraint firstAttribute="trailing" secondItem="zuj-nV-lP4" secondAttribute="trailing" id="5V1-1i-EGk"/>
+                            <constraint firstItem="Eag-fG-LuO" firstAttribute="top" secondItem="aRf-yX-1PO" secondAttribute="bottom" constant="15" id="96H-01-HnL"/>
                             <constraint firstItem="zuj-nV-lP4" firstAttribute="top" secondItem="rMi-VF-pnV" secondAttribute="bottom" id="DIa-L8-7jv"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aRf-yX-1PO" secondAttribute="trailing" id="DP8-8T-8eV"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="aRf-yX-1PO" secondAttribute="leading" id="OOL-ps-ama"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wo0-EA-9Oo" secondAttribute="trailing" id="TWW-vO-DBa"/>
                             <constraint firstItem="Eag-fG-LuO" firstAttribute="top" secondItem="zuj-nV-lP4" secondAttribute="bottom" id="fqn-Y3-8kv"/>
                             <constraint firstItem="zuj-nV-lP4" firstAttribute="leading" secondItem="PIr-6V-zly" secondAttribute="leading" id="hW0-Gs-8ef"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Wo0-EA-9Oo" secondAttribute="leading" id="rkC-Um-5s5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="zuj-nV-lP4"/>
+                                <exclude reference="aRf-yX-1PO"/>
+                                <exclude reference="Wo0-EA-9Oo"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="5V1-1i-EGk"/>
                                 <exclude reference="DIa-L8-7jv"/>
                                 <exclude reference="hW0-Gs-8ef"/>
+                                <exclude reference="TWW-vO-DBa"/>
+                                <exclude reference="rkC-Um-5s5"/>
+                                <exclude reference="5GO-Ub-zn7"/>
+                                <exclude reference="DP8-8T-8eV"/>
+                                <exclude reference="OOL-ps-ama"/>
+                                <exclude reference="96H-01-HnL"/>
                                 <exclude reference="fqn-Y3-8kv"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="zuj-nV-lP4"/>
+                                <include reference="aRf-yX-1PO"/>
+                                <include reference="Wo0-EA-9Oo"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="5V1-1i-EGk"/>
                                 <include reference="DIa-L8-7jv"/>
                                 <include reference="hW0-Gs-8ef"/>
+                                <include reference="TWW-vO-DBa"/>
+                                <include reference="rkC-Um-5s5"/>
+                                <include reference="5GO-Ub-zn7"/>
+                                <include reference="DP8-8T-8eV"/>
+                                <include reference="OOL-ps-ama"/>
+                                <include reference="96H-01-HnL"/>
                                 <include reference="fqn-Y3-8kv"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="groupLabel" destination="aRf-yX-1PO" id="hGh-hk-cCK"/>
                         <outlet property="image" destination="zuj-nV-lP4" id="tAb-dp-2ep"/>
+                        <outlet property="nameLabel" destination="Wo0-EA-9Oo" id="zax-W5-K05"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbO-50-xfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
