@@ -27,8 +27,6 @@ angular.module('fairManagerApp')
 
     $scope.updateCompany = function (company) {
 
-      console.log(company);
-
       CompanyService.Company.update({id: company._id}, company, function () {
         $location.path('/companies');
       }, function (error) {

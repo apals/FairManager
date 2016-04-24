@@ -90,12 +90,12 @@
                    accept="image/*" ngf-max-size="2MB" required
                    ngf-model-invalid="errorFile" class="drop-box">
 
-                <p style="height: 100%; width: 100%">
+                <div style="height: 100%; width: 100%">
 
-                  <img style="height: 100%; width: 100%" ng-show="new-event-form.event.logo.$valid"
-                       ngf-src="event.logo">
+                  <img style="height: 100%; width: 100%" ng-show="new-event-form.event.logo.$valid" ngf-src="event.logo">
+                  <div ng-if="!company.logo" class="upload-image-text">Upload image</div>
 
-                </p>
+                </div>
               </div>
               <button type="button" ng-click="event.logo = null" ng-show="event.logo" class="btn btn-primary">Remove</button>
 

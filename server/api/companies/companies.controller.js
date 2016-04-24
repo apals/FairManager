@@ -49,6 +49,7 @@ function removeCompanyLogo(res) {
   return function (entity) {
     if (entity && entity.logoUrl) {
       var image = "client/assets/images/" + entity.logoUrl.split('/')[5];
+      console.log("Logging image - " + image);
       fs.unlink(image, function (err) {
         if (err) {
           console.log("Error deleting company logo for entity:");
@@ -108,6 +109,9 @@ export function create(req, res, next) {
   }
 
 
+  console.log("URL CHANGE: " + req);
+  console.log(req);
+
   Companies.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
@@ -118,13 +122,31 @@ export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
+  console.log("UPDATING");
+  console.log(req);
+
   Companies.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
+    .then(changeImage(req.body))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
+// Creates a new Companies in the DB KAN KOLLA PÅ LLOGGAN NÄRSOM
+export function changeImage(req) {
+  var logo, banner;
+  if (req.files && req.files.logo) logo = req.files.logo;
+  if (req.files && req.files.banner) banner = req.files.banner;
+
+  if (req.body.logo) {
+    req.body.logoUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + logo.path.split('/')[3];
+  }
+
+  if (req.body.banner) {
+    req.body.bannerUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + banner.path.split('/')[3];
+  }
+}
 // Deletes a Companies from the DB
 
 function removeCompanyBanner(res) {
@@ -141,6 +163,8 @@ function removeCompanyBanner(res) {
     return entity;
   };
 }
+
+
 
 export function destroy(req, res) {
   Companies.findByIdAsync(req.params.id)

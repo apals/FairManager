@@ -8,9 +8,8 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Name:
+              <label>Name:</label><br>
                 <input ng-model="event.name" value="{{event.name}}">
-              </label>
             </div>
           </div>
         </div>
@@ -20,10 +19,8 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Info:
-                <textarea ng-model="event.info" value="{{event.info}}" rows="10">
-                  </textarea>
-              </label>
+              <label>Info:</label>
+                <textarea ng-model="event.info" value="{{event.info}}" rows="5" style="width: 100%;"></textarea>
             </div>
           </div>
         </div>
@@ -35,7 +32,7 @@
 
             <div class="panel-body">
 
-              <label for="startDate">Start date:</label>
+              <label for="startDate">Start date:</label><br>
               <input type="datetime-local" id="startDate" name="input" ng-model="event.startDate" required>
 
             </div>
@@ -47,7 +44,7 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label for="endDate">End date:</label>
+              <label for="endDate">End date:</label><br>
               <input type="datetime-local" id="endDate" name="input" ng-model="event.endDate" required/>
             </div>
           </div>
@@ -58,9 +55,32 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Logo:
-                <img ng-src="{{event.imageUrl}}" width="100%">
-              </label>
+              <label>Logo:</label>
+
+              <span style="font-size: 11px; float: right;">
+                Will be re-sized to 300 x 300 pixels
+              </span>
+
+              <div class="logo-upload drop-box" file-button ngf-select ngf-drop
+                   ngf-resize="{width: 300, height: 300, quality: .9}"
+                   ng-model="event.logo" name="event.logo"
+                   accept="image/*" ngf-max-size="2MB"
+                   ngf-model-invalid="errorFile">
+
+                <div style="height: 100%; width: 100%">
+
+                  <!-- Both image and imageUrl cannot be shown at the same time. LogoURL occurs if we 'get' the
+                  URL from the server. Logo occurs if we have removed said imageUrl, and added our own local image.-->
+                  <img style="height: 100%; width: 100%" ng-show="event.imageUrl" ngf-thumbnail="event.imageUrl" class="thumb">
+                  <img style="height: 100%; width: 100%" ng-show="event.logo" ngf-thumbnail="event.logo" class="thumb">
+
+                  <div ng-if="!event.imageUrl && !event.logo" class="upload-image-text">Upload image</div>
+                </div>
+
+              </div>
+
+              <button type="button" style="margin-top: 10px;" ng-click="event.imageUrl = ''; event.logo = null;" ng-show="event.imageUrl || event.logo">Remove</button>
+
             </div>
           </div>
         </div>
