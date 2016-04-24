@@ -164,15 +164,19 @@
             <objects>
                 <tableViewController id="sdT-Xl-Rc3" customClass="FMPersonnelTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="o5s-50-aW4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FMPersonTableViewCell" textLabel="l5m-1A-3Pz" style="IBUITableViewCellStyleDefault" id="i9J-RV-ScS">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i9J-RV-ScS" id="y9B-Oc-ZrE">
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l5m-1A-3Pz">
+                                            <rect key="frame" x="15" y="0.0" width="550" height="43"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -208,6 +212,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Eag-fG-LuO"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PIr-6V-zly">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchscreen" translatesAutoresizingMaskIntoConstraints="NO" id="zuj-nV-lP4" customClass="ImageViewWithGradient" customModule="FairManager" customModuleProvider="target">
@@ -246,16 +251,16 @@
                                 <exclude reference="Wo0-EA-9Oo"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="5V1-1i-EGk"/>
-                                <exclude reference="DIa-L8-7jv"/>
-                                <exclude reference="hW0-Gs-8ef"/>
+                                <exclude reference="96H-01-HnL"/>
+                                <exclude reference="fqn-Y3-8kv"/>
                                 <exclude reference="TWW-vO-DBa"/>
                                 <exclude reference="rkC-Um-5s5"/>
                                 <exclude reference="5GO-Ub-zn7"/>
                                 <exclude reference="DP8-8T-8eV"/>
                                 <exclude reference="OOL-ps-ama"/>
-                                <exclude reference="96H-01-HnL"/>
-                                <exclude reference="fqn-Y3-8kv"/>
+                                <exclude reference="5V1-1i-EGk"/>
+                                <exclude reference="DIa-L8-7jv"/>
+                                <exclude reference="hW0-Gs-8ef"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -265,16 +270,16 @@
                                 <include reference="Wo0-EA-9Oo"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="5V1-1i-EGk"/>
-                                <include reference="DIa-L8-7jv"/>
-                                <include reference="hW0-Gs-8ef"/>
+                                <include reference="96H-01-HnL"/>
+                                <include reference="fqn-Y3-8kv"/>
                                 <include reference="TWW-vO-DBa"/>
                                 <include reference="rkC-Um-5s5"/>
                                 <include reference="5GO-Ub-zn7"/>
                                 <include reference="DP8-8T-8eV"/>
                                 <include reference="OOL-ps-ama"/>
-                                <include reference="96H-01-HnL"/>
-                                <include reference="fqn-Y3-8kv"/>
+                                <include reference="5V1-1i-EGk"/>
+                                <include reference="DIa-L8-7jv"/>
+                                <include reference="hW0-Gs-8ef"/>
                             </mask>
                         </variation>
                     </view>

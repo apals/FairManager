@@ -86,6 +86,7 @@ class FMCompanyTableViewController: UITableViewController {
             {
                 self.refreshCtrl.endRefreshing()
             }
+ 
         }
     }
     

@@ -51,10 +51,10 @@ struct Settings {
     var contentMode:String = "Light"
     
     var exhibitorViewIsActive:Bool = true
-    var eventViewIsActive:Bool = false
+    var eventViewIsActive:Bool = true
     var partnerViewIsActive:Bool = false
     var contactViewIsActive:Bool = false
-    var personnelViewIsActive:Bool = false
+    var personnelViewIsActive:Bool = true
     
     
     var exhibitorViewTitle:String = "Exhibitors"
@@ -335,10 +335,10 @@ public class DataFactory {
                         
                         if(json["tabs"] != nil) {
                             settings.exhibitorViewIsActive = true
-                            settings.eventViewIsActive = false
+                            settings.eventViewIsActive = true
                             settings.partnerViewIsActive = false
                             settings.contactViewIsActive = false
-                            settings.personnelViewIsActive = false
+                            settings.personnelViewIsActive = true
                             
                             settings.exhibitorViewTitle = "Exhibitors"
                             settings.eventViewTitle = "Events"
