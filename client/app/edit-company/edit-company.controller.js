@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('EditCompanyCtrl', function ($scope, CompanyService, ErrorHandlingService, $routeParams, $location, $rootScope) {
+  .controller('EditCompanyCtrl', function ($scope, CompanyService, ErrorHandlingService, $routeParams, $location, $rootScope, Upload) {
 
     $scope.company = {};
 
@@ -26,12 +26,32 @@ angular.module('fairManagerApp')
     };
 
     $scope.updateCompany = function (company) {
+      var newCompany = {
+        name: company.name,
+        logo: company.logo
+      };
+      console.log(newCompany);
+      if(company.logoUrl) delete company.logoUrl;
+      if(company.bannerUrl) delete company.bannerUrl;
 
-      CompanyService.Company.update({id: company._id}, company, function () {
-        $location.path('/companies');
+      var upload = Upload.upload({
+        method: 'PUT',
+        url: '/api/companies/' + company._id,
+        data: newCompany
+      });
+
+      upload.then(function (response) {
+        /*$timeout(function () {
+          //$scope.eventLogo.result = response.data;
+          if (response.status === 201) {
+            $location.path('/companies');
+          }
+        });*/
       }, function (error) {
-        $scope.company.error = 'There was an error updating the exhibitor';
-        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'update exhibitor');
+        //$scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create exhibitor');
+      }, function () {
+        // Math.min is to fix IE which reports 200% sometimes
+        //$scope.eventLogo.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
       });
     };
 

@@ -7429,6 +7429,9 @@ footer.footer {
 .navbar-header .navbar-brand {
   color: #404040; }
 
+@media screen and (max-width: 765px) {
+  .navbar-brand {
+    padding-left: 1.75em; } }
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
   color: #404040; }
 
@@ -7627,5 +7630,21 @@ a .btn {
 
 .purple {
   color: #51039a; }
+
+.upload-image-text {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 11px;
+  color: #51039a; }
+
+.logo-upload {
+  width: 100px;
+  height: 100px;
+  background: #9acfea; }
+
+.banner-upload {
+  height: 100px;
+  width: 100%;
+  background: #9acfea; }
 
 /*# sourceMappingURL=app.css.map */
