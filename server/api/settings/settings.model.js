@@ -7,22 +7,22 @@ var SettingsSchema = new mongoose.Schema({
     type: String,
     validate: [colorValidator, 'That\'s not a valid color. Input format should be \'#RRGGBBAA\'']
   },
-    primaryTextColor: {
+  primaryTextColor: {
     type: String,
     validate: [colorValidator, 'That\'s not a valid color. Input format should be \'#RRGGBBAA\' a valid color']
   },
-    titleTextColor: {
+  titleTextColor: {
     type: String,
     validate: [colorValidator, 'That\'s not a valid color. Input format should be \'#RRGGBBAA\' a valid color']
   },
-    tintColor: {
+  tintColor: {
     type: String,
     validate: [colorValidator, 'That\'s not a valid color. Input format should be \'#RRGGBBAA\' a valid color']
   },
-    contentMode: {
+  contentMode: {
     type: String
   },
-    tabs: [{
+  tabs: [{
     name: String,
     isActive: Boolean
   }],
