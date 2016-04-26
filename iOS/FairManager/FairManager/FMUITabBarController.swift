@@ -20,17 +20,17 @@ class FMUITabBarController: UITabBarController {
             var tabs:[UIViewController] = []
             
             if settings.exhibitorViewIsActive {
-                tabs.append(generateTabViewNav("Exhibitors", imageName: "shop", type: "Exhibitor"))
+                tabs.append(generateTabViewNav(settings.exhibitorViewTitle, imageName: "shop", type: "Exhibitor"))
             }
  
             
             if settings.eventViewIsActive {
-                tabs.append(generateTabViewNav("Events", imageName: "calendar", type: "Event"))
+                tabs.append(generateTabViewNav(settings.eventViewTitle, imageName: "calendar", type: "Event"))
 
             }
             
             if settings.personnelViewIsActive {
-                tabs.append(generateTabViewNav("Personnel", imageName: "user", type: "Personnel"))
+                tabs.append(generateTabViewNav(settings.personnelViewTitle, imageName: "user", type: "Personnel"))
             }
             
             self.viewControllers = tabs
