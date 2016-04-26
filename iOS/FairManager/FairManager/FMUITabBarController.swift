@@ -19,38 +19,47 @@ class FMUITabBarController: UITabBarController {
             
             var tabs:[UIViewController] = []
             
-            print(settings)
-            
             if settings.exhibitorViewIsActive {
-                let companyNav = FMUINavigationController()
-                let companyIcon = UITabBarItem(title: "Companies", image: UIImage(named: "shop"), selectedImage: UIImage(named: "shop"))
-                companyNav.tabBarItem = companyIcon
-                let view = FMCompanyTableViewController(nibName: nil, bundle: nil)
-                companyNav.viewControllers = [view]
-                tabs.append(companyNav)
+                tabs.append(generateTabViewNav("Exhibitors", imageName: "shop", type: "Exhibitor"))
             }
+ 
             
             if settings.eventViewIsActive {
-                let eventNav = FMUINavigationController()
-                let eventIcon = UITabBarItem(title: "Events", image: UIImage(named: "calendar"), selectedImage: UIImage(named: "calendar"))
-                eventNav.tabBarItem = eventIcon
-                let view = FMEventTableViewController(nibName: nil, bundle: nil)
-                eventNav.viewControllers = [view]
-                tabs.append(eventNav)
+                tabs.append(generateTabViewNav("Events", imageName: "calendar", type: "Event"))
+
             }
             
             if settings.personnelViewIsActive {
-                let personnelNav = FMUINavigationController()
-                let personnelIcon = UITabBarItem(title: "Personnel", image: UIImage(named: "user"), selectedImage: UIImage(named: "user"))
-                personnelNav.tabBarItem = personnelIcon
-                let view = FMPersonnelTableViewController(nibName: nil, bundle: nil)
-                personnelNav.viewControllers = [view]
-                tabs.append(personnelNav)
+                tabs.append(generateTabViewNav("Personnel", imageName: "user", type: "Personnel"))
             }
-            
             
             self.viewControllers = tabs
         }
+    }
+    
+    private func generateTabViewNav(iconTitle:String, imageName:String, type:String) -> FMUINavigationController {
+        let nav = FMUINavigationController()
+        let icon = UITabBarItem(title: iconTitle, image: UIImage(named: imageName), selectedImage: UIImage(named: imageName))
+        nav.tabBarItem = icon
+        
+        var view:UIViewController = UIViewController()
+        
+        switch type {
+        case "Exhibitor":
+            view = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Exhibitors") as! FMCompanyTableViewController
+            break
+        case "Event":
+            view = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Events") as! FMEventTableViewController
+            break
+        case "Personnel":
+            view = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Personnel") as! FMPersonnelTableViewController
+            break
+        default:
+            break
+        }
+        
+        nav.viewControllers = [view]
+        return nav
     }
 
     override func didReceiveMemoryWarning() {

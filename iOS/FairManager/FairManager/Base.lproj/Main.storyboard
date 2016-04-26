@@ -18,9 +18,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
+                        <segue destination="m0n-1y-a9A" kind="relationship" relationship="viewControllers" id="SGT-Mg-LBu"/>
                         <segue destination="9Lz-Lz-UUv" kind="relationship" relationship="viewControllers" id="yOa-jf-zqh"/>
                         <segue destination="Sem-Kx-YZ9" kind="relationship" relationship="viewControllers" id="UDE-gs-FhJ"/>
-                        <segue destination="m0n-1y-a9A" kind="relationship" relationship="viewControllers" id="SGT-Mg-LBu"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -47,7 +47,7 @@
         <!--Company Table View Controller-->
         <scene sceneID="nkn-Cn-8Su">
             <objects>
-                <tableViewController id="VKD-73-8L1" customClass="FMCompanyTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="Exhibitors" storyboardIdentifier="Exhibitors" id="VKD-73-8L1" customClass="FMCompanyTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="73c-c8-Jtw">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -107,7 +107,7 @@
         <!--Event Table View Controller-->
         <scene sceneID="WMA-Xo-HBG">
             <objects>
-                <tableViewController id="b8L-iC-pfP" customClass="FMEventTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="Events" storyboardIdentifier="Events" id="b8L-iC-pfP" customClass="FMEventTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="S9m-Lo-E3g">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -162,7 +162,7 @@
         <!--Personnel Table View Controller-->
         <scene sceneID="6g6-TQ-A0K">
             <objects>
-                <tableViewController id="sdT-Xl-Rc3" customClass="FMPersonnelTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController restorationIdentifier="Personnel" storyboardIdentifier="Personnel" id="sdT-Xl-Rc3" customClass="FMPersonnelTableViewController" customModule="FairManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="o5s-50-aW4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
