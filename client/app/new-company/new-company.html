@@ -50,9 +50,14 @@
                    ngf-model-invalid="errorFile">
 
                 <div style="height: 100%; width: 100%">
-                  <img style="height: 100%; width: 100%" ng-show="new-company-form.company.logo.$valid" ngf-thumbnail="company.logo" class="thumb">
+                  <div ng-if="company.logo">
+                    <img style="height: 100%; width: 100%" ng-show="new-company-form.company.logo.$valid" ngf-thumbnail="company.logo" class="thumb">
+                  </div>
 
-                  <div ng-if="!company.logo" class="upload-image-text">Upload image</div>
+                  <div ng-if="!company.logo">
+                    <img src="../../assets/images/placeholders/upload-logo.jpg" style="height: 100%; width: 100%">
+                  </div>
+
                 </div>
 
               </div>
@@ -83,9 +88,16 @@
                    ngf-model-invalid="errorFile">
 
                 <div style="height: 100%; width: 100%">
-                  <img style="height: 100%; width: 100%" ng-show="new-company-form.company.banner.$valid" ngf-thumbnail="company.banner" class="thumb">
 
-                  <div ng-if="!company.banner" class="upload-image-text">Upload image</div>
+
+                  <div ng-if="company.logo">
+                    <img style="height: 100%; width: 100%" ng-show="new-company-form.company.banner.$valid" ngf-thumbnail="company.banner" class="thumb">
+                  </div>
+
+                  <div ng-if="!company.logo">
+                    <img src="../../assets/images/placeholders/upload-banner.jpg" style="height: 100%; width: 100%">
+                  </div>
+
                 </div>
               </div>
               <button type="button" ng-click="company.banner = null" ng-show="company.banner">Remove</button>

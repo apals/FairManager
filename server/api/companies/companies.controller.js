@@ -136,24 +136,18 @@ export function update(req, res) {
 
 // Creates a new Companies in the DB KAN KOLLA PÅ LLOGGAN NÄRSOM
 function changeImage(req) {
-  console.log("changeimage starts");
+
   return function (entity) {
-    console.log("------------------- entity");
-    console.log(entity);
+
     var logo, banner;
     if (req.files && req.files.logo) logo = req.files.logo;
     if (req.files && req.files.banner) banner = req.files.banner;
 
-    console.log("------------------- req.files");
-    console.log(req.files);
-    console.log("------------------- req.body");
-    console.log(req.body);
     if (logo) {
       entity.logoUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + logo.path.split('/')[3];
     } else {
       if (entity.logoUrl) {
-        console.log("deletinge entittty logorul");
-        delete entity.logoUrl;
+        entity.logoUrl = req.protocol + '://' + req.get('host') + "/assets/images/placeholders/upload-logo.jpg;";
       }
     }
 
@@ -161,12 +155,9 @@ function changeImage(req) {
       entity.bannerUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + banner.path.split('/')[3];
     } else {
       if (entity.bannerUrl)
-        delete entity.bannerUrl;
+        entity.bannerUrl = req.protocol + '://' + req.get('host') + "/assets/images/placeholders/upload-banner.jpg;";
     }
-    console.log("------------------- entity");
-    console.log(entity);
-    console.log("------------------- ");
-    console.log("changeimage end");
+
     return entity;
   }
 }
