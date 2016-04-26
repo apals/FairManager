@@ -50,11 +50,11 @@ struct Settings {
     var tintColor:UIColor = UIColor.whiteColor()
     var contentMode:String = "Light"
     
-    var exhibitorViewIsActive:Bool = true
-    var eventViewIsActive:Bool = true
+    var exhibitorViewIsActive:Bool = false
+    var eventViewIsActive:Bool = false
     var partnerViewIsActive:Bool = false
     var contactViewIsActive:Bool = false
-    var personnelViewIsActive:Bool = true
+    var personnelViewIsActive:Bool = false
     
     
     var exhibitorViewTitle:String = "Exhibitors"
@@ -300,7 +300,8 @@ public class DataFactory {
             do {
                 let data = NSData(contentsOfURL: url)
                 if data != nil {
-                    let json = JSON(data!)
+                    let json = JSON(data: data!)
+                    print(json)
                     
                     if json != nil {
                         
@@ -334,17 +335,27 @@ public class DataFactory {
                         }
                         
                         if(json["tabs"] != nil) {
-                            settings.exhibitorViewIsActive = true
-                            settings.eventViewIsActive = true
-                            settings.partnerViewIsActive = false
-                            settings.contactViewIsActive = false
-                            settings.personnelViewIsActive = true
-                            
-                            settings.exhibitorViewTitle = "Exhibitors"
-                            settings.eventViewTitle = "Events"
-                            settings.partnerViewTitle = "Partners"
-                            settings.contactViewTitle = "Contact"
-                            settings.personnelViewTitle = "Personnel"
+                            for tab in json["tabs"].arrayValue {
+                                if(tab["isActive"].boolValue){
+                                    switch tab["name"].stringValue {
+                                    case "exhibitor":
+                                        settings.exhibitorViewIsActive = true
+                                        break
+                                    case "event":
+                                        settings.eventViewIsActive = true
+                                        break
+                                    case "partner":
+                                        settings.partnerViewIsActive = true
+                                        break
+                                    case "contact":
+                                        settings.contactViewIsActive = true
+                                    case "personnel":
+                                        settings.personnelViewIsActive = true
+                                    default:
+                                        break
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -423,6 +434,7 @@ public class DataFactory {
             return settings
         } else {
             self.settings = fetchSettings()
+            print(self.settings)
             return self.settings
         }
     }
