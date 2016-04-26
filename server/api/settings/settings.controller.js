@@ -23,24 +23,15 @@ function respondWithResult(res, statusCode) {
 
 function saveUpdates(updates) {
   return function (entity) {
-    var updated = _.merge(entity, updates);
-    return updates.saveAsync()
-      .spread(updates => {
-        return updates;
+
+    var updated = _.assign(entity, updates);
+    return updated.saveAsync()
+      .spread(updated => {
+        return updated;
       });
   };
 }
 
-function removeEntity(res) {
-  return function (entity) {
-    if (entity) {
-      return entity.removeAsync()
-        .then(() => {
-          res.status(204).end();
-        });
-    }
-  };
-}
 
 function handleEntityNotFound(res) {
   return function (entity) {
@@ -61,52 +52,20 @@ function handleError(res, statusCode) {
 
 // Gets a list of Settingss
 export function index(req, res) {
-  Settings.findOneAsync()
+  Settings.findOneAsync({})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
-// Gets a single Settings from the DB
-export function show(req, res) {
-  Settings.findOneAsync()
-    .then(handleEntityNotFound(res))
-    .then(respondWithResult(res))
-    .catch(handleError(res));
-}
-
-// Creates a new Settings in the DB
-export function create(req, res) {
-  Settings.createAsync(req.body)
-    .then(respondWithResult(res, 201))
-    .catch(handleError(res));
-}
 
 // Updates an existing Settings in the DB
 export function update(req, res) {
-  var bodyid = req.body._id;
-  if (req.body._id) delete req.body._id;
-  if (req.body.__v) delete req.body.__v;
-
-  for (var i = 0; i < req.body.tabs.length; i++) {
-    if (req.body.tabs[i]._id) delete req.body.tabs[i]._id;
+  if (req.body._id) {
+    delete req.body._id;
   }
-
-  Settings.createAsync(req.body)
-    .then(respondWithResult(res, 201))
-    .then(() => {
-      Settings.findByIdAsync(bodyid)
-        .then(handleEntityNotFound(res))
-        .then(removeEntity(res))
-        .catch(handleError(res));
-    })
-    .catch(handleError(res));
-
-}
-
-// Deletes a Settings from the DB
-export function destroy(req, res) {
   Settings.findOneAsync()
     .then(handleEntityNotFound(res))
-    .then(removeEntity(res))
+    .then(saveUpdates(req.body))
+    .then(respondWithResult(res))
     .catch(handleError(res));
 }
