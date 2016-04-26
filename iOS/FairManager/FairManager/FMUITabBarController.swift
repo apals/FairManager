@@ -15,62 +15,51 @@ class FMUITabBarController: UITabBarController {
         
         if let settings = dataFactory.getSettings() {
             self.tabBar.tintColor = settings.primaryColor
+            
+            
+            var tabs:[UIViewController] = []
+            
+            if settings.exhibitorViewIsActive {
+                tabs.append(generateTabViewNav(settings.exhibitorViewTitle, imageName: "shop", type: "Exhibitor"))
+            }
+ 
+            
+            if settings.eventViewIsActive {
+                tabs.append(generateTabViewNav(settings.eventViewTitle, imageName: "calendar", type: "Event"))
+
+            }
+            
+            if settings.personnelViewIsActive {
+                tabs.append(generateTabViewNav(settings.personnelViewTitle, imageName: "user", type: "Personnel"))
+            }
+            
+            self.viewControllers = tabs
+        }
+    }
+    
+    private func generateTabViewNav(iconTitle:String, imageName:String, type:String) -> FMUINavigationController {
+        let nav = FMUINavigationController()
+        let icon = UITabBarItem(title: iconTitle, image: UIImage(named: imageName), selectedImage: UIImage(named: imageName))
+        nav.tabBarItem = icon
+        
+        var view:UIViewController = UIViewController()
+        
+        switch type {
+        case "Exhibitor":
+            view = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Exhibitors") as! FMCompanyTableViewController
+            break
+        case "Event":
+            view = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Events") as! FMEventTableViewController
+            break
+        case "Personnel":
+            view = UIStoryboard(name: "Main", bundle: nil).instantiateViewControllerWithIdentifier("Personnel") as! FMPersonnelTableViewController
+            break
+        default:
+            break
         }
         
-        /*
-        let tabBarControllerItems = self.tabBar.items
-        var viewControllers = self.tabBarController!.viewControllers
-        
-        if let arrayOfTabBarItems = tabBarControllerItems as! AnyObject as? NSArray{
-            
-            
-            if let settings = dataFactory.getSettings() {
-                if let active = settings.exhibitorViewIsActive {
-                    tabBarItem.
-                    tabBarItem = arrayOfTabBarItems[0] as! UITabBarItem
-                    tabBarItem.enabled = active
-                    if let title = settings.exhibitorViewTitle {
-                        tabBarItem.title = title
-                    }
-                }
-                
-                if let active = settings.eventViewIsActive {
-                    tabBarItem = arrayOfTabBarItems[1] as! UITabBarItem
-                    tabBarItem.enabled = active
-                    if let title = settings.eventViewTitle {
-                        tabBarItem.title = title
-                    }
-                }
-                
-                if let active = settings.partnerViewIsActive {
-                    tabBarItem = arrayOfTabBarItems[2] as! UITabBarItem
-                    tabBarItem.enabled = active
-                    if let title = settings.partnerViewTitle {
-                        tabBarItem.title = title
-                    }
-                }
-                
-                if let active = settings.contactViewIsActive {
-                    tabBarItem = arrayOfTabBarItems[3] as! UITabBarItem
-                    tabBarItem.enabled = active
-                    if let title = settings.contactViewTitle {
-                        tabBarItem.title = title
-                    }
-                }
-                
-                if let active = settings.personnelViewIsActive {
-                    if active {
-                        if let title = settings.personnelViewTitle {
-                            tabBarItem.title = title
-                        }
-                    } else {
-                        var viewControllers = self.tabBarController!.viewControllers
-                        viewControllers?.removeAtIndex(4)
-                    }
-                }
-            }
-        }*/
-        // Do any additional setup after loading the view.
+        nav.viewControllers = [view]
+        return nav
     }
 
     override func didReceiveMemoryWarning() {

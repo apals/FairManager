@@ -38,7 +38,6 @@ class FMEventDetailTableViewController: UITableViewController {
     
     func setEvent(event:Event) {
         self.event = event
-        print(event)
         setupEventView()
         //setupCompanyView()
         removeSubview(666)

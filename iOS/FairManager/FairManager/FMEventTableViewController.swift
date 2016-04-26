@@ -80,6 +80,7 @@ class FMEventTableViewController: UITableViewController {
             
             self.hideLoadingHUD()
             
+            
             if self.refreshCtrl.refreshing
             {
                 self.refreshCtrl.endRefreshing()
