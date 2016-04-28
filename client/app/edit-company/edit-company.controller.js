@@ -40,7 +40,7 @@ angular.module('fairManagerApp')
         data: newCompany
       });
 
-      upload.then(function (response) {
+      upload.then(function () {
         $location.path('/companies');
       }, function (error) {
         $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create exhibitor');
