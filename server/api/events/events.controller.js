@@ -104,7 +104,7 @@ export function update(req, res) {
     .catch(handleError(res));
 }
 
-// Creates a new Companies in the DB KAN KOLLA PÅ LLOGGAN NÄRSOM
+//Change the image for a certain event
 function changeImage(req) {
 
   return function (entity) {
