@@ -50,14 +50,9 @@
                    ngf-model-invalid="errorFile">
 
                 <div style="height: 100%; width: 100%">
-                  <div ng-if="company.logo">
-                    <img style="height: 100%; width: 100%" ng-show="new-company-form.company.logo.$valid" ngf-thumbnail="company.logo" class="thumb">
-                  </div>
+                  <img style="height: 100%; width: 100%" ng-show="new-company-form.company.logo.$valid" ngf-thumbnail="company.logo" class="thumb">
 
-                  <div ng-if="!company.logo">
-                    <img src="../../assets/images/placeholders/upload-logo.jpg" style="height: 100%; width: 100%">
-                  </div>
-
+                  <div ng-if="!company.logo" class="upload-image-text">Click or drag image<br>here to upload</div>
                 </div>
 
               </div>
@@ -89,14 +84,9 @@
 
                 <div style="height: 100%; width: 100%">
 
-
-                  <div ng-if="company.logo">
                     <img style="height: 100%; width: 100%" ng-show="new-company-form.company.banner.$valid" ngf-thumbnail="company.banner" class="thumb">
-                  </div>
 
-                  <div ng-if="!company.logo">
-                    <img src="../../assets/images/placeholders/upload-banner.jpg" style="height: 100%; width: 100%">
-                  </div>
+                  <div ng-if="!company.banner" class="upload-image-text">Click or drag image<br>here to upload</div>
 
                 </div>
               </div>

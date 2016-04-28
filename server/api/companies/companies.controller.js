@@ -147,7 +147,7 @@ function changeImage(req) {
       entity.logoUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + logo.path.split('/')[3];
     } else {
       if (entity.logoUrl) {
-        entity.logoUrl = req.protocol + '://' + req.get('host') + "/assets/images/placeholders/upload-logo.jpg;";
+        entity.logoUrl = null;
       }
     }
 
@@ -155,7 +155,7 @@ function changeImage(req) {
       entity.bannerUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + banner.path.split('/')[3];
     } else {
       if (entity.bannerUrl)
-        entity.bannerUrl = req.protocol + '://' + req.get('host') + "/assets/images/placeholders/upload-banner.jpg;";
+        entity.bannerUrl = null;
     }
 
     return entity;
