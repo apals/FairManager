@@ -12,7 +12,6 @@ angular.module('fairManagerApp')
 
     $scope.updateSettings = function (settings) {
       SettingsService.Settings.update(settings, function () {
-
       }, function (error) {
         console.log(error);
       });

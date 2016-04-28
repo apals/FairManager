@@ -32,10 +32,6 @@ angular.module('fairManagerApp')
       }
 
       //500 - Internal server error
-      else if(this.errorCode === 500) {
-        this.errorMessage = 'An error occurred when trying to ' + context + '. Perhaps you manually entered a faulty URL, or did you click an expired link?';
-      }
-
       //Unknown error code
       else {
         this.errorMessage = 'Unable to ' + context + '. An unexpected error with code ' + this.errorCode + ' occured. Please try again, and if the problem persists, contact us.';
