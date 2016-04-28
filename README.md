@@ -44,6 +44,7 @@ Running `npm test` will run the unit tests with karma.
 
 ## To add new views
 
+See the example folder: https://github.com/apals/FairManager/tree/master/client/app/edit-partner
 
 In order to add a new view in the front-end, do the following
 
@@ -51,7 +52,8 @@ In order to add a new view in the front-end, do the following
 
 2. In this folder, create 3 files: the .html-file, the .controller.js (with the naming convention) file, and a .js file
 
-3. The .js file should contain the route logic, see for example https://github.com/apals/FairManager/blob/master/client/app/settings/settings.js
+3. The .js file should contain the route logic, see for example https://github.com/apals/FairManager/blob/master/client/app/edit-partner/edit-partner.js
+authenticate: admin also restricts the routes to users with administrator-access. See possible roles in client/app/app.constant.js
 
-4. If you want to add this to the navbar in the top, find navbar.controller.js in client/components/navbar and add it to the menu-list
+4. If you want to add this to the navbar in the top, find navbar.controller.js in client/components/navbar and add it to the menu-list. If you want to add to the right-hand side of the navbar, add it in the navbar.html file. 
 
