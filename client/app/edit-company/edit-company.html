@@ -40,7 +40,7 @@
               <label>Logo:</label>
 
               <span style="font-size: 11px; float: right;">
-                Will be re-sized to 100 x 100 pixels
+                Will be re-sized to 100 x 100 pixels.
               </span>
 
               <div class="logo-upload drop-box" file-button ngf-select ngf-drop
@@ -53,15 +53,15 @@
 
                   <!-- Both logo and logoUrl cannot be shown at the same time. LogoURL occurs if we 'get' the
                   URL from the server. Logo occurs if we have removed said logoUrl, and added our own local image.-->
-                  <img style="height: 100%; width: 100%" ng-show="company.logoUrl" ngf-thumbnail="company.logoUrl" class="thumb">
+                  <img style="height: 100%; width: 100%" ng-show="(company.logoUrl != 'null') && !company.logo" ngf-thumbnail="company.logoUrl" class="thumb">
                   <img style="height: 100%; width: 100%" ng-show="company.logo" ngf-thumbnail="company.logo" class="thumb">
 
-                  <div ng-if="!company.logoUrl && !company.logo" class="upload-image-text">Upload image</div>
+                  <div ng-if="!company.logoUrl && !company.logo" class="upload-image-text">Click or drag image<br>here to upload</div>
                 </div>
 
               </div>
 
-              <button type="button" style="margin-top: 10px;" ng-click="clearLogo(company)" ng-show="company.logoUrl || company.logo">Remove</button>
+              <button type="button" style="margin-top: 10px;" ng-click="clearLogo(company);" ng-show="company.logoUrl || company.logo">Remove</button>
 
             </div>
           </div>
@@ -75,7 +75,7 @@
               <label>Banner:</label>
 
               <span style="font-size: 11px; float: right;">
-                Will be re-sized to 700 pixels wide
+                Will be re-sized to 700 pixels wide.
               </span>
 
               <div class="banner-upload drop-box"
@@ -90,10 +90,10 @@
 
                   <!-- Both banner and bannerUrl cannot be shown at the same time. bannerURL occurs if we 'get' the
                   URL from the server. Just 'banner' occurs if we have removed said bannerUrl, and added our own local image.-->
-                  <img style="height: 100%; width: 100%" ng-show="company.bannerUrl" ngf-thumbnail="company.bannerUrl" class="thumb">
+                  <img style="height: 100%; width: 100%" ng-show="(company.bannerUrl != 'null') && !company.banner" ngf-thumbnail="company.bannerUrl" class="thumb">
                   <img style="height: 100%; width: 100%" ng-show="company.banner" ngf-thumbnail="company.banner" class="thumb">
 
-                  <div ng-if="!company.bannerUrl && !company.bannerUrl" class="upload-image-text">Upload image</div>
+                  <div ng-if="!company.bannerUrl && !company.bannerUrl" class="upload-image-text">Click or drag image<br>here to upload</div>
                 </div>
 
               </div>
