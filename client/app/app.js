@@ -15,7 +15,8 @@ angular.module('fairManagerApp', [
     'ui.bootstrap',
     'angular-loading-bar',
     'angularUtils.directives.dirPagination',
-    'ngAnimate'
+    'ngAnimate',
+    'colorpicker.module'
   ])
   .run(function ($rootScope, $location, Auth, LoginRedirectService) {
 

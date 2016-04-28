@@ -27,6 +27,7 @@ module.exports = function(config) {
       'client/bower_components/angular-loading-bar/build/loading-bar.js',
       'client/bower_components/angularUtils-pagination/dirPagination.js',
       'client/bower_components/angular-animate/angular-animate.js',
+      'client/bower_components/angular-bootstrap-colorpicker/js/bootstrap-colorpicker-module.js',
       'client/bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'node_modules/socket.io-client/socket.io.js',
