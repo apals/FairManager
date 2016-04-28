@@ -9,7 +9,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <label>Name:</label><br>
-                <input ng-model="event.name" value="{{event.name}}">
+                <input style="width: 40%;" ng-model="event.name" value="{{event.name}}">
             </div>
           </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="panel-body">
 
               <label for="startDate">Start date:</label><br>
-              <input type="datetime-local" id="startDate" name="input" ng-model="event.startDate" required>
+              <input style="width: 40%;" type="datetime-local" id="startDate" name="input" ng-model="event.startDate" required>
 
             </div>
           </div>
@@ -45,7 +45,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <label for="endDate">End date:</label><br>
-              <input type="datetime-local" id="endDate" name="input" ng-model="event.endDate" required/>
+              <input style="width: 40%;" type="datetime-local" id="endDate" name="input" ng-model="event.endDate" required/>
             </div>
           </div>
         </div>
@@ -74,12 +74,12 @@
                   <img style="height: 100%; width: 100%" ng-show="event.imageUrl" ngf-thumbnail="event.imageUrl" class="thumb">
                   <img style="height: 100%; width: 100%" ng-show="event.logo" ngf-thumbnail="event.logo" class="thumb">
 
-                  <div ng-if="!event.imageUrl && !event.logo" class="upload-image-text">Upload image</div>
+                  <div ng-if="!event.imageUrl && !event.logo" class="upload-image-text">Click or drag image<br>here to upload</div>
                 </div>
 
               </div>
 
-              <button type="button" style="margin-top: 10px;" ng-click="event.imageUrl = ''; event.logo = null;" ng-show="event.imageUrl || event.logo">Remove</button>
+              <button type="button" style="margin-top: 10px;" ng-click="event.imageUrl = null; event.logo = null;" ng-show="event.imageUrl || event.logo">Remove</button>
 
             </div>
           </div>
