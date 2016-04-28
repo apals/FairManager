@@ -139,8 +139,8 @@
             <div>
               <strong>Tabs:</strong>
 
-              <label ng-repeat="tab in settings.tabs" class="checkbox-inline">
-                <input type="checkbox" ng-model="tab.isActive">{{tab.name}}
+              <label ng-repeat="tab in settings.tabs" class="checkbox">
+                <label><input type="checkbox" ng-model="tab.isActive">{{tab.name}}</label>
               </label>
               <button class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
             </div>
