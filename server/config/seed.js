@@ -35,12 +35,9 @@ Settings.find({}).removeAsync()
       titleTextColor: '#ffffff',
       tintColor: '#ffffff',
       contentMode: 'Light',
-
-
-
-      accentColor: '#RRGGBB',
-      primarySubTextColor: '#RRGGBB',
-      backgroundColor: '#RRGGBB',
+      accentColor: '#2103aa',
+      primarySubTextColor: '#2103aa',
+      backgroundColor: '#2103aa',
       tabs: [
         {
           name: "exhibitor",
