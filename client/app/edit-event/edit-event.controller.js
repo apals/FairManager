@@ -27,7 +27,7 @@ angular.module('fairManagerApp')
       };
 
       if(event.imageUrl !== null && event.imageUrl !== 'null' && !event.logo) {
-        newCompany.imageUrl = event.imageUrl;
+        newEvent.imageUrl = event.imageUrl;
       }
 
       var upload = Upload.upload({

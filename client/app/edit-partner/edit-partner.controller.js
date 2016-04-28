@@ -29,7 +29,7 @@ angular.module('fairManagerApp')
       };
 
       if(partner.logoUrl !== null && partner.logoUrl !== 'null' && !partner.logo) {
-        newCompany.logoUrl = partner.logoUrl;
+        newPartner.logoUrl = partner.logoUrl;
       }
 
       var upload = Upload.upload({
