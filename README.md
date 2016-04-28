@@ -39,3 +39,15 @@ Run `grunt build` for building and `grunt serve` for preview.
 ## Testing
 
 Running `npm test` will run the unit tests with karma.
+
+
+
+## To add new views
+
+
+In order to add a new view in the front-end, do the following
+1. Create a folder with the view-name
+2. In this folder, create 3 files: the .html-file, the .controller.js (with the naming convention) file, and a .js file
+3. The .js file should contain the route logic, see for example https://github.com/apals/FairManager/blob/master/client/app/settings/settings.js
+
+
