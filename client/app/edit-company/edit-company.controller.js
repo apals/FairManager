@@ -32,8 +32,12 @@ angular.module('fairManagerApp')
         banner: company.banner
       };
 
-      if(company.logoUrl != null && company.logoUrl != 'null' && !company.logo) newCompany.logoUrl = company.logoUrl;
-      if(company.bannerUrl != null && company.bannerUrl != 'null' && !company.banner) newCompany.bannerUrl = company.bannerUrl;
+      if(company.logoUrl !== null && company.logoUrl !== 'null' && !company.logo) {
+        newCompany.logoUrl = company.logoUrl;
+      }
+      if(company.bannerUrl !== null && company.bannerUrl !== 'null' && !company.banner){
+        newCompany.bannerUrl = company.bannerUrl;
+      }
 
       var upload = Upload.upload({
         method: 'PUT',
