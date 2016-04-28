@@ -18,7 +18,7 @@ angular.module('fairManagerApp')
       $scope.event.error = 'There was an error fetching data';
       $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'fetch event data');
     });
-    
+
 
     $scope.updateEvent = function (event) {
       var newEvent = {
