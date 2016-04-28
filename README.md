@@ -47,10 +47,11 @@ Running `npm test` will run the unit tests with karma.
 
 In order to add a new view in the front-end, do the following
 
-1. Create a folder with the view-name
+1. Create a folder with the view-name in client/app/
 
 2. In this folder, create 3 files: the .html-file, the .controller.js (with the naming convention) file, and a .js file
 
 3. The .js file should contain the route logic, see for example https://github.com/apals/FairManager/blob/master/client/app/settings/settings.js
 
+4. If you want to add this to the navbar in the top, find navbar.controller.js in client/components/navbar and add it to the menu-list
 
