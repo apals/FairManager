@@ -5,6 +5,28 @@
 
 Welcome to FairManager, an administrative service to handle and manage companies, events, user and much more for your event!
 
+
+
+## To add new views
+
+See the example folder: https://github.com/apals/FairManager/tree/master/client/app/edit-partner
+
+In order to add a new view in the front-end, do the following
+
+1. Create a folder with the view-name in client/app/
+
+2. In this folder, create 3 files: the .html-file, the .controller.js (with the naming convention) file, and a .js file
+
+3. The .js file should contain the route logic, see for example https://github.com/apals/FairManager/blob/master/client/app/edit-partner/edit-partner.js
+authenticate: admin also restricts the routes to users with administrator-access. See possible roles in client/app/app.constant.js
+
+4. If you want to add this to the navbar in the top, find navbar.controller.js in client/components/navbar and add it to the menu-list. If you want to add to the right-hand side of the navbar, add it in the navbar.html file. 
+
+
+## TODO
+- write about code duplication
+- what the generator did and what it didn't
+
 ## Generating tool
 
 The projects folder structure, the client-side testing suite and the authentication process was generated with the [Angular Full-Stack Generator](https://github.com/DaftMonk/generator-angular-fullstack), version 3.3.0.
@@ -43,19 +65,4 @@ Run `grunt build` for building and `grunt serve` for preview.
 - Running `npm test` will run the unit tests with karma.
 - Running `grunt mochaTest` will run the remaining integration and unit tests with karma.
 
-
-## To add new views
-
-See the example folder: https://github.com/apals/FairManager/tree/master/client/app/edit-partner
-
-In order to add a new view in the front-end, do the following
-
-1. Create a folder with the view-name in client/app/
-
-2. In this folder, create 3 files: the .html-file, the .controller.js (with the naming convention) file, and a .js file
-
-3. The .js file should contain the route logic, see for example https://github.com/apals/FairManager/blob/master/client/app/edit-partner/edit-partner.js
-authenticate: admin also restricts the routes to users with administrator-access. See possible roles in client/app/app.constant.js
-
-4. If you want to add this to the navbar in the top, find navbar.controller.js in client/components/navbar and add it to the menu-list. If you want to add to the right-hand side of the navbar, add it in the navbar.html file. 
 
