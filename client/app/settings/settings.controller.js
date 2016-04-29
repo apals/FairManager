@@ -10,6 +10,7 @@ angular.module('fairManagerApp')
       $scope.settings = response;
     }, function (error) {
       console.log(error);
+      $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, ' get settings');
     });
 
     $scope.updateSettings = function (settings) {

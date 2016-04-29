@@ -99,7 +99,7 @@
             <div>
               <strong>Primary Sub Text Color:</strong>
               <label ng-show="primarySubTextColorEditorEnabled">
-                <input ng-model="settings.primarySubTextColor" ng-value="settings.primarySubTextColor">
+                <input ng-model="settings.primarySubTextColor" colorpicker="hex" type="text">
               </label>
               <span ng-hide="primarySubTextColorEditorEnabled">{{settings.primarySubTextColor}}</span>
               <a href="#" ng-click="primarySubTextColorEditorEnabled=!primarySubTextColorEditorEnabled">
@@ -123,7 +123,7 @@
             <div>
               <strong>Background Color:</strong>
               <label ng-show="backgroundColorEditorEnabled">
-                <input ng-model="settings.backgroundColor" ng-value="settings.backgroundColor">
+                <input ng-model="settings.backgroundColor" colorpicker="hex" type="text">
               </label>
               <span ng-hide="backgroundColorEditorEnabled">{{settings.backgroundColor}}</span>
               <a href="#" ng-click="backgroundColorEditorEnabled=!backgroundColorEditorEnabled">
