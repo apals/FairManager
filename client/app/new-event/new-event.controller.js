@@ -3,6 +3,11 @@
 angular.module('fairManagerApp')
   .controller('NewEventCtrl', function ($scope, EventService, ErrorHandlingService, $location, Upload, $timeout) {
 
+    $scope.deleteLogo = function (event, newevent) {
+      event.preventDefault();
+      newevent.logo = null;
+    };
+
     $scope.addEvent = function (event) {
 
       if (event) {

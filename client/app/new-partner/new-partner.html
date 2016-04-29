@@ -13,7 +13,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <label>Name:</label><br>
-                <input style="width: 40%;" ng-model="partner.name" required>
+              <input style="width: 40%;" ng-model="partner.name" required>
             </div>
           </div>
         </div>
@@ -24,13 +24,11 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <label>Website:</label><br>
-                <input style="width: 40%;" ng-model="partner.websiteUrl" required>
+              <input style="width: 40%;" ng-model="partner.websiteUrl" required>
             </div>
           </div>
         </div>
       </div>
-
-
 
 
       <div class="row">
@@ -51,14 +49,16 @@
                    accept="image/*" ngf-max-size="2MB"
                    ngf-model-invalid="errorFile" class="drop-box">
 
-              <div style="height: 100%; width: 100%">
+                <div style="height: 100%; width: 100%">
 
-                <img style="height: 100%; width: 100%" ng-show="new-partner-form.partner.logo.$valid" ngf-src="partner.logo">
-                <div ng-if="!partner.logo" class="upload-image-text">Click or drag image<br>here to upload</div>
+                  <img style="height: 100%; width: 100%" ng-show="new-partner-form.partner.logo.$valid"
+                       ngf-src="partner.logo">
 
+                  <div ng-if="!partner.logo" class="upload-image-text">Click or drag image<br>here to upload</div>
+
+                </div>
               </div>
-            </div>
-            <button type="button" ng-click="partner.logo = null" ng-show="partner.logo" class="btn btn-primary">Remove</button>
+              <button type="button" ng-click="deleteLogo($event, partner)" ng-show="partner.logo">Remove</button>
 
             </div>
           </div>
@@ -77,6 +77,7 @@
   <div class="row">
     <div ng-show="errorMsg" class="col-sm-12 text-center">
       <br>
+
       <h3 class="error">{{errorMsg}}</h3>
       <br>
     </div>
