@@ -7631,13 +7631,19 @@ a .btn {
 .purple {
   color: #51039a; }
 
+.upload-image-text {
+  margin-top: 45px;
+  text-align: center;
+  font-size: 11px;
+  color: #51039a; }
+
 .logo-upload {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   background: #9acfea; }
 
 .banner-upload {
-  height: 100px;
+  height: 120px;
   width: 100%;
   background: #9acfea; }
 

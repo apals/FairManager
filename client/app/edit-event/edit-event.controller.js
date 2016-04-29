@@ -23,6 +23,10 @@ angular.module('fairManagerApp')
     $scope.updateEvent = function (event) {
       var newEvent = {
         name: event.name,
+        info: event.info,
+        location: event.location,
+        startDate: event.startDate,
+        endDate: event.endDate,
         logo: event.logo
       };
 
