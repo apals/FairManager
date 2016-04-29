@@ -95,4 +95,5 @@
     <string name="exhibitor_banner">Exhibitor Banner</string>
     <string name="title_activity_event_detail">Loading..</string>
     <string name="event_banner">Event Banner</string>
+    <string name="title_activity_chat">ChatActivity</string>
 </resources>
