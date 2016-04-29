@@ -43,7 +43,7 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                    .setAction("Action", null).show();
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -55,9 +55,14 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
 
     @Subscribe
     public void onExhibitorLoaded(ExhibitorLoadedEvent event) {
-        //showLoader(false);
         ((TextView) findViewById(R.id.activity_exhibitor_detail_textview_info)).setText(event.exhibitor.getInfo());
         getSupportActionBar().setTitle(event.exhibitor.getName());
+        showLoader(false);
+    }
+
+    private void showLoader(boolean b) {
+        int visibility = b ? View.VISIBLE : View.GONE;
+        findViewById(R.id.progress_bar).setVisibility(visibility);
     }
 
     @Override
