@@ -2,7 +2,7 @@
 
 
 angular.module('fairManagerApp')
-  .controller('CompaniesController', function ($scope, socket, CompanyService, Modal) {
+  .controller('CompaniesController', function ($scope, socket, CompanyService, ErrorHandlingService, Modal) {
     $scope.companies = [];
     $scope.isBusy = true;
 
@@ -20,6 +20,8 @@ angular.module('fairManagerApp')
       CompanyService.Company.delete({id: company._id},function() {
         $scope.companies.splice($scope.companies.indexOf(company), 1);
 
+      }, function(error) {
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'delete company');
       });
     });
 
