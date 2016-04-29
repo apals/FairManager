@@ -11,6 +11,8 @@ angular.module('fairManagerApp')
       $scope.isBusy = false;
 
       socket.syncUpdates('events', $scope.events);
+    }, function (error) {
+      $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'get event');
     });
 
     $scope.$on('$destroy', function () {
