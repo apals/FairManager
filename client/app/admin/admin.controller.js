@@ -35,8 +35,6 @@ angular.module('fairManagerApp.admin')
         $scope.users.push(response.user);
       }, function (error) {
 
-        console.log(error);
-
         $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create user');
 
       });
