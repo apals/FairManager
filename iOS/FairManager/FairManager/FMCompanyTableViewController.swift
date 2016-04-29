@@ -28,6 +28,7 @@ class FMCompanyTableViewController: UITableViewController {
         
         if let settings = dataFactory.getSettings() {
             self.navigationItem.title = settings.exhibitorViewTitle
+            tableView.sectionIndexColor = settings.primaryColor
         }
         
         refreshData(self)
@@ -85,6 +86,7 @@ class FMCompanyTableViewController: UITableViewController {
             {
                 self.refreshCtrl.endRefreshing()
             }
+ 
         }
     }
     
@@ -219,26 +221,6 @@ extension UIViewController {
         }else{
             print("Did not find subview with tag \(tag)")
         }
-    }
-    
-    func displayErrorOnTableView(view:UITableView){
-        let label:UILabel = UILabel(frame: CGRectMake(0, 0, view.bounds.width, view.bounds.height))
-        label.text = "Unable to fetch exhibitors.."
-        label.numberOfLines = 0
-        label.textAlignment = .Center
-        label.sizeToFit()
-        view.backgroundView = label
-        view.separatorStyle = .None
-    }
-    
-    func addBlurView() {
-        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = view.bounds
-        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
-        blurEffectView.tag = 666
-        blurEffectView.layer.zPosition = 1
-        view.addSubview(blurEffectView)
     }
 
 }

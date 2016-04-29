@@ -22,6 +22,27 @@ struct Company {
     var id:String?
 }
 
+struct Event {
+    var name:String?
+    var info:String?
+    var location:String?
+    var startDate:NSDate?
+    var endDate:NSDate?
+    var registrationReguired:Bool?
+    var registrationStartDate:NSDate?
+    var registrationEndDate:NSDate?
+    var registrationUrl:String?
+    var imageUrl:String?
+    var id:String?
+}
+
+struct Person {
+    var name:String?
+    var group:String?
+    var imageUrl:String?
+    var id:String?
+}
+
 struct Settings {
     var primaryColor:UIColor = UIColor(rgba: "#51039a")
     var primaryTextColor:UIColor = UIColor(rgba: "#404040")
@@ -29,7 +50,7 @@ struct Settings {
     var tintColor:UIColor = UIColor.whiteColor()
     var contentMode:String = "Light"
     
-    var exhibitorViewIsActive:Bool = true
+    var exhibitorViewIsActive:Bool = false
     var eventViewIsActive:Bool = false
     var partnerViewIsActive:Bool = false
     var contactViewIsActive:Bool = false
@@ -135,6 +156,143 @@ public class DataFactory {
         }
     }
     
+    func getEvent(id:String, completionHandler: (Event?, NSError?) -> ()) {
+        Alamofire.request(.GET, NSURL(string: "\(baseURL)/api/events/\(id)")!).validate().responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    var event:Event = Event()
+                    
+                    if(json["name"] != nil){
+                        event.name = json["name"].string
+                    }
+                    
+                    if(json["info"] != nil){
+                        event.info = json["info"].string
+                    }
+                    
+                    if(json["location"] != nil){
+                        event.location = json["location"].string
+                    }
+                    
+                    if(json["startDate"] != nil){
+                        if let date = self.stringToDate(json["startDate"].string!) {
+                            event.startDate = date
+                        }
+                    }
+                    
+                    if(json["endDate"] != nil){
+                        if let date = self.stringToDate(json["endDate"].string!) {
+                            event.endDate = date
+                        }
+                    }
+                    
+                    if(json["registrationRequired"] != nil){
+                        event.registrationReguired = json["registrationRequired"].bool
+                    }
+                    
+                    if(json["registrationStartDate"] != nil){
+                        if let date = self.stringToDate(json["registrationStartDate"].string!) {
+                            event.registrationStartDate = date
+                        }
+                    }
+                    
+                    if(json["registrationEndDate"] != nil){
+                        if let date = self.stringToDate(json["registrationEndDate"].string!) {
+                            event.registrationEndDate = date
+                        }
+                    }
+                    
+                    if(json["registrationUrl"] != nil){
+                        event.registrationUrl = json["registrationUrl"].string
+                    }
+                    
+                    if(json["imageUrl"] != nil) {
+                        event.imageUrl = json["imageUrl"].string
+                    }
+                    
+                    if(json["_id"] != nil){
+                        event.id = json["_id"].string
+                    }
+                    
+                    
+                    // This should also update our local list of companies
+                    completionHandler(event, nil)
+                }
+            case .Failure(let error):
+                completionHandler(nil, error)
+            }
+        }
+    }
+    
+    func getEvents(completionHandler: ([Event]?, NSError?) -> ()) {
+        Alamofire.request(.GET, NSURL(string: "\(baseURL)/api/events")!).validate().responseJSON { response in
+            switch response.result {
+            case .Success:
+                if let value = response.result.value {
+                    let json = JSON(value)
+                    var events:[Event] = []
+                    
+                    
+                    for (_, json):(String, JSON) in json {
+                        var event:Event = Event()
+                        
+                        if(json["name"] != nil){
+                            event.name = json["name"].string
+                        }
+                        
+                        if(json["startDate"] != nil){
+                            if let date = self.stringToDate(json["startDate"].string!) {
+                                event.startDate = date
+                            }
+                        }
+                        
+                        if(json["endDate"] != nil){
+                            if let date = self.stringToDate(json["endDate"].string!) {
+                                event.endDate = date
+                            }
+                        }
+                        
+                        if(json["imageUrl"] != nil) {
+                            event.imageUrl = json["imageUrl"].string
+                        }
+                        
+                        if(json["_id"] != nil){
+                            event.id = json["_id"].string
+                        }
+                        
+                        events.append(event)
+                    }
+                    
+                    completionHandler(events, nil)
+                }
+            case .Failure(let error):
+                completionHandler(nil, error)
+            }
+        }
+        
+    }
+    
+    func getPersonnel() -> [Person]? {
+        let personnel = [
+            Person(name: "Oscar Alsing", group: "Project Manager", imageUrl: "http://armada.nu/system/organisation_members/313/pictures/original/original.jpg", id: nil),
+            Person(name: "Gustav Frid", group: "Project Manager", imageUrl: "http://armada.nu/system/organisation_members/296/pictures/thumb/thumb.jpg", id: nil),
+            Person(name: "Andreas Pålsson", group: "Head of Web and Android", imageUrl: nil, id: nil)
+        ]
+        
+        return personnel
+    }
+    
+    func stringToDate(string:String) -> NSDate? {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+        if let date:NSDate = dateFormatter.dateFromString(string){
+            return date
+        }
+        return nil
+    }
+    
     func fetchSettings() -> Settings? {
         var settings:Settings = Settings()
         
@@ -142,7 +300,8 @@ public class DataFactory {
             do {
                 let data = NSData(contentsOfURL: url)
                 if data != nil {
-                    let json = JSON(data!)
+                    let json = JSON(data: data!)
+                    print(json)
                     
                     if json != nil {
                         
@@ -176,17 +335,27 @@ public class DataFactory {
                         }
                         
                         if(json["tabs"] != nil) {
-                            settings.exhibitorViewIsActive = true
-                            settings.eventViewIsActive = false
-                            settings.partnerViewIsActive = false
-                            settings.contactViewIsActive = false
-                            settings.personnelViewIsActive = false
-                            
-                            settings.exhibitorViewTitle = "Exhibitors"
-                            settings.eventViewTitle = "Events"
-                            settings.partnerViewTitle = "Partners"
-                            settings.contactViewTitle = "Contact"
-                            settings.personnelViewTitle = "Personnel"
+                            for tab in json["tabs"].arrayValue {
+                                if(tab["isActive"].boolValue){
+                                    switch tab["name"].stringValue {
+                                    case "exhibitor":
+                                        settings.exhibitorViewIsActive = true
+                                        break
+                                    case "event":
+                                        settings.eventViewIsActive = true
+                                        break
+                                    case "partner":
+                                        settings.partnerViewIsActive = true
+                                        break
+                                    case "contact":
+                                        settings.contactViewIsActive = true
+                                    case "personnel":
+                                        settings.personnelViewIsActive = true
+                                    default:
+                                        break
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -265,6 +434,7 @@ public class DataFactory {
             return settings
         } else {
             self.settings = fetchSettings()
+            print(self.settings)
             return self.settings
         }
     }

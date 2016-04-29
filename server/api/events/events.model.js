@@ -8,6 +8,7 @@ var EventsSchema = new mongoose.Schema({
   location: String,
   startDate: {type: Date, required: true},
   endDate: {type: Date, required: true},
+  registrationUrl: String,
   imageUrl: String
 });
 

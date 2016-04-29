@@ -24,8 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UIApplication.sharedApplication().statusBarStyle = .Default
             default:
                 UIApplication.sharedApplication().statusBarStyle = .Default
-                
-                
             }
         }
         return true

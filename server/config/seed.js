@@ -35,36 +35,24 @@ Settings.find({}).removeAsync()
       titleTextColor: '#ffffff',
       tintColor: '#ffffff',
       contentMode: 'Light',
-
-
-
-      accentColor: '#RRGGBB',
-      primarySubTextColor: '#RRGGBB',
-      backgroundColor: '#RRGGBB',
+      accentColor: '#2103aa',
+      primarySubTextColor: '#2103aa',
+      backgroundColor: '#2103aa',
       tabs: [
         {
-          name: "exhibitor",
-          title: "Exhibitors",
+          name: "Exhibitors",
           isActive: true
         },
         {
-          name: "event",
-          title: "Events",
+          name: "Events",
           isActive: true
         },
         {
-          name: "partner",
-          title: "Partners",
+          name: "Partners",
           isActive: true
         },
         {
-          name: "contact",
-          title: "Contacts",
-          isActive: true
-        },
-        {
-          name: "personnel",
-          title: "Personnel",
+          name: "Personnel",
           isActive: true
         }
       ]

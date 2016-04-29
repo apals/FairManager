@@ -16,10 +16,6 @@ angular.module('fairManagerApp')
         'link': '/partners'
       },
       {
-        'title': 'Contact',
-        'link': '/contact'
-      },
-      {
         'title': 'Personnel',
         'link': '/personnel'
       },

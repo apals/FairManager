@@ -17,7 +17,7 @@
             <div>
               <strong>Primary Color:</strong>
               <label ng-show="primaryColorEditorEnabled">
-                <input ng-model="settings.primaryColor" ng-value="settings.primaryColor">
+                <input colorpicker="hex" type="text" ng-model="settings.primaryColor" />
               </label>
               <span ng-hide="primaryColorEditorEnabled">{{settings.primaryColor}}</span>
 
@@ -44,7 +44,7 @@
             <div>
               <strong>Accent Color:</strong>
               <label ng-show="accentColorEditorEnabled">
-                <input ng-model="settings.accentColor" ng-value="settings.accentColor">
+                <input colorpicker="hex" type="text" ng-model="settings.accentColor" />
               </label>
               <span ng-hide="accentColorEditorEnabled">{{settings.accentColor}}</span>
               <a href="#" ng-click="accentColorEditorEnabled=!accentColorEditorEnabled">
@@ -67,7 +67,7 @@
             <div>
               <strong>Primary Text Color:</strong>
               <label ng-show="primaryTextColorEditorEnabled">
-                <input ng-model="settings.primaryTextColor" ng-value="settings.primaryTextColor">
+                <input colorpicker="hex" type="text" ng-model="settings.primaryTextColor" />
               </label>
               <span ng-hide="primaryTextColorEditorEnabled">{{settings.primaryTextColor}}</span>
               <a href="#" ng-click="primaryTextColorEditorEnabled=!primaryTextColorEditorEnabled">
@@ -139,8 +139,8 @@
             <div>
               <strong>Tabs:</strong>
 
-              <label ng-repeat="tab in settings.tabs" class="checkbox-inline">
-                <input type="checkbox" ng-model="tab.isActive">{{tab.name}}
+              <label ng-repeat="tab in settings.tabs" class="checkbox">
+                <label><input type="checkbox" ng-model="tab.isActive">{{tab.name}}</label>
               </label>
               <button class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
             </div>

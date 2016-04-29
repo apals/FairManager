@@ -73,7 +73,10 @@ describe('Events API:', function() {
           name: 'New Events',
           info: 'This is the brand new events!!!',
           startDate: '2016-03-19T20:30:00.000Z',
-          endDate: '2016-03-19T20:30:00.000Z'
+          endDate: '2016-03-19T20:30:00.000Z',
+          registrationRequired: true,
+          registrationStartDate: '2016-03-19T20:30:00.000Z',
+          registrationEndDate: '2016-03-19T20:30:00.000Z'
         })
         .expect(201)
         .expect('Content-Type', /json/)
