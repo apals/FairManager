@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('SettingsCtrl', function ($scope, SettingsService, UtilService) {
+  .controller('SettingsCtrl', function ($scope, SettingsService, UtilService, ErrorHandlingService) {
+
+
 
     $scope.splitCamelCase = UtilService.splitCamelCase;
     SettingsService.Settings.get(function (response) {
@@ -14,6 +16,7 @@ angular.module('fairManagerApp')
       SettingsService.Settings.update(settings, function () {
       }, function (error) {
         console.log(error);
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'settings');
       });
     };
   });

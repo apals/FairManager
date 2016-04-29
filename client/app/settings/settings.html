@@ -9,6 +9,14 @@
   <form>
 
     <div class="row">
+      <div ng-show="errorMsg" class="col-sm-12 text-center">
+        <br>
+        <h3 class="error">{{errorMsg}}</h3>
+        <br>
+      </div>
+    </div>
+
+    <div class="row">
 
       <div class="col-sm-8 col-sm-offset-2">
         <div class="panel panel-default">

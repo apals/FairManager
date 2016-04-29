@@ -31,7 +31,13 @@ angular.module('fairManagerApp')
         this.errorMessage = 'Unable to find ' + context + '. Perhaps you manually entered a faulty URL, or did you click an expired link?';
       }
 
-      //500 - Internal server error
+      //500 - Internal server error - special case for the settings
+      else if(this.errorCode === 500 && context === 'settings') {
+        var errObj = error.data.errors;
+
+        //Similar to the 422 error above We want the first property of the errors object (primaryColour,accentColour etc)
+        this.errorMessage = errObj[Object.keys(errObj)[0]].message;
+      }
       //Unknown error code
       else {
         this.errorMessage = 'Unable to ' + context + '. An unexpected error with code ' + this.errorCode + ' occured. Please try again, and if the problem persists, contact us.';
