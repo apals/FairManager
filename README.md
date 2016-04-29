@@ -37,9 +37,8 @@ https://github.com/DaftMonk/fullstack-demo
 - The navbar came with the generator.
 
 - The view that was generated for us was only a list of strings. These strings were synced between clients through sockets, so we used that example code to help us create our own client synchronization. 
-
-- Everything else was built by us. 
-- 
+- Everything else was built by us. That means every edit-view, every view where you add new entries, every detail view, etc. 
+ 
 
 ## Addressing critique 
 - A LOT OF FILES, we have many files in the root of the project for many different reasons, including 
