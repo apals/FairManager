@@ -50,7 +50,6 @@ function removeCompanyLogo(res) {
   return function (entity) {
     if (entity && entity.logoUrl) {
       var image = "client/assets/images/" + entity.logoUrl.split('/')[5];
-      console.log("Logging image - " + image);
       fs.unlink(image, function (err) {
         if (err) {
           console.log("Error deleting company logo for entity:");
@@ -76,7 +75,6 @@ function handleError(res, statusCode) {
 
   statusCode = statusCode || 500;
   return function (err) {
-    console.log(err);
     res.status(statusCode).send(err);
   };
 }
@@ -110,11 +108,7 @@ export function create(req, res, next) {
   if (banner) {
     req.body.bannerUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + banner.path.split('/')[3];
   }
-
-
-  console.log("URL CHANGE: " + req);
-  console.log(req);
-
+  
   Companies.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
