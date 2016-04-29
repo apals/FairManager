@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName;
 public class Exhibitor {
 
     @SerializedName("_id")
-    private String id;
-    private String name;
-    private String logoUrl;
+    protected String id;
+    protected String name;
+    protected String logoUrl;
 
     /**
      * @return The id

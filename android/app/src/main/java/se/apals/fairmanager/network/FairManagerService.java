@@ -9,9 +9,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.GET;
-import rx.Observable;
 import se.apals.fairmanager.models.Exhibitor;
+import se.apals.fairmanager.models.ExhibitorDetail;
+import se.apals.fairmanager.models.events.ExhibitorLoadedEvent;
 import se.apals.fairmanager.models.events.ExhibitorsLoadedEvent;
+import se.apals.fairmanager.models.events.LoadExhibitorEvent;
 import se.apals.fairmanager.models.events.LoadExhibitorsEvent;
 import se.apals.fairmanager.models.events.LoadingExhibitorsFailedEvent;
 
@@ -42,17 +44,22 @@ public class FairManagerService {
                 mBus.post(new LoadingExhibitorsFailedEvent());
             }
         });
-        /* {
+    }
 
+    @Subscribe
+    public void onLoadExhibitor(LoadExhibitorEvent event) {
+        Call<ExhibitorDetail> call = mApi.getExhibitor(event.id);
+        call.enqueue(new Callback<ExhibitorDetail>() {
             @Override
-            public void success(OrganisationGroupsContainer organisationGroupsContainer, Response response) {
+            public void onResponse(Call<ExhibitorDetail> call, Response<ExhibitorDetail> response) {
+                mBus.post(new ExhibitorLoadedEvent(response.body()));
             }
 
             @Override
-            public void failure(RetrofitError error) {
-
+            public void onFailure(Call<ExhibitorDetail> call, Throwable t) {
+                mBus.post(new LoadingExhibitorsFailedEvent());
             }
-        }) ;*/
+        });
     }
 
 }

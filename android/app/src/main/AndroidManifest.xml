@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="se.apals.fairmanager">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".FairManagerApplication"
         android:allowBackup="true"
@@ -19,9 +21,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.ExhibitorDetailActivity"
+            android:label="@string/title_activity_exhibitor_detail"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="se.apals.fairmanager.MainActivity" />
+        </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
 
 </manifest>

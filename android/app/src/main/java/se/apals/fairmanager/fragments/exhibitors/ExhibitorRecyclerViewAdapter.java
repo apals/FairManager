@@ -1,12 +1,18 @@
 package se.apals.fairmanager.fragments.exhibitors;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
+
 import se.apals.fairmanager.R;
+import se.apals.fairmanager.activities.ExhibitorDetailActivity;
 import se.apals.fairmanager.models.Exhibitor;
 
 import java.util.ArrayList;
@@ -34,11 +40,17 @@ public class ExhibitorRecyclerViewAdapter extends RecyclerView.Adapter<Exhibitor
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mContentView.setText(mValues.get(position).getName());
+        Glide.with(holder.mView.getContext()).load(holder.mItem.getLogoUrl()).into(new GlideDrawableImageViewTarget(holder.mLogoView) {
+            @Override
+            public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                Glide.with(holder.mView.getContext()).load(R.mipmap.ic_launcher).into(holder.mLogoView);
+            }
+        });
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                ExhibitorDetailActivity.start(v.getContext(), holder.mItem.getId());
             }
         });
     }
@@ -51,12 +63,14 @@ public class ExhibitorRecyclerViewAdapter extends RecyclerView.Adapter<Exhibitor
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
+        public final ImageView mLogoView;
         public Exhibitor mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.content);
+            mLogoView = (ImageView) view.findViewById(R.id.logo);
         }
 
         @Override
