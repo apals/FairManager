@@ -33,7 +33,7 @@ angular.module('fairManagerApp')
       var minutes = ((date.getMinutes()) < 10 ? '0' : '') + date.getMinutes();
 
       // create the format you want
-      return dd + "-" + MM + "-" + yyyy + " " + hours + ":" + minutes;
+      return dd + '-' + MM + '-' + yyyy + ' ' + hours + ':' + minutes;
     }
 
   });
