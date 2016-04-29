@@ -7387,6 +7387,13 @@ legend {
   height: 250px;
   width: 100%; }
 
+.color-box {
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px; }
+
 footer.footer {
   text-align: center;
   padding: 30px 0;
