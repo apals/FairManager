@@ -15,6 +15,7 @@ angular.module('fairManagerApp')
 
     $scope.updateSettings = function (settings) {
       SettingsService.Settings.update(settings, function () {
+        $scope.errorMsg = null;
       }, function (error) {
         console.log(error);
         $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'settings');

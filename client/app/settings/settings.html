@@ -9,9 +9,10 @@
   <form>
 
     <div class="row">
-      <div ng-show="errorMsg" class="col-sm-12 text-center">
+      <div ng-show="errorMsg != null" class="col-sm-12 text-center">
         <br>
         <h3 class="error">{{errorMsg}}</h3>
+        <br>
         <br>
       </div>
     </div>
