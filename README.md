@@ -52,6 +52,8 @@ We have many files in the root of the project for many different reasons, includ
  * e2e folder - contains end-to-end tests
  * iOS - contains iOS application
  * website - contains code for http://alsing.me/fairmanager
+
+
 - In client/app folder we have one folder for every view, and a folder for angular services. 
 - The overview-directive (https://github.com/apals/FairManager/tree/master/client/app/overview) eliminates code-duplication from the lists (e.g. in /companies, /events etc). However, when adding new items eg. events, exhibitors, we need similar code in different places because they have different inputs. E.g. an event has date-input fields, whereas an exhibitor has multiple image-upload fields etc. 
 
