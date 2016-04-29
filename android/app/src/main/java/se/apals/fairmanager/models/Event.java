@@ -1,25 +1,28 @@
 package se.apals.fairmanager.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Event {
 
-    private String Id;
-    private String name;
-    private String startDate;
-    private String endDate;
-    private String imageUrl;
+    @SerializedName("_id")
+    protected String id;
+    protected String name;
+    protected String startDate;
+    protected String endDate;
+    protected String imageUrl;
 
     /**
-     * @return The Id
+     * @return The id
      */
     public String getId() {
-        return Id;
+        return id;
     }
 
     /**
      * @param Id The _id
      */
     public void setId(String Id) {
-        this.Id = Id;
+        this.id = Id;
     }
 
     /**

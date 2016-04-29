@@ -93,4 +93,5 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="exhibitor_banner">Exhibitor Banner</string>
+    <string name="title_activity_event_detail">EventDetailActivity</string>
 </resources>

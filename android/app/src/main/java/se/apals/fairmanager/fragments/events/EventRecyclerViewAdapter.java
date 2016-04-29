@@ -1,4 +1,4 @@
-package se.apals.fairmanager.fragments.exhibitors;
+package se.apals.fairmanager.fragments.events;
 
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
@@ -12,29 +12,24 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import se.apals.fairmanager.R;
-import se.apals.fairmanager.activities.ExhibitorDetailActivity;
-import se.apals.fairmanager.models.Exhibitor;
+import se.apals.fairmanager.activities.EventDetailActivity;
+import se.apals.fairmanager.models.Event;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExhibitorRecyclerViewAdapter extends RecyclerView.Adapter<ExhibitorRecyclerViewAdapter.ViewHolder> {
+public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecyclerViewAdapter.ViewHolder> {
 
-    private final List<Exhibitor> mValues;
+    private final List<Event> mValues;
 
-    public ExhibitorRecyclerViewAdapter() {
-        mValues = new ArrayList<Exhibitor>();
-    }
-
-    public void addAll(List<Exhibitor> exhibitors) {
-        mValues.addAll(exhibitors);
-        notifyDataSetChanged();
+    public EventRecyclerViewAdapter() {
+        mValues = new ArrayList<>();
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.fragment_exhibitor_list_item, parent, false);
+            .inflate(R.layout.fragment_event_list_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -42,7 +37,7 @@ public class ExhibitorRecyclerViewAdapter extends RecyclerView.Adapter<Exhibitor
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mContentView.setText(mValues.get(position).getName());
-        Glide.with(holder.mView.getContext()).load(holder.mItem.getLogoUrl()).into(new GlideDrawableImageViewTarget(holder.mLogoView) {
+        Glide.with(holder.mView.getContext()).load(holder.mItem.getImageUrl()).into(new GlideDrawableImageViewTarget(holder.mLogoView) {
             @Override
             public void onLoadFailed(Exception e, Drawable errorDrawable) {
                 Glide.with(holder.mView.getContext()).load(R.mipmap.ic_launcher).into(holder.mLogoView);
@@ -52,55 +47,54 @@ public class ExhibitorRecyclerViewAdapter extends RecyclerView.Adapter<Exhibitor
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExhibitorDetailActivity.start(v.getContext(), holder.mItem.getId());
+                EventDetailActivity.start(v.getContext(), holder.mItem.getId());
             }
         });
     }
 
-    public Exhibitor removeItem(int position) {
-        final Exhibitor model = mValues.remove(position);
+    public Event removeItem(int position) {
+        final Event model = mValues.remove(position);
         notifyItemRemoved(position);
         return model;
     }
 
-    public void addItem(int position, Exhibitor model) {
+    public void addItem(int position, Event model) {
         mValues.add(position, model);
         notifyItemInserted(position);
     }
 
     public void moveItem(int fromPosition, int toPosition) {
-        final Exhibitor model = mValues.remove(fromPosition);
+        final Event model = mValues.remove(fromPosition);
         mValues.add(toPosition, model);
         notifyItemMoved(fromPosition, toPosition);
     }
 
-    public void animateTo(List<Exhibitor> models) {
+    public void animateTo(List<Event> models) {
         applyAndAnimateRemovals(models);
         applyAndAnimateAdditions(models);
         applyAndAnimateMovedItems(models);
     }
 
-    private void applyAndAnimateRemovals(List<Exhibitor> newModels) {
+    private void applyAndAnimateRemovals(List<Event> newModels) {
         for (int i = mValues.size() - 1; i >= 0; i--) {
-            final Exhibitor model = mValues.get(i);
+            final Event model = mValues.get(i);
             if (!newModels.contains(model)) {
                 removeItem(i);
             }
         }
     }
-
-    private void applyAndAnimateAdditions(List<Exhibitor> newModels) {
+    private void applyAndAnimateAdditions(List<Event> newModels) {
         for (int i = 0, count = newModels.size(); i < count; i++) {
-            final Exhibitor model = newModels.get(i);
+            final Event model = newModels.get(i);
             if (!mValues.contains(model)) {
                 addItem(i, model);
             }
         }
     }
 
-    private void applyAndAnimateMovedItems(List<Exhibitor> newModels) {
+    private void applyAndAnimateMovedItems(List<Event> newModels) {
         for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
-            final Exhibitor model = newModels.get(toPosition);
+            final Event model = newModels.get(toPosition);
             final int fromPosition = mValues.indexOf(model);
             if (fromPosition >= 0 && fromPosition != toPosition) {
                 moveItem(fromPosition, toPosition);
@@ -113,11 +107,16 @@ public class ExhibitorRecyclerViewAdapter extends RecyclerView.Adapter<Exhibitor
         return mValues.size();
     }
 
+    public void addAll(List<Event> events) {
+        mValues.addAll(events);
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
         public final ImageView mLogoView;
-        public Exhibitor mItem;
+        public Event mItem;
 
         public ViewHolder(View view) {
             super(view);

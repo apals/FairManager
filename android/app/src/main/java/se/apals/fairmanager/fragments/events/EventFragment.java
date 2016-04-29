@@ -1,4 +1,4 @@
-package se.apals.fairmanager.fragments.exhibitors;
+package se.apals.fairmanager.fragments.events;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -20,30 +20,29 @@ import java.util.List;
 
 import se.apals.fairmanager.R;
 import se.apals.fairmanager.models.BusProvider;
-import se.apals.fairmanager.models.Exhibitor;
-import se.apals.fairmanager.models.events.ExhibitorsLoadedEvent;
-import se.apals.fairmanager.models.events.LoadExhibitorsEvent;
-
+import se.apals.fairmanager.models.Event;
+import se.apals.fairmanager.models.events.EventsLoadedEvent;
+import se.apals.fairmanager.models.events.LoadEventsEvent;
 
 /**
- * A fragment representing a list of Exhibitors
+ * A fragment representing a list of Events
  */
-public class ExhibitorFragment extends Fragment implements SearchView.OnQueryTextListener {
+public class EventFragment extends Fragment implements SearchView.OnQueryTextListener {
 
+    private EventRecyclerViewAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
-    private ExhibitorRecyclerViewAdapter mAdapter;
-    private List<Exhibitor> mExhibitors;
+    private List<Event> mEvents;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public ExhibitorFragment() {
+    public EventFragment() {
     }
 
-    public static ExhibitorFragment newInstance() {
-        ExhibitorFragment fragment = new ExhibitorFragment();
+    public static EventFragment newInstance() {
+        EventFragment fragment = new EventFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
@@ -52,18 +51,19 @@ public class ExhibitorFragment extends Fragment implements SearchView.OnQueryTex
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadExhibitors();
+        loadEvents();
     }
 
-    public void loadExhibitors() {
-        BusProvider.getInstance().post(new LoadExhibitorsEvent());
+    public void loadEvents() {
+        BusProvider.getInstance().post(new LoadEventsEvent());
     }
 
     @Subscribe
-    public void onExhibitorsLoaded(ExhibitorsLoadedEvent event) {
-        mExhibitors = event.exhibitors;
-        mAdapter.addAll(mExhibitors);
+    public void onEventsLoaded(EventsLoadedEvent event) {
+        mEvents = event.events;
+        mAdapter.addAll(event.events);
         showLoader(false);
+        Log.d("asd", "hello");
     }
 
     private void showLoader(boolean visible) {
@@ -92,13 +92,14 @@ public class ExhibitorFragment extends Fragment implements SearchView.OnQueryTex
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_exhibitor_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_event_list, container, false);
         Context context = view.getContext();
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLayout);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.list);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(context));
-        mAdapter = new ExhibitorRecyclerViewAdapter();
+        mAdapter = new EventRecyclerViewAdapter();
         mRecyclerView.setAdapter(mAdapter);
+
         return view;
     }
 
@@ -113,7 +114,7 @@ public class ExhibitorFragment extends Fragment implements SearchView.OnQueryTex
 
                     // This method performs the actual data-refresh operation.
                     // The method calls setRefreshing(false) when it's finished.
-                    loadExhibitors();
+                    loadEvents();
                 }
             }
         );
@@ -126,17 +127,17 @@ public class ExhibitorFragment extends Fragment implements SearchView.OnQueryTex
 
     @Override
     public boolean onQueryTextChange(String query) {
-        final List<Exhibitor> filteredModelList = filter(mExhibitors, query);
+        final List<Event> filteredModelList = filter(mEvents, query);
         mAdapter.animateTo(filteredModelList);
         mRecyclerView.scrollToPosition(0);
         return true;
     }
 
-    private List<Exhibitor> filter(List<Exhibitor> models, String query) {
+    private List<Event> filter(List<Event> models, String query) {
         query = query.toLowerCase();
 
-        final List<Exhibitor> filteredModelList = new ArrayList<>();
-        for (Exhibitor model : models) {
+        final List<Event> filteredModelList = new ArrayList<>();
+        for (Event model : models) {
             final String text = model.getName().toLowerCase();
             if (text.contains(query)) {
                 filteredModelList.add(model);
@@ -144,5 +145,4 @@ public class ExhibitorFragment extends Fragment implements SearchView.OnQueryTex
         }
         return filteredModelList;
     }
-
 }

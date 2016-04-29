@@ -9,12 +9,19 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.http.GET;
+import se.apals.fairmanager.models.Event;
+import se.apals.fairmanager.models.EventDetail;
 import se.apals.fairmanager.models.Exhibitor;
 import se.apals.fairmanager.models.ExhibitorDetail;
+import se.apals.fairmanager.models.events.EventLoadedEvent;
+import se.apals.fairmanager.models.events.EventsLoadedEvent;
 import se.apals.fairmanager.models.events.ExhibitorLoadedEvent;
 import se.apals.fairmanager.models.events.ExhibitorsLoadedEvent;
+import se.apals.fairmanager.models.events.LoadEventEvent;
+import se.apals.fairmanager.models.events.LoadEventsEvent;
 import se.apals.fairmanager.models.events.LoadExhibitorEvent;
 import se.apals.fairmanager.models.events.LoadExhibitorsEvent;
+import se.apals.fairmanager.models.events.LoadingEventsFailedEvent;
 import se.apals.fairmanager.models.events.LoadingExhibitorsFailedEvent;
 
 /**
@@ -58,6 +65,40 @@ public class FairManagerService {
             @Override
             public void onFailure(Call<ExhibitorDetail> call, Throwable t) {
                 mBus.post(new LoadingExhibitorsFailedEvent());
+            }
+        });
+    }
+
+
+
+    @Subscribe
+    public void onLoadEvents(LoadEventsEvent event) {
+        Call<List<Event>> call = mApi.getEvents();
+        call.enqueue(new Callback<List<Event>>() {
+            @Override
+            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
+                mBus.post(new EventsLoadedEvent(response.body()));
+            }
+
+            @Override
+            public void onFailure(Call<List<Event>> call, Throwable t) {
+                mBus.post(new LoadingEventsFailedEvent());
+            }
+        });
+    }
+
+    @Subscribe
+    public void onLoadEvent(LoadEventEvent event) {
+        Call<EventDetail> call = mApi.getEvent(event.id);
+        call.enqueue(new Callback<EventDetail>() {
+            @Override
+            public void onResponse(Call<EventDetail> call, Response<EventDetail> response) {
+                mBus.post(new EventLoadedEvent(response.body()));
+            }
+
+            @Override
+            public void onFailure(Call<EventDetail> call, Throwable t) {
+                mBus.post(new LoadingEventsFailedEvent());
             }
         });
     }

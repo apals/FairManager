@@ -4,7 +4,9 @@ import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 
 import android.support.v4.app.Fragment;
@@ -19,7 +21,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import se.apals.fairmanager.fragments.events.EventFragment;
 import se.apals.fairmanager.fragments.exhibitors.ExhibitorFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -38,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private Menu menu;
+    private SearchView mSearchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +71,47 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                    .setAction("Action", null).show();
             }
         });
 
+
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
+            // This method will be invoked when a new page becomes selected.
+            @Override
+            public void onPageSelected(int position) {
+                Fragment fragment = (Fragment) mSectionsPagerAdapter.instantiateItem(mViewPager, position);
+                if (fragment instanceof SearchView.OnQueryTextListener) {
+                    mSearchView.setOnQueryTextListener((SearchView.OnQueryTextListener) fragment);
+                }
+            }
+
+            // This method will be invoked when the current page is scrolled
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // Code goes here
+            }
+
+            // Called when the scroll state changes:
+            // SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING, SCROLL_STATE_SETTLING
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                // Code goes here
+            }
+        });
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        this.menu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+
+        final MenuItem item = menu.findItem(R.id.action_search);
+        mSearchView = (SearchView) MenuItemCompat.getActionView(item);
         return true;
     }
 
@@ -132,35 +171,48 @@ public class MainActivity extends AppCompatActivity {
      */
     public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
+        private FragmentManager mFragmentManager;
+
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
+            mFragmentManager = fm;
         }
+
 
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            if(position == 0) {
-                return ExhibitorFragment.newInstance();
+
+            Fragment f;
+            if (position == 0) {
+                f = ExhibitorFragment.newInstance();
+            } else if (position == 1) {
+                f = EventFragment.newInstance();
+            } else {
+                f = PlaceholderFragment.newInstance(position + 1);
             }
-            return PlaceholderFragment.newInstance(position + 1);
+            return f;
         }
+
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 4;
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "SECTION 1";
+                    return "Exhibitors";
                 case 1:
-                    return "SECTION 2";
+                    return "Events";
                 case 2:
-                    return "SECTION 3";
+                    return "Partners";
+                case 3:
+                    return "Personnel";
             }
             return null;
         }
