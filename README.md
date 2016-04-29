@@ -23,9 +23,44 @@ authenticate: admin also restricts the routes to users with administrator-access
 4. If you want to add this to the navbar in the top, find navbar.controller.js in client/components/navbar and add it to the menu-list. If you want to add to the right-hand side of the navbar, add it in the navbar.html file. 
 
 
+
+
+## what the generator did and what it didn't
+
+An example project generated with the generator can be found here:
+https://github.com/DaftMonk/fullstack-demo
+
+- The generator generated an example project for us, with some functionality.
+ 
+- We did not implement authentication logic ourselves, seeing as that's pretty frowned upon generally. Chances are we'd implement security badly and/or incorrectly. 
+
+- The navbar came with the generator.
+
+- The view that was generated for us was only a list of strings. These strings were synced between clients through sockets, so we used that example code to help us create our own client synchronization. 
+
+- Everything else was built by us. 
+- 
+
+## Addressing critique 
+ - A LOT OF FILES
+We have many files in the root of the project for many different reasons, including 
+ * .jscrc, .editorconfig - for maintaining consistent coding styles in the project
+ * karma.conf.js, mocha.conf.js, protractor.conf.js - for configuring test environments
+ * .travis.yml - for continous integration and automatic deploy 
+ * Procfile - declaring how Heroku should start our application from the project root
+ * Gruntfile - configuration file for building the project
+ * e2e folder - contains end-to-end tests
+ * iOS - contains iOS application
+ * website - contains code for http://alsing.me/fairmanager
+- In client/app folder we have one folder for every view, and a folder for angular services. 
+- The overview-directive (https://github.com/apals/FairManager/tree/master/client/app/overview) eliminates code-duplication from the lists (e.g. in /companies, /events etc). However, when adding new items eg. events, exhibitors, we need similar code in different places because they have different inputs. E.g. an event has date-input fields, whereas an exhibitor has multiple image-upload fields etc. 
+
+Clarification is required.  Files are not structured well, however, code are divided well but a lot of code repetition exist, hence request of clarification.
+
+
+
 ## TODO
-- write about code duplication
-- what the generator did and what it didn't
+
 
 ## Generating tool
 
