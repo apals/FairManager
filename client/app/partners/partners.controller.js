@@ -10,6 +10,8 @@ angular.module('fairManagerApp')
       $scope.partners = response;
       $scope.isBusy = false;
       socket.syncUpdates('partners', $scope.partners);
+    }, function (error) {
+      $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'get partner');
     });
 
     $scope.$on('$destroy', function () {
