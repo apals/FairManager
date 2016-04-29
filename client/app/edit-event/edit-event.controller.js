@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('fairManagerApp')
-  .controller('EditEventCtrl', function ($scope, EventService, ErrorHandlingService, $routeParams, $location, $rootScope) {
+  .controller('EditEventCtrl', function ($scope, EventService, ErrorHandlingService, $routeParams, $location, $rootScope, Upload) {
 
     $scope.event = {};
 
@@ -19,12 +19,30 @@ angular.module('fairManagerApp')
       $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'fetch event data');
     });
 
+
     $scope.updateEvent = function (event) {
-      EventService.Event.update({id: event._id}, event, function () {
+      var newEvent = {
+        name: event.name,
+        logo: event.logo
+      };
+
+      if(event.imageUrl !== null && event.imageUrl !== 'null' && !event.logo) {
+        newEvent.imageUrl = event.imageUrl;
+      }
+
+      var upload = Upload.upload({
+        method: 'PUT',
+        url: '/api/events/' + event._id,
+        data: newEvent
+      });
+
+      upload.then(function () {
         $location.path('/events');
-      }, function(error) {
-        $scope.event.error = 'There was an error updating the event';
-        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'update event');
+      }, function (error) {
+        $scope.errorMsg = ErrorHandlingService.getErrorMessage(error, 'create event');
+      }, function () {
+        // Math.min is to fix IE which reports 200% sometimes
+        //$scope.eventLogo.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
       });
     };
 

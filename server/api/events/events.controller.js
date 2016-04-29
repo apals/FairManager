@@ -98,9 +98,30 @@ export function update(req, res) {
   }
   Events.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
+    .then(changeImage(req))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
+}
+
+//Change the image for a certain event
+function changeImage(req) {
+
+  return function (entity) {
+
+    var logo;
+    if (req.files && req.files.logo) logo = req.files.logo;
+
+    if (logo) {
+      entity.imageUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + logo.path.split('/')[3];
+    } else {
+      if (entity.imageUrl) {
+        entity.imageUrl = null;
+      }
+    }
+
+    return entity;
+  }
 }
 
 // Deletes a Events from the DB

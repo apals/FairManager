@@ -3,14 +3,19 @@
   <form name="companyForm" ng-submit="updateCompany(company)">
 
     <fieldset>
-      <legend>Edit Exhibitor</legend>
+      <div class="col-sm-12 text-center">
+        <h1>Editing {{company.name}}</h1>
+        <hr>
+      </div>
+
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Name:
+              <label>Name:</label><br>
+
                 <input ng-model="company.name" value="{{company.name}}">
-              </label>
+
             </div>
           </div>
         </div>
@@ -20,10 +25,8 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Info:
-                <textarea ng-model="company.info" value="{{company.info}}" rows="10">
-                  </textarea>
-              </label>
+              <label>Info: </label>
+                <textarea style="width: 100%;" ng-model="company.info" value="{{company.info}}" rows="5"></textarea>
             </div>
           </div>
         </div>
@@ -33,13 +36,74 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Logo:
-                <img ng-src="{{company.logoUrl}}">
-              </label>
+
+              <label>Logo:</label>
+
+              <span style="font-size: 11px; float: right;">
+                Will be re-sized to 100 x 100 pixels.
+              </span>
+
+              <div class="logo-upload drop-box" file-button ngf-select ngf-drop
+                   ngf-resize="{width: 100, height: 100, quality: .9}"
+                   ng-model="company.logo" name="company.logo"
+                   accept="image/*" ngf-max-size="2MB"
+                   ngf-model-invalid="errorFile">
+
+                <div style="height: 100%; width: 100%">
+
+                  <!-- Both logo and logoUrl cannot be shown at the same time. LogoURL occurs if we 'get' the
+                  URL from the server. Logo occurs if we have removed said logoUrl, and added our own local image.-->
+                  <img style="height: 100%; width: 100%" ng-show="(company.logoUrl != 'null') && !company.logo" ngf-thumbnail="company.logoUrl" class="thumb">
+                  <img style="height: 100%; width: 100%" ng-show="company.logo" ngf-thumbnail="company.logo" class="thumb">
+
+                  <div ng-if="!company.logoUrl && !company.logo" class="upload-image-text">Click or drag image<br>here to upload</div>
+                </div>
+
+              </div>
+
+              <button type="button" style="margin-top: 10px;" ng-click="clearLogo(company);" ng-show="company.logoUrl || company.logo">Remove</button>
+
             </div>
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <label>Banner:</label>
+
+              <span style="font-size: 11px; float: right;">
+                Will be re-sized to 700 pixels wide.
+              </span>
+
+              <div class="banner-upload drop-box"
+                   file-button ngf-select ngf-drop
+                   ngf-resize="{width: 700, quality: .9}"
+                   ng-model="company.banner" name="company.banner"
+                   accept="image/*" ngf-max-size="2MB"
+                   ngf-model-invalid="errorFile">
+
+
+                <div style="height: 100%; width: 100%">
+
+                  <!-- Both banner and bannerUrl cannot be shown at the same time. bannerURL occurs if we 'get' the
+                  URL from the server. Just 'banner' occurs if we have removed said bannerUrl, and added our own local image.-->
+                  <img style="height: 100%; width: 100%" ng-show="(company.bannerUrl != 'null') && !company.banner" ngf-thumbnail="company.bannerUrl" class="thumb">
+                  <img style="height: 100%; width: 100%" ng-show="company.banner" ngf-thumbnail="company.banner" class="thumb">
+
+                  <div ng-if="!company.bannerUrl && !company.bannerUrl" class="upload-image-text">Click or drag image<br>here to upload</div>
+                </div>
+
+              </div>
+
+              <button type="button" style="margin-top: 10px;" ng-click="clearBanner(company)" ng-show="company.bannerUrl || company.banner">Remove</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="row">
         <div class="col-sm-8 col-sm-offset-2">
           <button type=submit class="btn btn-block">Update</button>

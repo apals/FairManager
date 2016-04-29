@@ -11,9 +11,8 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Name:
+              <label>Name:</label><br>
                 <input ng-model="partner.name" required>
-              </label>
             </div>
           </div>
         </div>
@@ -24,9 +23,8 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Website URL:
+              <label>Website URL:</label><br>
                 <input ng-model="partner.websiteUrl">
-              </label>
             </div>
           </div>
         </div>
@@ -36,11 +34,33 @@
         <div class="col-sm-8 col-sm-offset-2">
           <div class="panel panel-default">
             <div class="panel-body">
-              <label>Logo URL:
-                <input ng-model="partner.logoUrl">
-              </label>
+
+              <label>Logo:</label>
+
+              <span style="font-size: 11px; float: right;">
+                Will be re-sized to 300 x 300 pixels
+              </span>
+
+              <div class="logo-upload" file-button ngf-select ngf-drop
+                   ngf-resize="{width: 300, height: 300, quality: .9}"
+                   ng-model="partner.logo" name="partner.logo"
+                   accept="image/*" ngf-max-size="2MB"
+                   ngf-model-invalid="errorFile" class="drop-box">
+
+
+              <div style="height: 100%; width: 100%">
+
+                <!-- Both logo and logoUrl cannot be shown at the same time. logoURL occurs if we 'get' the
+                URL from the server. Just 'logo' occurs if we have removed said logoUrl, and added our own local image.-->
+                <img style="height: 100%; width: 100%" ng-show="(partner.logoUrl != 'null') && !partner.logo" ngf-thumbnail="partner.logoUrl" class="thumb">
+                <img style="height: 100%; width: 100%" ng-show="partner.logo" ngf-thumbnail="partner.logo" class="thumb">
+
+                <div ng-if="!partner.logoUrl && !partner.logo" class="upload-image-text">Click or drag image<br>here to upload</div>
+              </div>
             </div>
-          </div>
+              <button style="margin-top: 10px;" type="button" ng-click="partner.logo = null; partner.logoUrl = null;" ng-show="partner.logo || partner.logoUrl" class="btn btn-primary">Remove</button>
+
+            </div>
         </div>
       </div>
 

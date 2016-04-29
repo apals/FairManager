@@ -25,7 +25,7 @@
           <div class="panel panel-default">
             <div class="panel-body">
               <label>Info: </label>
-              <textarea style="width: 100%;" ng-model="company.info" rows="5"> </textarea>
+              <textarea style="width: 100%;" ng-model="company.info" rows="5"></textarea>
             </div>
           </div>
         </div>
@@ -51,10 +51,12 @@
 
                 <div style="height: 100%; width: 100%">
                   <img style="height: 100%; width: 100%" ng-show="new-company-form.company.logo.$valid" ngf-thumbnail="company.logo" class="thumb">
+
+                  <div ng-if="!company.logo" class="upload-image-text">Click or drag image<br>here to upload</div>
                 </div>
 
               </div>
-
+              <!-- As opposed to edit-company, we do not need to check for logoURL, since logoUrl cannot exists before the company has been created. -->
               <button type="button" style="margin-top: 10px;" ng-click="company.logo = null" ng-show="company.logo">Remove</button>
 
             </div>
@@ -81,7 +83,11 @@
                    ngf-model-invalid="errorFile">
 
                 <div style="height: 100%; width: 100%">
-                  <img style="height: 100%; width: 100%" ng-show="new-company-form.company.banner.$valid" ngf-thumbnail="company.banner" class="thumb">
+
+                    <img style="height: 100%; width: 100%" ng-show="new-company-form.company.banner.$valid" ngf-thumbnail="company.banner" class="thumb">
+
+                  <div ng-if="!company.banner" class="upload-image-text">Click or drag image<br>here to upload</div>
+
                 </div>
               </div>
               <button type="button" ng-click="company.banner = null" ng-show="company.banner">Remove</button>

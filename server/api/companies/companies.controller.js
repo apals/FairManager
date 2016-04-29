@@ -26,6 +26,7 @@ function respondWithResult(res, statusCode) {
 function saveUpdates(updates) {
   return function (entity) {
     var updated = _.merge(entity, updates);
+
     return updated.saveAsync()
       .spread(updated => {
         return updated;
@@ -49,6 +50,7 @@ function removeCompanyLogo(res) {
   return function (entity) {
     if (entity && entity.logoUrl) {
       var image = "client/assets/images/" + entity.logoUrl.split('/')[5];
+      console.log("Logging image - " + image);
       fs.unlink(image, function (err) {
         if (err) {
           console.log("Error deleting company logo for entity:");
@@ -71,8 +73,10 @@ function handleEntityNotFound(res) {
 }
 
 function handleError(res, statusCode) {
+
   statusCode = statusCode || 500;
   return function (err) {
+    console.log(err);
     res.status(statusCode).send(err);
   };
 }
@@ -108,6 +112,9 @@ export function create(req, res, next) {
   }
 
 
+  console.log("URL CHANGE: " + req);
+  console.log(req);
+
   Companies.createAsync(req.body)
     .then(respondWithResult(res, 201))
     .catch(handleError(res));
@@ -118,13 +125,42 @@ export function update(req, res) {
   if (req.body._id) {
     delete req.body._id;
   }
+
   Companies.findByIdAsync(req.params.id)
     .then(handleEntityNotFound(res))
+    .then(changeImage(req))
     .then(saveUpdates(req.body))
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
 
+// Creates a new Companies in the DB KAN KOLLA PÅ LLOGGAN NÄRSOM
+function changeImage(req) {
+
+  return function (entity) {
+
+    var logo, banner;
+    if (req.files && req.files.logo) logo = req.files.logo;
+    if (req.files && req.files.banner) banner = req.files.banner;
+
+    if (logo) {
+      entity.logoUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + logo.path.split('/')[3];
+    } else {
+      if (entity.logoUrl) {
+        entity.logoUrl = null;
+      }
+    }
+
+    if (banner) {
+      entity.bannerUrl = req.protocol + '://' + req.get('host') + "/assets/images/" + banner.path.split('/')[3];
+    } else {
+      if (entity.bannerUrl)
+        entity.bannerUrl = null;
+    }
+
+    return entity;
+  }
+}
 // Deletes a Companies from the DB
 
 function removeCompanyBanner(res) {
@@ -141,6 +177,7 @@ function removeCompanyBanner(res) {
     return entity;
   };
 }
+
 
 export function destroy(req, res) {
   Companies.findByIdAsync(req.params.id)
