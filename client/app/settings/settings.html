@@ -31,7 +31,7 @@
               <span ng-hide="primaryColorEditorEnabled"><div class="color-box" style="background-color: {{settings.primaryColor}};"></div> {{settings.primaryColor}}</span>
 
               <a href="#" ng-click="primaryColorEditorEnabled=!primaryColorEditorEnabled">
-                <span ng-hide="primaryColorEditorEnabled" class="pull-right glyphicon glyphicon-pencil purple"></span>
+                <span ng-hide="primaryColorEditorEnabled" class="pull-right purple">Edit</span>
                 <button ng-show="primaryColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
               </a>
 
@@ -57,7 +57,7 @@
               </label>
               <span ng-hide="accentColorEditorEnabled"><div class="color-box" style="background-color: {{settings.accentColor}};"></div> {{settings.accentColor}}</span>
               <a href="#" ng-click="accentColorEditorEnabled=!accentColorEditorEnabled">
-                <span ng-hide="accentColorEditorEnabled" class="pull-right glyphicon glyphicon-pencil purple"></span>
+                <span ng-hide="accentColorEditorEnabled" class="pull-right purple">Edit</span>
                 <button ng-show="accentColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
               </a>
             </div>
@@ -81,7 +81,7 @@
               <span ng-hide="primaryTextColorEditorEnabled"><div class="color-box" style="background-color: {{settings.primaryTextColor}};"></div> {{settings.primaryTextColor}}</span>
               <a href="#" ng-click="primaryTextColorEditorEnabled=!primaryTextColorEditorEnabled">
                 <span ng-hide="primaryTextColorEditorEnabled"
-                      class="pull-right glyphicon glyphicon-pencil purple"></span>
+                      class="pull-right purple">Edit</span>
                 <button ng-show="primaryTextColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
               </a>
             </div>
@@ -105,7 +105,7 @@
               <span ng-hide="primarySubTextColorEditorEnabled"><div class="color-box" style="background-color: {{settings.primarySubTextColor}};"></div> {{settings.primarySubTextColor}}</span>
               <a href="#" ng-click="primarySubTextColorEditorEnabled=!primarySubTextColorEditorEnabled">
                 <span ng-hide="primarySubTextColorEditorEnabled"
-                      class="pull-right glyphicon glyphicon-pencil purple"></span>
+                      class="pull-right purple">Edit</span>
                 <button ng-show="primarySubTextColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
               </a>
             </div>
@@ -129,7 +129,7 @@
               <span ng-hide="backgroundColorEditorEnabled"><div class="color-box" style="background-color: {{settings.backgroundColor}};"></div> {{settings.backgroundColor}}</span>
               <a href="#" ng-click="backgroundColorEditorEnabled=!backgroundColorEditorEnabled">
                 <span ng-hide="backgroundColorEditorEnabled"
-                      class="pull-right glyphicon glyphicon-pencil purple"></span>
+                      class="pull-right purple">Edit</span>
                 <button ng-show="backgroundColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
               </a>
             </div>
