@@ -2,7 +2,7 @@
 
 
 angular.module('fairManagerApp')
-  .controller('CompaniesController', function ($scope, socket, CompanyService, Modal) {
+  .controller('CompaniesController', function ($scope, socket, CompanyService, ErrorHandlingService, Modal) {
     $scope.companies = [];
     $scope.isBusy = true;
 

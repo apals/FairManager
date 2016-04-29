@@ -33,10 +33,10 @@ angular.module('fairManagerApp')
 
       //500 - Internal server error - special case for the settings
       else if(this.errorCode === 500 && context === 'settings') {
-        var errObj = error.data.errors;
+        var errObject = error.data.errors;
 
         //Similar to the 422 error above We want the first property of the errors object (primaryColour,accentColour etc)
-        this.errorMessage = errObj[Object.keys(errObj)[0]].message;
+        this.errorMessage = errObject[Object.keys(errObject)[0]].message;
       }
       //Unknown error code
       else {
