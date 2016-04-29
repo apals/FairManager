@@ -14,7 +14,6 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
   padding: 0.2em 0;
 }
 
-
 $primary-color: #51039a;
 $primary-text-color: #404040;
 $primary-warning-color: #FF3B30;
@@ -56,29 +55,28 @@ $primary-hover-background-color: #e7e7e7;
 /* Toggle Styles */
 html,
 body {
-    padding-top: 30px;
-    height: 100%;
-    background-color: white !important;
+  padding-top: 30px;
+  height: 100%;
+  background-color: white !important;
 }
 
 a {
-	/*font-family: 'Raleway', sans-serif;*/
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 300;
-	color: $primary-text-color;
+  /*font-family: 'Raleway', sans-serif;*/
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+  color: $primary-text-color;
 }
 
 label {
-	/*font-family: 'Raleway', sans-serif;*/
-	color: $primary-text-color;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 300;
+  /*font-family: 'Raleway', sans-serif;*/
+  color: $primary-text-color;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
 }
 
-
 h1, h2, h3 {
-	font-family: 'Raleway', sans-serif;
-	color: $primary-color;
+  font-family: 'Raleway', sans-serif;
+  color: $primary-color;
 }
 
 h3.error {
@@ -93,6 +91,7 @@ h3.error {
   display: -webkit-flex;
   display: flex;
 }
+
 .flex-column {
   -webkit-flex: 1;
   flex: 1;
@@ -101,19 +100,19 @@ h3.error {
 /* BUTTONS */
 
 hr {
-	border-top: 1px solid $primary-text-color;
+  border-top: 1px solid $primary-text-color;
 }
 
 .btn {
-	background: transparent;
-	border: 1px solid $primary-text-color;
-	border-radius: 0px;
-	color: $primary-text-color;
-	-webkit-transition: background 0.2s ease-in-out;
-	-moz-transition: background 0.2s ease-in-out;
-	-ms-transition: background 0.2s ease-in-out;
-	-o-transition: background 0.2s ease-in-out;
-	transition: background 0.2s ease-in-out;
+  background: transparent;
+  border: 1px solid $primary-text-color;
+  border-radius: 0px;
+  color: $primary-text-color;
+  -webkit-transition: background 0.2s ease-in-out;
+  -moz-transition: background 0.2s ease-in-out;
+  -ms-transition: background 0.2s ease-in-out;
+  -o-transition: background 0.2s ease-in-out;
+  transition: background 0.2s ease-in-out;
 }
 
 .form-control:focus {
@@ -122,13 +121,12 @@ hr {
 }
 
 .form-control {
-	border-radius: 0;
+  border-radius: 0;
   color: $primary-color;
 }
 
-
 .btn:focus {
-	border-color: $primary-color;
+  border-color: $primary-color;
   //box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
   background: white;
   outline: none;
@@ -151,27 +149,28 @@ hr {
 }
 
 .btn:hover {
-	color: $primary-color;
-	border-color: $primary-color;
+  color: $primary-color;
+  border-color: $primary-color;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(81, 3, 154, 0.6);
-	background: white;
+  background: white;
   color: $primary-color;
 }
 
 a .btn {
-	color: white;
+  color: white;
 }
 
 .btn-danger:hover {
-	border-color: $primary-warning-color;
-	color: $primary-warning-color;
-  	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 59, 48, 0.6);
+  border-color: $primary-warning-color;
+  color: $primary-warning-color;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(255, 59, 48, 0.6);
 }
 
 .btn-white {
-	border: 2px solid white;
-	color: white;
+  border: 2px solid white;
+  color: white;
 }
+
 /* LOADING BAR */
 /* ========================================================*/
 #loading-bar .bar {
@@ -187,7 +186,7 @@ a .btn {
 }
 
 #loading-bar-spinner .spinner-icon {
-  border-top-color:  $primary-color;
+  border-top-color: $primary-color;
   border-left-color: $primary-color;
 }
 
@@ -197,7 +196,7 @@ a .btn {
   border: 1px solid transparent;
 }
 
-.pagination > li > a{
+.pagination > li > a {
   color: $primary-text-color !important;
 }
 
@@ -243,14 +242,13 @@ a .btn {
 }
 
 .logo-upload {
-width: 120px;
-height: 120px;
-background: #9acfea;
+  width: 120px;
+  height: 120px;
+  background: #9acfea;
 }
 
-
 .banner-upload {
-height: 120px;
-width: 100%;
-background: #9acfea;
+  height: 120px;
+  width: 100%;
+  background: #9acfea;
 }
