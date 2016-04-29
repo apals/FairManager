@@ -42,16 +42,15 @@ https://github.com/DaftMonk/fullstack-demo
 - 
 
 ## Addressing critique 
- - A LOT OF FILES
-We have many files in the root of the project for many different reasons, including 
- * .jscrc, .editorconfig - for maintaining consistent coding styles in the project
- * karma.conf.js, mocha.conf.js, protractor.conf.js - for configuring test environments
- * .travis.yml - for continous integration and automatic deploy 
- * Procfile - declaring how Heroku should start our application from the project root
- * Gruntfile - configuration file for building the project
- * e2e folder - contains end-to-end tests
- * iOS - contains iOS application
- * website - contains code for http://alsing.me/fairmanager
+- A LOT OF FILES, we have many files in the root of the project for many different reasons, including 
+  * .jscrc, .editorconfig - for maintaining consistent coding styles in the project
+  * karma.conf.js, mocha.conf.js, protractor.conf.js - for configuring test environments
+  * .travis.yml - for continous integration and automatic deploy 
+  * Procfile - declaring how Heroku should start our application from the project root
+  * Gruntfile - configuration file for building the project
+  * e2e folder - contains end-to-end tests
+  * iOS - contains iOS application
+  * website - contains code for http://alsing.me/fairmanager
 
 
 - In client/app folder we have one folder for every view, and a folder for angular services. 
