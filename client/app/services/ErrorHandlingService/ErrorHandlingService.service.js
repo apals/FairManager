@@ -28,7 +28,7 @@ angular.module('fairManagerApp')
 
       //404 - Not found.
       else if(this.errorCode === 404) {
-        this.errorMessage = 'Unable to find ' + context + '. Perhaps you manually entered a faulty URL, or did you click an expired link?';
+        this.errorMessage = 'Unable to ' + context + '. Perhaps you manually entered a faulty URL, or did you click an expired link?';
       }
 
       //500 - Internal server error - special case for the settings
