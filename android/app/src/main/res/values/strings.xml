@@ -2,7 +2,7 @@
     <string name="app_name">FairManager</string>
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
-    <string name="title_activity_exhibitor_detail">ExhibitorDetailActivity</string>
+    <string name="title_activity_exhibitor_detail">Loading..</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -93,5 +93,6 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="exhibitor_banner">Exhibitor Banner</string>
-    <string name="title_activity_event_detail">EventDetailActivity</string>
+    <string name="title_activity_event_detail">Loading..</string>
+    <string name="event_banner">Event Banner</string>
 </resources>

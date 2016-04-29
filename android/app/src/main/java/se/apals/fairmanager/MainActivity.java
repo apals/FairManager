@@ -76,31 +76,35 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
-            // This method will be invoked when a new page becomes selected.
-            @Override
-            public void onPageSelected(int position) {
-                Fragment fragment = (Fragment) mSectionsPagerAdapter.instantiateItem(mViewPager, position);
-                if (fragment instanceof SearchView.OnQueryTextListener) {
-                    mSearchView.setOnQueryTextListener((SearchView.OnQueryTextListener) fragment);
-                }
-            }
+        mViewPager.addOnPageChangeListener(onPageChangeListener);
 
-            // This method will be invoked when the current page is scrolled
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-                // Code goes here
-            }
-
-            // Called when the scroll state changes:
-            // SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING, SCROLL_STATE_SETTLING
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                // Code goes here
-            }
-        });
     }
+
+    ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
+
+        // This method will be invoked when a new page becomes selected.
+        @Override
+        public void onPageSelected(int position) {
+            Fragment fragment = (Fragment) mSectionsPagerAdapter.instantiateItem(mViewPager, position);
+            if (fragment instanceof SearchView.OnQueryTextListener) {
+                mSearchView.setOnQueryTextListener((SearchView.OnQueryTextListener) fragment);
+            }
+        }
+
+        // This method will be invoked when the current page is scrolled
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+            // Code goes here
+        }
+
+        // Called when the scroll state changes:
+        // SCROLL_STATE_IDLE, SCROLL_STATE_DRAGGING, SCROLL_STATE_SETTLING
+        @Override
+        public void onPageScrollStateChanged(int state) {
+            // Code goes here
+        }
+    };
 
 
     @Override
@@ -112,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
 
         final MenuItem item = menu.findItem(R.id.action_search);
         mSearchView = (SearchView) MenuItemCompat.getActionView(item);
+        onPageChangeListener.onPageSelected(0);
         return true;
     }
 

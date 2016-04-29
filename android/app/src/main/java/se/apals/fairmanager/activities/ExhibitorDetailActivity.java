@@ -3,6 +3,7 @@ package se.apals.fairmanager.activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -56,7 +57,7 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
     @Subscribe
     public void onExhibitorLoaded(ExhibitorLoadedEvent event) {
         ((TextView) findViewById(R.id.activity_exhibitor_detail_textview_info)).setText(event.exhibitor.getInfo());
-        getSupportActionBar().setTitle(event.exhibitor.getName());
+        ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar)).setTitle(event.exhibitor.getName());
         showLoader(false);
     }
 
