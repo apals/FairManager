@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import se.apals.fairmanager.R;
@@ -62,6 +63,7 @@ public class ExhibitorFragment extends Fragment implements SearchView.OnQueryTex
     @Subscribe
     public void onExhibitorsLoaded(ExhibitorsLoadedEvent event) {
         mExhibitors = event.exhibitors;
+        Collections.sort(mExhibitors);
         mAdapter.addAll(mExhibitors);
         showLoader(false);
     }

@@ -2,7 +2,7 @@ package se.apals.fairmanager.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Event {
+public class Event implements Comparable<Event> {
 
     @SerializedName("_id")
     protected String id;
@@ -10,6 +10,11 @@ public class Event {
     protected String startDate;
     protected String endDate;
     protected String imageUrl;
+
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Event && ((Event) o).getId() == getId();
+    }
 
     /**
      * @return The id
@@ -81,4 +86,8 @@ public class Event {
         this.imageUrl = imageUrl;
     }
 
+    @Override
+    public int compareTo(Event another) {
+        return getName().compareTo(another.getName());
+    }
 }

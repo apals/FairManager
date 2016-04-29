@@ -27,7 +27,11 @@ public class ExhibitorRecyclerViewAdapter extends RecyclerView.Adapter<Exhibitor
     }
 
     public void addAll(List<Exhibitor> exhibitors) {
-        mValues.addAll(exhibitors);
+        for (Exhibitor e : exhibitors) {
+            if(!mValues.contains(e)) {
+                mValues.add(e);
+            }
+        }
         notifyDataSetChanged();
     }
 

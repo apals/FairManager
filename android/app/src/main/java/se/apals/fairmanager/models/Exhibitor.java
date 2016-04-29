@@ -2,7 +2,15 @@ package se.apals.fairmanager.models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Exhibitor {
+
+public class Exhibitor implements Comparable<Exhibitor> {
+
+    @Override
+    public boolean equals(Object o) {
+        boolean instance = o instanceof Exhibitor;
+        boolean id = ((Exhibitor) o).getId() == getId();
+        return instance && id;
+    }
 
     @SerializedName("_id")
     protected String id;
@@ -49,5 +57,10 @@ public class Exhibitor {
      */
     public void setLogoUrl(String logoUrl) {
         this.logoUrl = logoUrl;
+    }
+
+    @Override
+    public int compareTo(Exhibitor another) {
+        return getName().compareTo(another.getName());
     }
 }

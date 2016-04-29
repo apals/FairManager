@@ -83,6 +83,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
             }
         }
     }
+
     private void applyAndAnimateAdditions(List<Event> newModels) {
         for (int i = 0, count = newModels.size(); i < count; i++) {
             final Event model = newModels.get(i);
@@ -108,7 +109,11 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     }
 
     public void addAll(List<Event> events) {
-        mValues.addAll(events);
+        for (Event e : events) {
+            if(!mValues.contains(e)) {
+                mValues.add(e);
+            }
+        }
         notifyDataSetChanged();
     }
 

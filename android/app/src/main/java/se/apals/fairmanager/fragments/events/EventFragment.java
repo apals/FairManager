@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.squareup.otto.Subscribe;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import se.apals.fairmanager.R;
@@ -61,6 +62,7 @@ public class EventFragment extends Fragment implements SearchView.OnQueryTextLis
     @Subscribe
     public void onEventsLoaded(EventsLoadedEvent event) {
         mEvents = event.events;
+        Collections.sort(mEvents);
         mAdapter.addAll(event.events);
         showLoader(false);
         Log.d("asd", "hello");
