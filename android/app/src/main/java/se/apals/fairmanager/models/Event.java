@@ -13,7 +13,7 @@ public class Event implements Comparable<Event> {
 
     @Override
     public boolean equals(Object o) {
-        return o instanceof Event && ((Event) o).getId() == getId();
+        return o instanceof Event && ((Event) o).getId().equals(getId());
     }
 
     /**

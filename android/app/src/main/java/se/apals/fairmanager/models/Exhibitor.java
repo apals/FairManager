@@ -8,7 +8,7 @@ public class Exhibitor implements Comparable<Exhibitor> {
     @Override
     public boolean equals(Object o) {
         boolean instance = o instanceof Exhibitor;
-        boolean id = ((Exhibitor) o).getId() == getId();
+        boolean id = ((Exhibitor) o).getId().equals(getId());
         return instance && id;
     }
 
