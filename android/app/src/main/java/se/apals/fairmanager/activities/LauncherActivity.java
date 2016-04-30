@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -21,11 +22,24 @@ import se.apals.fairmanager.models.events.SettingsLoadedEvent;
 
 public class LauncherActivity extends AppCompatActivity {
 
+
+    private boolean hasUsername = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
+        hasUsername = PreferenceManager.getDefaultSharedPreferences(this).contains("KEY_USERNAME");
 
+        /**
+         * If the user already has used the app, there already is a user name registered
+         * Hide the edittext, and send button, and display loading message
+         */
+        if(hasUsername) {
+            ((TextView) findViewById(R.id.login_welcome_textview)).setText(R.string.loading_text);
+            findViewById(R.id.login_edittext).setVisibility(View.GONE);
+            findViewById(R.id.button_send).setVisibility(View.GONE);
+        }
         loadSettings();
     }
 
@@ -47,9 +61,14 @@ public class LauncherActivity extends AppCompatActivity {
 
     @Subscribe
     public void onSettingsLoaded(SettingsLoadedEvent event) {
+        //Save the settings
         SettingsUtils.setSettings(this, event.settings);
 
-        if (PreferenceManager.getDefaultSharedPreferences(this).contains("KEY_USERNAME")) {
+        /**
+         * If the user already has an account,
+         * launch mainactivity once settings have been loaded
+         */
+        if (hasUsername) {
             MainActivity.start(this, true);
         } else {
             showLoader(false);
@@ -63,7 +82,7 @@ public class LauncherActivity extends AppCompatActivity {
 
     public void setUserName(View view) {
         String username = ((EditText) findViewById(R.id.login_edittext)).getText().toString().trim();
-        if(username.trim().isEmpty()) {
+        if (username.trim().isEmpty()) {
             Toast.makeText(this, "Your username cannot consist of only whitespace or be empty!", Toast.LENGTH_SHORT).show();
             return;
         }

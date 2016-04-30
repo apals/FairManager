@@ -28,7 +28,8 @@
             android:indeterminate="true"
             android:indeterminateTint="@android:color/white"
             android:indeterminateTintMode="src_atop"
-            android:visibility="visible" />
+            android:visibility="visible"
+            android:layout_below="@+id/login_welcome_textview"/>
 
 
         <TextView
@@ -47,6 +48,7 @@
             android:layout_below="@id/login_welcome_textview" />
 
         <Button
+            android:id="@+id/button_send"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/login_edittext"

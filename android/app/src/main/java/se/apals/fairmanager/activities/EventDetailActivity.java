@@ -2,6 +2,7 @@ package se.apals.fairmanager.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -19,6 +20,7 @@ import com.squareup.otto.Subscribe;
 import se.apals.fairmanager.R;
 import se.apals.fairmanager.fragments.chat.ChatMessageFragment;
 import se.apals.fairmanager.models.BusProvider;
+import se.apals.fairmanager.models.SettingsUtils;
 import se.apals.fairmanager.models.events.EventLoadedEvent;
 import se.apals.fairmanager.models.events.LoadEventEvent;
 
@@ -49,6 +51,8 @@ public class EventDetailActivity extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        setUpColors();
     }
 
     private void loadEvent(String id) {
@@ -66,6 +70,16 @@ public class EventDetailActivity extends AppCompatActivity {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.chat_fragment_container, newFragment).commit();
         }
+    }
+
+
+
+    private void setUpColors() {
+        SettingsUtils.setActivityColors(this);
+        ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar))
+            .setContentScrimColor(
+                Color.parseColor(SettingsUtils.getSettings(this).getPrimaryColor())
+            );
     }
 
     private void showLoader(boolean b) {

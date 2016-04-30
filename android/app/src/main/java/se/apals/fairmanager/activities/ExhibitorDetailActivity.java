@@ -57,12 +57,16 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        setUpColors();
+
+    }
+
+    private void setUpColors() {
         SettingsUtils.setActivityColors(this);
         ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar))
             .setContentScrimColor(
                 Color.parseColor(SettingsUtils.getSettings(this).getPrimaryColor())
             );
-
     }
 
     private void loadExhibitor(String id) {
