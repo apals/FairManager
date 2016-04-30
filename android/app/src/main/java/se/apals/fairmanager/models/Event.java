@@ -2,13 +2,17 @@ package se.apals.fairmanager.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Event implements Comparable<Event> {
 
     @SerializedName("_id")
     protected String id;
     protected String name;
-    protected String startDate;
-    protected String endDate;
+    protected Date startDate;
+    protected Date endDate;
     protected String imageUrl;
 
     @Override
@@ -47,28 +51,28 @@ public class Event implements Comparable<Event> {
     /**
      * @return The startDate
      */
-    public String getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
     /**
      * @param startDate The startDate
      */
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
     /**
      * @return The endDate
      */
-    public String getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
     /**
      * @param endDate The endDate
      */
-    public void setEndDate(String endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
@@ -88,6 +92,10 @@ public class Event implements Comparable<Event> {
 
     @Override
     public int compareTo(Event another) {
-        return getName().compareTo(another.getName());
+        return getStartDate().compareTo(another.getStartDate());
+    }
+
+    public String getFormattedStartDate() {
+        return new SimpleDateFormat("dd MMM\n yyyy").format(startDate.getTime()).toString().toUpperCase();
     }
 }

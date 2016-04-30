@@ -2,6 +2,7 @@ package se.apals.fairmanager.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,7 @@ import se.apals.fairmanager.R;
 import se.apals.fairmanager.fragments.chat.ChatMessageFragment;
 import se.apals.fairmanager.fragments.exhibitors.ExhibitorRecyclerViewAdapter;
 import se.apals.fairmanager.models.BusProvider;
+import se.apals.fairmanager.models.SettingsUtils;
 import se.apals.fairmanager.models.events.ExhibitorLoadedEvent;
 import se.apals.fairmanager.models.events.ExhibitorsLoadedEvent;
 import se.apals.fairmanager.models.events.LoadExhibitorEvent;
@@ -48,12 +50,18 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("plain/text");
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "exhibitor@exh.com" });
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"exhibitor@exh.com"});
                 intent.putExtra(Intent.EXTRA_SUBJECT, "Regarding the fair");
                 startActivity(Intent.createChooser(intent, ""));
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        SettingsUtils.setActivityColors(this);
+        ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar))
+            .setContentScrimColor(
+                Color.parseColor(SettingsUtils.getSettings(this).getPrimaryColor())
+            );
 
     }
 

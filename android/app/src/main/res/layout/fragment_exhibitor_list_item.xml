@@ -9,7 +9,7 @@
   android:padding="8dp">
 
   <ImageView
-    android:id="@+id/logo"
+    android:id="@+id/startdate"
     android:layout_width="24dp"
     android:layout_height="24dp"
     android:layout_alignParentLeft="true"
@@ -22,6 +22,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/text_margin"
-    android:layout_toRightOf="@+id/logo"
+    android:layout_toRightOf="@+id/startdate"
     android:textAppearance="?attr/textAppearanceListItem" />
 </RelativeLayout>

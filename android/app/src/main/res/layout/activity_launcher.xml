@@ -17,6 +17,20 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="se.apals.fairmanager.activities.LauncherActivity">
 
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.Holo.ProgressBar.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateTint="@android:color/white"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="visible" />
+
+
         <TextView
             android:id="@+id/login_welcome_textview"
             android:layout_width="wrap_content"

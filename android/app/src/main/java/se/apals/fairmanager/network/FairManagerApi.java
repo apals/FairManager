@@ -9,6 +9,7 @@ import se.apals.fairmanager.models.Event;
 import se.apals.fairmanager.models.EventDetail;
 import se.apals.fairmanager.models.Exhibitor;
 import se.apals.fairmanager.models.ExhibitorDetail;
+import se.apals.fairmanager.models.Settings;
 
 /**
  * Created by apals on 29/04/16.
@@ -26,4 +27,7 @@ public interface FairManagerApi {
 
     @GET("events/{id}")
     Call<EventDetail> getEvent(@Path("id") String id);
+
+    @GET("settings")
+    Call<Settings> getSettings();
 }

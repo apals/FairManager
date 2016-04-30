@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import se.apals.fairmanager.R;
 import se.apals.fairmanager.fragments.chat.ChatMessageFragment;
 import se.apals.fairmanager.models.ChatMessage;
+import se.apals.fairmanager.models.SettingsUtils;
 import se.apals.fairmanager.network.ApiConstants;
 
 public class ChatActivity extends AppCompatActivity {
@@ -25,6 +26,9 @@ public class ChatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+
+        SettingsUtils.setActivityColors(this, R.id.toolbar);
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

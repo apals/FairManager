@@ -37,12 +37,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mContentView.setText(mValues.get(position).getName());
-        Glide.with(holder.mView.getContext()).load(holder.mItem.getImageUrl()).into(new GlideDrawableImageViewTarget(holder.mLogoView) {
-            @Override
-            public void onLoadFailed(Exception e, Drawable errorDrawable) {
-                Glide.with(holder.mView.getContext()).load(R.mipmap.ic_launcher).into(holder.mLogoView);
-            }
-        });
+        holder.mStartDateView.setText(mValues.get(position).getFormattedStartDate());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -120,14 +115,14 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
-        public final ImageView mLogoView;
+        public final TextView mStartDateView;
         public Event mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.content);
-            mLogoView = (ImageView) view.findViewById(R.id.logo);
+            mStartDateView = (TextView) view.findViewById(R.id.startdate);
         }
 
         @Override

@@ -25,7 +25,9 @@
             android:layout_width="64dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_send_black_24dp" />
+            android:src="@drawable/ic_send_black_24dp"
+            android:background="?attr/selectableItemBackground"
+            android:tint="@color/colorPrimary"/>
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -34,8 +36,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/chat_edittext_container"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
         tools:context="se.apals.fairmanager.fragments.chat.ChatMessageFragment"
         tools:listitem="@layout/fragment_chatmessage_list_item" />

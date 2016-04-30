@@ -43,6 +43,33 @@
 
         </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                style="@style/Widget.CardContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chat about this event"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
+
+
+                <FrameLayout
+                    android:id="@+id/chat_fragment_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"/>
+
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 

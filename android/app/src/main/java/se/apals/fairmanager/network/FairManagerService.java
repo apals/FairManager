@@ -13,6 +13,7 @@ import se.apals.fairmanager.models.Event;
 import se.apals.fairmanager.models.EventDetail;
 import se.apals.fairmanager.models.Exhibitor;
 import se.apals.fairmanager.models.ExhibitorDetail;
+import se.apals.fairmanager.models.Settings;
 import se.apals.fairmanager.models.events.EventLoadedEvent;
 import se.apals.fairmanager.models.events.EventsLoadedEvent;
 import se.apals.fairmanager.models.events.ExhibitorLoadedEvent;
@@ -21,8 +22,10 @@ import se.apals.fairmanager.models.events.LoadEventEvent;
 import se.apals.fairmanager.models.events.LoadEventsEvent;
 import se.apals.fairmanager.models.events.LoadExhibitorEvent;
 import se.apals.fairmanager.models.events.LoadExhibitorsEvent;
+import se.apals.fairmanager.models.events.LoadSettingsEvent;
 import se.apals.fairmanager.models.events.LoadingEventsFailedEvent;
 import se.apals.fairmanager.models.events.LoadingExhibitorsFailedEvent;
+import se.apals.fairmanager.models.events.SettingsLoadedEvent;
 
 /**
  * Created by apals on 29/04/16.
@@ -98,6 +101,22 @@ public class FairManagerService {
 
             @Override
             public void onFailure(Call<EventDetail> call, Throwable t) {
+                mBus.post(new LoadingEventsFailedEvent());
+            }
+        });
+    }
+
+    @Subscribe
+    public void onLoadSettings(LoadSettingsEvent event) {
+        Call<Settings> call = mApi.getSettings();
+        call.enqueue(new Callback<Settings>() {
+            @Override
+            public void onResponse(Call<Settings> call, Response<Settings> response) {
+                mBus.post(new SettingsLoadedEvent(response.body()));
+            }
+
+            @Override
+            public void onFailure(Call<Settings> call, Throwable t) {
                 mBus.post(new LoadingEventsFailedEvent());
             }
         });

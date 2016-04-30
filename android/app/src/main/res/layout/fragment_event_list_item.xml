@@ -8,13 +8,13 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_alignParentLeft="true"
+    <TextView
+        android:id="@+id/startdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_centerVertical="true" />
+        android:layout_centerVertical="true"
+        android:gravity="right"/>
 
 
     <TextView
@@ -22,6 +22,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
-        android:layout_toRightOf="@+id/logo"
+        android:layout_toEndOf="@+id/startdate"
         android:textAppearance="?attr/textAppearanceListItem" />
 </RelativeLayout>

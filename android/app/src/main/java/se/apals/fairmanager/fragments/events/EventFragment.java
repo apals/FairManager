@@ -65,7 +65,6 @@ public class EventFragment extends Fragment implements SearchView.OnQueryTextLis
         Collections.sort(mEvents);
         mAdapter.addAll(event.events);
         showLoader(false);
-        Log.d("asd", "hello");
     }
 
     private void showLoader(boolean visible) {
