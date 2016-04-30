@@ -52,7 +52,6 @@ public class ChatMessageFragment extends Fragment {
         mUsername = PreferenceManager.getDefaultSharedPreferences(getContext()).getString("KEY_USERNAME", "Anonymous");
         mType = getArguments().getString(KEY_TYPE);
         mFirebase = new Firebase(ApiConstants.FIREBASE_URL + "/" + mType);
-
     }
 
     @Override

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.widget.TextView;
 import com.squareup.otto.Subscribe;
 
 import se.apals.fairmanager.R;
+import se.apals.fairmanager.fragments.chat.ChatMessageFragment;
 import se.apals.fairmanager.fragments.exhibitors.ExhibitorRecyclerViewAdapter;
 import se.apals.fairmanager.models.BusProvider;
 import se.apals.fairmanager.models.events.ExhibitorLoadedEvent;
@@ -48,6 +51,7 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
     }
 
     private void loadExhibitor(String id) {
@@ -59,6 +63,12 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.activity_exhibitor_detail_textview_info)).setText(event.exhibitor.getInfo());
         ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar)).setTitle(event.exhibitor.getName());
         showLoader(false);
+
+        if (getSupportFragmentManager().findFragmentById(R.id.chat_fragment_container) == null) {
+            Fragment newFragment = ChatMessageFragment.newInstance("exhibitor/" + event.exhibitor.getName());
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.add(R.id.chat_fragment_container, newFragment).commit();
+        }
     }
 
     private void showLoader(boolean b) {
