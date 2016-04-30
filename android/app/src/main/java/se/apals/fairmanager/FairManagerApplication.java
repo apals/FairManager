@@ -2,6 +2,7 @@ package se.apals.fairmanager;
 
 import android.app.Application;
 
+import com.firebase.client.Firebase;
 import com.squareup.otto.Bus;
 
 import retrofit2.Retrofit;
@@ -24,6 +25,7 @@ public class FairManagerApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Firebase.setAndroidContext(this);
         fairManagerService = new FairManagerService(buildApi(), mBus);
         mBus.register(fairManagerService);
         mBus.register(this); //listen for "global" events

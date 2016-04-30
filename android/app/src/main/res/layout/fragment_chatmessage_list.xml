@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/chat_edittext_container"
@@ -22,27 +21,23 @@
             android:layout_marginEnd="64dp" />
 
         <ImageButton
+            android:id="@+id/send_button"
             android:layout_width="64dp"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:onClick="sendMessage"
             android:src="@drawable/ic_send_black_24dp" />
     </RelativeLayout>
 
-
-    <android.support.v4.widget.NestedScrollView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list"
+        android:name="se.apals.fairmanager.fragments.chat.ChatMessageFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/chat_edittext_container"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context="se.apals.fairmanager.activities.ChatActivity"
-        tools:showIn="@layout/activity_chat">
+        android:layout_above="@id/chat_edittext_container"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        app:layoutManager="LinearLayoutManager"
+        tools:context="se.apals.fairmanager.fragments.chat.ChatMessageFragment"
+        tools:listitem="@layout/fragment_chatmessage_list_item" />
 
-        <TextView
-            android:id="@+id/textview_chat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_margin" />
-
-    </android.support.v4.widget.NestedScrollView>
 </RelativeLayout>

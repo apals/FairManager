@@ -1,5 +1,8 @@
 package se.apals.fairmanager;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -27,6 +30,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import se.apals.fairmanager.activities.ChatActivity;
+import se.apals.fairmanager.activities.LauncherActivity;
 import se.apals.fairmanager.fragments.events.EventFragment;
 import se.apals.fairmanager.fragments.exhibitors.ExhibitorFragment;
 
@@ -75,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                     .setAction("Action", null).show();
             }
         });
-
 
 
         mViewPager.addOnPageChangeListener(onPageChangeListener);
@@ -136,6 +139,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public static void start(Activity context, boolean withAnimation) {
+        Intent i = new Intent(context, MainActivity.class);
+        context.startActivity(i);
+        if (!withAnimation) {
+            context.overridePendingTransition(0, 0);
+        }
     }
 
     /**
