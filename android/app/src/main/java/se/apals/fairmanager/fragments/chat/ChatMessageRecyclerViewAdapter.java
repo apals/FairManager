@@ -1,5 +1,7 @@
 package se.apals.fairmanager.fragments.chat;
 
+import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,13 +19,20 @@ import se.apals.fairmanager.models.ChatMessage;
  */
 public class ChatMessageRecyclerViewAdapter extends FirebaseRecyclerAdapter<ChatMessage, ChatMessageRecyclerViewAdapter.ChatMessageViewHolder> {
 
+    private String mUsername;
+
     public ChatMessageRecyclerViewAdapter(Class<ChatMessage> modelClass, int modelLayout, Class<ChatMessageViewHolder> viewHolderClass, Firebase ref) {
         super(modelClass, modelLayout, viewHolderClass, ref);
+
     }
 
     @Override
     public void populateViewHolder(ChatMessageViewHolder chatMessageViewHolder, ChatMessage chatMessage, int position) {
-        chatMessageViewHolder.nameText.setText(chatMessage.getAuthor());
+        mUsername = PreferenceManager.getDefaultSharedPreferences(chatMessageViewHolder.messageText.getContext()).getString("KEY_USERNAME", "Anonymous");
+        if(chatMessage.getAuthor().equals(mUsername)) {
+            chatMessageViewHolder.nameText.setTextColor(Color.BLUE);//chatMessage.getAuthor() + ":");
+        }
+        chatMessageViewHolder.nameText.setText(chatMessage.getAuthor() + ":");
         chatMessageViewHolder.messageText.setText(chatMessage.getMessage());
     }
 

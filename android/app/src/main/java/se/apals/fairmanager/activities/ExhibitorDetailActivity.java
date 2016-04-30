@@ -46,8 +46,11 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("plain/text");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[] { "exhibitor@exh.com" });
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Regarding the fair");
+                startActivity(Intent.createChooser(intent, ""));
             }
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -65,7 +68,7 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
         showLoader(false);
 
         if (getSupportFragmentManager().findFragmentById(R.id.chat_fragment_container) == null) {
-            Fragment newFragment = ChatMessageFragment.newInstance("exhibitor/" + event.exhibitor.getName());
+            Fragment newFragment = ChatMessageFragment.newInstance("exhibitor/" + event.exhibitor.getName().replace(".", ""));
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.chat_fragment_container, newFragment).commit();
         }
