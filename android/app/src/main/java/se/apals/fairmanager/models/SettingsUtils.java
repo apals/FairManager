@@ -5,14 +5,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.preference.PreferenceManager;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
 import com.google.gson.Gson;
-
-import se.apals.fairmanager.R;
-import se.apals.fairmanager.activities.ExhibitorDetailActivity;
 
 /**
  * Created by apals on 30/04/16.
@@ -39,10 +37,13 @@ public class SettingsUtils {
         Settings s = getSettings(a);
 
 
-        final View toolbar = a.findViewById(toolbarId);
+        final Toolbar toolbar = (Toolbar) a.findViewById(toolbarId);
         final View tabs = a.findViewById(tabsId);
 
-        if (toolbar != null) toolbar.setBackgroundColor(Color.parseColor(s.getPrimaryColor()));
+        if (toolbar != null) {
+            toolbar.setBackgroundColor(Color.parseColor(s.getPrimaryColor()));
+            toolbar.setTitleTextColor(Color.parseColor(s.getAccentColor()));
+        }
         if (tabs != null) tabs.setBackgroundColor(Color.parseColor(s.getPrimaryColor()));
 
         Window window = a.getWindow();

@@ -2,6 +2,9 @@ package se.apals.fairmanager;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -27,6 +30,7 @@ import se.apals.fairmanager.activities.ChatActivity;
 import se.apals.fairmanager.fragments.events.EventFragment;
 import se.apals.fairmanager.fragments.exhibitors.ExhibitorFragment;
 import se.apals.fairmanager.fragments.partners.PartnerFragment;
+import se.apals.fairmanager.fragments.personnel.PersonFragment;
 import se.apals.fairmanager.models.Settings;
 import se.apals.fairmanager.models.SettingsUtils;
 import se.apals.fairmanager.models.Tab;
@@ -51,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private Menu menu;
     private SearchView mSearchView;
-    private MenuItem item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,9 +118,19 @@ public class MainActivity extends AppCompatActivity {
         this.menu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        MenuItem chatItem = menu.findItem(R.id.action_chat);
+        Drawable[] icons = new Drawable[] {searchItem.getIcon(), chatItem.getIcon()};
 
-        item = menu.findItem(R.id.action_search);
-        mSearchView = (SearchView) MenuItemCompat.getActionView(item);
+        for(Drawable drawable : icons) {
+            // If we don't mutate the drawable, then all drawable's with this id will have a color
+            // filter applied to it.
+            drawable.mutate();
+            drawable.setColorFilter(Color.parseColor(SettingsUtils.getSettings(this).getAccentColor()), PorterDuff.Mode.SRC_ATOP);
+            //drawable.setAlpha(alpha);
+        }
+
+        mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
         onPageChangeListener.onPageSelected(0);
         return true;
     }
@@ -216,10 +229,11 @@ public class MainActivity extends AppCompatActivity {
                 f = EventFragment.newInstance();
             } else if (name.equalsIgnoreCase(getString(R.string.partners))) {
                 f = PartnerFragment.newInstance();
+            } else if (name.equalsIgnoreCase(getString(R.string.personnel))) {
+                f = PersonFragment.newInstance();
             } else {
-                f = PlaceholderFragment.newInstance(position + 1);
+                throw new RuntimeException("The names of the tabs do not align with the backend");
             }
-
 
             return f;
         }

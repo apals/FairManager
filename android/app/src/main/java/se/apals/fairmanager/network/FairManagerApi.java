@@ -10,6 +10,7 @@ import se.apals.fairmanager.models.EventDetail;
 import se.apals.fairmanager.models.Exhibitor;
 import se.apals.fairmanager.models.ExhibitorDetail;
 import se.apals.fairmanager.models.Partner;
+import se.apals.fairmanager.models.Person;
 import se.apals.fairmanager.models.Settings;
 
 /**
@@ -35,4 +36,6 @@ public interface FairManagerApi {
     @GET("partners")
     Call<List<Partner>> getPartners();
 
+    @GET("personnel")
+    Call<List<Person>> getPersonnel();
 }

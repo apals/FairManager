@@ -21,6 +21,7 @@ import se.apals.fairmanager.R;
 import se.apals.fairmanager.fragments.chat.ChatMessageFragment;
 import se.apals.fairmanager.fragments.exhibitors.ExhibitorRecyclerViewAdapter;
 import se.apals.fairmanager.models.BusProvider;
+import se.apals.fairmanager.models.Settings;
 import se.apals.fairmanager.models.SettingsUtils;
 import se.apals.fairmanager.models.events.ExhibitorLoadedEvent;
 import se.apals.fairmanager.models.events.ExhibitorsLoadedEvent;
@@ -63,10 +64,19 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
 
     private void setUpColors() {
         SettingsUtils.setActivityColors(this);
-        ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar))
-            .setContentScrimColor(
-                Color.parseColor(SettingsUtils.getSettings(this).getPrimaryColor())
-            );
+        final Settings settings = SettingsUtils.getSettings(this);
+
+        //Sets the color of the title background when collapsed
+        final CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        if (collapsingToolbar != null) {
+            collapsingToolbar.setContentScrimColor(Color.parseColor(settings.getPrimaryColor()));
+        }
+
+        //Sets the background color of the backgrop
+        final View appBarLayout = findViewById(R.id.app_bar);
+        if (appBarLayout != null) {
+            appBarLayout.setBackgroundColor(Color.parseColor(settings.getPrimaryColor()));
+        }
     }
 
     private void loadExhibitor(String id) {

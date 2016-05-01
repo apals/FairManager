@@ -14,6 +14,7 @@ import se.apals.fairmanager.models.EventDetail;
 import se.apals.fairmanager.models.Exhibitor;
 import se.apals.fairmanager.models.ExhibitorDetail;
 import se.apals.fairmanager.models.Partner;
+import se.apals.fairmanager.models.Person;
 import se.apals.fairmanager.models.Settings;
 import se.apals.fairmanager.models.events.EventLoadedEvent;
 import se.apals.fairmanager.models.events.EventsLoadedEvent;
@@ -24,11 +25,14 @@ import se.apals.fairmanager.models.events.LoadEventsEvent;
 import se.apals.fairmanager.models.events.LoadExhibitorEvent;
 import se.apals.fairmanager.models.events.LoadExhibitorsEvent;
 import se.apals.fairmanager.models.events.LoadPartnersEvent;
+import se.apals.fairmanager.models.events.LoadPersonnelEvent;
 import se.apals.fairmanager.models.events.LoadSettingsEvent;
 import se.apals.fairmanager.models.events.LoadingEventsFailedEvent;
 import se.apals.fairmanager.models.events.LoadingExhibitorsFailedEvent;
 import se.apals.fairmanager.models.events.LoadingPartnersFailedEvent;
+import se.apals.fairmanager.models.events.LoadingPersonnelFailedEvent;
 import se.apals.fairmanager.models.events.PartnersLoadedEvent;
+import se.apals.fairmanager.models.events.PersonnelLoadedEvent;
 import se.apals.fairmanager.models.events.SettingsLoadedEvent;
 
 /**
@@ -75,7 +79,6 @@ public class FairManagerService {
             }
         });
     }
-
 
 
     @Subscribe
@@ -138,6 +141,22 @@ public class FairManagerService {
             @Override
             public void onFailure(Call<List<Partner>> call, Throwable t) {
                 mBus.post(new LoadingPartnersFailedEvent());
+            }
+        });
+    }
+
+    @Subscribe
+    public void onLoadPersonnel(LoadPersonnelEvent event) {
+        Call<List<Person>> call = mApi.getPersonnel();
+        call.enqueue(new Callback<List<Person>>() {
+            @Override
+            public void onResponse(Call<List<Person>> call, Response<List<Person>> response) {
+                mBus.post(new PersonnelLoadedEvent(response.body()));
+            }
+
+            @Override
+            public void onFailure(Call<List<Person>> call, Throwable t) {
+                mBus.post(new LoadingPersonnelFailedEvent());
             }
         });
     }

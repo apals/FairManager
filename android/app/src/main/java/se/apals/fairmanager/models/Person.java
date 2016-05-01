@@ -1,23 +1,26 @@
 package se.apals.fairmanager.models;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Person {
 
-    private String Id;
+    @SerializedName("_id")
+    private String id;
     private String name;
     private String title;
 
     /**
-     * @return The Id
+     * @return The id
      */
     public String getId() {
-        return Id;
+        return id;
     }
 
     /**
      * @param Id The _id
      */
     public void setId(String Id) {
-        this.Id = Id;
+        this.id = Id;
     }
 
     /**
