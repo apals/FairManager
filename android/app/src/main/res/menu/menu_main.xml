@@ -4,14 +4,14 @@
     tools:context="se.apals.fairmanager.MainActivity">
 
     <item android:id="@+id/action_search"
-        android:title="Search"
+        android:title="@string/search"
         android:icon="@drawable/ic_search_black_24dp"
         app:showAsAction="ifRoom|collapseActionView"
         app:actionViewClass="android.support.v7.widget.SearchView" />
 
 
     <item android:id="@+id/action_chat"
-        android:title="Chat"
+        android:title="@string/chat"
         android:icon="@drawable/ic_chat_black_24dp"
         app:showAsAction="ifRoom|collapseActionView" />
 

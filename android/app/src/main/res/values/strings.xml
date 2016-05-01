@@ -100,4 +100,7 @@
     <string name="exhibitors">exhibitors</string>
     <string name="events">events</string>
     <string name="partners">partners</string>
+    <string name="partner_backdrop">Partner Backdrop</string>
+    <string name="search">Search</string>
+    <string name="chat">Chat</string>
 </resources>

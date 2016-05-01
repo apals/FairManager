@@ -51,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     private Menu menu;
     private SearchView mSearchView;
+    private MenuItem item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,8 +84,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onPageSelected(int position) {
             Fragment fragment = (Fragment) mSectionsPagerAdapter.instantiateItem(mViewPager, position);
+            menu.findItem(R.id.action_search).collapseActionView();
             if (fragment instanceof SearchView.OnQueryTextListener) {
                 mSearchView.setOnQueryTextListener((SearchView.OnQueryTextListener) fragment);
+                menu.findItem(R.id.action_search).setVisible(true);
+            } else {
+                menu.findItem(R.id.action_search).setVisible(false);
             }
         }
 
@@ -105,12 +110,12 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        if (this.menu != null) return true;
         this.menu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
 
-
-        final MenuItem item = menu.findItem(R.id.action_search);
+        item = menu.findItem(R.id.action_search);
         mSearchView = (SearchView) MenuItemCompat.getActionView(item);
         onPageChangeListener.onPageSelected(0);
         return true;
