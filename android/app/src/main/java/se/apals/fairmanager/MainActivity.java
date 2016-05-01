@@ -26,6 +26,7 @@ import java.util.List;
 import se.apals.fairmanager.activities.ChatActivity;
 import se.apals.fairmanager.fragments.events.EventFragment;
 import se.apals.fairmanager.fragments.exhibitors.ExhibitorFragment;
+import se.apals.fairmanager.fragments.partners.PartnerFragment;
 import se.apals.fairmanager.models.Settings;
 import se.apals.fairmanager.models.SettingsUtils;
 import se.apals.fairmanager.models.Tab;
@@ -207,6 +208,8 @@ public class MainActivity extends AppCompatActivity {
                 f = ExhibitorFragment.newInstance();
             } else if (name.equalsIgnoreCase(getString(R.string.events))) {
                 f = EventFragment.newInstance();
+            } else if (name.equalsIgnoreCase(getString(R.string.partners))) {
+                f = PartnerFragment.newInstance();
             } else {
                 f = PlaceholderFragment.newInstance(position + 1);
             }

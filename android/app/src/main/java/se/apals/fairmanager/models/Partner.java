@@ -1,14 +1,22 @@
 package se.apals.fairmanager.models;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
  * Created by apals on 29/04/16.
  */
 public class Partner {
 
+    @SerializedName("_id")
     private String id;
     private String name;
     private String websiteUrl;
     private String logoUrl;
+
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Partner && ((Partner) o).getId().equals(getId());
+    }
 
     /**
      * @return The id

@@ -99,4 +99,5 @@
     <string name="loading_text">Welcome to this fair! Please hold while we gather the latest information for you</string>
     <string name="exhibitors">exhibitors</string>
     <string name="events">events</string>
+    <string name="partners">partners</string>
 </resources>
