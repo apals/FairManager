@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import se.apals.fairmanager.MainActivity;
 import se.apals.fairmanager.R;
 import se.apals.fairmanager.models.BusProvider;
 import se.apals.fairmanager.models.Exhibitor;
@@ -111,6 +112,7 @@ public class ExhibitorFragment extends Fragment implements SearchView.OnQueryTex
             new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
+                    ((MainActivity) getActivity()).loadSettings();
                     //Log.i(LOG_TAG, "onRefresh called from SwipeRefreshLayout");
 
                     // This method performs the actual data-refresh operation.

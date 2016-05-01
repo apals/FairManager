@@ -19,6 +19,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.squareup.otto.Subscribe;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,9 +29,12 @@ import se.apals.fairmanager.fragments.events.EventFragment;
 import se.apals.fairmanager.fragments.exhibitors.ExhibitorFragment;
 import se.apals.fairmanager.fragments.partners.PartnerFragment;
 import se.apals.fairmanager.fragments.personnel.PersonFragment;
+import se.apals.fairmanager.models.BusProvider;
 import se.apals.fairmanager.models.Settings;
 import se.apals.fairmanager.models.SettingsUtils;
 import se.apals.fairmanager.models.Tab;
+import se.apals.fairmanager.models.events.LoadSettingsEvent;
+import se.apals.fairmanager.models.events.SettingsLoadedEvent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -167,6 +172,30 @@ public class MainActivity extends AppCompatActivity {
         if (!withAnimation) {
             context.overridePendingTransition(0, 0);
         }
+    }
+
+    public void loadSettings() {
+        BusProvider.getInstance().post(new LoadSettingsEvent());
+    }
+
+    @Subscribe
+    public void onSettingsLoaded(SettingsLoadedEvent event) {
+        //Save the settings
+        SettingsUtils.setSettings(this, event.settings);
+        setUpColors();
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        BusProvider.getInstance().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        BusProvider.getInstance().unregister(this);
     }
 
 
