@@ -2,6 +2,7 @@ package se.apals.fairmanager.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -76,6 +77,11 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
         final View appBarLayout = findViewById(R.id.app_bar);
         if (appBarLayout != null) {
             appBarLayout.setBackgroundColor(Color.parseColor(settings.getPrimaryColor()));
+        }
+
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        if (fab != null) {
+            fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(settings.getAccentColor())));
         }
     }
 
