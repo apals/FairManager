@@ -21,6 +21,7 @@ import java.util.List;
 
 import se.apals.fairmanager.MainActivity;
 import se.apals.fairmanager.R;
+import se.apals.fairmanager.UpdateSettingsInteractor;
 import se.apals.fairmanager.models.BusProvider;
 import se.apals.fairmanager.models.Exhibitor;
 import se.apals.fairmanager.models.events.ExhibitorsLoadedEvent;
@@ -36,6 +37,7 @@ public class ExhibitorFragment extends Fragment implements SearchView.OnQueryTex
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private ExhibitorRecyclerViewAdapter mAdapter;
     private List<Exhibitor> mExhibitors;
+    private UpdateSettingsInteractor mSettingsUpdater;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -55,6 +57,16 @@ public class ExhibitorFragment extends Fragment implements SearchView.OnQueryTex
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadExhibitors();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof UpdateSettingsInteractor) {
+            this.mSettingsUpdater = (UpdateSettingsInteractor) context;
+        } else {
+            throw new ClassCastException("Every activity using this fragment must implements UpdateSettingsInteractor");
+        }
     }
 
     public void loadExhibitors() {
@@ -112,7 +124,7 @@ public class ExhibitorFragment extends Fragment implements SearchView.OnQueryTex
             new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
-                    ((MainActivity) getActivity()).loadSettings();
+                    mSettingsUpdater.refreshSettings();
                     //Log.i(LOG_TAG, "onRefresh called from SwipeRefreshLayout");
 
                     // This method performs the actual data-refresh operation.

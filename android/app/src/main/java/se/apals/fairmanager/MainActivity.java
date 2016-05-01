@@ -36,7 +36,7 @@ import se.apals.fairmanager.models.Tab;
 import se.apals.fairmanager.models.events.LoadSettingsEvent;
 import se.apals.fairmanager.models.events.SettingsLoadedEvent;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements UpdateSettingsInteractor {
 
     private Settings mSettings;
 
@@ -174,10 +174,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void loadSettings() {
-        BusProvider.getInstance().post(new LoadSettingsEvent());
-    }
-
     @Subscribe
     public void onSettingsLoaded(SettingsLoadedEvent event) {
         //Save the settings
@@ -196,6 +192,11 @@ public class MainActivity extends AppCompatActivity {
     public void onStop() {
         super.onStop();
         BusProvider.getInstance().unregister(this);
+    }
+
+    @Override
+    public void refreshSettings() {
+        BusProvider.getInstance().post(new LoadSettingsEvent());
     }
 
 
