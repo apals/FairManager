@@ -97,4 +97,6 @@
     <string name="event_banner">Event Banner</string>
     <string name="title_activity_chat">ChatActivity</string>
     <string name="loading_text">Welcome to this fair! Please hold while we gather the latest information for you</string>
+    <string name="exhibitors">exhibitors</string>
+    <string name="events">events</string>
 </resources>

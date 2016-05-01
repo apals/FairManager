@@ -2,7 +2,6 @@ package se.apals.fairmanager;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -19,17 +18,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import se.apals.fairmanager.activities.ChatActivity;
 import se.apals.fairmanager.fragments.events.EventFragment;
 import se.apals.fairmanager.fragments.exhibitors.ExhibitorFragment;
 import se.apals.fairmanager.models.Settings;
 import se.apals.fairmanager.models.SettingsUtils;
+import se.apals.fairmanager.models.Tab;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Settings mSettings;
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -52,12 +55,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mSettings = SettingsUtils.getSettings(this);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), mSettings.getTabs());
 
         // Set up the ViewPager with the sections adapter.
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -177,11 +181,17 @@ public class MainActivity extends AppCompatActivity {
      */
     public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
-        private FragmentManager mFragmentManager;
 
-        public SectionsPagerAdapter(FragmentManager fm) {
+        private final List<Tab> tabs = new ArrayList<>();
+
+        public SectionsPagerAdapter(FragmentManager fm, List<Tab> tabs) {
             super(fm);
-            mFragmentManager = fm;
+
+            for (Tab t : tabs) {
+                if (t.isActive()) {
+                    this.tabs.add(t);
+                }
+            }
         }
 
 
@@ -191,36 +201,29 @@ public class MainActivity extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
 
             Fragment f;
-            if (position == 0) {
+            String name = tabs.get(position).getName();
+
+            if (name.equalsIgnoreCase(getString(R.string.exhibitors))) {
                 f = ExhibitorFragment.newInstance();
-            } else if (position == 1) {
+            } else if (name.equalsIgnoreCase(getString(R.string.events))) {
                 f = EventFragment.newInstance();
             } else {
                 f = PlaceholderFragment.newInstance(position + 1);
             }
+
+
             return f;
         }
 
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
-            return 4;
+            return tabs.size();
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            switch (position) {
-                case 0:
-                    return "Exhibitors";
-                case 1:
-                    return "Events";
-                case 2:
-                    return "Partners";
-                case 3:
-                    return "Personnel";
-            }
-            return null;
+            return tabs.get(position).getName();
         }
     }
 }
