@@ -2,10 +2,12 @@ package se.apals.fairmanager;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -38,8 +40,6 @@ import se.apals.fairmanager.models.events.SettingsLoadedEvent;
 
 public class MainActivity extends AppCompatActivity implements UpdateSettingsInteractor {
 
-    private Settings mSettings;
-
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -62,8 +62,8 @@ public class MainActivity extends AppCompatActivity implements UpdateSettingsInt
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mSettings = SettingsUtils.getSettings(this);
 
+        Settings mSettings = SettingsUtils.getSettings(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity implements UpdateSettingsInt
         mTabLayout.setTabTextColors(
             Color.parseColor(s.getAccentColor()),
             Color.parseColor(s.getAccentColor()));
+
+        setUpMenuItemsColor();
     }
 
 
@@ -132,6 +134,19 @@ public class MainActivity extends AppCompatActivity implements UpdateSettingsInt
         this.menu = menu;
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        setUpMenuItemsColor();
+
+        //Set up search view
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+        onPageChangeListener.onPageSelected(0);
+        return true;
+    }
+
+    private void setUpMenuItemsColor() {
+        Menu menu = this.menu;
+        if (menu == null) return;
+
         MenuItem searchItem = menu.findItem(R.id.action_search);
         MenuItem chatItem = menu.findItem(R.id.action_chat);
         Drawable[] icons = new Drawable[]{searchItem.getIcon(), chatItem.getIcon()};
@@ -143,10 +158,6 @@ public class MainActivity extends AppCompatActivity implements UpdateSettingsInt
             drawable.setColorFilter(Color.parseColor(SettingsUtils.getSettings(this).getAccentColor()), PorterDuff.Mode.SRC_ATOP);
             //drawable.setAlpha(alpha);
         }
-
-        mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        onPageChangeListener.onPageSelected(0);
-        return true;
     }
 
     @Override
