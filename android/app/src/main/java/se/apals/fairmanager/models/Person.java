@@ -9,6 +9,11 @@ public class Person {
     private String name;
     private String title;
 
+    @Override
+    public boolean equals(Object o) {
+        return o instanceof Person && ((Person) o).getId().equals(getId());
+    }
+
     /**
      * @return The id
      */
