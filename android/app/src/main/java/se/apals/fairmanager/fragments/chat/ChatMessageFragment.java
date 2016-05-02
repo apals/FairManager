@@ -3,10 +3,13 @@ package se.apals.fairmanager.fragments.chat;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -105,7 +108,10 @@ public class ChatMessageFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         chatEditText = (EditText) view.findViewById(R.id.chat_edittext);
-        chatEditText.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(SettingsUtils.getSettings(getActivity()).getAccentColor())));
+        Drawable wrappedDrawable = DrawableCompat.wrap(chatEditText.getBackground());
+        DrawableCompat.setTint(wrappedDrawable.mutate(), Color.parseColor(SettingsUtils.getSettings(getActivity()).getAccentColor()));
+        chatEditText.setBackground(wrappedDrawable);
+
         ((ImageButton) view.findViewById(R.id.send_button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
