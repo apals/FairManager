@@ -103,4 +103,6 @@
     <string name="search">Search</string>
     <string name="chat">Chat</string>
     <string name="personnel">personnel</string>
+    <string name="chat_about_this_exhibitor">Chat about this exhibitor</string>
+    <string name="chat_about_this_event">Chat about this event</string>
 </resources>

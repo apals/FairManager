@@ -1,6 +1,8 @@
 package se.apals.fairmanager.fragments.chat;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
@@ -13,11 +15,15 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 import com.firebase.ui.FirebaseRecyclerAdapter;
 
 import se.apals.fairmanager.R;
 import se.apals.fairmanager.models.ChatMessage;
+import se.apals.fairmanager.models.SettingsUtils;
 import se.apals.fairmanager.network.ApiConstants;
 
 
@@ -37,7 +43,6 @@ public class ChatMessageFragment extends Fragment {
     public ChatMessageFragment() {
     }
 
-    @SuppressWarnings("unused")
     public static ChatMessageFragment newInstance(String type) {
         ChatMessageFragment fragment = new ChatMessageFragment();
         Bundle args = new Bundle();
@@ -60,12 +65,39 @@ public class ChatMessageFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_chatmessage_list, container, false);
 
         Context context = view.getContext();
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.list);
+        final LinearLayoutManager layout = new LinearLayoutManager(context);
+        recyclerView.setLayoutManager(layout);
 
         mAdapter = new ChatMessageRecyclerViewAdapter(ChatMessage.class, R.layout.fragment_chatmessage_list_item, ChatMessageRecyclerViewAdapter.ChatMessageViewHolder.class, mFirebase);
         recyclerView.setAdapter(mAdapter);
 
+        mFirebase.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                recyclerView.scrollToPosition(mAdapter.getItemCount() - 1);
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
         return view;
     }
 
@@ -73,6 +105,7 @@ public class ChatMessageFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         chatEditText = (EditText) view.findViewById(R.id.chat_edittext);
+        chatEditText.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(SettingsUtils.getSettings(getActivity()).getAccentColor())));
         ((ImageButton) view.findViewById(R.id.send_button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

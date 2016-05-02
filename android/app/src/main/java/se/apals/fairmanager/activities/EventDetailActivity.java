@@ -2,6 +2,7 @@ package se.apals.fairmanager.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -20,6 +21,7 @@ import com.squareup.otto.Subscribe;
 import se.apals.fairmanager.R;
 import se.apals.fairmanager.fragments.chat.ChatMessageFragment;
 import se.apals.fairmanager.models.BusProvider;
+import se.apals.fairmanager.models.Settings;
 import se.apals.fairmanager.models.SettingsUtils;
 import se.apals.fairmanager.models.events.EventLoadedEvent;
 import se.apals.fairmanager.models.events.LoadEventEvent;
@@ -76,10 +78,24 @@ public class EventDetailActivity extends AppCompatActivity {
 
     private void setUpColors() {
         SettingsUtils.setActivityColors(this);
-        ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar))
-            .setContentScrimColor(
-                Color.parseColor(SettingsUtils.getSettings(this).getPrimaryColor())
-            );
+        final Settings settings = SettingsUtils.getSettings(this);
+
+        //Sets the color of the title background when collapsed
+        final CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        if (collapsingToolbar != null) {
+            collapsingToolbar.setContentScrimColor(Color.parseColor(settings.getPrimaryColor()));
+        }
+
+        //Sets the background color of the backgrop
+        final View appBarLayout = findViewById(R.id.app_bar);
+        if (appBarLayout != null) {
+            appBarLayout.setBackgroundColor(Color.parseColor(settings.getPrimaryColor()));
+        }
+
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        if (fab != null) {
+            fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(settings.getAccentColor())));
+        }
     }
 
     private void showLoader(boolean b) {

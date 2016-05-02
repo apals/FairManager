@@ -34,7 +34,7 @@ public class ChatActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        if (savedInstanceState == null) {
+        if (getSupportFragmentManager().findFragmentById(R.id.chat_fragment_container) == null) {
             Fragment newFragment = ChatMessageFragment.newInstance("general");
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.chat_fragment_container, newFragment).commit();

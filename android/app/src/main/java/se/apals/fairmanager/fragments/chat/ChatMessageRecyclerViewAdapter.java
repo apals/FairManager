@@ -8,7 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.firebase.client.ChildEventListener;
+import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
 import com.firebase.ui.FirebaseRecyclerAdapter;
 
 import se.apals.fairmanager.R;
@@ -30,7 +33,7 @@ public class ChatMessageRecyclerViewAdapter extends FirebaseRecyclerAdapter<Chat
     public void populateViewHolder(ChatMessageViewHolder chatMessageViewHolder, ChatMessage chatMessage, int position) {
         mUsername = PreferenceManager.getDefaultSharedPreferences(chatMessageViewHolder.messageText.getContext()).getString("KEY_USERNAME", "Anonymous");
         if(chatMessage.getAuthor().equals(mUsername)) {
-            chatMessageViewHolder.nameText.setTextColor(Color.BLUE);//chatMessage.getAuthor() + ":");
+            chatMessageViewHolder.nameText.setTextColor(Color.BLUE);
         }
         chatMessageViewHolder.nameText.setText(chatMessage.getAuthor() + ":");
         chatMessageViewHolder.messageText.setText(chatMessage.getMessage());
