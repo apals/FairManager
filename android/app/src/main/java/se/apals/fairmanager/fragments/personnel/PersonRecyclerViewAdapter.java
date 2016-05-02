@@ -36,6 +36,7 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mContentView.setText(mValues.get(position).getName());
+        holder.mTitleView.setText(mValues.get(position).getTitle());
 
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +105,7 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
 
     public void addAll(List<Person> events) {
         for (Person e : events) {
-            if(!mValues.contains(e)) {
+            if (!mValues.contains(e)) {
                 mValues.add(e);
             }
         }
@@ -114,12 +115,14 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
+        public final TextView mTitleView;
         public Person mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.content);
+            mTitleView = (TextView) view.findViewById(R.id.person_title_textview);
         }
 
         @Override

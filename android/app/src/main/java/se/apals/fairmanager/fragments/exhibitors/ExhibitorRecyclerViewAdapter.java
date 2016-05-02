@@ -127,7 +127,7 @@ public class ExhibitorRecyclerViewAdapter extends RecyclerView.Adapter<Exhibitor
             super(view);
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.content);
-            mLogoView = (ImageView) view.findViewById(R.id.startdate);
+            mLogoView = (ImageView) view.findViewById(R.id.exhibitor_logo);
         }
 
         @Override
