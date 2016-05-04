@@ -12,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -21,6 +20,7 @@ import com.squareup.otto.Subscribe;
 import se.apals.fairmanager.R;
 import se.apals.fairmanager.fragments.chat.ChatMessageFragment;
 import se.apals.fairmanager.models.BusProvider;
+import se.apals.fairmanager.models.EventDetail;
 import se.apals.fairmanager.models.Settings;
 import se.apals.fairmanager.models.SettingsUtils;
 import se.apals.fairmanager.models.events.EventLoadedEvent;
@@ -29,6 +29,7 @@ import se.apals.fairmanager.models.events.LoadEventEvent;
 public class EventDetailActivity extends AppCompatActivity {
 
     private static final String KEY_EXHIBITOR_ID = "KEY_EXHIBITOR_ID";
+    private EventDetail mEvent;
 
     public static void start(Context c, String eventId) {
         Intent i = new Intent(c, EventDetailActivity.class);
@@ -63,18 +64,41 @@ public class EventDetailActivity extends AppCompatActivity {
 
     @Subscribe
     public void onEventLoaded(EventLoadedEvent event) {
-        ((TextView) findViewById(R.id.activity_event_detail_textview_info)).setText(event.event.getInfo());
-        ((TextView) findViewById(R.id.event_date)).setText(event.event.getFormattedStartDateAndTime());
-        ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar)).setTitle(event.event.getName());
+        mEvent = event.event;
+        setUpTitle();
+        setUpLocation();
+        setUpAbout();
+        setUpDateAndTime();
         showLoader(false);
+        addChatFragmentForEvent();
+    }
 
+    private void setUpLocation() {
+        ((TextView) findViewById(R.id.event_location)).setText(mEvent.getLocation());
+    }
+
+    private void addChatFragmentForEvent() {
         if (getSupportFragmentManager().findFragmentById(R.id.chat_fragment_container) == null) {
-            Fragment newFragment = ChatMessageFragment.newInstance("event/" + event.event.getName());
+            Fragment newFragment = ChatMessageFragment.newInstance("event/" + mEvent.getName());
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.chat_fragment_container, newFragment).commit();
         }
     }
 
+    private void setUpTitle() {
+        ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar)).setTitle(mEvent.getName());
+    }
+
+    private void setUpDateAndTime() {
+        String time = mEvent.getFormattedStartDate();
+        time += "\n";
+        time += mEvent.getFormattedStartTime() + " - " + mEvent.getFormattedEndTime();
+        ((TextView) findViewById(R.id.event_date)).setText(time);
+    }
+
+    private void setUpAbout() {
+        ((TextView) findViewById(R.id.activity_event_detail_textview_info)).setText(mEvent.getInfo());
+    }
 
 
     private void setUpColors() {

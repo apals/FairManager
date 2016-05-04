@@ -1,15 +1,10 @@
 package se.apals.fairmanager.fragments.events;
 
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import se.apals.fairmanager.R;
 import se.apals.fairmanager.activities.EventDetailActivity;
@@ -37,7 +32,7 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mContentView.setText(mValues.get(position).getName());
-        holder.mStartDateView.setText(mValues.get(position).getFormattedStartDate());
+        holder.mStartDateView.setText(mValues.get(position).getFormattedStartDateAndYear());
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override

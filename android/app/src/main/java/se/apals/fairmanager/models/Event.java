@@ -97,11 +97,18 @@ public class Event implements Comparable<Event> {
         return getStartDate().compareTo(another.getStartDate());
     }
 
-    public String getFormattedStartDateAndTime() {
-        return new SimpleDateFormat("dd MMM\nhh:mm").format(startDate.getTime()).toString().toUpperCase();
+    public String getFormattedStartTime() {
+        return new SimpleDateFormat("HH:mm").format(startDate.getTime()).toUpperCase();
+    }
+    public String getFormattedEndTime() {
+        return new SimpleDateFormat("HH:mm").format(endDate.getTime()).toUpperCase();
     }
 
     public String getFormattedStartDate() {
-        return new SimpleDateFormat("dd MMM\nyyyy").format(startDate.getTime()).toString().toUpperCase();
+        return new SimpleDateFormat("dd MMM").format(startDate.getTime()).toUpperCase();
+    }
+
+    public String getFormattedStartDateAndYear() {
+        return new SimpleDateFormat("dd MMM\nyyyy").format(startDate.getTime()).toUpperCase();
     }
 }
