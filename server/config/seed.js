@@ -31,6 +31,7 @@ Settings.find({}).removeAsync()
   .then(() => {
     Settings.createAsync({
       primaryColor: '#51039a',
+      primaryColorDark: '#51039a',
       primaryTextColor: '#404040',
       titleTextColor: '#ffffff',
       tintColor: '#ffffff',
