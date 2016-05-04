@@ -64,6 +64,7 @@ public class EventDetailActivity extends AppCompatActivity {
     @Subscribe
     public void onEventLoaded(EventLoadedEvent event) {
         ((TextView) findViewById(R.id.activity_event_detail_textview_info)).setText(event.event.getInfo());
+        ((TextView) findViewById(R.id.event_date)).setText(event.event.getFormattedStartDateAndTime());
         ((CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar)).setTitle(event.event.getName());
         showLoader(false);
 

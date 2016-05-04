@@ -42,7 +42,7 @@ public class SettingsUtils {
 
         if (toolbar != null) {
             toolbar.setBackgroundColor(Color.parseColor(s.getPrimaryColor()));
-            toolbar.setTitleTextColor(Color.parseColor(s.getAccentColor()));
+            toolbar.setTitleTextColor(Color.parseColor(s.getTitleTextColor()));
         }
         if (tabs != null) tabs.setBackgroundColor(Color.parseColor(s.getPrimaryColor()));
 
@@ -55,7 +55,7 @@ public class SettingsUtils {
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         // finally change the color
-        window.setStatusBarColor(Color.parseColor(s.getBackgroundColor()));
+        window.setStatusBarColor(Color.parseColor(s.getPrimaryColorDark()));
 
     }
 

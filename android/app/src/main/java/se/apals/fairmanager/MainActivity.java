@@ -90,8 +90,8 @@ public class MainActivity extends AppCompatActivity implements UpdateSettingsInt
         mTabLayout.setSelectedTabIndicatorColor(Color.parseColor(s.getAccentColor()));
 
         mTabLayout.setTabTextColors(
-            Color.parseColor(s.getAccentColor()),
-            Color.parseColor(s.getAccentColor()));
+            Color.parseColor(s.getTitleTextColor()),
+            Color.parseColor(s.getTitleTextColor()));
 
         setUpMenuItemsColor();
     }
@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements UpdateSettingsInt
             // If we don't mutate the drawable, then all drawable's with this id will have a color
             // filter applied to it.
             drawable.mutate();
-            drawable.setColorFilter(Color.parseColor(SettingsUtils.getSettings(this).getAccentColor()), PorterDuff.Mode.SRC_ATOP);
+            drawable.setColorFilter(Color.parseColor(SettingsUtils.getSettings(this).getTitleTextColor()), PorterDuff.Mode.SRC_ATOP);
             //drawable.setAlpha(alpha);
         }
     }

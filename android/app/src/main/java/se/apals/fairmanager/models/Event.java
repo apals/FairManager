@@ -1,5 +1,7 @@
 package se.apals.fairmanager.models;
 
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.SerializedName;
 
 import java.text.SimpleDateFormat;
@@ -91,11 +93,15 @@ public class Event implements Comparable<Event> {
     }
 
     @Override
-    public int compareTo(Event another) {
+    public int compareTo(@NonNull Event another) {
         return getStartDate().compareTo(another.getStartDate());
     }
 
+    public String getFormattedStartDateAndTime() {
+        return new SimpleDateFormat("dd MMM\nhh:mm").format(startDate.getTime()).toString().toUpperCase();
+    }
+
     public String getFormattedStartDate() {
-        return new SimpleDateFormat("dd MMM\n yyyy").format(startDate.getTime()).toString().toUpperCase();
+        return new SimpleDateFormat("dd MMM\nyyyy").format(startDate.getTime()).toString().toUpperCase();
     }
 }

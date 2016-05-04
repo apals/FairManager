@@ -17,6 +17,7 @@ public class Settings {
     @SerializedName("_id")
     private String id;
     private String primaryColor;
+    private String primaryColorDark;
     private String primaryTextColor;
     private String titleTextColor;
     private String tintColor;
@@ -44,6 +45,11 @@ public class Settings {
      */
     public void setId(String Id) {
         this.id = Id;
+    }
+
+
+    public String getPrimaryColorDark() {
+        return primaryColorDark;
     }
 
     /**
