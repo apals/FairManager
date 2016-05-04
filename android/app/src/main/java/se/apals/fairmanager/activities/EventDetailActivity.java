@@ -6,6 +6,8 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -20,9 +22,18 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.otto.Subscribe;
 
+import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 
 import se.apals.fairmanager.R;
 import se.apals.fairmanager.fragments.chat.ChatMessageFragment;
@@ -72,6 +83,11 @@ public class EventDetailActivity extends AppCompatActivity {
             });
         }
 
+        if (getSupportFragmentManager().findFragmentById(R.id.map_fragment_container) == null) {
+            SupportMapFragment mapFragment = SupportMapFragment.newInstance();
+            getSupportFragmentManager().beginTransaction().add(R.id.map_fragment_container, mapFragment).commit();
+        }
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setUpColors();
     }
@@ -89,6 +105,33 @@ public class EventDetailActivity extends AppCompatActivity {
         setUpDateAndTime();
         showLoader(false);
         addChatFragmentForEvent();
+        setUpMapFragment();
+    }
+
+    private void setUpMapFragment() {
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment_container);
+        OnMapReadyCallback mapReadyCallback = new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                Geocoder coder = new Geocoder(EventDetailActivity.this);
+                List<Address> addresses;
+                try {
+                    addresses = coder.getFromLocationName(mEvent.getLocation(), 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    return;
+                }
+
+                for (Address a : addresses) {
+                    LatLng place = new LatLng(a.getLatitude(), a.getLongitude());
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place, 14.0f));
+                    googleMap.addMarker(new MarkerOptions().position(place));
+                }
+            }
+        };
+        mapFragment.getMapAsync(mapReadyCallback);
+
     }
 
     private void setUpLocation() {

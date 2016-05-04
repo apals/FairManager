@@ -40,7 +40,15 @@ public class LauncherActivity extends AppCompatActivity {
             findViewById(R.id.login_edittext).setVisibility(View.GONE);
             findViewById(R.id.button_send).setVisibility(View.GONE);
         }
+        if(hasSettings()) {
+            MainActivity.start(this, true);
+            return;
+        }
         loadSettings();
+    }
+
+    private boolean hasSettings() {
+        return PreferenceManager.getDefaultSharedPreferences(this).contains("KEY_SETTINGS");
     }
 
     @Override

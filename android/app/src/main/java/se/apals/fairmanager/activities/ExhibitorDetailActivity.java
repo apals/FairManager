@@ -1,5 +1,6 @@
 package se.apals.fairmanager.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -8,12 +9,17 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
+import android.transition.TransitionInflater;
+import android.transition.TransitionSet;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.squareup.otto.Subscribe;
@@ -32,16 +38,24 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
 
     private static final String KEY_EXHIBITOR_ID = "KEY_EXHIBITOR_ID";
 
-    public static void start(Context c, String exhibitorId) {
-        Intent i = new Intent(c, ExhibitorDetailActivity.class);
+    public static void start(Context context, String exhibitorId, View transitionView) {
+        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, transitionView.findViewById(R.id.content), "transition_view");
+        Intent i = new Intent(context, ExhibitorDetailActivity.class);
         i.putExtra(KEY_EXHIBITOR_ID, exhibitorId);
-        c.startActivity(i);
+        context.startActivity(i, compat.toBundle());
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().requestFeature(Window.FEATURE_ACTIVITY_TRANSITIONS);
+
         setContentView(R.layout.activity_exhibitor_detail);
+
+        getWindow().setSharedElementReturnTransition(null);
+        getWindow().setReturnTransition(new Explode());
+
+
         loadExhibitor(getIntent().getStringExtra(KEY_EXHIBITOR_ID));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
