@@ -72,6 +72,7 @@ public class LauncherActivity extends AppCompatActivity {
             MainActivity.start(this, true);
         } else {
             showLoader(false);
+            findViewById(R.id.button_send).setEnabled(true);
         }
     }
 

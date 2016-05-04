@@ -105,4 +105,7 @@
     <string name="personnel">personnel</string>
     <string name="chat_about_this_exhibitor">Chat about this exhibitor</string>
     <string name="chat_about_this_event">Chat about this event</string>
+    <string name="about">About</string>
+    <string name="location">Location</string>
+    <string name="date">Date</string>
 </resources>
