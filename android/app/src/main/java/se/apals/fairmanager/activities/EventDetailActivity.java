@@ -4,18 +4,25 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
 import com.squareup.otto.Subscribe;
+
+import java.util.Calendar;
 
 import se.apals.fairmanager.R;
 import se.apals.fairmanager.fragments.chat.ChatMessageFragment;
@@ -30,6 +37,7 @@ public class EventDetailActivity extends AppCompatActivity {
 
     private static final String KEY_EXHIBITOR_ID = "KEY_EXHIBITOR_ID";
     private EventDetail mEvent;
+    private FloatingActionButton mFab;
 
     public static void start(Context c, String eventId) {
         Intent i = new Intent(c, EventDetailActivity.class);
@@ -45,16 +53,26 @@ public class EventDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show();
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        if (mFab != null) {
+            mFab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
 
+                    Intent intent = new Intent(Intent.ACTION_INSERT)
+                        .setData(CalendarContract.Events.CONTENT_URI)
+                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, mEvent.getStartDate().getTime())
+                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, mEvent.getEndDate().getTime())
+                        .putExtra(CalendarContract.Events.TITLE, mEvent.getName())
+                        .putExtra(CalendarContract.Events.DESCRIPTION, mEvent.getInfo())
+                        .putExtra(CalendarContract.Events.EVENT_LOCATION, mEvent.getLocation())
+                        .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+                    startActivity(intent);
+                }
+            });
+        }
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         setUpColors();
     }
 
@@ -102,8 +120,20 @@ public class EventDetailActivity extends AppCompatActivity {
 
 
     private void setUpColors() {
+
         SettingsUtils.setActivityColors(this);
         final Settings settings = SettingsUtils.getSettings(this);
+
+        Drawable drawable = mFab.getDrawable();
+        // Wrap the drawable so that future tinting calls work
+        // on pre-v21 devices. Always use the returned drawable.
+        drawable = DrawableCompat.wrap(drawable);
+
+        // We can now set a tint
+        DrawableCompat.setTint(drawable, ContextCompat.getColor(this, android.R.color.white));
+        // ...or a tint list
+        DrawableCompat.setTintList(drawable, ColorStateList.valueOf(ContextCompat.getColor(this, android.R.color.white)));
+
 
         //Sets the color of the title background when collapsed
         final CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);

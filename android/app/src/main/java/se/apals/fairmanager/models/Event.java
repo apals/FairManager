@@ -7,6 +7,7 @@ import com.google.gson.annotations.SerializedName;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Event implements Comparable<Event> {
 
@@ -98,17 +99,17 @@ public class Event implements Comparable<Event> {
     }
 
     public String getFormattedStartTime() {
-        return new SimpleDateFormat("HH:mm").format(startDate.getTime()).toUpperCase();
+        return new SimpleDateFormat("HH:mm", Locale.getDefault()).format(startDate.getTime()).toUpperCase();
     }
     public String getFormattedEndTime() {
-        return new SimpleDateFormat("HH:mm").format(endDate.getTime()).toUpperCase();
+        return new SimpleDateFormat("HH:mm", Locale.getDefault()).format(endDate.getTime()).toUpperCase();
     }
 
     public String getFormattedStartDate() {
-        return new SimpleDateFormat("dd MMM").format(startDate.getTime()).toUpperCase();
+        return new SimpleDateFormat("dd MMM", Locale.getDefault()).format(startDate.getTime()).toUpperCase();
     }
 
     public String getFormattedStartDateAndYear() {
-        return new SimpleDateFormat("dd MMM\nyyyy").format(startDate.getTime()).toUpperCase();
+        return new SimpleDateFormat("dd MMM\nyyyy", Locale.getDefault()).format(startDate.getTime()).toUpperCase();
     }
 }
