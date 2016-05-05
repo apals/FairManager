@@ -1,10 +1,10 @@
 package se.apals.fairmanager.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
@@ -12,7 +12,7 @@ import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
@@ -26,13 +26,11 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.otto.Subscribe;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.List;
 
 import se.apals.fairmanager.R;
@@ -50,11 +48,13 @@ public class EventDetailActivity extends AppCompatActivity {
     private EventDetail mEvent;
     private FloatingActionButton mFab;
 
-    public static void start(Context c, String eventId) {
-        Intent i = new Intent(c, EventDetailActivity.class);
+    public static void start(Context context, String eventId, View transitionView) {
+        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, transitionView.findViewById(R.id.content), "transition_view");
+        Intent i = new Intent(context, EventDetailActivity.class);
         i.putExtra(KEY_EXHIBITOR_ID, eventId);
-        c.startActivity(i);
+        context.startActivity(i, compat.toBundle());
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

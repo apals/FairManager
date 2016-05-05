@@ -30,7 +30,7 @@ public class SettingsUtils {
     public static void setSettings(Context c, Settings s) {
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(c).edit();
         String json = new Gson().toJson(s);
-        editor.putString(Settings.KEY_SETTINGS, json).commit();
+        editor.putString(Settings.KEY_SETTINGS, json).apply();
     }
 
     public static void setActivityColors(Activity a, int toolbarId, int tabsId) {
