@@ -11,6 +11,7 @@
     <div class="row">
       <div ng-show="errorMsg != null" class="col-sm-12 text-center">
         <br>
+
         <h3 class="error">{{errorMsg}}</h3>
         <br>
         <br>
@@ -26,18 +27,75 @@
             <div>
               <strong>Primary Color:</strong>
               <label ng-show="primaryColorEditorEnabled">
-                <input colorpicker="hex" type="text" ng-model="settings.primaryColor" />
+                <input colorpicker="hex" type="text" ng-model="settings.primaryColor"/>
               </label>
-              <span ng-hide="primaryColorEditorEnabled"><div class="color-box" style="background-color: {{settings.primaryColor}};"></div> {{settings.primaryColor}}</span>
+              <span ng-hide="primaryColorEditorEnabled"><div class="color-box"
+                                                             style="background-color: {{settings.primaryColor}};"></div> {{settings.primaryColor}}</span>
 
               <a href="#" ng-click="primaryColorEditorEnabled=!primaryColorEditorEnabled">
                 <span ng-hide="primaryColorEditorEnabled" class="pull-right purple">Edit</span>
-                <button ng-show="primaryColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
+                <button ng-show="primaryColorEditorEnabled" class="pull-right" type="submit"
+                        ng-click="updateSettings(settings)">Save
+                </button>
               </a>
 
 
             </div>
 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <div>
+              <strong>Primary Color Dark:</strong>
+              <label ng-show="primaryColorDarkEditorEnabled">
+                <input colorpicker="hex" type="text" ng-model="settings.primaryColorDark"/>
+              </label>
+              <span ng-hide="primaryColorDarkEditorEnabled"><div class="color-box"
+                                                             style="background-color: {{settings.primaryColorDark}};"></div> {{settings.primaryColorDark}}</span>
+
+              <a href="#" ng-click="primaryColorDarkEditorEnabled=!primaryColorDarkEditorEnabled">
+                <span ng-hide="primaryColorDarkEditorEnabled" class="pull-right purple">Edit</span>
+                <button ng-show="primaryColorDarkEditorEnabled" class="pull-right" type="submit"
+                        ng-click="updateSettings(settings)">Save
+                </button>
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-default">
+          <div class="panel-body">
+
+            <div>
+              <strong>Title Text Color:</strong>
+              <label ng-show="titleTextColorEditorEnabled">
+                <input colorpicker="hex" type="text" ng-model="settings.titleTextColor"/>
+              </label>
+              <span ng-hide="titleTextColorEditorEnabled"><div class="color-box"
+                                                                 style="background-color: {{settings.titleTextColor}};"></div> {{settings.titleTextColor}}</span>
+
+              <a href="#" ng-click="titleTextColorEditorEnabled=!titleTextColorEditorEnabled">
+                <span ng-hide="titleTextColorEditorEnabled" class="pull-right purple">Edit</span>
+                <button ng-show="titleTextColorEditorEnabled" class="pull-right" type="submit"
+                        ng-click="updateSettings(settings)">Save
+                </button>
+              </a>
+
+            </div>
           </div>
         </div>
       </div>
@@ -53,12 +111,15 @@
             <div>
               <strong>Accent Color:</strong>
               <label ng-show="accentColorEditorEnabled">
-                <input colorpicker="hex" type="text" ng-model="settings.accentColor" />
+                <input colorpicker="hex" type="text" ng-model="settings.accentColor"/>
               </label>
-              <span ng-hide="accentColorEditorEnabled"><div class="color-box" style="background-color: {{settings.accentColor}};"></div> {{settings.accentColor}}</span>
+              <span ng-hide="accentColorEditorEnabled"><div class="color-box"
+                                                            style="background-color: {{settings.accentColor}};"></div> {{settings.accentColor}}</span>
               <a href="#" ng-click="accentColorEditorEnabled=!accentColorEditorEnabled">
                 <span ng-hide="accentColorEditorEnabled" class="pull-right purple">Edit</span>
-                <button ng-show="accentColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
+                <button ng-show="accentColorEditorEnabled" class="pull-right" type="submit"
+                        ng-click="updateSettings(settings)">Save
+                </button>
               </a>
             </div>
 
@@ -76,13 +137,16 @@
             <div>
               <strong>Primary Text Color:</strong>
               <label ng-show="primaryTextColorEditorEnabled">
-                <input colorpicker="hex" type="text" ng-model="settings.primaryTextColor" />
+                <input colorpicker="hex" type="text" ng-model="settings.primaryTextColor"/>
               </label>
-              <span ng-hide="primaryTextColorEditorEnabled"><div class="color-box" style="background-color: {{settings.primaryTextColor}};"></div> {{settings.primaryTextColor}}</span>
+              <span ng-hide="primaryTextColorEditorEnabled"><div class="color-box"
+                                                                 style="background-color: {{settings.primaryTextColor}};"></div> {{settings.primaryTextColor}}</span>
               <a href="#" ng-click="primaryTextColorEditorEnabled=!primaryTextColorEditorEnabled">
                 <span ng-hide="primaryTextColorEditorEnabled"
                       class="pull-right purple">Edit</span>
-                <button ng-show="primaryTextColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
+                <button ng-show="primaryTextColorEditorEnabled" class="pull-right" type="submit"
+                        ng-click="updateSettings(settings)">Save
+                </button>
               </a>
             </div>
 
@@ -102,11 +166,14 @@
               <label ng-show="primarySubTextColorEditorEnabled">
                 <input ng-model="settings.primarySubTextColor" colorpicker="hex" type="text">
               </label>
-              <span ng-hide="primarySubTextColorEditorEnabled"><div class="color-box" style="background-color: {{settings.primarySubTextColor}};"></div> {{settings.primarySubTextColor}}</span>
+              <span ng-hide="primarySubTextColorEditorEnabled"><div class="color-box"
+                                                                    style="background-color: {{settings.primarySubTextColor}};"></div> {{settings.primarySubTextColor}}</span>
               <a href="#" ng-click="primarySubTextColorEditorEnabled=!primarySubTextColorEditorEnabled">
                 <span ng-hide="primarySubTextColorEditorEnabled"
                       class="pull-right purple">Edit</span>
-                <button ng-show="primarySubTextColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
+                <button ng-show="primarySubTextColorEditorEnabled" class="pull-right" type="submit"
+                        ng-click="updateSettings(settings)">Save
+                </button>
               </a>
             </div>
 
@@ -126,11 +193,14 @@
               <label ng-show="backgroundColorEditorEnabled">
                 <input ng-model="settings.backgroundColor" colorpicker="hex" type="text">
               </label>
-              <span ng-hide="backgroundColorEditorEnabled"><div class="color-box" style="background-color: {{settings.backgroundColor}};"></div> {{settings.backgroundColor}}</span>
+              <span ng-hide="backgroundColorEditorEnabled"><div class="color-box"
+                                                                style="background-color: {{settings.backgroundColor}};"></div> {{settings.backgroundColor}}</span>
               <a href="#" ng-click="backgroundColorEditorEnabled=!backgroundColorEditorEnabled">
                 <span ng-hide="backgroundColorEditorEnabled"
                       class="pull-right purple">Edit</span>
-                <button ng-show="backgroundColorEditorEnabled" class="pull-right" type="submit" ng-click="updateSettings(settings)">Save</button>
+                <button ng-show="backgroundColorEditorEnabled" class="pull-right" type="submit"
+                        ng-click="updateSettings(settings)">Save
+                </button>
               </a>
             </div>
 
