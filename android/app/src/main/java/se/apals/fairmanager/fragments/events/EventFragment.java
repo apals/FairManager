@@ -62,7 +62,6 @@ public class EventFragment extends Fragment implements SearchView.OnQueryTextLis
     @Subscribe
     public void onEventsLoaded(EventsLoadedEvent event) {
         mEvents = event.events;
-        Collections.sort(mEvents);
         mAdapter.addAll(event.events);
         showLoader(false);
     }

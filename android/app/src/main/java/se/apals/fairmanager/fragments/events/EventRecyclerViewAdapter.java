@@ -11,6 +11,7 @@ import se.apals.fairmanager.activities.EventDetailActivity;
 import se.apals.fairmanager.models.Event;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecyclerViewAdapter.ViewHolder> {
@@ -100,10 +101,12 @@ public class EventRecyclerViewAdapter extends RecyclerView.Adapter<EventRecycler
 
     public void addAll(List<Event> events) {
         for (Event e : events) {
-            if(!mValues.contains(e)) {
+            if (!mValues.contains(e)) {
                 mValues.add(e);
             }
         }
+
+        Collections.sort(mValues);
         notifyDataSetChanged();
     }
 
