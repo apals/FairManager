@@ -1,10 +1,14 @@
 package se.apals.fairmanager.fragments.personnel;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,10 +43,12 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
         holder.mTitleView.setText(mValues.get(position).getTitle());
 
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.mCallButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:0123456789"));
+                v.getContext().startActivity(intent);
             }
         });
     }
@@ -116,6 +122,7 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
         public final View mView;
         public final TextView mContentView;
         public final TextView mTitleView;
+        public final AppCompatImageButton mCallButton;
         public Person mItem;
 
         public ViewHolder(View view) {
@@ -123,6 +130,7 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.content);
             mTitleView = (TextView) view.findViewById(R.id.person_title_textview);
+            mCallButton = (AppCompatImageButton) view.findViewById(R.id.imagebutton_call);
         }
 
         @Override
