@@ -61,6 +61,9 @@ public class EventsMapActivity extends FragmentActivity implements OnMapReadyCal
         mMap = googleMap;
 
         Geocoder coder = new Geocoder(this);
+
+        //Builder so that we can center the map around
+        //all the eventmarkers later
         LatLngBounds.Builder builder = new LatLngBounds.Builder();
         for(Event e : mEvents) {
             try {
