@@ -4,12 +4,13 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class Event implements Comparable<Event> {
+public class Event implements Comparable<Event>, Serializable {
 
     @SerializedName("_id")
     protected String id;
@@ -17,6 +18,7 @@ public class Event implements Comparable<Event> {
     protected Date startDate;
     protected Date endDate;
     protected String imageUrl;
+    protected String location;
 
     @Override
     public boolean equals(Object o) {
@@ -91,6 +93,11 @@ public class Event implements Comparable<Event> {
      */
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+
+    public String getLocation() {
+        return location;
     }
 
     @Override

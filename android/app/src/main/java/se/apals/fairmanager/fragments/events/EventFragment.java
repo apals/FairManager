@@ -1,17 +1,27 @@
 package se.apals.fairmanager.fragments.events;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.squareup.otto.Subscribe;
 
@@ -20,8 +30,10 @@ import java.util.Collections;
 import java.util.List;
 
 import se.apals.fairmanager.R;
+import se.apals.fairmanager.activities.EventsMapActivity;
 import se.apals.fairmanager.models.BusProvider;
 import se.apals.fairmanager.models.Event;
+import se.apals.fairmanager.models.SettingsUtils;
 import se.apals.fairmanager.models.events.EventsLoadedEvent;
 import se.apals.fairmanager.models.events.LoadEventsEvent;
 
@@ -118,6 +130,27 @@ public class EventFragment extends Fragment implements SearchView.OnQueryTextLis
                 }
             }
         );
+
+        final FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
+        if (fab != null) {
+
+            Drawable drawable = fab.getDrawable();
+            // Wrap the drawable so that future tinting calls work
+            // on pre-v21 devices. Always use the returned drawable.
+            drawable = DrawableCompat.wrap(drawable);
+
+            // We can now set a tint
+            DrawableCompat.setTint(drawable, ContextCompat.getColor(getContext(), android.R.color.white));
+            // ...or a tint list
+            DrawableCompat.setTintList(drawable, ColorStateList.valueOf(ContextCompat.getColor(getContext(), android.R.color.white)));
+            fab.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor(SettingsUtils.getSettings(getActivity()).getAccentColor())));
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    EventsMapActivity.start(getContext(), mEvents);
+                }
+            });
+        }
     }
 
     @Override

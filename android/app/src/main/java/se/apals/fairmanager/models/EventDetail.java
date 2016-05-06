@@ -8,14 +8,8 @@ public class EventDetail extends Event {
     private String info;
 
 
-    private String location;
-
     public String getInfo() {
         return info;
     }
 
-
-    public String getLocation() {
-        return location;
-    }
 }
