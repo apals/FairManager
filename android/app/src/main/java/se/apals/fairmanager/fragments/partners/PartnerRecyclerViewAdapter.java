@@ -1,13 +1,18 @@
 package se.apals.fairmanager.fragments.partners;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +39,13 @@ public class PartnerRecyclerViewAdapter extends RecyclerView.Adapter<PartnerRecy
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mContentView.setText(mValues.get(position).getName());
+
+        Glide.with(holder.mView.getContext()).load(holder.mItem.getLogoUrl()).fitCenter().crossFade().into(new GlideDrawableImageViewTarget(holder.mBackdrop) {
+            @Override
+            public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                Glide.with(holder.mView.getContext()).load(R.mipmap.ic_launcher).into(holder.mBackdrop);
+            }
+        });
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,12 +77,14 @@ public class PartnerRecyclerViewAdapter extends RecyclerView.Adapter<PartnerRecy
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mContentView;
+        public final ImageView mBackdrop;
         public Partner mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mContentView = (TextView) view.findViewById(R.id.content);
+            mBackdrop = (ImageView) view.findViewById(R.id.partner_backdrop);
         }
 
         @Override
