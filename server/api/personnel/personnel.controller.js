@@ -61,7 +61,7 @@ function handleError(res, statusCode) {
 
 // Gets a list of Personnels
 export function index(req, res) {
-  Personnel.findAsync({}, {name: 1, title: 1})
+  Personnel.findAsync({}, {})
     .then(respondWithResult(res))
     .catch(handleError(res));
 }
