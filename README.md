@@ -61,7 +61,7 @@ Clarification is required.  Files are not structured well, however, code are div
 
 ## Screenshots
 - Events
-![Events](/android/screenshots/events.png?raw=true =100x300 "Events")
+<img src="https://github.com/apals/FairManager/android/screenshots/events.png" width="100">
 
 - Exhibitors
 ![Exhibitors](/android/screenshots/exhibitors.png?raw=true "Exhibitors")
