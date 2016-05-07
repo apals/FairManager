@@ -67,7 +67,7 @@ Clarification is required.  Files are not structured well, however, code are div
 
 #### Events
 
-![Events screenshot](/android/screenshots/events-small.png?raw=true "Events")
+![Events screenshot](/android/screenshots/events-small.png?raw=true "Events") &nbsp; &nbsp; 
 ![Armada event screenshot](/android/screenshots/events-armada-small.png?raw=true "Armada event")
 ![Armada event chat screen screenshot](/android/screenshots/armada-chat-small.png?raw=true "Chat screen for an event")
 !["Global" map for maps](/android/screenshots/events-map-small.png?raw=true "Map for all events")
