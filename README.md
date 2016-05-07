@@ -59,7 +59,12 @@ Clarification is required.  Files are not structured well, however, code are div
 
 
 
-## TODO
+## Screenshots
+- Events
+![Events](/android/screenshots/events.png?raw=true "Events")
+
+- Exhibitors
+![Exhibitors](/android/screenshots/exhibitors.png?raw=true "Exhibitors")
 
 
 ## Generating tool
