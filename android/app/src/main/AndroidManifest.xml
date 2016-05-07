@@ -55,7 +55,7 @@
         <activity
             android:name=".activities.LauncherActivity"
             android:noHistory="true"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBarNoStatusBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
