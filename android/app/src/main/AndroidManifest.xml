@@ -36,7 +36,8 @@
             android:name=".activities.EventDetailActivity"
             android:label="@string/title_activity_event_detail"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="se.apals.fairmanager.MainActivity" />
@@ -45,7 +46,8 @@
             android:name=".activities.ChatActivity"
             android:label="@string/title_activity_chat"
             android:parentActivityName=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="se.apals.fairmanager.MainActivity" />
