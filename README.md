@@ -61,7 +61,7 @@ Clarification is required.  Files are not structured well, however, code are div
 
 ## Screenshots
 - Events
-![Events](/android/screenshots/events.png?raw=true "Events")
+![Events](/android/screenshots/events.png?raw=true =100x300 "Events")
 
 - Exhibitors
 ![Exhibitors](/android/screenshots/exhibitors.png?raw=true "Exhibitors")
