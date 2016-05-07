@@ -9,6 +9,7 @@ public class ExhibitorDetail extends Exhibitor {
 
     private String info;
     private String bannerUrl;
+    private String contactEmail;
 
     /**
      *
@@ -98,6 +99,10 @@ public class ExhibitorDetail extends Exhibitor {
      */
     public void setBannerUrl(String bannerUrl) {
         this.bannerUrl = bannerUrl;
+    }
+
+    public String getContactEmail() {
+        return contactEmail;
     }
 
 }

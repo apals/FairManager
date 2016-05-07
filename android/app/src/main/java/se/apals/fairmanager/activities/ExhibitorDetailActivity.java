@@ -60,18 +60,6 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("plain/text");
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"exhibitor@exh.com"});
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Regarding the fair");
-                startActivity(Intent.createChooser(intent, ""));
-            }
-        });
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setUpColors();
 
@@ -114,6 +102,19 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
             ft.add(R.id.chat_fragment_container, newFragment).commit();
         }
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("plain/text");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{event.exhibitor.getContactEmail()});
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.fair_email_subject));
+                startActivity(Intent.createChooser(intent, ""));
+            }
+        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void showLoader(boolean b) {
