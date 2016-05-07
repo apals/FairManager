@@ -47,7 +47,7 @@ public class PersonRecyclerViewAdapter extends RecyclerView.Adapter<PersonRecycl
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:0123456789"));
+                intent.setData(Uri.parse("tel:" + holder.mItem.getPhoneNumber()));
                 v.getContext().startActivity(intent);
             }
         });
