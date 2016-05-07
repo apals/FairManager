@@ -46,7 +46,7 @@ public class ExhibitorRecyclerViewAdapter extends RecyclerView.Adapter<Exhibitor
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mContentView.setText(mValues.get(position).getName());
-        Glide.with(holder.mView.getContext()).load(holder.mItem.getLogoUrl()).into(new GlideDrawableImageViewTarget(holder.mLogoView) {
+        Glide.with(holder.mView.getContext()).load(holder.mItem.getLogoUrl()).centerCrop().crossFade().into(new GlideDrawableImageViewTarget(holder.mLogoView) {
             @Override
             public void onLoadFailed(Exception e, Drawable errorDrawable) {
                 Glide.with(holder.mView.getContext()).load(R.mipmap.ic_launcher).into(holder.mLogoView);

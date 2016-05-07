@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -20,8 +21,13 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.animation.GlideAnimation;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -60,6 +66,9 @@ public class EventDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
+        if (Build.VERSION.SDK_INT >= 21) {
+            postponeEnterTransition();
+        }
         loadEvent(getIntent().getStringExtra(KEY_EXHIBITOR_ID));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -92,6 +101,22 @@ public class EventDetailActivity extends AppCompatActivity {
         setUpColors();
     }
 
+    private void setBackdrop() {
+        final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
+        if (Build.VERSION.SDK_INT >= 21) {
+            startPostponedEnterTransition();
+        } else {
+            imageView.setVisibility(View.VISIBLE);
+        }
+        Glide.with(this).load(mEvent.getImageUrl()).centerCrop().crossFade().into(new GlideDrawableImageViewTarget(imageView) {
+            @Override
+            public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
+                super.onResourceReady(resource, animation);
+                resource.setBounds(imageView.getLeft(), imageView.getTop(), imageView.getRight(), imageView.getBottom());
+            }
+        });
+    }
+
     private void loadEvent(String id) {
         BusProvider.getInstance().post(new LoadEventEvent(id));
     }
@@ -106,6 +131,7 @@ public class EventDetailActivity extends AppCompatActivity {
         showLoader(false);
         addChatFragmentForEvent();
         setUpMapFragment();
+        setBackdrop();
     }
 
     private void setUpMapFragment() {

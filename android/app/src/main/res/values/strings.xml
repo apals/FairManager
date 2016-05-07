@@ -110,4 +110,5 @@
     <string name="date">Date</string>
     <string name="title_activity_events_map">Events</string>
     <string name="welcome_string">Welcome to the fair! To read about the exhibitors and to join the community around you, please enter your name:</string>
+    <string name="fair_email_subject">Regarding the fair</string>
 </resources>

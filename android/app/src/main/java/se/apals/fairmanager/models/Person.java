@@ -8,6 +8,7 @@ public class Person {
     private String id;
     private String name;
     private String title;
+    private String phoneNumber;
 
     @Override
     public boolean equals(Object o) {
@@ -56,4 +57,7 @@ public class Person {
         this.title = title;
     }
 
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 }
