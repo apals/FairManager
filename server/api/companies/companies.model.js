@@ -7,7 +7,8 @@ var CompaniesSchema = new mongoose.Schema({
   info: String,
   employees: Number,
   logoUrl: String,
-  bannerUrl: String
+  bannerUrl: String,
+  contactEmail: String
 });
 
 export default mongoose.model('Companies', CompaniesSchema);

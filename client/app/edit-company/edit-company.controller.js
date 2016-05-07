@@ -29,7 +29,8 @@ angular.module('fairManagerApp')
       var newCompany = {
         name: company.name,
         logo: company.logo,
-        banner: company.banner
+        banner: company.banner,
+        contactEmail: company.contactEmail
       };
 
       if(company.logoUrl !== null && company.logoUrl !== 'null' && !company.logo) {
