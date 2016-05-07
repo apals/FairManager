@@ -82,7 +82,7 @@ public class EventsMapActivity extends FragmentActivity implements OnMapReadyCal
         }
 
         LatLngBounds bounds = builder.build();
-        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 10));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 50));
 
     }
 }
