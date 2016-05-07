@@ -59,7 +59,29 @@ Clarification is required.  Files are not structured well, however, code are div
 
 
 
-## TODO
+## Screenshots
+
+#### Splash screen
+
+![Launcher screenshot](/android/screenshots/launcher-small.png?raw=true "Launcher")
+
+#### Events
+
+![Events screenshot](/android/screenshots/events-small.png?raw=true "Events") &nbsp; &nbsp; 
+![Armada event screenshot](/android/screenshots/events-armada-small.png?raw=true "Armada event")
+![Armada event chat screen screenshot](/android/screenshots/armada-chat-small.png?raw=true "Chat screen for an event")
+!["Global" map for maps](/android/screenshots/events-map-small.png?raw=true "Map for all events")
+
+#### Exhibitors
+
+![Exhibitors](/android/screenshots/exhibitors-small.png?raw=true "Exhibitors")
+![Exhibitor search](/android/screenshots/search-small.png?raw=true "Search among exhibitors")
+![Spotify exhibitor](/android/screenshots/spotify-small.png?raw=true "Spotify as an exhibitor")
+
+#### Personnel
+
+![Personnel](/android/screenshots/personnel-small.png?raw=true "Personnel")
+
 
 
 ## Generating tool

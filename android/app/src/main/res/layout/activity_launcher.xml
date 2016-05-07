@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        tools:context="se.apals.fairmanager.activities.LauncherActivity">
+
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@android:style/Widget.Holo.ProgressBar.Large"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateTint="@android:color/white"
+            android:indeterminateTintMode="src_atop"
+            android:visibility="visible"
+            android:layout_below="@+id/button_send"/>
+
+
+        <TextView
+            android:id="@+id/login_welcome_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/welcome_string"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginBottom="5dp"
+            android:textColor="@android:color/white" />
+
+        <EditText
+            android:id="@+id/login_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/your_name"
+            android:gravity="center"
+            android:textColorHint="#777777"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/white"
+            android:layout_marginBottom="5dp"
+            android:layout_below="@id/login_welcome_textview" />
+
+        <Button
+            android:id="@+id/button_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/login_edittext"
+            android:onClick="setUserName"
+            android:text="@string/submit"
+            android:enabled="false"/>
+
+    </RelativeLayout>
+
+</ScrollView>
