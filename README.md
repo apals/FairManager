@@ -61,10 +61,7 @@ Clarification is required.  Files are not structured well, however, code are div
 
 ## Screenshots
 - Events
-<img src="https://github.com/apals/FairManager/android/screenshots/events.png" width="100">
-
-- Exhibitors
-![Exhibitors](/android/screenshots/exhibitors.png?raw=true "Exhibitors")
+![Exhibitors](/android/screenshots/exhibitors-small.png?raw=true "Exhibitors")
 
 
 ## Generating tool
