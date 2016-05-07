@@ -95,7 +95,7 @@
     <string name="title_activity_event_detail">Loading..</string>
     <string name="event_banner">Event Banner</string>
     <string name="title_activity_chat">Chat</string>
-    <string name="loading_text">Welcome to this fair! Please hold while we gather the latest information for you</string>
+    <string name="loading_text">Welcome to the fair! Please hold while we gather the latest information for you.</string>
     <string name="exhibitors">exhibitors</string>
     <string name="events">events</string>
     <string name="partners">partners</string>
@@ -109,5 +109,5 @@
     <string name="location">Location</string>
     <string name="date">Date</string>
     <string name="title_activity_events_map">Events</string>
-    <string name="welcome_string">Welcome to this fair! To join the community everywhere around you, please enter your name:</string>
+    <string name="welcome_string">Welcome to the fair! To read about the exhibitors and to join the community around you, please enter your name:</string>
 </resources>
