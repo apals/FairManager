@@ -1,9 +1,10 @@
 # Architecture
-In order to decouple network logic from the activities, an event bus is used. 
+In order to decouple network logic from the activities, an event bus (Otto) is used. 
 The class FairManagerService.java contains all the networking, but has no connection to any activity. Instead,
 the networking is attached to the application context. This decoupling removes the need of checking for e.g.
 activity destruction on the UI-thread after a network response has been reported.
 
+We use a singleton instance of the event bus to post events (eg LoadExhibitorsEvent). The service listens to these events and starts loading the exhibitors. When finished, an ExhibitorsLoadedEvent is posted, which the activity or fragment is listening for (i.e. subscribed to). When an activity or fragment is destroyed, they just unsubscribe to all events. 
 
 
 ## Screenshots
