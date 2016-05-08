@@ -38,9 +38,8 @@ public class PartnerRecyclerViewAdapter extends RecyclerView.Adapter<PartnerRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mContentView.setText(mValues.get(position).getName());
 
-        Glide.with(holder.mView.getContext()).load(holder.mItem.getLogoUrl()).fitCenter().crossFade().into(new GlideDrawableImageViewTarget(holder.mBackdrop) {
+        Glide.with(holder.mView.getContext()).load(holder.mItem.getLogoUrl()).crossFade().into(new GlideDrawableImageViewTarget(holder.mBackdrop) {
             @Override
             public void onLoadFailed(Exception e, Drawable errorDrawable) {
                 Glide.with(holder.mView.getContext()).load(R.mipmap.ic_launcher).into(holder.mBackdrop);
@@ -76,20 +75,18 @@ public class PartnerRecyclerViewAdapter extends RecyclerView.Adapter<PartnerRecy
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mContentView;
         public final ImageView mBackdrop;
         public Partner mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mContentView = (TextView) view.findViewById(R.id.content);
             mBackdrop = (ImageView) view.findViewById(R.id.partner_backdrop);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mItem.getName() + "'";
         }
     }
 }

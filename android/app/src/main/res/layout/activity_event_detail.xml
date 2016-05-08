@@ -32,7 +32,7 @@
                 android:layout_height="match_parent"
                 android:contentDescription="@string/event_banner"
                 android:fitsSystemWindows="true"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@mipmap/ic_launcher"
                 android:visibility="visible"
                 app:layout_collapseMode="parallax" />
