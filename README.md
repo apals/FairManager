@@ -83,6 +83,13 @@ Clarification is required.  Files are not structured well, however, code are div
 
 ![Personnel](/android/screenshots/personnel-small.png?raw=true "Personnel")
 
+#### Partners
+
+![Partners](/android/screenshots/partners.png?raw=true "Partners")
+
+#### Chat
+
+![Chat](/android/screenshots/chat.png?raw=true "Chat")
 
 
 ## Generating tool
