@@ -7,6 +7,7 @@ Welcome to FairManager, an administrative service to handle and manage companies
 
 
 
+
 ## To add new views
 
 See the example folder: https://github.com/apals/FairManager/tree/master/client/app/edit-partner
