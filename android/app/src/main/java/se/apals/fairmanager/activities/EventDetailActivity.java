@@ -62,16 +62,33 @@ public class EventDetailActivity extends AppCompatActivity {
     }
 
 
+    public static TextView getTextViewTitle(Toolbar toolbar){
+        TextView textViewTitle = null;
+        for(int i = 0; i<toolbar.getChildCount(); i++) {
+            View view = toolbar.getChildAt(i);
+            if(view instanceof TextView) {
+                textViewTitle = (TextView) view;
+                break;
+            }
+        }
+        return textViewTitle;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
-        if (Build.VERSION.SDK_INT >= 21) {
+        /*if (Build.VERSION.SDK_INT >= 21) {
             postponeEnterTransition();
-        }
+        }*/
         loadEvent(getIntent().getStringExtra(KEY_EXHIBITOR_ID));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        TextView mTextViewToolbarTitle = getTextViewTitle(toolbar);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mTextViewToolbarTitle.setTransitionName("transition_view");
+        }
 
         mFab = (FloatingActionButton) findViewById(R.id.fab);
         if (mFab != null) {
@@ -103,12 +120,12 @@ public class EventDetailActivity extends AppCompatActivity {
 
     private void setBackdrop() {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        if (Build.VERSION.SDK_INT >= 21) {
+        /*if (Build.VERSION.SDK_INT >= 21) {
             startPostponedEnterTransition();
         } else {
             imageView.setVisibility(View.VISIBLE);
-        }
-        Glide.with(this).load(mEvent.getImageUrl()).centerCrop().crossFade().into(new GlideDrawableImageViewTarget(imageView) {
+        }*/
+        Glide.with(this).load(mEvent.getImageUrl()).crossFade().into(new GlideDrawableImageViewTarget(imageView) {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
                 super.onResourceReady(resource, animation);

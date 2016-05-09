@@ -60,27 +60,46 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exhibitor_detail);
-        if (Build.VERSION.SDK_INT >= 21) {
+
+        /*if (Build.VERSION.SDK_INT >= 21) {
             postponeEnterTransition();
-        }
+        }*/
 
         loadExhibitor(getIntent().getStringExtra(KEY_EXHIBITOR_ID));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        TextView mTextViewToolbarTitle = getTextViewTitle(toolbar);
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mTextViewToolbarTitle.setTransitionName("transition_view");
+        }
+
 
 
         setUpColors();
 
     }
 
+    public static TextView getTextViewTitle(Toolbar toolbar){
+        TextView textViewTitle = null;
+        for(int i = 0; i<toolbar.getChildCount(); i++) {
+            View view = toolbar.getChildAt(i);
+            if(view instanceof TextView) {
+                textViewTitle = (TextView) view;
+                break;
+            }
+        }
+        return textViewTitle;
+    }
+
     private void setBackdrop() {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        if (Build.VERSION.SDK_INT >= 21) {
+        /*if (Build.VERSION.SDK_INT >= 21) {
             startPostponedEnterTransition();
         } else {
             imageView.setVisibility(View.VISIBLE);
-        }
-        Glide.with(this).load(mExhibitor.getBannerUrl()).centerCrop().crossFade().into(new GlideDrawableImageViewTarget(imageView) {
+        }*/
+        Glide.with(this).load(mExhibitor.getBannerUrl()).crossFade().into(new GlideDrawableImageViewTarget(imageView) {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
                 super.onResourceReady(resource, animation);
