@@ -8,7 +8,6 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Geocoder;
-import android.os.Build;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -50,81 +49,33 @@ import se.apals.fairmanager.models.events.LoadEventEvent;
 
 public class EventDetailActivity extends AppCompatActivity {
 
-    private static final String KEY_EXHIBITOR_ID = "KEY_EXHIBITOR_ID";
+    private static final String KEY_EVENT_ID = "KEY_EVENT_ID";
     private EventDetail mEvent;
     private FloatingActionButton mFab;
 
-    public static void start(Context context, String eventId, View transitionView) {
-        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, transitionView.findViewById(R.id.content), "transition_view");
+
+    public static void start(Context context, String exhibitorId) {
+        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context);
         Intent i = new Intent(context, EventDetailActivity.class);
-        i.putExtra(KEY_EXHIBITOR_ID, eventId);
+        i.putExtra(KEY_EVENT_ID, exhibitorId);
         context.startActivity(i, compat.toBundle());
     }
-
-
-    public static TextView getTextViewTitle(Toolbar toolbar){
-        TextView textViewTitle = null;
-        for(int i = 0; i<toolbar.getChildCount(); i++) {
-            View view = toolbar.getChildAt(i);
-            if(view instanceof TextView) {
-                textViewTitle = (TextView) view;
-                break;
-            }
-        }
-        return textViewTitle;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
-        /*if (Build.VERSION.SDK_INT >= 21) {
-            postponeEnterTransition();
-        }*/
-        loadEvent(getIntent().getStringExtra(KEY_EXHIBITOR_ID));
+        loadEvent(getIntent().getStringExtra(KEY_EVENT_ID));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        TextView mTextViewToolbarTitle = getTextViewTitle(toolbar);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            mTextViewToolbarTitle.setTransitionName("transition_view");
-        }
 
-        mFab = (FloatingActionButton) findViewById(R.id.fab);
-        if (mFab != null) {
-            mFab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    Intent intent = new Intent(Intent.ACTION_INSERT)
-                        .setData(CalendarContract.Events.CONTENT_URI)
-                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, mEvent.getStartDate().getTime())
-                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, mEvent.getEndDate().getTime())
-                        .putExtra(CalendarContract.Events.TITLE, mEvent.getName())
-                        .putExtra(CalendarContract.Events.DESCRIPTION, mEvent.getInfo())
-                        .putExtra(CalendarContract.Events.EVENT_LOCATION, mEvent.getLocation())
-                        .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
-                    startActivity(intent);
-                }
-            });
-        }
-
-        if (getSupportFragmentManager().findFragmentById(R.id.map_fragment_container) == null) {
-            SupportMapFragment mapFragment = SupportMapFragment.newInstance();
-            getSupportFragmentManager().beginTransaction().add(R.id.map_fragment_container, mapFragment).commit();
-        }
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setUpFab();
         setUpColors();
     }
 
     private void setBackdrop() {
         final ImageView imageView = (ImageView) findViewById(R.id.backdrop);
-        /*if (Build.VERSION.SDK_INT >= 21) {
-            startPostponedEnterTransition();
-        } else {
-            imageView.setVisibility(View.VISIBLE);
-        }*/
+
         Glide.with(this).load(mEvent.getImageUrl()).crossFade().into(new GlideDrawableImageViewTarget(imageView) {
             @Override
             public void onResourceReady(GlideDrawable resource, GlideAnimation<? super GlideDrawable> animation) {
@@ -149,11 +100,37 @@ public class EventDetailActivity extends AppCompatActivity {
         addChatFragmentForEvent();
         setUpMapFragment();
         setBackdrop();
+
+
+    }
+
+    private void setUpFab() {
+        mFab = (FloatingActionButton) findViewById(R.id.fab);
+        if (mFab != null) {
+            mFab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(Intent.ACTION_INSERT)
+                        .setData(CalendarContract.Events.CONTENT_URI)
+                        .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, mEvent.getStartDate().getTime())
+                        .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, mEvent.getEndDate().getTime())
+                        .putExtra(CalendarContract.Events.TITLE, mEvent.getName())
+                        .putExtra(CalendarContract.Events.DESCRIPTION, mEvent.getInfo())
+                        .putExtra(CalendarContract.Events.EVENT_LOCATION, mEvent.getLocation())
+                        .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
     private void setUpMapFragment() {
+        SupportMapFragment mapFragment = SupportMapFragment.newInstance();
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map_fragment_container);
+
+
+
         OnMapReadyCallback mapReadyCallback = new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
@@ -174,6 +151,7 @@ public class EventDetailActivity extends AppCompatActivity {
             }
         };
         mapFragment.getMapAsync(mapReadyCallback);
+        getSupportFragmentManager().beginTransaction().add(R.id.map_fragment_container, mapFragment).commit();
 
     }
 
@@ -255,5 +233,6 @@ public class EventDetailActivity extends AppCompatActivity {
         super.onStop();
         BusProvider.getInstance().unregister(this);
     }
+
 
 }

@@ -49,8 +49,8 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
     private static final String KEY_EXHIBITOR_ID = "KEY_EXHIBITOR_ID";
     private ExhibitorDetail mExhibitor;
 
-    public static void start(Context context, String exhibitorId, View transitionView) {
-        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context, transitionView.findViewById(R.id.content), "transition_view");
+    public static void start(Context context, String exhibitorId) {
+        ActivityOptionsCompat compat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity) context);
         Intent i = new Intent(context, ExhibitorDetailActivity.class);
         i.putExtra(KEY_EXHIBITOR_ID, exhibitorId);
         context.startActivity(i, compat.toBundle());
@@ -59,13 +59,8 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        postponeEnterTransition();
         setContentView(R.layout.activity_exhibitor_detail);
-
-        /*if (Build.VERSION.SDK_INT >= 21) {
-            postponeEnterTransition();
-        }*/
-
-        loadExhibitor(getIntent().getStringExtra(KEY_EXHIBITOR_ID));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -75,8 +70,12 @@ public class ExhibitorDetailActivity extends AppCompatActivity {
         }
 
 
+        loadExhibitor(getIntent().getStringExtra(KEY_EXHIBITOR_ID));
+
+
 
         setUpColors();
+        startPostponedEnterTransition();
 
     }
 

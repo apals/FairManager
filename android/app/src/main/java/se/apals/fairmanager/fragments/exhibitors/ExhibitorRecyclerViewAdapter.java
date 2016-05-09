@@ -56,7 +56,7 @@ public class ExhibitorRecyclerViewAdapter extends RecyclerView.Adapter<Exhibitor
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ExhibitorDetailActivity.start(v.getContext(), holder.mItem.getId(), v);
+                ExhibitorDetailActivity.start(v.getContext(), holder.mItem.getId());
             }
         });
     }
