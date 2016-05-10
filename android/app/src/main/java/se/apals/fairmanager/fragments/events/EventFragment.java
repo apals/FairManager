@@ -176,6 +176,7 @@ public class EventFragment extends Fragment implements SearchView.OnQueryTextLis
                 filteredModelList.add(model);
             }
         }
+        Collections.sort(filteredModelList);
         return filteredModelList;
     }
 }
