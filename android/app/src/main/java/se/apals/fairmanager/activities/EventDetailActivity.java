@@ -100,8 +100,6 @@ public class EventDetailActivity extends AppCompatActivity {
         addChatFragmentForEvent();
         setUpMapFragment();
         setBackdrop();
-
-
     }
 
     private void setUpFab() {
